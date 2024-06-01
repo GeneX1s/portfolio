@@ -121,10 +121,10 @@
                 <h2>Nicholas Owen</h2>
                 <div class="owl-carousel text-rotation">
                   <div class="item">
-                    <p class="home-page-description">Web Developer</p>
+                    <p class="home-page-description">Developer</p>
                   </div>
                   <div class="item">
-                    <p class="home-page-description">Backend-developer</p>
+                    <p class="home-page-description">System Analyst</p>
                   </div>
                 </div>
               </div>
@@ -139,7 +139,7 @@
               <div class="section-title-block">
                 <div class="section-title-wrapper clearfix">
                   <h2 class="section-title">About Me</h2>
-                  <h5 class="section-description">Developer, Thinker, Innovator</h5>
+                  <h5 class="section-description">Developer, System Analyst, Data Specialist</h5>
                 </div>
               </div>
 
@@ -171,7 +171,7 @@
                             data-cfemail="c7a2aaa6aeab87a2bfa6aab7aba2e9a4a8aa">owen.djohan@gmail.com</span></a></span>
                     </li>
                     <li><span class="title">Phone</span><span class="value">0812 8062 6658</span></li>
-                    <li><span class="title">Job</span><span class="value">N/A</span></li>
+                    <li><span class="title">Job</span><span class="value">Developer</span></li>
                     <li><span class="title">Freelance</span><span class="value available">Available</span></li>
                   </ul>
 
@@ -199,8 +199,8 @@
                   <div class="service-block">
                     <div class="service-info">
                       <img src="images/service/web_design_icon.png" alt="Responsive Design">
-                      <h4>Web Design</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                      <h4>Website Design</h4>
+                      <p>I can build website for all your needs and business.</p>
                     </div>
                   </div>
                 </div>
@@ -208,9 +208,9 @@
                 <div class="col-sm-6 col-md-3 subpage-block">
                   <div class="service-block">
                     <div class="service-info">
-                      <img src="images/service/photography_icon.png" alt="Photography">
+                      <img src="images/service/app_dev.png" alt="Photography">
                       <h4>Application Development</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                      <p>I'm also experienced on developing varioys applications ranging from core banking system to simple applications like cashier system .</p>
                     </div>
                   </div>
                 </div>
@@ -228,9 +228,9 @@
                 <div class="col-sm-6 col-md-3 subpage-block">
                   <div class="service-block">
                     <div class="service-info">
-                      <img src="images/service/advetising_icon.png" alt="Advetising">
-                      <h4>Advertising</h4>
-                      <p>Advertise your business and aspirations in a creative way.</p>
+                      <img src="images/service/database.png" alt="Advetising">
+                      <h4>System/Data Migration</h4>
+                      <p>I'm experienced and knowledgeable in databases such as MySQL, JBase, and Excel databases.</p>
                     </div>
                   </div>
                 </div>
@@ -346,8 +346,8 @@
                     <div class="timeline-event te-primary">
                       <h5 class="event-date">2022</h5>
                       <h4 class="event-name">Binus University</h4>
-                      <span class="event-description">S1 Computer Science</span>
-                      <p>Graduate of Binus University from 2018-2022 with freelance experiences.</p>
+                      <span class="event-description">S1 Sarjana Komputer</span>
+                      <p>Graduate of Binus University from 2018-2022 majoring in computer science.</p>
                     </div>
                     <!-- Single event -->
                     {{-- <div class="timeline-event te-primary">
@@ -435,7 +435,7 @@
                       <div class="skill-percentage skill-6"></div>
                     </div>
 
-                    <h4>CSS</h4>
+                    <h4>Database</h4>
                     <div class="skill-container">
                       <div class="skill-percentage skill-7"></div>
                     </div>
