@@ -238,7 +238,7 @@
               <!-- End of Services block -->
 
               <!-- Clients block -->
-              <div class="block-title">
+              {{-- <div class="block-title">
                 <h3>Clients</h3>
               </div>
 
@@ -278,7 +278,7 @@
                     <a href="#" target="_blank"><img src="images/clients/client_6.png" alt="image"></a>
                   </div>
                 </div>
-              </div>
+              </div> --}}
               <!-- End of Clients block -->
 
 
@@ -332,7 +332,7 @@
               <div class="section-title-block">
                 <div class="section-title-wrapper">
                   <h2 class="section-title">Resume</h2>
-                  <h5 class="section-description">My Years of Experience</h5>
+                  <h5 class="section-description">Experiences</h5>
                 </div>
               </div>
 
@@ -350,12 +350,12 @@
                       <p>Graduate of Binus University from 2018-2022 majoring in computer science.</p>
                     </div>
                     <!-- Single event -->
-                    {{-- <div class="timeline-event te-primary">
-                      <h5 class="event-date">2009</h5>
-                      <h4 class="event-name">Specialization Course</h4>
-                      <span class="event-description">University of Studies</span>
-                      <p>Mauris magna sapien, pharetra consectetur fringilla vitae, interdum sed tortor.</p>
-                    </div> --}}
+                    <div class="timeline-event te-primary">
+                      <h5 class="event-date">2025</h5>
+                      <h4 class="event-name">S2</h4>
+                      <span class="event-description">-</span>
+                      <p>I'm also planning to continue my education in computer for S2.</p>
+                    </div>
                     <!-- Single event -->
                     {{-- <div class="timeline-event te-primary">
                       <h5 class="event-date">2008</h5>
@@ -375,22 +375,29 @@
                     <div class="timeline-event te-primary">
                       <h5 class="event-date">Jul 2022 - Jan 2023</h5>
                       <h4 class="event-name">Developer and Support</h4>
-                      <span class="event-description">PT.Duta Nitsuko Abadi</span>
-                      <p>Mauris magna sapien, pharetra consectetur fringilla vitae, interdum sed tortor.</p>
+                      <span class="event-description">PT. Duta Nitsuko Abadi</span>
+                      <p>Worked as developer and support for telephone systems company while awaiting graduation.</p>
+                    </div>
+                    <!-- Single event -->
+                    <div class="timeline-event te-primary">
+                      <h5 class="event-date">Jul 2022 - Jan 2023</h5>
+                      <h4 class="event-name">Retail Funding Relationship Manager</h4>
+                      <span class="event-description">PT. Bank OCBC NISP Tbk.</span>
+                      <p>Worked full-time as a banker in OCBC NISP after graduation.</p>
                     </div>
                     <!-- Single event -->
                     <div class="timeline-event te-primary">
                       <h5 class="event-date">Nov 2023 - Mar 2024</h5>
                       <h4 class="event-name">Back End developer</h4>
-                      <span class="event-description">PT.Indo Artha Teknologi</span>
-                      <p>Mauris magna sapien, pharetra consectetur fringilla vitae, interdum sed tortor.</p>
+                      <span class="event-description">PT. Indo Artha Teknologi</span>
+                      <p>Worked full time as backend developer in PT IAT working on human capital website and also Artha Graha Peduli's website Pasar Murah.</p>
                     </div>
                     <!-- Single event -->
                     <div class="timeline-event te-primary">
                       <h5 class="event-date">April 2024 - Ongoing</h5>
-                      <h4 class="event-name">Staff Solution and Development</h4>
+                      <h4 class="event-name">Core Banking System Developer</h4>
                       <span class="event-description">PT. Bank Artha Graha Internasional Tbk.</span>
-                      <p>Mauris magna sapien, pharetra consectetur fringilla vitae, interdum sed tortor.</p>
+                      <p>Currently working full time as Staff Solution and Dev in Artha Graha Bank developing core banking system that uses T24 and JBase Query Languange as backend.</p>
                     </div>
                   </div>
                 </div>
@@ -405,12 +412,12 @@
                       <div class="skill-percentage skill-1"></div>
                     </div>
 
-                    <h4>Design</h4>
+                    <h4>System and Flow Design (UML)</h4>
                     <div class="skill-container">
                       <div class="skill-percentage skill-2"></div>
                     </div>
 
-                    <h4>Excel</h4>
+                    <h4>Mapping data</h4>
                     <div class="skill-container">
                       <div class="skill-percentage skill-3"></div>
                     </div>
@@ -430,19 +437,19 @@
                       <div class="skill-percentage skill-5"></div>
                     </div>
 
-                    <h4>HTML</h4>
+                    <h4>Database (MySQL, PostgreSQL, JQL)</h4>
                     <div class="skill-container">
-                      <div class="skill-percentage skill-6"></div>
+                      <div class="skill-percentage skill-8"></div>
                     </div>
-
-                    <h4>Database</h4>
+                    
+                    <h4>Core Banking (T24 Temenos)</h4>
                     <div class="skill-container">
                       <div class="skill-percentage skill-7"></div>
                     </div>
-
-                    <h4>Js</h4>
+                    
+                    <h4>Java</h4>
                     <div class="skill-container">
-                      <div class="skill-percentage skill-8"></div>
+                      <div class="skill-percentage skill-6"></div>
                     </div>
                   </div>
                 </div>
@@ -466,7 +473,7 @@
               <div class="section-title-block">
                 <div class="section-title-wrapper">
                   <h2 class="section-title">Portfolio</h2>
-                  <h5 class="section-description">My Best Works</h5>
+                  <h5 class="section-description">All my Works (so far)</h5>
                 </div>
               </div>
 
@@ -679,8 +686,8 @@
                   {{-- <p>Sed eleifend sed nibh nec fringilla. Donec eu cursus sem, vitae tristique ante. Cras pretium
                     rutrum
                     egestas. Integer ultrices libero sed justo vehicula, eget tincidunt tortor tempus.</p> --}}
-                  <p>I'm available everyday, active from 9am to 10pm Indonesian time. I prefer to be contacted through
-                    Whatsapp if possible, emails are fine too but a bit slower respond.
+                  <p>I'm always available. I prefer to be contacted through
+                    Whatsapp if possible, but emails are also fine 😊.
                   </p>
                   <div class="contact-info-block">
                     <div class="ci-icon">
@@ -695,7 +702,7 @@
                       <i class="pe-7s-icon pe-7s-mail"></i>
                     </div>
                     <div class="ci-text">
-                      <h5><a href="owen.djohan@gmail.com" class="__cf_email__"
+                      <h5>Email | <a href="owen.djohan@gmail.com" class="__cf_email__"
                           data-cfemail="dabbb6bfa2a9b7b3aeb29abfa2bbb7aab6bff4b9b5b7">owen.djohan@gmail.com</a></h5>
                     </div>
                   </div>
@@ -704,7 +711,7 @@
                       <i class="pe-7s-icon pe-7s-call"></i>
                     </div>
                     <div class="ci-text">
-                      <h5>0812 8062 6658</h5>
+                      <h5>WhatsApp | 0812 8062 6658</h5>
                     </div>
                   </div>
                   <div class="contact-info-block">
