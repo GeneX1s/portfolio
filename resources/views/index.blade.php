@@ -146,7 +146,7 @@
               <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-4 subpage-block">
                   <div class="my-photo-block tilt-effect">
-                    <img src="images/photo.png" alt="">
+                    <img src="images/aboutmefoto.png" alt="">
                   </div>
                 </div>
 
@@ -163,9 +163,14 @@
 
                 <div class="col-sm-6 col-md-6 col-lg-4 subpage-block">
                   <ul class="info-list">
-                    <li><span class="title">Age</span><span class="value">22</span></li>
+                    @php
+                    $year = date("Y");
+                    $birthday = $year -2001;
+                    @endphp
+                    
+                    <li><span class="title">Age</span><span class="value">{{$birthday}}</span></li>
                     <li><span class="title">Residence</span><span class="value">Indonesia</span></li>
-                    <li><span class="title">City</span><span class="value">Central Jakarta</span></li>
+                    <li><span class="title">City</span><span class="value">Jakarta</span></li>
                     <li><span class="title">e-mail</span><span class="value"><a href="owen.djohan@gmail.com"><span
                             class="__cf_email__"
                             data-cfemail="c7a2aaa6aeab87a2bfa6aab7aba2e9a4a8aa">owen.djohan@gmail.com</span></a></span>
@@ -179,7 +184,7 @@
                     <li><a class="tip social-button" href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                     <!-- Full list of social icons: http://fontawesome.io/icons/#brand -->
                     <li><a class="tip social-button" href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="tip social-button" href="#" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                    <li><a class="tip social-button" href="#" title="Google Plus"><i class="fa fa-linkedin"></i></a>
                     </li>
                     <li><a class="tip social-button" href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
                     <li><a class="tip social-button" href="#" title="Instagram"><i class="fa fa-instagram"></i></a></li>
@@ -298,9 +303,9 @@
 
                 <div class="col-sm-6 col-md-3 subpage-block tilt-effect">
                   <div class="fun-fact-block">
-                    <i class="pe-7s-icon pe-7s-alarm"></i>
-                    <h4>Working Hours a Day</h4>
-                    <span class="fun-value">10</span>
+                    <i class="pe-7s-icon pe-7s-portfolio"></i>
+                    <h4>Experiences</h4>
+                    <span class="fun-value">3 years</span>
                   </div>
                 </div>
 
@@ -314,12 +319,12 @@
 
                 <div class="col-sm-6 col-md-3 subpage-block tilt-effect">
                   <div class="fun-fact-block">
-                    <i class="pe-7s-icon pe-7s-coffee"></i>
-                    <h4>Coffee Consumed</h4>
-                    <span class="fun-value">20,000</span>
+                    <i class="pe-7s-icon pe-7s-folder"></i>
+                    <h4>Projects Done</h4>
+                    <span class="fun-value">28</span>
                   </div>
                 </div>
-              </div>
+              </div> 
               <!-- End of Fun fucts block -->
             </div>
           </section>
@@ -350,12 +355,12 @@
                       <p>Graduate of Binus University from 2018-2022 majoring in computer science.</p>
                     </div>
                     <!-- Single event -->
-                    <div class="timeline-event te-primary">
+                    <!-- <div class="timeline-event te-primary">
                       <h5 class="event-date">2025</h5>
                       <h4 class="event-name">S2</h4>
                       <span class="event-description">-</span>
                       <p>I'm also planning to continue my education in computer for S2.</p>
-                    </div>
+                    </div> -->
                     <!-- Single event -->
                     {{-- <div class="timeline-event te-primary">
                       <h5 class="event-date">2008</h5>
@@ -390,14 +395,16 @@
                       <h5 class="event-date">Nov 2023 - Mar 2024</h5>
                       <h4 class="event-name">Back End developer</h4>
                       <span class="event-description">PT. Indo Artha Teknologi</span>
-                      <p>Worked full time as backend developer in PT IAT working on human capital website and also Artha Graha Peduli's website Pasar Murah.</p>
+                      <p>Worked full time as backend developer in PT IAT working on human capital website and also Artha
+                        Graha Peduli's website Pasar Murah.</p>
                     </div>
                     <!-- Single event -->
                     <div class="timeline-event te-primary">
                       <h5 class="event-date">April 2024 - Ongoing</h5>
                       <h4 class="event-name">Core Banking System Developer</h4>
                       <span class="event-description">PT. Bank Artha Graha Internasional Tbk.</span>
-                      <p>Currently working full time as Staff Solution and Dev in Artha Graha Bank developing core banking system that uses T24 and JBase Query Languange as backend.</p>
+                      <p>Currently working full time as Staff Solution and Dev in Artha Graha Bank developing core
+                        banking system that uses T24 and JBase Query Languange as backend.</p>
                     </div>
                   </div>
                 </div>
@@ -417,9 +424,9 @@
                       <div class="skill-percentage skill-2"></div>
                     </div>
 
-                    <h4>Mapping data</h4>
+                    <h4>Office Apps(Word, Excel, etc) and VS Code</h4>
                     <div class="skill-container">
-                      <div class="skill-percentage skill-3"></div>
+                      <div class="skill-percentage skill-1"></div>
                     </div>
                   </div>
 
@@ -441,12 +448,12 @@
                     <div class="skill-container">
                       <div class="skill-percentage skill-8"></div>
                     </div>
-                    
+
                     <h4>Core Banking (T24 Temenos)</h4>
                     <div class="skill-container">
                       <div class="skill-percentage skill-7"></div>
                     </div>
-                    
+
                     <h4>Java</h4>
                     <div class="skill-container">
                       <div class="skill-percentage skill-6"></div>
@@ -457,8 +464,9 @@
               <div class="row">
                 <div class="col-sm-12 col-md-12">
                   <div class="download-cv-block">
-                    <a class="button" target="_blank" href="#">Download CV</a>
+                    <a class="button" target="_blank" href="{{ asset('download/New_CV.pdf') }}">Download CV</a>
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -486,10 +494,10 @@
                     <a class="filter btn btn-sm btn-link active" data-group="all">All</a>
                   </li>
                   <li>
-                    <a class="filter btn btn-sm btn-link" data-group="media">Media</a>
+                    <a class="filter btn btn-sm btn-link" data-group="media">Website</a>
                   </li>
                   <li>
-                    <a class="filter btn btn-sm btn-link" data-group="illustration">Illustration</a>
+                    <a class="filter btn btn-sm btn-link" data-group="illustration">Applications</a>
                   </li>
                   <li>
                     <a class="filter btn btn-sm btn-link" data-group="video">Video</a>
