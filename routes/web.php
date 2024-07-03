@@ -24,7 +24,12 @@ use App\Http\Controllers\OrderController;
 
 Route::get('/', [IndexController::class, 'index']);
 
+
 // Route::get('/review', [RatingController::class, 'index'])->name('review');
+
+Route::get('/portfolio1', function () {
+    return view('portfolio1');
+})->name('portfolio1');
 
 Route::get('/inner-page', function () {
     return view('inner-page');

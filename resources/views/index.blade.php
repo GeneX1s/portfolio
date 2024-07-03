@@ -510,7 +510,7 @@
 
                   <!-- Portfolio Item 1 -->
                   <figure class="item" data-groups='["all", "media"]'>
-                    <a class="ajax-page-load" href="portfolio-1.html">
+                    <a href="portfolio1">
                       <img src="images/portfolio/1.jpg" alt="">
                       <div>
                         <h5 class="name">Aplikasi Survei Kepuasan Pelanggan</h5>
@@ -868,6 +868,5 @@
     crossorigin="anonymous"></script>
 </body>
 
-<!-- Mirrored from lmpixels.com/demo/unique/unique-vcard/index-dark.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Mar 2024 09:30:26 GMT -->
 
 </html>
