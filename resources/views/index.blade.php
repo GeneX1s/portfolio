@@ -521,9 +521,22 @@
                   </figure>
                   <!-- /Portfolio Item 1 -->
 
+                  <!-- Portfolio Item 1 -->
+                  <figure class="item" data-groups='["all", "media"]'>
+                    <a href="portfolio2">
+                      <img src="images/portfolio/2.jpg" alt="">
+                      <div>
+                        <h5 class="name">Roemah Yoga Rian</h5>
+                        <small>Media</small>
+                        <i class="pe-7s-icon pe-7s-display2"></i>
+                      </div>
+                    </a>
+                  </figure>
+                  <!-- /Portfolio Item 1 -->
+
                   <!-- Portfolio Item 2 -->
                   <figure class="item" data-groups='["all", "video"]'>
-                    <a href="https://player.vimeo.com/video/97102654?autoplay=1" title="Praesent Dolor Ex"
+                    <a href="portfolio2" title="Praesent Dolor Ex"
                       class="lightbox mfp-iframe">
                       <img src="images/portfolio/2.jpg" alt="">
                       <div>

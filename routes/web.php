@@ -25,11 +25,13 @@ use App\Http\Controllers\OrderController;
 Route::get('/', [IndexController::class, 'index']);
 
 
-// Route::get('/review', [RatingController::class, 'index'])->name('review');
-
 Route::get('/portfolio1', function () {
     return view('portfolio1');
 })->name('portfolio1');
+
+Route::get('/portfolio2', function () {
+    return view('portfolio2');
+})->name('portfolio2');
 
 Route::get('/inner-page', function () {
     return view('inner-page');
@@ -51,32 +53,6 @@ Route::post('/register', [RegisterController::class, 'store']); //untuk simpen d
 
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('guest');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-
-////////////////Menu////////////////
-Route::get('/dashboard/menus/index', [MenuController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/menus/create', [MenuController::class, 'create'])->middleware('auth');
-Route::post('/dashboard/menus/uploadImage', [MenuController::class, 'uploadImage'])->middleware('auth');
-Route::get('/dashboard/menus/{menu:id}/edit', [MenuController::class, 'edit'])->middleware('auth');
-Route::resource('/dashboard/menus', MenuController::class)->middleware('auth');
-Route::post('/dashboard/ingredientmenus/{menu:id}', [MenuController::class, 'menuGroup'])->middleware('auth');
-Route::get('/dashboard/ingredientmenus/{menu:id}/show', [MenuController::class, 'index_bahan'])->middleware('auth');
-Route::delete('/dashboard/ingredientmenus/{id}/delete', [MenuController::class, 'deleteGroup'])->middleware('auth');
-////////////////////////////////////
-
-////////////////Ingredients/////////
-Route::get('/dashboard/ingredients/index', [IngredientController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/ingredients/create', [IngredientController::class, 'create'])->middleware('auth');
-Route::get('/dashboard/ingredients/{ingredient:id}/edit', [IngredientController::class, 'edit'])->middleware('auth');
-Route::resource('/dashboard/ingredients', IngredientController::class)->middleware('auth');
-////////////////////////////////////
-
-////////////////Specials/////////
-Route::get('/dashboard/specials/index', [SpecialController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/specials/create', [SpecialController::class, 'create'])->middleware('auth');
-Route::get('/dashboard/specials/{special:id}/edit', [SpecialController::class, 'edit'])->middleware('auth');
-Route::resource('/dashboard/specials', SpecialController::class)->middleware('auth');
-////////////////////////////////////
-
 
 ////////////////Transactions/////////
 Route::get('/dashboard/transactions/index', [TransactionController::class, 'index'])->middleware('auth');

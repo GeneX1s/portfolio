@@ -18,10 +18,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'rating'], function () {
-    // Route::post('/readItemDatatable', 'Employee\AddressController@readItemDatatable');
-    // Route::get('/detailItem', 'Employee\AddressController@detailItem');
-    // Route::post('/updateItem', 'Employee\AddressController@updateItem');
-    Route::post('/createRating', 'RatingController@createRating');
-    // Route::post('/deleteItem', 'Employee\AddressController@deleteItem');
-});
