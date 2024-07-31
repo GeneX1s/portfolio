@@ -31,30 +31,8 @@
     </div>
 
     <div class="mb-3">
-      <label for="biaya_tambahan" class="form-label">Biaya Tambahan</label>
-      <input type="number" class="form-control @error('biaya_tambahan') is-invalid @enderror" id="biaya_tambahan"
-        name="biaya_tambahan" autofocus value="{{old('biaya_tambahan')}}">
-      @error('biaya_tambahan')
-      <div class="invalid-feedback">
-        {{ $message }}
-      </div>
-      @enderror
-    </div>
-
-    <div class="mb-3">
-      <label for="jenis" class="form-label">Jenis</label>
-      <select class="form-control" name="jenis">
-        <option value="Pesanan Menu" selected> Pesanan Menu</option>
-        <option value="Belanja Pasar"> Belanja Pasar</option>
-        <option value="Belanja Grosir"> Belanja Grosir</option>
-        <option value="Pembayaran"> Pembayaran</option>
-        <option value="Pembayaran"> Pembelian Alat</option>
-      </select>
-    </div>
-
-    <div class="mb-3">
-      <label for="tipe" class="form-label">Tipe</label>
-      <select class="form-control" name="tipe">
+      <label for="kategori" class="form-label">Kategori</label>
+      <select class="form-control" name="kategori">
         <option value="Pendapatan" selected> Pendapatan</option>
         <option value="Pengeluaran"> Pengeluaran</option>
       </select>

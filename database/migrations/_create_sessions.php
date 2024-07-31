@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaction', function (Blueprint $table) {
+        Schema::create('sessions', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->integer('nominal');
-            $table->string('kategori');
-            $table->string('deskripsi')->nullable();
-            $table->string('status')->nullable();
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
+            $table->string('email');
+            $table->string('user_ip');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaction');
+        Schema::dropIfExists('sessions');
     }
 };

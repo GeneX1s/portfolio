@@ -40,7 +40,7 @@ Route::get('/inner-page', function () {
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 //name('login') wajib biar gk error klo blom login
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');

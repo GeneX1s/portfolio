@@ -46,7 +46,7 @@ class TransactionController extends Controller
         return $query->where('nama', 'like', '%' . $name_search . '%');
       })
       ->when($jenis_search, function ($query) use ($jenis_search) {
-        return $query->where('jenis', 'like', '%' . $jenis_search . '%');
+        return $query->where('kategori', 'like', '%' . $jenis_search . '%');
       })
       ->when($start_date, function ($query) use ($start_date, $end_date) {
         return $query->whereDate('created_at', '>=', $start_date)
@@ -63,8 +63,8 @@ class TransactionController extends Controller
 
     $plus = 0;
     $minus = 0;
-    $pluses = $transactions->where('tipe', 'Pendapatan')->where('status', 'Active')->pluck('nominal')->all();
-    $minuses = $transactions->where('tipe', 'Pengeluaran')->where('status', 'Active')->pluck('nominal')->all();
+    $pluses = $transactions->where('kategori', 'Pendapatan')->where('status', 'Active')->pluck('nominal')->all();
+    $minuses = $transactions->where('kategori', 'Pengeluaran')->where('status', 'Active')->pluck('nominal')->all();
     foreach ($pluses as $plus) {
       $total = $total + $plus;
       $pendapatan = $pendapatan + $plus;
@@ -121,25 +121,26 @@ class TransactionController extends Controller
   {
     // dd($request->all());
     // dd(Auth::id());
+    $code = md5(Str::random(10));
+    $date = Date::now();
     $author = User::where('id', Auth::id())->first()->name;
+
     $request->validate([
       'nama' => 'required',
-      'jenis' => 'required',
-      'tipe' => 'required',
       'nominal' => 'required',
-      'biaya_tambahan' => 'nullable',
+      'kategori' => 'required',
       'deskripsi' => 'nullable',
-      '_author' => 'nullable',
       'created_at' => Carbon::now(),
-      'updated_at' => Carbon::now(),
       'status' => "Pending",
     ]);
     $input = $request->all();
+
     // $input['created_at'] = Carbon::parse($today)->toString();
+    
+    $input['nama'] = 'TR|' . $date . $code;
     $input['created_at'] = Carbon::now();
     $input['updated_at'] = Carbon::now();
     $input['status'] = "Active";
-    $input['_author'] = $author;
 
     // dd($input);
     Transaction::create($input);
@@ -152,8 +153,7 @@ class TransactionController extends Controller
   {
 
     $transaction = Transaction::where('id', $transaction->id)->first();
-    // $transaction->delete();
-    // dd($transaction);
+
     $transaction->update([
       "status" => "Deleted",
       "deleted_at" => Carbon::now(),
