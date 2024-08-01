@@ -36,19 +36,31 @@ class TransactionController extends Controller
 
   public function index(Request $request)
   {
-    $name_search = $request->name;
+    $status_search = $request->status;
     $jenis_search = $request->jenis;
     $start_date = $request->start_date;
     $end_date = $request->end_date;
 
+    if (!$start_date) {
+      $start_date = Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s');
+    }
+    if (!$end_date) {
+      $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
+    }
+
+    if (!$status_search) {
+      $status_search = "Active";
+    }
+// dd($start_date);
+
     $transactions = Transaction::query()
-      ->when($name_search, function ($query) use ($name_search) {
-        return $query->where('nama', 'like', '%' . $name_search . '%');
+      ->when($status_search, function ($query) use ($status_search) {
+        return $query->where('status', 'like', '%' . $status_search . '%');
       })
       ->when($jenis_search, function ($query) use ($jenis_search) {
         return $query->where('kategori', 'like', '%' . $jenis_search . '%');
       })
-      ->when($start_date, function ($query) use ($start_date, $end_date) {
+      ->when($start_date && $end_date, function ($query) use ($start_date, $end_date) {
         return $query->whereDate('created_at', '>=', $start_date)
           ->whereDate('created_at', '<=', $end_date);
       })
@@ -89,7 +101,7 @@ class TransactionController extends Controller
     //   ];
     // }
 
-    // dd($data);
+    // dd($transactions);
     return view('dashboard.transactions.index', [
       // 'transactions' => $data,
       'transactions' => $transactions,
@@ -136,10 +148,10 @@ class TransactionController extends Controller
     $input = $request->all();
 
     // $input['created_at'] = Carbon::parse($today)->toString();
-    
+
     $input['nama'] = 'TR|' . $date . $code;
-    $input['created_at'] = Carbon::now();
-    $input['updated_at'] = Carbon::now();
+    $input['created_at'] = Carbon::now()->format('Y-m-d');
+    $input['updated_at'] = Carbon::now()->format('Y-m-d');
     $input['status'] = "Active";
 
     // dd($input);
@@ -159,7 +171,7 @@ class TransactionController extends Controller
       "deleted_at" => Carbon::now(),
     ]);
 
-    // Transaction::destroy($transaction->id);
+    Transaction::destroy($transaction->id);
 
     return redirect('/dashboard/transactions/index')->with('success', 'Transaction has been deleted');
   }

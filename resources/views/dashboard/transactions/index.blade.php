@@ -36,11 +36,17 @@
           <input type="date" class="form-control" id="end_date" name="end_date">
         </div>
       </div>
+
       <div class="col-md-3">
         <div class="mb-3">
-          <label for="name" class="form-label">Nama</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <label for="status" class="form-label">Status</label>
+          <select class="form-control" name="status" id="status">
+            <option value="Active" {{ old('status')=='Active' ? 'selected' : '' }}>Active</option>
+            <option value="Deleted" {{ old('status')=='Deleted' ? 'selected' : '' }}>Deleted</option>
+            <option value="Pending" {{ old('status')=='Pending' ? 'selected' : '' }}>Pending</option>
+          </select>
         </div>
+
       </div>
       <div class="col-md-3">
         <div class="mb-3">
@@ -97,12 +103,15 @@
           <form action="/dashboard/transactions/{{$transaction->id}}" method="post" class="d-inline">
             @method('delete')
             @csrf
+            @if ($transaction->status != "Deleted")
+              
             <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
               <i class="fas fa-regular fa-trash"></i>
             </button>
+            @endif
           </form>
 
-          </td>
+        </td>
 
       </tr>
       @endforeach
