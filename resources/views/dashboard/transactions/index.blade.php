@@ -72,14 +72,11 @@
         <th scope="col">No.</th>
         <th scope="col">Nama</th>
         <th scope="col">Tanggal</th>
-        <th scope="col">Jenis</th>
-        <th scope="col">Tipe</th>
+        <th scope="col">Kategori</th>
         <th scope="col">Nominal</th>
         <th scope="col">Biaya Tambahan</th>
         <th scope="col">Deskripsi</th>
         <th scope="col">Status</th>
-        <th scope="col">Author</th>
-        <th scope="col">Edited By</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -90,14 +87,11 @@
 
         <td>{{$transaction->nama}}</td>
         <td>{{$transaction->created_at}}</td>
-        <td>{{$transaction->jenis}}</td>
-        <td>{{$transaction->tipe}}</td>
+        <td>{{$transaction->kategori}}</td>
         <td>Rp.{{ number_format($transaction->nominal, '2', ',', '.') }}</td>
         <td>Rp.{{ number_format($transaction->biaya_tambahan, '2', ',', '.') }}</td>
         <td>{{$transaction->deskripsi}}</td>
         <td>{{$transaction->status}}</td>
-        <td>{{$transaction->_author}}</td>
-        <td>{{$transaction->_author}}</td>
 
         <td>
           <form action="/dashboard/transactions/{{$transaction->id}}" method="post" class="d-inline">

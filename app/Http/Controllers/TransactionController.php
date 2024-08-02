@@ -48,10 +48,10 @@ class TransactionController extends Controller
       $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
     }
 
-    if (!$status_search) {
-      $status_search = "Active";
-    }
-// dd($start_date);
+    // if (!$request->status) {
+    //   $status_search = "Active";
+    // }
+// dd($status_search);
 
     $transactions = Transaction::query()
       ->when($status_search, function ($query) use ($status_search) {
@@ -171,7 +171,7 @@ class TransactionController extends Controller
       "deleted_at" => Carbon::now(),
     ]);
 
-    Transaction::destroy($transaction->id);
+    // Transaction::destroy($transaction->id);
 
     return redirect('/dashboard/transactions/index')->with('success', 'Transaction has been deleted');
   }

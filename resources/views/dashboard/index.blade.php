@@ -8509,10 +8509,10 @@
                                                 <div class="card h-md-100 ecommerce-card-min-width">
                                                         <div class="card-header pb-0">
                                                                 <h6 class="mb-0 mt-2 d-flex align-items-center">Weekly
-                                                                        Sales<span class="ms-1 text-400"
+                                                                        Spending<span class="ms-1 text-400"
                                                                                 data-bs-toggle="tooltip"
                                                                                 data-bs-placement="top"
-                                                                                title="Calculated according to last week's sales"><span
+                                                                                title="Calculated according to last week's spending"><span
                                                                                         class="far fa-question-circle"
                                                                                         data-fa-transform="shrink-1"></span></span>
                                                                 </h6>
@@ -8522,7 +8522,7 @@
                                                                         <div class="col">
                                                                                 <p
                                                                                         class="font-sans-serif lh-1 mb-1 fs-5">
-                                                                                        $47K</p><span
+                                                                                        Rp.370.000,00</p><span
                                                                                         class="badge badge-subtle-success rounded-pill fs-11">+3.5%</span>
                                                                         </div>
                                                                         <div class="col-auto ps-0">
@@ -8537,20 +8537,20 @@
                                         <div class="col-md-6 col-xxl-3">
                                                 <div class="card h-md-100">
                                                         <div class="card-header pb-0">
-                                                                <h6 class="mb-0 mt-2">Total Order</h6>
+                                                                <h6 class="mb-0 mt-2">Remaining Spendable</h6>
                                                         </div>
                                                         <div class="card-body d-flex flex-column justify-content-end">
                                                                 <div class="row justify-content-between">
                                                                         <div class="col-auto align-self-end">
                                                                                 <div
                                                                                         class="fs-5 fw-normal font-sans-serif text-700 lh-1 mb-1">
-                                                                                        58.4K</div><span
+                                                                                        45 jt</div><span
                                                                                         class="badge rounded-pill fs-11 bg-200 text-primary"><span
-                                                                                                class="fas fa-caret-up me-1"></span>13.6%</span>
+                                                                                                class="fas fa-caret-down me-1"></span>13.6% Bulan ini</span>
                                                                         </div>
                                                                         <div class="col-auto ps-0 mt-n4">
                                                                                 <div class="echart-default-total-order"
-                                                                                        data-echarts='{"tooltip":{"trigger":"axis","formatter":"{b0} : {c0}"},"xAxis":{"data":["Week 4","Week 5","Week 6","Week 7"]},"series":[{"type":"line","data":[20,40,100,120],"smooth":true,"lineStyle":{"width":3}}],"grid":{"bottom":"2%","top":"2%","right":"10px","left":"10px"}}'
+                                                                                        data-echarts='{"tooltip":{"trigger":"axis","formatter":"{b0} : {c0}"},"xAxis":{"data":["Month 1","Month 2","Month 3","Month 4","Month 5","Month 6","Month 7","Month 8","Month 9","Month 10","Month 11","Month 12"]},"series":[{"type":"line","data":[45000000,180,100,120,120,120,120,120,120,120,120,120],"smooth":true,"lineStyle":{"width":3}}],"grid":{"bottom":"2%","top":"2%","right":"10px","left":"10px"}}'
                                                                                         data-echart-responsive="true">
                                                                                 </div>
                                                                         </div>
@@ -8563,7 +8563,7 @@
                                                         <div class="card-body">
                                                                 <div class="row h-100 justify-content-between g-0">
                                                                         <div class="col-5 col-sm-6 col-xxl pe-2">
-                                                                                <h6 class="mt-1">Market Share</h6>
+                                                                                <h6 class="mt-1">Annual Earning vs Spending</h6>
                                                                                 <div class="fs-11 mt-3">
                                                                                         <div
                                                                                                 class="d-flex flex-between-center mb-1">
@@ -8571,7 +8571,7 @@
                                                                                                         class="d-flex align-items-center">
                                                                                                         <span
                                                                                                                 class="dot bg-primary"></span><span
-                                                                                                                class="fw-semi-bold">Samsung</span>
+                                                                                                                class="fw-semi-bold">Earning</span>
                                                                                                 </div>
                                                                                                 <div class="d-xxl-none">
                                                                                                         33%</div>
@@ -8582,7 +8582,7 @@
                                                                                                         class="d-flex align-items-center">
                                                                                                         <span
                                                                                                                 class="dot bg-info"></span><span
-                                                                                                                class="fw-semi-bold">Huawei</span>
+                                                                                                                class="fw-semi-bold">Spending</span>
                                                                                                 </div>
                                                                                                 <div class="d-xxl-none">
                                                                                                         29%</div>
@@ -8593,7 +8593,7 @@
                                                                                                         class="d-flex align-items-center">
                                                                                                         <span
                                                                                                                 class="dot bg-300"></span><span
-                                                                                                                class="fw-semi-bold">Apple</span>
+                                                                                                                class="fw-semi-bold">Investment</span>
                                                                                                 </div>
                                                                                                 <div class="d-xxl-none">
                                                                                                         20%</div>
@@ -8676,7 +8676,7 @@
                                                         <div class="card-header bg-body-tertiary">
                                                                 <div class="row align-items-center">
                                                                         <div class="col">
-                                                                                <h6 class="mb-0">Running Projects</h6>
+                                                                                <h6 class="mb-0">Transaction Types</h6>
                                                                         </div>
                                                                         <div class="col-auto text-center pe-x1"><select
                                                                                         class="form-select form-select-sm">
@@ -8703,7 +8703,7 @@
                                                                                                 <h6
                                                                                                         class="mb-0 d-flex align-items-center">
                                                                                                         <a class="text-800 stretched-link"
-                                                                                                                href="#!">Falcon</a><span
+                                                                                                                href="#!">Top Up</a><span
                                                                                                                 class="badge rounded-pill ms-2 bg-200 text-primary">38%</span>
                                                                                                 </h6>
                                                                                         </div>
@@ -8714,7 +8714,7 @@
                                                                                         <div class="col-auto pe-2">
                                                                                                 <div
                                                                                                         class="fs-10 fw-semi-bold">
-                                                                                                        12:50:00</div>
+                                                                                                        jUMLAH tRANSAKSI JENIS INI</div>
                                                                                         </div>
                                                                                         <div class="col-5 pe-x1 ps-2">
                                                                                                 <div class="progress bg-200 me-2"
@@ -8747,7 +8747,7 @@
                                                                                                 <h6
                                                                                                         class="mb-0 d-flex align-items-center">
                                                                                                         <a class="text-800 stretched-link"
-                                                                                                                href="#!">Reign</a><span
+                                                                                                                href="#!">Kopi</a><span
                                                                                                                 class="badge rounded-pill ms-2 bg-200 text-primary">79%</span>
                                                                                                 </h6>
                                                                                         </div>
@@ -8758,7 +8758,7 @@
                                                                                         <div class="col-auto pe-2">
                                                                                                 <div
                                                                                                         class="fs-10 fw-semi-bold">
-                                                                                                        25:20:00</div>
+                                                                                                        33</div>
                                                                                         </div>
                                                                                         <div class="col-5 pe-x1 ps-2">
                                                                                                 <div class="progress bg-200 me-2"
@@ -8920,7 +8920,7 @@
                                                         <div class="card-header">
                                                                 <div class="row flex-between-center">
                                                                         <div class="col-auto">
-                                                                                <h6 class="mb-0">Total Sales</h6>
+                                                                                <h6 class="mb-0">Total Spending</h6>
                                                                         </div>
                                                                         <div class="col-auto d-flex"><select
                                                                                         class="form-select form-select-sm select-month me-2">
