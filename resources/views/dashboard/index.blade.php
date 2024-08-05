@@ -1873,7 +1873,8 @@
                                                 <div class="d-flex align-items-center py-3"><img class="me-2"
                                                                 src="dasbor/img/icons/spot-illustrations/falcon.png"
                                                                 alt="" width="40" /><span
-                                                                class="font-sans-serif text-primary">Genexyz</span></div>
+                                                                class="font-sans-serif text-primary">Genexyz</span>
+                                                </div>
                                         </a>
                                 </div>
                                 <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
@@ -8522,7 +8523,9 @@
                                                                         <div class="col">
                                                                                 <p
                                                                                         class="font-sans-serif lh-1 mb-1 fs-5">
-                                                                                        Rp.370.000,00</p><span
+                                                                                        Rp.{{
+                                                                                        number_format($pengeluaran_mingguan, '2',
+                                                                                        ',', '.') }}</p><span
                                                                                         class="badge badge-subtle-success rounded-pill fs-11">+3.5%</span>
                                                                         </div>
                                                                         <div class="col-auto ps-0">
@@ -8544,16 +8547,19 @@
                                                                         <div class="col-auto align-self-end">
                                                                                 <div
                                                                                         class="fs-5 fw-normal font-sans-serif text-700 lh-1 mb-1">
-                                                                                        45 jt</div><span
+                                                                                        Rp.{{
+                                                                                        number_format(45000000 - $pengeluaran_tahunan,
+                                                                                        '2', ',', '.') }}</div><span
                                                                                         class="badge rounded-pill fs-11 bg-200 text-primary"><span
-                                                                                                class="fas fa-caret-down me-1"></span>13.6% Bulan ini</span>
+                                                                                                class="fas fa-caret-down me-1"></span>{{ number_format($persen_bulan_ini, 1) }}%
+                                                                                        Bulan ini</span>
                                                                         </div>
-                                                                        <div class="col-auto ps-0 mt-n4">
+                                                                        {{-- <div class="col-auto ps-0 mt-n4">
                                                                                 <div class="echart-default-total-order"
                                                                                         data-echarts='{"tooltip":{"trigger":"axis","formatter":"{b0} : {c0}"},"xAxis":{"data":["Month 1","Month 2","Month 3","Month 4","Month 5","Month 6","Month 7","Month 8","Month 9","Month 10","Month 11","Month 12"]},"series":[{"type":"line","data":[45000000,180,100,120,120,120,120,120,120,120,120,120],"smooth":true,"lineStyle":{"width":3}}],"grid":{"bottom":"2%","top":"2%","right":"10px","left":"10px"}}'
                                                                                         data-echart-responsive="true">
                                                                                 </div>
-                                                                        </div>
+                                                                        </div> --}}
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -8563,7 +8569,8 @@
                                                         <div class="card-body">
                                                                 <div class="row h-100 justify-content-between g-0">
                                                                         <div class="col-5 col-sm-6 col-xxl pe-2">
-                                                                                <h6 class="mt-1">Annual Earning vs Spending</h6>
+                                                                                <h6 class="mt-1">Annual Earning vs
+                                                                                        Spending</h6>
                                                                                 <div class="fs-11 mt-3">
                                                                                         <div
                                                                                                 class="d-flex flex-between-center mb-1">
@@ -8601,7 +8608,8 @@
                                                                                 </div>
                                                                         </div>
                                                                         <div class="col-auto position-relative">
-                                                                                <div class="echart-market-share"></div>
+                                                                                <div class="echart-market-share" data-options="{{ json_encode($pengeluaran_tahunan) }}"></div>
+
                                                                                 <div
                                                                                         class="position-absolute top-50 start-50 translate-middle text-1100 fs-7">
                                                                                         26M</div>
@@ -8703,7 +8711,8 @@
                                                                                                 <h6
                                                                                                         class="mb-0 d-flex align-items-center">
                                                                                                         <a class="text-800 stretched-link"
-                                                                                                                href="#!">Top Up</a><span
+                                                                                                                href="#!">Top
+                                                                                                                Up</a><span
                                                                                                                 class="badge rounded-pill ms-2 bg-200 text-primary">38%</span>
                                                                                                 </h6>
                                                                                         </div>
@@ -8714,7 +8723,8 @@
                                                                                         <div class="col-auto pe-2">
                                                                                                 <div
                                                                                                         class="fs-10 fw-semi-bold">
-                                                                                                        jUMLAH tRANSAKSI JENIS INI</div>
+                                                                                                        jUMLAH tRANSAKSI
+                                                                                                        JENIS INI</div>
                                                                                         </div>
                                                                                         <div class="col-5 pe-x1 ps-2">
                                                                                                 <div class="progress bg-200 me-2"
@@ -9067,7 +9077,9 @@
                                                         </div>
                                                         <!--/.bg-holder-->
                                                         <div class="card-body position-relative">
-                                                                <h5 class="text-warning">Running out of your space?</h5>
+                                                                <a class="nav-link" href="/dashboard/transactions/index">
+                                                                        <i class="fas fa-fw fa-star"></i>
+                                                                        <span>index</span></a>
                                                                 <p class="fs-10 mb-0">Your storage will be running out
                                                                         soon. Get more space and powerful productivity
                                                                         features.</p><a

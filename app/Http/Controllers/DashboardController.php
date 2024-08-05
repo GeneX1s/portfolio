@@ -22,9 +22,68 @@ class DashboardController extends Controller
   public function index(Request $request)
   {
 
-    
-    return view('dashboard.index', [
+    // Get the start and end dates for the current week
+    $start_date = Carbon::now()->startOfWeek()->subWeek()->format('Y-m-d H:i:s');
+    $end_date = Carbon::now()->endOfWeek()->subWeek()->format('Y-m-d H:i:s');
+    $start_year = Carbon::now()->startOfYear()->format('Y-m-d H:i:s');
+    $end_year = Carbon::now()->endOfYear()->format('Y-m-d H:i:s');
+    $start_month = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
+    $end_month = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
+
+    // Fetch transactions
+    $transactions = Transaction::where('status','Active')->get();
+    $week_outcomes = $transactions->where('kategori', 'Pengeluaran')
+      ->whereBetween('created_at', [$start_date, $end_date])
+      ->pluck('nominal')->all();
       
+      $month_outcomes = $transactions->where('kategori', 'Pengeluaran')
+      ->whereBetween('created_at', [$start_month, $end_month])
+      ->pluck('nominal')->all();
+
+    $year_outcomes = $transactions->where('kategori', 'Pengeluaran')
+    ->whereBetween('created_at', [$start_year, $end_year])
+    ->pluck('nominal')->all();
+
+
+    $year_incomes = $transactions->where('kategori', 'Pendapatan')
+    ->whereBetween('created_at', [$start_year, $end_year])
+    ->pluck('nominal')->all();
+
+      $pengeluaran = 0;
+      $pengeluaran_tahunan = 0;
+      $pendapatan_tahunan = 0;
+      $pengeluaran_bulanan = 0;
+      $pengeluaran_mingguan = 0;
+
+      foreach($week_outcomes as $week_outcome){
+        $pengeluaran_mingguan = $pengeluaran_mingguan + $week_outcome;
+      }
+      foreach($month_outcomes as $month_outcome){
+        $pengeluaran_bulanan = $pengeluaran_bulanan + $month_outcome;
+      }
+      $persen_bulan_ini = ($pengeluaran_bulanan / 45000000) * 100;
+// dd($pengeluaran_bulanan);
+// dd($persen_bulan_ini);
+      
+      foreach($year_outcomes as $year_outcome){
+        $pengeluaran_tahunan = $pengeluaran_tahunan + $year_outcome;
+      }
+      foreach($year_incomes as $year_income){
+        $pengeluaran_tahunan = $pengeluaran_tahunan + $year_income;
+      }
+
+      $chart_1 = [
+        ['value' => 5300000, 'name' => 'Samsung'],
+        ['value' => 1900000, 'name' => 'Spending'],
+        ['value' => 2000000, 'name' => 'Investment'],
+    ];
+
+    return view('dashboard.index', [
+      'chart_1' => $chart_1,
+      'pengeluaran_mingguan' => $pengeluaran_mingguan,
+      'pengeluaran_bulanan' => $pengeluaran_bulanan,
+      'pengeluaran_tahunan' => $pengeluaran_tahunan,
+      'persen_bulan_ini' => $persen_bulan_ini,
     ]);
   }
 

@@ -9935,14 +9935,15 @@ var marketShareInit = function marketShareInit() {
             }
           },
           data: [{
+            // value: pengeluaran,
             value: 5300000,
             name: 'Samsung'
           }, {
             value: 1900000,
-            name: 'Huawei'
+            name: 'Spending'
           }, {
             value: 2000000,
-            name: 'Apple'
+            name: 'Investment'
           }]
         }]
       };
