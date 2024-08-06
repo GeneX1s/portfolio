@@ -49,9 +49,14 @@ class DashboardController extends Controller
     ->whereBetween('created_at', [$start_year, $end_year])
     ->pluck('nominal')->all();
 
+    $investments = $transactions->where('kategori', 'Investment')
+    ->whereBetween('created_at', [$start_year, $end_year])
+    ->pluck('nominal')->all();
+
       $pengeluaran = 0;
       $pengeluaran_tahunan = 0;
       $pendapatan_tahunan = 0;
+      $investment_tahunan = 0;
       $pengeluaran_bulanan = 0;
       $pengeluaran_mingguan = 0;
 
@@ -69,13 +74,16 @@ class DashboardController extends Controller
         $pengeluaran_tahunan = $pengeluaran_tahunan + $year_outcome;
       }
       foreach($year_incomes as $year_income){
-        $pengeluaran_tahunan = $pengeluaran_tahunan + $year_income;
+        $pendapatan_tahunan = $pendapatan_tahunan + $year_income;
+      }
+      foreach($investments as $investment){
+        $investment_tahunan = $investment_tahunan + $investment;
       }
 
       $chart_1 = [
-        ['value' => 5300000, 'name' => 'Samsung'],
-        ['value' => 1900000, 'name' => 'Spending'],
-        ['value' => 2000000, 'name' => 'Investment'],
+        ['value' => $pendapatan_tahunan, 'name' => 'Earning'],
+        ['value' => $pengeluaran_tahunan, 'name' => 'Spending'],
+        ['value' => $investment_tahunan, 'name' => 'Investment'],
     ];
 
     return view('dashboard.index', [
@@ -83,6 +91,7 @@ class DashboardController extends Controller
       'pengeluaran_mingguan' => $pengeluaran_mingguan,
       'pengeluaran_bulanan' => $pengeluaran_bulanan,
       'pengeluaran_tahunan' => $pengeluaran_tahunan,
+      'pendapatan_tahunan' => $pendapatan_tahunan,
       'persen_bulan_ini' => $persen_bulan_ini,
     ]);
   }

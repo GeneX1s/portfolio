@@ -1,3 +1,7 @@
+<head>
+<link rel="stylesheet" href="/css/pe-icon-7-stroke.css" type="text/css">
+</head>
+
 <main class="main" id="top">
   <div class="container" data-layout="container">
     <script>

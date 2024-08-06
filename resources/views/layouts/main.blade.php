@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="/css/owl.carousel.css" type="text/css">
   <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
   <link rel="stylesheet" href="/css/main-red.css" type="text/css">
+  <link rel="stylesheet" href="/css/pe-icon-7-stroke.css" type="text/css">
+
 
   <!-- This styles needs for demo -->
   <link rel="stylesheet" href="/css/lmpixels-demo-panel.css" type="text/css">

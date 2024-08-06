@@ -124,7 +124,7 @@ if (isRTL) {
   width: auto
 } */
   </style>
-
+</head>
 
 
 <body>

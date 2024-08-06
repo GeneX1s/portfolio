@@ -9934,23 +9934,14 @@ var marketShareInit = function marketShareInit() {
               show: false
             }
           },
-          data: [{
-            // value: pengeluaran,
-            value: 5300000,
-            name: 'Samsung'
-          }, {
-            value: 1900000,
-            name: 'Spending'
-          }, {
-            value: 2000000,
-            name: 'Investment'
-          }]
+          data: userOptions // Use the dynamic data here
         }]
       };
     };
     echartSetOption(chart, userOptions, getDefaultOptions);
   }
 };
+
 
 /* -------------------------------------------------------------------------- */
 /*                            Bandwidth Saved                                 */

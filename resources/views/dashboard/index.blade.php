@@ -61,7 +61,8 @@
         </script>
 </head> --}}
 
-<body>
+{{-- <body> --}}
+
         <!-- ===============================================-->
         <!--    Main Content-->
         <!-- ===============================================-->
@@ -8509,7 +8510,7 @@
                                         <div class="col-md-6 col-xxl-3">
                                                 <div class="card h-md-100 ecommerce-card-min-width">
                                                         <div class="card-header pb-0">
-                                                                <h6 class="mb-0 mt-2 d-flex align-items-center">Weekly
+                                                                <h6 class="mb-0 mt-2 d-flex align-items-center">Last Week
                                                                         Spending<span class="ms-1 text-400"
                                                                                 data-bs-toggle="tooltip"
                                                                                 data-bs-placement="top"
@@ -8524,7 +8525,8 @@
                                                                                 <p
                                                                                         class="font-sans-serif lh-1 mb-1 fs-5">
                                                                                         Rp.{{
-                                                                                        number_format($pengeluaran_mingguan, '2',
+                                                                                        number_format($pengeluaran_mingguan,
+                                                                                        '2',
                                                                                         ',', '.') }}</p><span
                                                                                         class="badge badge-subtle-success rounded-pill fs-11">+3.5%</span>
                                                                         </div>
@@ -8548,10 +8550,13 @@
                                                                                 <div
                                                                                         class="fs-5 fw-normal font-sans-serif text-700 lh-1 mb-1">
                                                                                         Rp.{{
-                                                                                        number_format(45000000 - $pengeluaran_tahunan,
+                                                                                        number_format(45000000 -
+                                                                                        $pengeluaran_tahunan,
                                                                                         '2', ',', '.') }}</div><span
                                                                                         class="badge rounded-pill fs-11 bg-200 text-primary"><span
-                                                                                                class="fas fa-caret-down me-1"></span>{{ number_format($persen_bulan_ini, 1) }}%
+                                                                                                class="fas fa-caret-down me-1"></span>{{
+                                                                                        number_format($persen_bulan_ini,
+                                                                                        1) }}%
                                                                                         Bulan ini</span>
                                                                         </div>
                                                                         {{-- <div class="col-auto ps-0 mt-n4">
@@ -8608,11 +8613,13 @@
                                                                                 </div>
                                                                         </div>
                                                                         <div class="col-auto position-relative">
-                                                                                <div class="echart-market-share" data-options="{{ json_encode($pengeluaran_tahunan) }}"></div>
+                                                                                <div class="echart-market-share"
+                                                                                        data-options="{{ json_encode($chart_1) }}">
+                                                                                </div>
 
                                                                                 <div
-                                                                                        class="position-absolute top-50 start-50 translate-middle text-1100 fs-7">
-                                                                                        26M</div>
+                                                                                        class="position-absolute top-50 start-50 translate-middle text-1100 fs-11">
+                                                                                        Rp.{{ number_format($pendapatan_tahunan - $pengeluaran_tahunan, '2', ',', '.') }}</div>
                                                                         </div>
                                                                 </div>
                                                         </div>
@@ -9077,7 +9084,8 @@
                                                         </div>
                                                         <!--/.bg-holder-->
                                                         <div class="card-body position-relative">
-                                                                <a class="nav-link" href="/dashboard/transactions/index">
+                                                                <a class="nav-link"
+                                                                        href="/dashboard/transactions/index">
                                                                         <i class="fas fa-fw fa-star"></i>
                                                                         <span>index</span></a>
                                                                 <p class="fs-10 mb-0">Your storage will be running out
@@ -9101,8 +9109,7 @@
                                                                                 <thead class="bg-body-tertiary">
                                                                                         <tr>
                                                                                                 <th class="text-900">
-                                                                                                        Best Selling
-                                                                                                        Products</th>
+                                                                                                        Transaksi Terbaru</th>
                                                                                                 <th
                                                                                                         class="text-900 text-end">
                                                                                                         Revenue ($3333)
@@ -10069,11 +10076,11 @@
         <script src="dasbor/vendors/lodash/lodash.min.js"></script>
         <script src="dasbor/js/polyfill.min58be.js?features=window.scroll"></script>
         <script src="dasbor/vendors/list.js/list.min.js"></script>
-        <script src="dasbor/js/theme.js"></script>
-</body> --}}
-
+        <script src="dasbor/js/theme.js"></script> --}}
+        
+{{-- </body>  --}}
 
 <!-- Mirrored from prium.github.io/falcon/v3.19.0/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 03:59:25 GMT -->
 
 </html>
-{{-- @endsection --}}
+@endsection

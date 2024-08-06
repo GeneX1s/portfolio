@@ -21,11 +21,27 @@
   <link rel="stylesheet" href="/css/owl.carousel.css" type="text/css">
   <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
   <link rel="stylesheet" href="/css/main-red.css" type="text/css">
-
+  <link rel="stylesheet" href="/css/pe-icon-7-stroke.css" type="text/css">
+  
   <!-- This styles needs for demo -->
   <link rel="stylesheet" href="/css/lmpixels-demo-panel.css" type="text/css">
   <!-- /This styles needs for demo -->
 
+  <style>
+    /* Increase the padding of the list items */
+li {
+  padding: 10px 15px; /* Adjust as needed */
+  line-height: 3; /* Adjust line-height if needed */
+}
+
+/* Increase the size of the icons */
+.menu-icon {
+  font-size: 1.5em; /* Increase icon size */
+  vertical-align: middle; /* Align icon vertically in the middle */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+  </style>
   <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -37,6 +53,7 @@
     ga('create', 'UA-96534204-1', 'auto');
     ga('send', 'pageview');
 
+    
   </script>
 
   <script src="js/jquery-2.1.3.min.js"></script>
