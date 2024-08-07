@@ -61,7 +61,9 @@
         </script>
 </head> --}}
 
-{{-- <body> --}}
+{{--
+
+<body> --}}
 
         <!-- ===============================================-->
         <!--    Main Content-->
@@ -1871,10 +1873,10 @@
                                                         title="Toggle Navigation"><span class="navbar-toggle-icon"><span
                                                                         class="toggle-line"></span></span></button>
                                         </div><a class="navbar-brand" href="/">
-                                                <div class="d-flex align-items-center py-3"><img class="me-2"
+                                                <div class="d-flex align-items-center py-3 hidden"><img class="me-2"
                                                                 src="dasbor/img/icons/spot-illustrations/falcon.png"
                                                                 alt="" width="40" /><span
-                                                                class="font-sans-serif text-primary">Vertical</span>
+                                                                class="font-sans-serif text-primary hidden">Vertical</span>
                                                 </div>
                                         </a>
                                 </div>
@@ -1890,7 +1892,7 @@
                                                                         <div class="d-flex align-items-center"><span
                                                                                         class="nav-link-icon"><span
                                                                                                 class="fas fa-chart-pie"></span></span><span
-                                                                                        class="nav-link-text ps-1">Dashboardc</span>
+                                                                                        class="nav-link-text ps-1">DashboardAJA</span>
                                                                         </div>
                                                                 </a>
                                                                 <ul class="nav collapse show" id="dashboard">
@@ -1908,7 +1910,7 @@
                                                                                         <div
                                                                                                 class="d-flex align-items-center">
                                                                                                 <span
-                                                                                                        class="nav-link-text ps-1">Analytics</span>
+                                                                                                        class="nav-link-text ps-1">AnalyticsAJA</span>
                                                                                         </div>
                                                                                 </a><!-- more inner pages-->
                                                                         </li>
@@ -1932,11 +1934,11 @@
                                                                                 </a><!-- more inner pages-->
                                                                         </li>
                                                                         <li class="nav-item"><a class="nav-link"
-                                                                                        href="dashboard/lms.html">
+                                                                                        href="dashboard/transactions/index">
                                                                                         <div
                                                                                                 class="d-flex align-items-center">
                                                                                                 <span
-                                                                                                        class="nav-link-text ps-1">LMS</span><span
+                                                                                                        class="nav-link-text ps-1">Transactions</span><span
                                                                                                         class="badge rounded-pill ms-2 badge-subtle-success">New</span>
                                                                                         </div>
                                                                                 </a><!-- more inner pages-->
@@ -4628,7 +4630,7 @@
                                                                                         class="nav-link-icon"><span
                                                                                                 class="fas fa-rocket"></span></span><span
                                                                                         class="nav-link-text ps-1">Getting
-                                                                                        started</span></div>
+                                                                                        startedAJA</span></div>
                                                                 </a><!-- parent pages--><a
                                                                         class="nav-link dropdown-indicator"
                                                                         href="#customization" role="button"
@@ -8493,24 +8495,30 @@
               navbarTopVertical.remove(navbarTopVertical);
               navbarDoubleTop.remove(navbarDoubleTop);
             } else if (navbarPosition === 'double-top') {
-              navbarDoubleTop.removeAttribute('style');
-              navbarTopVertical.remove(navbarTopVertical);
-              navbarVertical.remove(navbarVertical);
-              navbarTop.remove(navbarTop);
-              navbarTopCombo.remove(navbarTopCombo);
+        //       navbarDoubleTop.removeAttribute('style');
+        //       navbarTopVertical.remove(navbarTopVertical);
+        //       navbarVertical.remove(navbarVertical);
+        //       navbarTop.remove(navbarTop);
+        //       navbarTopCombo.remove(navbarTopCombo);
             } else {
-              navbarVertical.removeAttribute('style');
-              navbarTopVertical.removeAttribute('style');
+        //       navbarVertical.removeAttribute('style');
+        //       navbarTopVertical.removeAttribute('style');
+        //       navbarTop.remove(navbarTop);
+        //       navbarDoubleTop.remove(navbarDoubleTop);
+        //       navbarTopCombo.remove(navbarTopCombo);
+        navbarVertical.removeAttribute('style');
+              navbarTopCombo.removeAttribute('style');
               navbarTop.remove(navbarTop);
+              navbarTopVertical.remove(navbarTopVertical);
               navbarDoubleTop.remove(navbarDoubleTop);
-              navbarTopCombo.remove(navbarTopCombo);
             }
                                 </script>
                                 <div class="row g-3 mb-3">
                                         <div class="col-md-6 col-xxl-3">
                                                 <div class="card h-md-100 ecommerce-card-min-width">
                                                         <div class="card-header pb-0">
-                                                                <h6 class="mb-0 mt-2 d-flex align-items-center">Last Week
+                                                                <h6 class="mb-0 mt-2 d-flex align-items-center">Last
+                                                                        Week
                                                                         Spending<span class="ms-1 text-400"
                                                                                 data-bs-toggle="tooltip"
                                                                                 data-bs-placement="top"
@@ -8619,7 +8627,10 @@
 
                                                                                 <div
                                                                                         class="position-absolute top-50 start-50 translate-middle text-1100 fs-11">
-                                                                                        Rp.{{ number_format($pendapatan_tahunan - $pengeluaran_tahunan, '2', ',', '.') }}</div>
+                                                                                        Rp.{{
+                                                                                        number_format($pendapatan_tahunan
+                                                                                        - $pengeluaran_tahunan, '2',
+                                                                                        ',', '.') }}</div>
                                                                         </div>
                                                                 </div>
                                                         </div>
@@ -9109,7 +9120,8 @@
                                                                                 <thead class="bg-body-tertiary">
                                                                                         <tr>
                                                                                                 <th class="text-900">
-                                                                                                        Transaksi Terbaru</th>
+                                                                                                        Transaksi
+                                                                                                        Terbaru</th>
                                                                                                 <th
                                                                                                         class="text-900 text-end">
                                                                                                         Revenue ($3333)
@@ -10041,11 +10053,11 @@
                         </div>
                         <div class="text-center mt-5"><img class="mb-4" src="dasbor/img/icons/spot-illustrations/47.png"
                                         alt="" width="120" />
-                                <h5>Like What You See?</h5>
-                                <p class="fs-10">Get Falcon now and create beautiful dashboards with hundreds of
-                                        widgets.</p><a class="mb-3 btn btn-primary"
+                                <h5>Powered By</h5>
+                                <p class="fs-10">Falcon.</p>
+                                        {{-- <a class="mb-3 btn btn-primary"
                                         href="https://themes.getbootstrap.com/product/falcon-admin-dashboard-webapp-template/"
-                                        target="_blank">Purchase</a>
+                                        target="_blank">Purchase</a> --}}
                         </div>
                 </div>
         </div><a class="card setting-toggle" href="#settings-offcanvas" data-bs-toggle="offcanvas">
@@ -10077,23 +10089,10 @@
         <script src="dasbor/js/polyfill.min58be.js?features=window.scroll"></script>
         <script src="dasbor/vendors/list.js/list.min.js"></script>
         <script src="dasbor/js/theme.js"></script> --}}
-        
-{{-- </body>  --}}
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-    var toggleButton = document.querySelector('.navbar-toggler-humburger-icon');
-    var navbar = document.querySelector('.navbar'); // Adjust this selector if necessary
 
-    // Function to toggle the sliding effect
-    function toggleSlide() {
-        navbar.classList.toggle('toggled');
-    }
+        {{--
+</body> --}}
 
-    // Event listener for toggling the navbar
-    var bootstrapNavbar = document.querySelector('.navbar-toggler');
-    bootstrapNavbar.addEventListener('click', toggleSlide);
-});
-</script>
 <!-- Mirrored from prium.github.io/falcon/v3.19.0// by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 03:59:25 GMT -->
 
 </html>
