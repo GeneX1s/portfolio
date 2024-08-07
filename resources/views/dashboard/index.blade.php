@@ -4,7 +4,7 @@
 <html data-bs-theme="light" lang="en-US" dir="ltr">
 
 
-<!-- Mirrored from prium.github.io/falcon/v3.19.0/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 03:58:00 GMT -->
+<!-- Mirrored from prium.github.io/falcon/v3.19.0// by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 03:58:00 GMT -->
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
@@ -87,11 +87,11 @@
                                                         aria-label="Toggle Navigation"><span
                                                                 class="navbar-toggle-icon"><span
                                                                         class="toggle-line"></span></span></button>
-                                                <a class="navbar-brand me-1 me-sm-3" href="index.html">
+                                                <a class="navbar-brand me-1 me-sm-3" href="/">
                                                         <div class="d-flex align-items-center"><img class="me-2"
                                                                         src="dasbor/img/icons/spot-illustrations/falcon.png"
                                                                         alt="" width="40" /><span
-                                                                        class="font-sans-serif text-primary">falcon</span>
+                                                                        class="font-sans-serif text-primary">Top</span>
                                                         </div>
                                                 </a>
                                                 <ul class="navbar-nav align-items-center d-none d-lg-block">
@@ -1051,7 +1051,7 @@
                                                                         <div
                                                                                 class="bg-white dark__bg-1000 rounded-3 py-2">
                                                                                 <a class="dropdown-item link-600 fw-medium"
-                                                                                        href="index.html">Default</a><a
+                                                                                        href="/">Default</a><a
                                                                                         class="dropdown-item link-600 fw-medium"
                                                                                         href="dashboard/analytics.html">Analytics</a><a
                                                                                         class="dropdown-item link-600 fw-medium"
@@ -1870,11 +1870,11 @@
                                                         data-bs-toggle="tooltip" data-bs-placement="left"
                                                         title="Toggle Navigation"><span class="navbar-toggle-icon"><span
                                                                         class="toggle-line"></span></span></button>
-                                        </div><a class="navbar-brand" href="index.html">
+                                        </div><a class="navbar-brand" href="/">
                                                 <div class="d-flex align-items-center py-3"><img class="me-2"
                                                                 src="dasbor/img/icons/spot-illustrations/falcon.png"
                                                                 alt="" width="40" /><span
-                                                                class="font-sans-serif text-primary">Genexyz</span>
+                                                                class="font-sans-serif text-primary">Vertical</span>
                                                 </div>
                                         </a>
                                 </div>
@@ -1895,7 +1895,7 @@
                                                                 </a>
                                                                 <ul class="nav collapse show" id="dashboard">
                                                                         <li class="nav-item"><a class="nav-link active"
-                                                                                        href="index.html">
+                                                                                        href="/">
                                                                                         <div
                                                                                                 class="d-flex align-items-center">
                                                                                                 <span
@@ -4744,11 +4744,11 @@
                                         aria-controls="navbarStandard" aria-expanded="false"
                                         aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
                                                         class="toggle-line"></span></span></button>
-                                <a class="navbar-brand me-1 me-sm-3" href="index.html">
+                                <a class="navbar-brand me-1 me-sm-3" href="/">
                                         <div class="d-flex align-items-center"><img class="me-2"
                                                         src="dasbor/img/icons/spot-illustrations/falcon.png" alt=""
                                                         width="40" /><span
-                                                        class="font-sans-serif text-primary">falcon</span></div>
+                                                        class="font-sans-serif text-primary">Topi</span></div>
                                 </a>
                                 <div class="collapse navbar-collapse scrollbar" id="navbarStandard">
                                         <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
@@ -4760,7 +4760,7 @@
                                                                 aria-labelledby="dashboards">
                                                                 <div class="bg-white dark__bg-1000 rounded-3 py-2"><a
                                                                                 class="dropdown-item link-600 fw-medium"
-                                                                                href="index.html">Default</a><a
+                                                                                href="/">Default</a><a
                                                                                 class="dropdown-item link-600 fw-medium"
                                                                                 href="dashboard/analytics.html">Analytics</a><a
                                                                                 class="dropdown-item link-600 fw-medium"
@@ -6137,11 +6137,11 @@
                                                 aria-controls="navbarVerticalCollapse" aria-expanded="false"
                                                 aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
                                                                 class="toggle-line"></span></span></button>
-                                        <a class="navbar-brand me-1 me-sm-3" href="index.html">
+                                        <a class="navbar-brand me-1 me-sm-3" href="/">
                                                 <div class="d-flex align-items-center"><img class="me-2"
                                                                 src="dasbor/img/icons/spot-illustrations/falcon.png"
                                                                 alt="" width="40" /><span
-                                                                class="font-sans-serif text-primary">falcon</span></div>
+                                                                class="font-sans-serif text-primary">Tops</span></div>
                                         </a>
                                         <ul class="navbar-nav align-items-center d-none d-lg-block">
                                                 <li class="nav-item">
@@ -7017,7 +7017,7 @@
                                                 aria-controls="navbarVerticalCollapse" aria-expanded="false"
                                                 aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
                                                                 class="toggle-line"></span></span></button>
-                                        <a class="navbar-brand me-1 me-sm-3" href="index.html">
+                                        <a class="navbar-brand me-1 me-sm-3" href="/">
                                                 <div class="d-flex align-items-center"><img class="me-2"
                                                                 src="dasbor/img/icons/spot-illustrations/falcon.png"
                                                                 alt="" width="40" /><span
@@ -7035,7 +7035,7 @@
                                                                         <div
                                                                                 class="bg-white dark__bg-1000 rounded-3 py-2">
                                                                                 <a class="dropdown-item link-600 fw-medium"
-                                                                                        href="index.html">Default</a><a
+                                                                                        href="/">Default</a><a
                                                                                         class="dropdown-item link-600 fw-medium"
                                                                                         href="dashboard/analytics.html">Analytics</a><a
                                                                                         class="dropdown-item link-600 fw-medium"
@@ -10079,8 +10079,22 @@
         <script src="dasbor/js/theme.js"></script> --}}
         
 {{-- </body>  --}}
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var toggleButton = document.querySelector('.navbar-toggler-humburger-icon');
+    var navbar = document.querySelector('.navbar'); // Adjust this selector if necessary
 
-<!-- Mirrored from prium.github.io/falcon/v3.19.0/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 03:59:25 GMT -->
+    // Function to toggle the sliding effect
+    function toggleSlide() {
+        navbar.classList.toggle('toggled');
+    }
+
+    // Event listener for toggling the navbar
+    var bootstrapNavbar = document.querySelector('.navbar-toggler');
+    bootstrapNavbar.addEventListener('click', toggleSlide);
+});
+</script>
+<!-- Mirrored from prium.github.io/falcon/v3.19.0// by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 03:59:25 GMT -->
 
 </html>
 @endsection
