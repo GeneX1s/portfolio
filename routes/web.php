@@ -58,6 +58,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::get('/dashboard/transactions/index', [TransactionController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/transactions/create', [TransactionController::class, 'create'])->middleware('auth');
 Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
+Route::post('/dashboard/transactions/{transaction}/template', [TransactionController::class, 'template_add'])->middleware('auth');
+Route::post('/dashboard/transactions/template', [TransactionController::class, 'template'])->middleware('auth');
 ////////////////////////////////////
 
 ////////////////Orders/////////

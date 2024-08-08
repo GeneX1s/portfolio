@@ -70,11 +70,10 @@
     <thead class="thead">
       <tr>
         <th scope="col">No.</th>
-        <th scope="col">Nama</th>
+        <th scope="col">ID Transaksi</th>
         <th scope="col">Tanggal</th>
         <th scope="col">Kategori</th>
         <th scope="col">Nominal</th>
-        <th scope="col">Biaya Tambahan</th>
         <th scope="col">Deskripsi</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>
@@ -89,7 +88,6 @@
         <td>{{$transaction->created_at}}</td>
         <td>{{$transaction->kategori}}</td>
         <td>Rp.{{ number_format($transaction->nominal, '2', ',', '.') }}</td>
-        <td>Rp.{{ number_format($transaction->biaya_tambahan, '2', ',', '.') }}</td>
         <td>{{$transaction->deskripsi}}</td>
         <td>{{$transaction->status}}</td>
 
@@ -105,6 +103,16 @@
             @endif
           </form>
 
+          <form action="/dashboard/transactions/{{ $transaction->id }}/template" method="post" class="d-inline">
+            @csrf
+            @method('POST') <!-- Not strictly necessary with `POST` method -->
+            @if ($transaction->status != "Deleted")
+                <button class="badge bg-success border-0" type="submit">
+                    <i class="fas fa-regular fa-plus"></i>
+                </button>
+            @endif
+        </form>
+        
         </td>
 
       </tr>
@@ -131,5 +139,19 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-2">
+      <div class="mb-1">
+<button type="submit" class="btn btn-primary">Batch Select</button>
+</form>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <div class="mb-1">
+        <a class="btn btn-danger" href="/dashboard">Back</a>
+      </div>
+    </div>
+
+</div>
 </div>
 @endsection

@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\ApiResponse;
 use App\Models\Ingredients;
+use App\Models\Template;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,7 @@ class TransactionController extends Controller
     // if (!$request->status) {
     //   $status_search = "Active";
     // }
-// dd($status_search);
+    // dd($status_search);
 
     $transactions = Transaction::query()
       ->when($status_search, function ($query) use ($status_search) {
@@ -85,23 +86,7 @@ class TransactionController extends Controller
       $total = $total - $minus;
       $pengeluaran = $pengeluaran + $minus;
     }
-    // }
-    // foreach ($transactions as $transaction) {
 
-
-    //   $data[] = [
-    //     'id' => $transaction->id,
-    //     'nama' => $transaction->nama,
-    //     'harga' => $transaction->harga,
-    //     'deskripsi' => $transaction->deskripsi,
-    //     'foto' => $transaction->foto,
-    //     'jenis_1' => $transaction->jenis_1,
-    //     'jenis_2' => $transaction->jenis_2,
-    //     'time' => $transaction->_timestamp,
-    //   ];
-    // }
-
-    // dd($transactions);
     return view('dashboard.transactions.index', [
       // 'transactions' => $data,
       'transactions' => $transactions,
@@ -111,34 +96,24 @@ class TransactionController extends Controller
     ]);
   }
 
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create(Request $request)
+  public function create() //redirect to page
   {
-
-
-    return view('dashboard.transactions.create');
+    $templates = Template::get();
+    return view('dashboard.transactions.create', [
+      // 'transactions' => $data,
+      'templates' => $templates,
+    ]);
   }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
-  public function store(Request $request, User $user)
+
+  public function store(Request $request) //create data from input
   {
     // dd($request->all());
     // dd(Auth::id());
-    $code = md5(Str::random(10));
+    // $code = md5(Str::random(10));
     $date = Date::now();
-    $author = User::where('id', Auth::id())->first()->name;
 
     $request->validate([
-      'nama' => 'required',
       'nominal' => 'required',
       'kategori' => 'required',
       'deskripsi' => 'nullable',
@@ -149,7 +124,7 @@ class TransactionController extends Controller
 
     // $input['created_at'] = Carbon::parse($today)->toString();
 
-    $input['nama'] = 'TR|' . $date . $code;
+    $input['nama'] = 'TR|' . $date;
     $input['created_at'] = Carbon::now()->format('Y-m-d');
     $input['updated_at'] = Carbon::now()->format('Y-m-d');
     $input['status'] = "Active";
@@ -174,5 +149,58 @@ class TransactionController extends Controller
     // Transaction::destroy($transaction->id);
 
     return redirect('/dashboard/transactions/index')->with('success', 'Transaction has been deleted');
+  }
+
+
+  public function template(Request $request)
+{
+    
+    $id_transact = Template::where('id',$request->input('template'))->first()->id_transact;
+    // Fetch the transaction details using the provided template ID
+    $transaction = Transaction::where('id',$id_transact)->first();
+    // dd($id_transact);
+    // dd($transaction);
+    if (!$transaction) {
+        return redirect()->back()->with('error', 'Transaction not found.');
+    }
+
+    // Prepare data for the new template
+    $input = [
+        'nama' => $transaction->nama,
+        'nominal' => $transaction->nominal,
+        'kategori' => $transaction->kategori,
+        'deskripsi' => $transaction->deskripsi,
+        'created_at' => now(),
+        'status' => $transaction->status,
+    ];
+
+    // Create a new transaction template
+    Transaction::create($input);
+
+    // Redirect with success message
+    return redirect('/dashboard/transactions/index')->with('success', 'New transaction has been added.');
+}
+
+
+  public function template_add($transactionId)
+  {
+    // dd($request->all());
+
+
+    // Retrieve the transaction
+    $transaction = Transaction::findOrFail($transactionId);
+
+    // Get the description
+    $name = $transaction->deskripsi;
+
+    // Prepare the input data
+    $input['id_transact'] = $transactionId; // Exclude 'id' from the input if not needed
+    $input['name'] = $name;
+
+    // Create the template
+    Template::create($input);
+
+    // Redirect or respond as needed
+    return redirect()->back()->with('success', 'Template created successfully.');
   }
 }

@@ -8670,8 +8670,7 @@
                                                                                                 src="dasbor/img/icons/weather-icon.png"
                                                                                                 alt="" height="60" />
                                                                                         <div>
-                                                                                                <h6 class="mb-2">New
-                                                                                                        York City</h6>
+                                                                                                <h6 class="mb-2">Jakarta Pusat</h6>
                                                                                                 <div
                                                                                                         class="fs-11 fw-semi-bold">
                                                                                                         <div
