@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Session extends Authenticatable
+class UserLog extends Authenticatable
 {
   use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,7 +18,7 @@ class Session extends Authenticatable
    * @var array<int, string>
    */
 
-  protected $table = "sessions";
+  protected $table = "user_logs";
   protected $primaryKey = 'id';
   public $incrementing = false;
   public $timestamps = false;

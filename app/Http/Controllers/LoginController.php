@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Session;
+use App\Models\UserLog;
 
 class LoginController extends Controller
 {
@@ -13,7 +13,7 @@ class LoginController extends Controller
     $clientIP = request()->ip();
     
     // Count the number of failed attempts for the client's IP address
-    $failcount = Session::where('user_ip', $clientIP)
+    $failcount = UserLog::where('user_ip', $clientIP)
     ->where('status', 'Failed')
     ->count();
     
@@ -48,7 +48,7 @@ public function authenticate(Request $request)
           $request->session()->regenerate();
   
           // Record successful login attempt
-          Session::create([
+          UserLog::create([
               'email' => $request->email,
               'user_ip' => $clientIP,
               'status' => "Success",
@@ -58,7 +58,7 @@ public function authenticate(Request $request)
       }
   
       // Record failed login attempt
-      Session::create([
+      UserLog::create([
           'email' => $request->email,
           'user_ip' => $clientIP,
           'status' => "Failed",
