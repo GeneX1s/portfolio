@@ -2,55 +2,23 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-  <!-- ===============================================-->
-  <!--    Document Title-->
-  <!-- ===============================================-->
-  <title>Genexyz | Dashboard &amp; My Website</title>
+  <title>Admin Dashboard</title>
 
-  <!-- ===============================================-->
-  <!--    Favicons-->
-  <!-- ===============================================-->
-  <link rel="apple-touch-icon" sizes="180x180" href="../../../../dasbor/img/favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../../../dasbor/img/favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../../../../dasbor/img/favicons/favicon-16x16.png">
-  <link rel="shortcut icon" type="image/x-icon" href="../../../../dasbor/img/favicons/favicon.ico">
-  <link rel="manifest" href="../../../../dasbor/img/favicons/manifest.json">
-  <meta name="msapplication-TileImage" content="../../../../dasbor/img/favicons/mstile-150x150.png">
-  <meta name="theme-color" content="#ffffff">
-  <script src="../../../../dasbor/js/config.js"></script>
-  <script src="../../../../dasbor/vendors/simplebar/simplebar.min.js"></script>
-
-  <!-- ===============================================-->
-  <!--    Stylesheets-->
-  <!-- ===============================================-->
-  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <!-- Custom fonts for this template-->
+  <link href="../../../dasbor/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
-  <link href="../../../../dasbor/vendors/simplebar/simplebar.min.css" rel="stylesheet">
-  <link href="../../../../dasbor/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl">
-  <link href="../../../../dasbor/css/theme.min.css" rel="stylesheet" id="style-default">
-  <link href="../../../../dasbor/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
-  <link href="../../../../dasbor/css/user.min.css" rel="stylesheet" id="user-style-default">
-  <script>
-    var isRTL = JSON.parse(localStorage.getItem('isRTL'));
-if (isRTL) {
-  var linkDefault = document.getElementById('style-default');
-  var userLinkDefault = document.getElementById('user-style-default');
-  linkDefault.setAttribute('disabled', true);
-  userLinkDefault.setAttribute('disabled', true);
-  document.querySelector('html').setAttribute('dir', 'rtl');
-} else {
-  var linkRTL = document.getElementById('style-rtl');
-  var userLinkRTL = document.getElementById('user-style-rtl');
-  linkRTL.setAttribute('disabled', true);
-  userLinkRTL.setAttribute('disabled', true);
-}
-  </script>
+
+  <!-- Custom styles for this template-->
+  <link href="/dasbor/css/sb-admin-2.min.css" rel="stylesheet">
 
 
   <style>
@@ -58,13 +26,23 @@ if (isRTL) {
       display: flex;
     }
 
-    .sidebar {
+    /* .sidebar {
       flex: 0 0 auto;
-      /* Sidebar does not grow or shrink */
-    }
+      /* Sidebar does not grow or shrink
+    } */
+
+    .sidebar {
+    width: 200px; /* Adjust the width as needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* Sidebar takes full height of the viewport */
+    overflow-y: auto; /* Enable scrolling for the sidebar if it's taller than the viewport */
+}
 
     .content {
       flex: 1;
+      padding-left: 220px;
       /* Content area takes up remaining space */
     }
 
@@ -85,70 +63,69 @@ if (isRTL) {
       padding-left: .75rem;
       margin-right: auto;
       margin-left: auto;
+
     }
-
-    /* .navbar-top {
-  position: sticky;
-  top: 0;
-  font-size: .8333333333rem;
-  font-weight: 600;
-  margin-left: -1rem;
-  margin-right: -1rem;
-  z-index: 1020;
-  background-image: none;
-  min-height: var(--falcon-top-nav-height)
-}
-
-.navbar-top .navbar-nav-icons .dropdown-menu {
-  position: absolute
-}
-
-.navbar-top .navbar-collapse {
-  overflow: auto;
-  max-height: calc(100vh - var(--falcon-top-nav-height));
-  margin: 0 -0.75rem;
-  padding: 0 .75rem;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 0 100%;
-  flex: 1 0 100%;
-  -webkit-box-ordinal-group: 2;
-  -ms-flex-order: 1;
-  order: 1
-}
-
-.navbar-top .navbar-toggler {
-  margin-left: -0.625rem
-}
-
-.navbar-top[data-navbar-top=combo] .navbar-collapse {
-  width: auto
-} */
   </style>
+
 </head>
 
 
 <body>
   <div class="wrapper">
-    {{-- <div class="sidebar">
+    <div class="sidebar">
       @include('dashboard.layouts.sidebar')
-    </div> --}}
+    </div>
     <div class="content">
       <div class="container">
         @yield('container')
       </div>
     </div>
   </div>
-  <!-- ===============================================-->
-  <!--    JavaScripts-->
-  <!-- ===============================================-->
-  <script src="../../../../dasbor/vendors/popper/popper.min.js"></script>
-  <script src="../../../../dasbor/vendors/bootstrap/bootstrap.min.js"></script>
-  <script src="../../../../dasbor/vendors/anchorjs/anchor.min.js"></script>
-  <script src="../../../../dasbor/vendors/is/is.min.js"></script>
-  <script src="../../../../dasbor/vendors/echarts/echarts.min.js"></script>
-  <script src="../../../../dasbor/vendors/fontawesome/all.min.js"></script>
-  <script src="../../../../dasbor/vendors/lodash/lodash.min.js"></script>
-  <script src="../../../../dasbor/js/polyfill.min58be.js?features=window.scroll"></script>
-  <script src="../../../../dasbor/vendors/list.js/list.min.js"></script>
-  <script src="../../../../dasbor/js/theme.js"></script>
 </body>
+
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+  <div class="container my-auto">
+    <div class="copyright text-center my-auto">
+      <span>Copyright &copy; NOD 2023</span>
+    </div>
+  </div>
+</footer>
+<!-- End of Footer -->
+
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="../../../dasbor/vendor/jquery/jquery.min.js"></script>
+<script src="../../../dasbor/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/dasbor/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../../../dasbor/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="/dasbor/vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/dasbor/js/demo/chart-area-demo.js"></script>
+<script src="/dasbor/js/demo/chart-pie-demo.js"></script>
+
+<script>
+// Get the sidebar element
+const sidebar = document.querySelector('.sidebar');
+
+// Function to handle scroll event
+const handleScroll = () => {
+    // Get the current scroll position
+    const scrollY = window.scrollY || window.pageYOffset;
+
+    // Set the top position of the sidebar based on the scroll position
+    sidebar.style.top = `${scrollY}px`;
+};
+
+// Add scroll event listener to window
+window.addEventListener('scroll', handleScroll);
+</script>
