@@ -18,7 +18,7 @@
     rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="/dasbor/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../../../dasbor/css/sb-admin-2.min.css" rel="stylesheet">
 
 
   <style>
@@ -32,39 +32,58 @@
     } */
 
     .sidebar {
-    width: 200px; /* Adjust the width as needed */
+    width: 130px; /* Adjust the width as needed */
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh; /* Sidebar takes full height of the viewport */
     overflow-y: auto; /* Enable scrolling for the sidebar if it's taller than the viewport */
+    z-index: 1000; /* Ensures the sidebar appears above other content */
+    background-color: #fff; /* Optional: set background color to ensure visibility */
+}
+/* For WebKit browsers (Chrome, Safari) */
+.sidebar::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
 }
 
-    .content {
-      flex: 1;
-      padding-left: 220px;
-      /* Content area takes up remaining space */
-    }
+/* For Firefox */
+.sidebar {
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
 
-    .container,
-    .container-md,
-    .container-sm {
-      max-width: unset !important;
-    }
+/* For Edge (support for scrollbar-color) */
+.sidebar {
+    -ms-overflow-style: none; /* Hides scrollbar in older Edge versions */
+}
 
-    .container,
-    .container-fluid,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container-xl {
-      width: 100%;
-      padding-right: .75rem;
-      padding-left: .75rem;
-      margin-right: auto;
-      margin-left: auto;
 
-    }
+.content {
+    margin-left: 200px; /* Ensure content is pushed to the right of the sidebar */
+    padding-left: 1rem; /* Optional: add padding to the left of the content */
+    /* Ensure that content does not overlap the sidebar */
+    z-index: 1; /* Content has a lower z-index than the sidebar */
+    /* Remove any conflicting position properties */
+}
+
+.container,
+.container-md,
+.container-sm {
+    max-width: unset !important;
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
+    width: 100%;
+    padding-right: .75rem;
+    padding-left: .75rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
   </style>
 
 </head>

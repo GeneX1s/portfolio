@@ -133,7 +133,7 @@
         <li class="nav-item">
           <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>KPI/ Statistics</span></a>
+            <span>Set Value</span></a>
         </li>
       
         <!-- Nav Item - Tables -->

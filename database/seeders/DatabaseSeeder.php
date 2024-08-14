@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\SetValue;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use App\Models\User;
@@ -28,6 +30,10 @@ class DatabaseSeeder extends Seeder
             'nik' => '0000',
             'password' => bcrypt('12345'),
             'is_admin' => 1
+        ]);
+
+        SetValue::create([
+            'salary' => 7500000,
         ]);
     }
 }

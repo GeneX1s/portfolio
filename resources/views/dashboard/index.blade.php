@@ -331,8 +331,7 @@
                                                                                         <div
                                                                                                 class="h5 mb-0 font-weight-bold text-gray-800">
                                                                                                 Rp.{{
-                                                                                                        number_format($pendapatan_tahunan
-                                                                                                        - $pengeluaran_tahunan, '2',
+                                                                                                        number_format($spendable, '2',
                                                                                                         ',', '.') }}</div>
                                                                                 </div>
                                                                                 <div class="col-auto">
@@ -350,35 +349,17 @@
                                                                 <div class="card-body">
                                                                         <div class="row no-gutters align-items-center">
                                                                                 <div class="col mr-2">
-                                                                                        <div
-                                                                                                class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                                                                Bookings
+                                                                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                                                                Pengeluaran(This Week)
                                                                                         </div>
-                                                                                        <div
-                                                                                                class="row no-gutters align-items-center">
-                                                                                                <div class="col-auto">
-                                                                                                        <div
-                                                                                                                class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                                                                                50%
-                                                                                                        </div>
-                                                                                                </div>
-                                                                                                <div class="col">
-                                                                                                        <div
-                                                                                                                class="progress progress-sm mr-2">
-                                                                                                                <div class="progress-bar bg-info"
-                                                                                                                        role="progressbar"
-                                                                                                                        style="width: 50%"
-                                                                                                                        aria-valuenow="50"
-                                                                                                                        aria-valuemin="0"
-                                                                                                                        aria-valuemax="100">
-                                                                                                                </div>
-                                                                                                        </div>
-                                                                                                </div>
+                                                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                                        Rp.{{
+                                                                                                number_format($pendapatan_tahunan
+                                                                                                - $pengeluaran_tahunan, '2',
+                                                                                                ',', '.') }}</div>
                                                                                         </div>
-                                                                                </div>
                                                                                 <div class="col-auto">
-                                                                                        <i
-                                                                                                class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                                                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                                                                                 </div>
                                                                         </div>
                                                                 </div>
@@ -393,14 +374,14 @@
                                                                                 <div class="col mr-2">
                                                                                         <div
                                                                                                 class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                                                                Pending Orders</div>
-                                                                                        {{-- <div
-                                                                                                class="h5 mb-0 font-weight-bold text-gray-800">
-                                                                                                {{$order_amount}}</div> --}}
-                                                                                </div>
+                                                                                                This Month Quota</div>
+                                                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                                                Rp.{{
+                                                                                                        number_format(($quota - $pengeluaran_bulanan), '2',
+                                                                                                        ',', '.') }}</div></div>
                                                                                 <div class="col-auto">
                                                                                         <i
-                                                                                                class="fas fa-comments fa-2x text-gray-300"></i>
+                                                                                                class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                                                                 </div>
                                                                         </div>
                                                                 </div>
@@ -501,17 +482,17 @@
                                                                                 <span class="mr-2">
                                                                                         <i
                                                                                                 class="fas fa-circle text-primary"></i>
-                                                                                        Dine In
+                                                                                        Earning
                                                                                 </span>
                                                                                 <span class="mr-2">
                                                                                         <i
                                                                                                 class="fas fa-circle text-success"></i>
-                                                                                        Delivery
+                                                                                        Spending
                                                                                 </span>
                                                                                 <span class="mr-2">
                                                                                         <i
                                                                                                 class="fas fa-circle text-info"></i>
-                                                                                        Pick Up
+                                                                                        Investment
                                                                                 </span>
                                                                         </div>
                                                                 </div>
