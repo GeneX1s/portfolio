@@ -1,49 +1,9 @@
-@extends('layouts.main')
+@extends('dashboard.layouts.main')
 
 @section('container')
 
-<style>
-  .php-email-form input,
-  .php-email-form textarea {
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 14px;
-    background: #0c0b09;
-    border-color: #625b4b;
-    color: white;
-  }
-
-  .php-email-form input::-moz-placeholder,
-  .php-email-form textarea::-moz-placeholder {
-    color: #a49b89;
-  }
-
-  .php-email-form input::placeholder,
-  .php-email-form textarea::placeholder {
-    color: #a49b89;
-  }
-
-  .php-email-form input:focus,
-  .php-email-form textarea:focus {
-    border-color: #cda45e;
-  }
-
-  .php-email-form button[type=submit] {
-    background: #cda45e;
-    border: 0;
-    padding: 10px 35px;
-    color: #fff;
-    transition: 0.4s;
-    border-radius: 50px;
-  }
-
-  .php-email-form button[type=submit]:hover {
-    background: #d3af71;
-  }
-</style>
-
 <div class="row justify-content-center">
-  <div class="col-md-4">
+  <div class="col">
     @if(session()-> has('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
       {{session('success')}}
@@ -63,19 +23,25 @@
       <h1 class="h3 mb-3 fw-normal">Please log in</h1>
       <form action="/login" class="php-email-form" method="post">
         @csrf
-        <div class="form-floating">
-          <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email"
-            placeholder="name@example.com" autofocus required value="{{ old ('email') }}">
-          <label for="email">Email address</label>
-          @error('email')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
+        <div class="row">
+          <div class="col">
+            <div class="form-floating">
+              <label for="email">Email address</label>
+              <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                placeholder="name@example.com" autofocus required value="{{ old ('email') }}">
+              @error('email')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
         </div>
-        <div class="form-floating">
-          <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
-          <label for="password">Password</label>
+          <div class="col">
+            <div class="form-floating">
+              <label for="password">Password</label>
+              <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+        </div>
         </div>
         <br>
 

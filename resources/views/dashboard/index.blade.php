@@ -303,7 +303,8 @@
                                                                                 <div class="col mr-2">
                                                                                         <div
                                                                                                 class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                                                                Pengeluaran(Last Week)</div>
+                                                                                                Pengeluaran(Last Week)
+                                                                                        </div>
                                                                                         <div
                                                                                                 class="h5 mb-0 font-weight-bold text-gray-800">
                                                                                                 Rp.{{
@@ -327,12 +328,15 @@
                                                                                 <div class="col mr-2">
                                                                                         <div
                                                                                                 class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                                                                Remaining Spendable</div>
+                                                                                                Remaining Spendable
+                                                                                        </div>
                                                                                         <div
                                                                                                 class="h5 mb-0 font-weight-bold text-gray-800">
                                                                                                 Rp.{{
-                                                                                                        number_format(($spendable - $pengeluaran_tahunan), '2',
-                                                                                                        ',', '.') }}</div>
+                                                                                                number_format(($spendable
+                                                                                                - $pengeluaran_tahunan),
+                                                                                                '2',
+                                                                                                ',', '.') }}</div>
                                                                                 </div>
                                                                                 <div class="col-auto">
                                                                                         <i
@@ -349,16 +353,20 @@
                                                                 <div class="card-body">
                                                                         <div class="row no-gutters align-items-center">
                                                                                 <div class="col mr-2">
-                                                                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                                                                Pengeluaran(This Week)
+                                                                                        <div
+                                                                                                class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                                                                Earnings this Month
                                                                                         </div>
-                                                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                                                        Rp.{{
-                                                                                                number_format($pengeluaran_mingguan, '2',
+                                                                                        <div
+                                                                                                class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                                                Rp.{{
+                                                                                                number_format($pengeluaran_mingguan,
+                                                                                                '2',
                                                                                                 ',', '.') }}</div>
-                                                                                        </div>
+                                                                                </div>
                                                                                 <div class="col-auto">
-                                                                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                                                                        <i
+                                                                                                class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                                                                                 </div>
                                                                         </div>
                                                                 </div>
@@ -374,10 +382,14 @@
                                                                                         <div
                                                                                                 class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                                                                 This Month Quota</div>
-                                                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                                        <div
+                                                                                                class="h5 mb-0 font-weight-bold text-gray-800">
                                                                                                 Rp.{{
-                                                                                                        number_format(($quota - $pengeluaran_bulanan), '2',
-                                                                                                        ',', '.') }}</div></div>
+                                                                                                number_format(($quota -
+                                                                                                $pengeluaran_bulanan),
+                                                                                                '2',
+                                                                                                ',', '.') }}</div>
+                                                                                </div>
                                                                                 <div class="col-auto">
                                                                                         <i
                                                                                                 class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -431,7 +443,8 @@
                                                                 <div class="card-body">
                                                                         <div class="chart-area">
                                                                                 {{-- <canvas id="myAreaChart"
-                                                                                        data-transactions="{{ json_encode($area_chart) }}"></canvas> --}}
+                                                                                        data-transactions="{{ json_encode($area_chart) }}"></canvas>
+                                                                                --}}
                                                                         </div>
                                                                 </div>
                                                         </div>
@@ -440,63 +453,43 @@
                                                 <!-- Pie Chart -->
                                                 <div class="col-xl-4 col-lg-5">
                                                         <div class="card shadow mb-4">
-                                                                <!-- Card Header - Dropdown -->
-                                                                <div
-                                                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                                        <h6 class="m-0 font-weight-bold text-primary">
-                                                                                Revenue Sources</h6>
-                                                                        <div class="dropdown no-arrow">
-                                                                                <a class="dropdown-toggle" href="#"
-                                                                                        role="button"
-                                                                                        id="dropdownMenuLink"
-                                                                                        data-toggle="dropdown"
-                                                                                        aria-haspopup="true"
-                                                                                        aria-expanded="false">
-                                                                                        <i
-                                                                                                class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                                                                </a>
-                                                                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                                                        aria-labelledby="dropdownMenuLink">
-                                                                                        <div class="dropdown-header">
-                                                                                                Dropdown Header:</div>
-                                                                                        <a class="dropdown-item"
-                                                                                                href="#">Action</a>
-                                                                                        <a class="dropdown-item"
-                                                                                                href="#">Another
-                                                                                                action</a>
-                                                                                        <div class="dropdown-divider">
-                                                                                        </div>
-                                                                                        <a class="dropdown-item"
-                                                                                                href="#">Something else
-                                                                                                here</a>
-                                                                                </div>
-                                                                        </div>
+                                                            <!-- Card Header - Dropdown -->
+                                                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                                                <div class="dropdown no-arrow">
+                                                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                                                    </a>
+                                                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                                                        <div class="dropdown-header">Dropdown Header:</div>
+                                                                        <a class="dropdown-item" href="#">Action</a>
+                                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                                        <div class="dropdown-divider"></div>
+                                                                        <a class="dropdown-item" href="#">Something else here</a>
+                                                                    </div>
                                                                 </div>
-                                                                <!-- Card Body -->
-                                                                <div class="card-body">
-                                                                        <div class="chart-pie pt-4 pb-2">
-                                                                                <canvas id="myPieChart"></canvas>
-                                                                        </div>
-                                                                        <div class="mt-4 text-center small">
-                                                                                <span class="mr-2">
-                                                                                        <i
-                                                                                                class="fas fa-circle text-primary"></i>
-                                                                                        Earning
-                                                                                </span>
-                                                                                <span class="mr-2">
-                                                                                        <i
-                                                                                                class="fas fa-circle text-success"></i>
-                                                                                        Spending
-                                                                                </span>
-                                                                                <span class="mr-2">
-                                                                                        <i
-                                                                                                class="fas fa-circle text-info"></i>
-                                                                                        Investment
-                                                                                </span>
-                                                                        </div>
+                                                            </div>
+                                                            <!-- Card Body -->
+                                                            <div class="card-body">
+                                                                <div class="chart-pie pt-4 pb-2">
+                                                                    <canvas id="myPieChart"></canvas>
                                                                 </div>
+                                                    
+                                                                <div class="mt-4 text-center small">
+                                                                    <span class="mr-2">
+                                                                        <i class="fas fa-circle text-primary"></i> Earning
+                                                                    </span>
+                                                                    <span class="mr-2">
+                                                                        <i class="fas fa-circle text-success"></i> Spending
+                                                                    </span>
+                                                                    <span class="mr-2">
+                                                                        <i class="fas fa-circle text-info"></i> Investment
+                                                                    </span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                </div>
+                                                    </div>
+                                                    
                                         </div>
 
                                         <!-- Content Row -->
@@ -752,7 +745,8 @@
                                                 @csrf
                                                 <button class="btn btn-secondary" type="button"
                                                         data-dismiss="modal">Cancel</button>
-                                                <button type="submit" class="btn btn-primary" type="button">Logout</button>
+                                                <button type="submit" class="btn btn-primary"
+                                                        type="button">Logout</button>
                                                 {{-- <button type="submit"
                                                         class="nav-link px-3 bg-dark border-0">Logout<span
                                                                 data-feather="log-out"></span></button> --}}

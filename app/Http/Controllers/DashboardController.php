@@ -41,6 +41,10 @@ class DashboardController extends Controller
       ->whereBetween('created_at', [$start_month, $end_month])
       ->pluck('nominal')->all();
 
+    $month_incomes = $transactions->where('kategori', 'Pendapatan')
+      ->whereBetween('created_at', [$start_month, $end_month])
+      ->pluck('nominal')->all();
+
     $year_outcomes = $transactions->where('kategori', 'Pengeluaran')
       ->whereBetween('created_at', [$start_year, $end_year])
       ->pluck('nominal')->all();
@@ -58,6 +62,7 @@ class DashboardController extends Controller
     $pengeluaran_tahunan = 0;
     $pendapatan_tahunan = 0;
     $investment_tahunan = 0;
+    $pendapatan_bulanan = 0;
     $pengeluaran_bulanan = 0;
     $pengeluaran_mingguan = 0;
 
@@ -66,6 +71,10 @@ class DashboardController extends Controller
     }
     foreach ($month_outcomes as $month_outcome) {
       $pengeluaran_bulanan = $pengeluaran_bulanan + $month_outcome;
+    }
+
+    foreach ($month_incomes as $month_income) {
+      $pendapatan_bulanan = $pendapatan_bulanan + $month_income;
     }
     $persen_bulan_ini = ($pengeluaran_bulanan / 45000000) * 100;
     // dd($pengeluaran_bulanan);
@@ -81,11 +90,13 @@ class DashboardController extends Controller
       $investment_tahunan = $investment_tahunan + $investment;
     }
 
-    $chart_1 = [
-      ['value' => $pendapatan_tahunan, 'name' => 'Earning'],
-      ['value' => $pengeluaran_tahunan, 'name' => 'Spending'],
-      ['value' => $investment_tahunan, 'name' => 'Investment'],
-    ];
+      // $chart_1 = [
+      //     ['value' => $pendapatan_tahunan, 'name' => 'Earning'],
+      //     ['value' => $pengeluaran_tahunan, 'name' => 'Spending'],
+      //     ['value' => $investment_tahunan, 'name' => 'Investment'],
+      // ];
+  
+  
 
     $salary = SetValue::first()->salary;
     $spendable = ($salary * 12)/2 - $pengeluaran_tahunan;
@@ -94,12 +105,18 @@ class DashboardController extends Controller
     return view('dashboard.index', [
       'spendable' => $spendable,
       'quota' => $quota,
-      'chart_1' => $chart_1,
       'pengeluaran_mingguan' => $pengeluaran_mingguan,
       'pengeluaran_bulanan' => $pengeluaran_bulanan,
+      'pendapatan_bulanan' => $pendapatan_bulanan,
       'pengeluaran_tahunan' => $pengeluaran_tahunan,
       'pendapatan_tahunan' => $pendapatan_tahunan,
+      'investment_tahunan' => $investment_tahunan,
       'persen_bulan_ini' => $persen_bulan_ini,
+     'chartData' => [
+        'Earning' => $pendapatan_tahunan,
+        'Spending' => $pengeluaran_tahunan,
+        'Investment' => $investment_tahunan
+    ]
     ]);
   }
 
