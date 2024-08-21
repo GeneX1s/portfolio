@@ -90,19 +90,19 @@ class DashboardController extends Controller
       $investment_tahunan = $investment_tahunan + $investment;
     }
 
-      // $chart_1 = [
-      //     ['value' => $pendapatan_tahunan, 'name' => 'Earning'],
-      //     ['value' => $pengeluaran_tahunan, 'name' => 'Spending'],
-      //     ['value' => $investment_tahunan, 'name' => 'Investment'],
-      // ];
-  
-  
+    // $chart_1 = [
+    //     ['value' => $pendapatan_tahunan, 'name' => 'Earning'],
+    //     ['value' => $pengeluaran_tahunan, 'name' => 'Spending'],
+    //     ['value' => $investment_tahunan, 'name' => 'Investment'],
+    // ];
+
+
 
     $salary = SetValue::first()->salary;
-    $spendable = ($salary * 12)/2 - $pengeluaran_tahunan;
-    $quota = $salary/2 - $pengeluaran_bulanan;
+    $spendable = ($salary * 12) / 2 - $pengeluaran_tahunan;
+    $quota = $salary / 2 - $pengeluaran_bulanan;
 
-    return view('dashboard.index', [
+    return view('/public/dashboard.index', [
       'spendable' => $spendable,
       'quota' => $quota,
       'pengeluaran_mingguan' => $pengeluaran_mingguan,
@@ -112,11 +112,11 @@ class DashboardController extends Controller
       'pendapatan_tahunan' => $pendapatan_tahunan,
       'investment_tahunan' => $investment_tahunan,
       'persen_bulan_ini' => $persen_bulan_ini,
-     'chartData' => [
+      'chartData' => [
         'Earning' => $pendapatan_tahunan,
         'Spending' => $pengeluaran_tahunan,
         'Investment' => $investment_tahunan
-    ]
+      ]
     ]);
   }
 
@@ -131,7 +131,7 @@ class DashboardController extends Controller
   {
 
 
-    return view('dashboard.posts.create_user');
+    return view('/public/dashboard.posts.create_user');
   }
 
   /**

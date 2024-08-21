@@ -48,7 +48,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <!-- Template Main CSS File -->
-  <link href="/css/style-pawonbule.css" rel="stylesheet">
+  <link href="/public/css/style-pawonbule.css" rel="stylesheet">
 </head>
 
 <body>
@@ -77,7 +77,7 @@
   <header id="header" class="fixed-top d-flex align-items-cente">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="/dashboard">My Restoo</a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="/public/dashboard">My Restoo</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
 

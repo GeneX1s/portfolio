@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('public.dashboard.layouts.main')
 
 @section('container')
 
@@ -453,43 +453,65 @@
                                                 <!-- Pie Chart -->
                                                 <div class="col-xl-4 col-lg-5">
                                                         <div class="card shadow mb-4">
-                                                            <!-- Card Header - Dropdown -->
-                                                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                                                <div class="dropdown no-arrow">
-                                                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                                                    </a>
-                                                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                                                        <div class="dropdown-header">Dropdown Header:</div>
-                                                                        <a class="dropdown-item" href="#">Action</a>
-                                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#">Something else here</a>
-                                                                    </div>
+                                                                <!-- Card Header - Dropdown -->
+                                                                <div
+                                                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                                        <h6 class="m-0 font-weight-bold text-primary">
+                                                                                Revenue Sources</h6>
+                                                                        <div class="dropdown no-arrow">
+                                                                                <a class="dropdown-toggle" href="#"
+                                                                                        role="button"
+                                                                                        id="dropdownMenuLink"
+                                                                                        data-toggle="dropdown"
+                                                                                        aria-haspopup="true"
+                                                                                        aria-expanded="false">
+                                                                                        <i
+                                                                                                class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                                                                </a>
+                                                                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                                                        aria-labelledby="dropdownMenuLink">
+                                                                                        <div class="dropdown-header">
+                                                                                                Dropdown Header:</div>
+                                                                                        <a class="dropdown-item"
+                                                                                                href="#">Action</a>
+                                                                                        <a class="dropdown-item"
+                                                                                                href="#">Another
+                                                                                                action</a>
+                                                                                        <div class="dropdown-divider">
+                                                                                        </div>
+                                                                                        <a class="dropdown-item"
+                                                                                                href="#">Something else
+                                                                                                here</a>
+                                                                                </div>
+                                                                        </div>
                                                                 </div>
-                                                            </div>
-                                                            <!-- Card Body -->
-                                                            <div class="card-body">
-                                                                <div class="chart-pie pt-4 pb-2">
-                                                                    <canvas id="myPieChart"></canvas>
+                                                                <!-- Card Body -->
+                                                                <div class="card-body">
+                                                                        <div class="chart-pie pt-4 pb-2">
+                                                                                <canvas id="myPieChart"></canvas>
+                                                                        </div>
+
+                                                                        <div class="mt-4 text-center small">
+                                                                                <span class="mr-2">
+                                                                                        <i
+                                                                                                class="fas fa-circle text-primary"></i>
+                                                                                        Earning
+                                                                                </span>
+                                                                                <span class="mr-2">
+                                                                                        <i
+                                                                                                class="fas fa-circle text-success"></i>
+                                                                                        Spending
+                                                                                </span>
+                                                                                <span class="mr-2">
+                                                                                        <i
+                                                                                                class="fas fa-circle text-info"></i>
+                                                                                        Investment
+                                                                                </span>
+                                                                        </div>
                                                                 </div>
-                                                    
-                                                                <div class="mt-4 text-center small">
-                                                                    <span class="mr-2">
-                                                                        <i class="fas fa-circle text-primary"></i> Earning
-                                                                    </span>
-                                                                    <span class="mr-2">
-                                                                        <i class="fas fa-circle text-success"></i> Spending
-                                                                    </span>
-                                                                    <span class="mr-2">
-                                                                        <i class="fas fa-circle text-info"></i> Investment
-                                                                    </span>
-                                                                </div>
-                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    
+                                                </div>
+
                                         </div>
 
                                         <!-- Content Row -->
@@ -750,7 +772,8 @@
                                                 {{-- <button type="submit"
                                                         class="nav-link px-3 bg-dark border-0">Logout<span
                                                                 data-feather="log-out"></span></button> --}}
-                                                {{-- <a class="btn btn-primary" href="/logout" method="post">Logout</a>
+                                                {{-- <a class="btn btn-primary" href="/public/logout"
+                                                        method="post">Logout</a>
                                                 --}}
                                         </form>
                                 </div>

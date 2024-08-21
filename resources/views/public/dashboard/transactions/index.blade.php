@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('public.dashboard.layouts.main')
 
 <style>
   .img {
@@ -10,7 +10,7 @@
 </style>
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <a class="h2" href="/dashboard">Transactions</a>
+  <a class="h2" href="/public/dashboard">Transactions</a>
 </div>
 
 @if(session()->has('success'))
@@ -20,7 +20,7 @@
 @endif
 
 <div class="table-responsive col-lg-10">
-  {{-- <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
+  {{-- <a href="/public/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
     action="{{ route('transactions.index') }}" method="GET">
     @csrf
     <div class="row">
@@ -60,7 +60,7 @@
         <button type="submit" class="btn btn-primary">Search</button>
       </div>
       <div class="col-md">
-        <a href="/dashboard/transactions/create" class="btn btn-primary mb-3">Add New</a>
+        <a href="/public/dashboard/transactions/create" class="btn btn-primary mb-3">Add New</a>
       </div>
     </div>
   </form>
@@ -96,7 +96,7 @@
             @method('delete')
             @csrf
             @if ($transaction->status != "Deleted")
-              
+
             <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
               <i class="fas fa-regular fa-trash"></i>
             </button>
@@ -105,14 +105,15 @@
 
           <form action="/dashboard/transactions/{{ $transaction->id }}/template" method="post" class="d-inline">
             @csrf
-            @method('POST') <!-- Not strictly necessary with `POST` method -->
+            @method('POST')
+            <!-- Not strictly necessary with `POST` method -->
             @if ($transaction->status != "Deleted")
-                <button class="badge bg-success border-0" type="submit">
-                    <i class="fas fa-regular fa-plus"></i>
-                </button>
+            <button class="badge bg-success border-0" type="submit">
+              <i class="fas fa-regular fa-plus"></i>
+            </button>
             @endif
-        </form>
-        
+          </form>
+
         </td>
 
       </tr>
@@ -142,16 +143,16 @@
   <div class="row">
     <div class="col-md-2">
       <div class="mb-1">
-<button type="submit" class="btn btn-primary">Batch Select</button>
-</form>
+        <button type="submit" class="btn btn-primary">Batch Select</button>
+        </form>
       </div>
     </div>
     <div class="col-md-1">
       <div class="mb-1">
-        <a class="btn btn-danger" href="/dashboard">Back</a>
+        <a class="btn btn-danger" href="/public/dashboard">Back</a>
       </div>
     </div>
 
-</div>
+  </div>
 </div>
 @endsection

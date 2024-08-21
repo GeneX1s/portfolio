@@ -130,7 +130,7 @@ if (isRTL) {
 <body>
   <div class="wrapper">
     {{-- <div class="sidebar">
-      @include('dashboard.layouts.sidebar')
+      @include('public.dashboard.layouts.sidebar')
     </div> --}}
     <div class="content">
       <div class="container">

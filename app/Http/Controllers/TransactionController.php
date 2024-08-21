@@ -28,7 +28,7 @@ class TransactionController extends Controller
   {
     // dd($transaction->id);
     // $ingredients = Ingredients::get();
-    // return view('dashboard.transactions.group_edit', [
+    // return view('/public/dashboard.transactions.group_edit', [
     //   'transaction' => $transaction,
     //   'ingredients' => $ingredients,
     // ]);
@@ -87,7 +87,7 @@ class TransactionController extends Controller
       $pengeluaran = $pengeluaran + $minus;
     }
 
-    return view('dashboard.transactions.index', [
+    return view('/public/dashboard.transactions.index', [
       // 'transactions' => $data,
       'transactions' => $transactions,
       'total' => $total,
@@ -99,7 +99,7 @@ class TransactionController extends Controller
   public function create() //redirect to page
   {
     $templates = Template::get();
-    return view('dashboard.transactions.create', [
+    return view('/public/dashboard.transactions.create', [
       // 'transactions' => $data,
       'templates' => $templates,
     ]);
@@ -153,25 +153,25 @@ class TransactionController extends Controller
 
 
   public function template(Request $request)
-{
-    
-    $id_transact = Template::where('id',$request->input('template'))->first()->id_transact;
+  {
+
+    $id_transact = Template::where('id', $request->input('template'))->first()->id_transact;
     // Fetch the transaction details using the provided template ID
-    $transaction = Transaction::where('id',$id_transact)->first();
+    $transaction = Transaction::where('id', $id_transact)->first();
     // dd($id_transact);
     // dd($transaction);
     if (!$transaction) {
-        return redirect()->back()->with('error', 'Transaction not found.');
+      return redirect()->back()->with('error', 'Transaction not found.');
     }
 
     // Prepare data for the new template
     $input = [
-        'nama' => $transaction->nama,
-        'nominal' => $transaction->nominal,
-        'kategori' => $transaction->kategori,
-        'deskripsi' => $transaction->deskripsi,
-        'created_at' => now(),
-        'status' => $transaction->status,
+      'nama' => $transaction->nama,
+      'nominal' => $transaction->nominal,
+      'kategori' => $transaction->kategori,
+      'deskripsi' => $transaction->deskripsi,
+      'created_at' => now(),
+      'status' => $transaction->status,
     ];
 
     // Create a new transaction template
@@ -179,7 +179,7 @@ class TransactionController extends Controller
 
     // Redirect with success message
     return redirect('/dashboard/transactions/index')->with('success', 'New transaction has been added.');
-}
+  }
 
 
   public function template_add($transactionId)

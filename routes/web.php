@@ -26,15 +26,15 @@ Route::get('/', [IndexController::class, 'index']);
 
 
 Route::get('/portfolio1', function () {
-    return view('portfolio1');
+    return view('/public/portfolio1');
 })->name('portfolio1');
 
 Route::get('/portfolio2', function () {
-    return view('portfolio2');
+    return view('/public/portfolio2');
 })->name('portfolio2');
 
 Route::get('/inner-page', function () {
-    return view('inner-page');
+    return view('/public/inner-page');
 })->name("inner-page");
 
 
@@ -47,7 +47,7 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']); //untuk simpen data yg diregister
 
 // Route::get('/dashboard', function () {
-//     return view('dashboard.index');
+//     return view('/public/dashboard.index');
 // })->name("dashboard");
 
 

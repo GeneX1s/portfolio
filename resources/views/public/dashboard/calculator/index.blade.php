@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('public.dashboard.layouts.main')
 
 <style>
   .img {
@@ -20,7 +20,7 @@
 @endif
 
 <div class="table-responsive col-lg-10">
-  {{-- <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
+  {{-- <a href="/public/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
     action="{{ route('calculators.index') }}" method="GET">
     @csrf
     <div class="row">
@@ -54,7 +54,7 @@
         <button type="submit" class="btn btn-primary">Search</button>
       </div>
       <div class="col-md">
-        <a href="/dashboard/calculators/create" class="btn btn-primary mb-3">Add New</a>
+        <a href="/public/dashboard/calculators/create" class="btn btn-primary mb-3">Add New</a>
       </div>
     </div>
   </form>
@@ -95,7 +95,7 @@
             </button>
           </form>
 
-          </td>
+        </td>
 
       </tr>
       @endforeach

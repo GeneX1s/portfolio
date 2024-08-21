@@ -23,8 +23,25 @@
   <link rel="stylesheet" href="{{ asset('css/main-red.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ asset('css/lmpixels-demo-panel.css') }}" type="text/css">
 
-  <!-- /This styles needs for demo -->
+  <style>
+    /* Increase the padding of the list items */
+    li {
+      padding: 10px 15px;
+      /* Adjust as needed */
+      line-height: 3;
+      /* Adjust line-height if needed */
+    }
 
+    /* Increase the size of the icons */
+    .menu-icon {
+      font-size: 1.5em;
+      /* Increase icon size */
+      vertical-align: middle;
+      /* Align icon vertically in the middle */
+      margin-right: 10px;
+      /* Space between icon and text */
+    }
+  </style>
   <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -36,9 +53,11 @@
     ga('create', 'UA-96534204-1', 'auto');
     ga('send', 'pageview');
 
+    
   </script>
 
-
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script src="js/modernizr.custom.js"></script>
 </head>
 
 <body>
@@ -55,7 +74,7 @@
     <!-- Header -->
     <header id="site_header" class="header mobile-menu-hide header-color-dark">
       <div class="my-photo tilt-effect">
-        <img src="https://genexyz.net/resources/images/profile_photo.png" alt="image">
+        <img src="images/photo.png" alt="image">
       </div>
 
       <div class="site-title-block">
@@ -108,7 +127,7 @@
     <!-- Main Content -->
     <div id="main" class="site-main">
       <!-- Page changer wrapper -->
-      <div class="pt-wrapper" style="background-image: url(https://genexyz.net/resources/images/main_bg_light.jpg);">
+      <div class="pt-wrapper" style="background-image: url(images/main_bg_light.jpg);">
         <!-- Subpages -->
         <div class="subpages">
 
@@ -144,26 +163,31 @@
               <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-4 subpage-block">
                   <div class="my-photo-block tilt-effect">
-                    <img src="https://genexyz.net/resources/images/aboutmefoto.png" alt="">
+                    <img src="images/aboutmefoto.png" alt="">
                   </div>
                 </div>
 
                 <div class="col-sm-6 col-md-6 col-lg-4">
                   <h3>Web Application Developer</h3>
                   <p>I'm a very passionate web developer from Jakarta, Indonesia with experience in the programming
-                    industry. I enjoy working on new projects that require swift learning . I'm always open to software
-                    development works.
+                    industry. I have worked on various projects that require swift learning and also multiple skills
+                    to accomplish. I'm always open to software development works.
                   </p>
-                  <p>Some soft skills i got that will benefit in this business is my great learning passion, fast
-                    learning, teamwork capability, mentoring, and a bit of public speaking skills.
+                  <p>Some soft skills i got that will benefit in this business is my endless learning passion, fast
+                    learning, teamwork capability, mentoring and public speaking skills.
                   </p>
                 </div>
 
                 <div class="col-sm-6 col-md-6 col-lg-4 subpage-block">
                   <ul class="info-list">
-                    <li><span class="title">Age</span><span class="value">22</span></li>
+                    @php
+                    $year = date("Y");
+                    $birthday = $year -2001;
+                    @endphp
+
+                    <li><span class="title">Age</span><span class="value">{{$birthday}}</span></li>
                     <li><span class="title">Residence</span><span class="value">Indonesia</span></li>
-                    <li><span class="title">City</span><span class="value">Central Jakarta</span></li>
+                    <li><span class="title">City</span><span class="value">Jakarta</span></li>
                     <li><span class="title">e-mail</span><span class="value"><a href="owen.djohan@gmail.com"><span
                             class="__cf_email__"
                             data-cfemail="c7a2aaa6aeab87a2bfa6aab7aba2e9a4a8aa">owen.djohan@gmail.com</span></a></span>
@@ -174,9 +198,13 @@
                   </ul>
 
                   <ul class="social-links">
+                    <li><a class="tip social-button" href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                     <!-- Full list of social icons: http://fontawesome.io/icons/#brand -->
-                    <li><a class="tip social-button" href="https://www.linkedin.com/in/nicholas-owen-4262171b8/" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a class="tip social-button" href="https://www.instagram.com/n_ow3n/" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                    <li><a class="tip social-button" href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="tip social-button" href="#" title="Google Plus"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li><a class="tip social-button" href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                    <li><a class="tip social-button" href="#" title="Instagram"><i class="fa fa-instagram"></i></a></li>
                     <!--<li><a class="tip social-button" href="#" title="last.fm"><i class="fa fa-lastfm"></i></a></li>-->
                     <!--<li><a class="tip social-button" href="#" title="Dribbble"><i class="fa fa-dribbble"></i></a></li>-->
                   </ul>
@@ -192,8 +220,7 @@
                 <div class="col-sm-6 col-md-3 subpage-block">
                   <div class="service-block">
                     <div class="service-info">
-                      <img src="https://genexyz.net/resources/images/service/web_design_icon.png"
-                        alt="Responsive Design">
+                      <img src="images/service/web_design_icon.png" alt="Responsive Design">
                       <h4>Website Design</h4>
                       <p>I can build website for all your needs and business.</p>
                     </div>
@@ -203,7 +230,7 @@
                 <div class="col-sm-6 col-md-3 subpage-block">
                   <div class="service-block">
                     <div class="service-info">
-                      <img src="https://genexyz.net/resources/images/service/app_dev.png" alt="Photography">
+                      <img src="images/service/app_dev.png" alt="Photography">
                       <h4>Application Development</h4>
                       <p>I'm also experienced on developing varioys applications ranging from core banking system to
                         simple applications like cashier system .</p>
@@ -214,7 +241,7 @@
                 <div class="col-sm-6 col-md-3 subpage-block">
                   <div class="service-block">
                     <div class="service-info">
-                      <img src="https://genexyz.net/resources/images/service/creativity_icon.png" alt="Creativity">
+                      <img src="images/service/creativity_icon.png" alt="Creativity">
                       <h4>Consultation</h4>
                       <p>Consulting service for your system or business flow design.</p>
                     </div>
@@ -224,7 +251,7 @@
                 <div class="col-sm-6 col-md-3 subpage-block">
                   <div class="service-block">
                     <div class="service-info">
-                      <img src="https://genexyz.net/resources/images/service/database.png" alt="Advetising">
+                      <img src="images/service/database.png" alt="Advetising">
                       <h4>System/Data Migration</h4>
                       <p>I'm experienced and knowledgeable in databases such as MySQL, JBase, and Excel databases.</p>
                     </div>
@@ -241,43 +268,37 @@
               <div class="row">
                 <div class="col-sm-4 col-md-2 subpage-block">
                   <div class="client-block">
-                    <a href="#" target="_blank"><img src="https://genexyz.net/resources/images/clients/client_1.png"
-                        alt="image"></a>
+                    <a href="#" target="_blank"><img src="images/clients/client_1.png" alt="image"></a>
                   </div>
                 </div>
 
                 <div class="col-sm-4 col-md-2 subpage-block">
                   <div class="client-block">
-                    <a href="#" target="_blank"><img src="https://genexyz.net/resources/images/clients/client_2.png"
-                        alt="image"></a>
+                    <a href="#" target="_blank"><img src="images/clients/client_2.png" alt="image"></a>
                   </div>
                 </div>
 
                 <div class="col-sm-4 col-md-2 subpage-block">
                   <div class="client-block">
-                    <a href="#" target="_blank"><img src="https://genexyz.net/resources/images/clients/client_3.png"
-                        alt="image"></a>
+                    <a href="#" target="_blank"><img src="images/clients/client_3.png" alt="image"></a>
                   </div>
                 </div>
 
                 <div class="col-sm-4 col-md-2 subpage-block">
                   <div class="client-block">
-                    <a href="#" target="_blank"><img src="https://genexyz.net/resources/images/clients/client_4.png"
-                        alt="image"></a>
+                    <a href="#" target="_blank"><img src="images/clients/client_4.png" alt="image"></a>
                   </div>
                 </div>
 
                 <div class="col-sm-4 col-md-2 subpage-block">
                   <div class="client-block">
-                    <a href="#" target="_blank"><img src="https://genexyz.net/resources/images/clients/client_5.png"
-                        alt="image"></a>
+                    <a href="#" target="_blank"><img src="images/clients/client_5.png" alt="image"></a>
                   </div>
                 </div>
 
                 <div class="col-sm-4 col-md-2 subpage-block">
                   <div class="client-block">
-                    <a href="#" target="_blank"><img src="https://genexyz.net/resources/images/clients/client_6.png"
-                        alt="image"></a>
+                    <a href="#" target="_blank"><img src="images/clients/client_6.png" alt="image"></a>
                   </div>
                 </div>
               </div> --}}
@@ -285,7 +306,7 @@
 
 
               <!-- Fun facts block -->
-              <!-- <div class="block-title">
+              <div class="block-title">
                 <h3>Fun Facts</h3>
               </div>
 
@@ -300,9 +321,9 @@
 
                 <div class="col-sm-6 col-md-3 subpage-block tilt-effect">
                   <div class="fun-fact-block">
-                    <i class="pe-7s-icon pe-7s-alarm"></i>
-                    <h4>Working Hours a Day</h4>
-                    <span class="fun-value">10</span>
+                    <i class="pe-7s-icon pe-7s-portfolio"></i>
+                    <h4>Experiences</h4>
+                    <span class="fun-value">3 years</span>
                   </div>
                 </div>
 
@@ -316,12 +337,12 @@
 
                 <div class="col-sm-6 col-md-3 subpage-block tilt-effect">
                   <div class="fun-fact-block">
-                    <i class="pe-7s-icon pe-7s-coffee"></i>
-                    <h4>Coffee Consumed</h4>
-                    <span class="fun-value">20,000</span>
+                    <i class="pe-7s-icon pe-7s-folder"></i>
+                    <h4>Projects Done</h4>
+                    <span class="fun-value">28</span>
                   </div>
                 </div>
-              </div> -->
+              </div>
               <!-- End of Fun fucts block -->
             </div>
           </section>
@@ -463,7 +484,7 @@
                   <div class="download-cv-block">
                     <a class="button" target="_blank" href="{{ asset('download/New_CV.pdf') }}">Download CV</a>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
@@ -491,10 +512,10 @@
                     <a class="filter btn btn-sm btn-link active" data-group="all">All</a>
                   </li>
                   <li>
-                    <a class="filter btn btn-sm btn-link" data-group="media">Media</a>
+                    <a class="filter btn btn-sm btn-link" data-group="media">Website</a>
                   </li>
                   <li>
-                    <a class="filter btn btn-sm btn-link" data-group="illustration">Illustration</a>
+                    <a class="filter btn btn-sm btn-link" data-group="illustration">Applications</a>
                   </li>
                   <li>
                     <a class="filter btn btn-sm btn-link" data-group="video">Video</a>
@@ -507,8 +528,8 @@
 
                   <!-- Portfolio Item 1 -->
                   <figure class="item" data-groups='["all", "media"]'>
-                    <a class="ajax-page-load" href="portfolio-1.html">
-                      <img src="https://genexyz.net/resources/images/portfolio/1.jpg" alt="">
+                    <a href="portfolio1">
+                      <img src="images/portfolio/1.jpg" alt="">
                       <div>
                         <h5 class="name">Aplikasi Survei Kepuasan Pelanggan</h5>
                         <small>Media</small>
@@ -518,11 +539,23 @@
                   </figure>
                   <!-- /Portfolio Item 1 -->
 
+                  <!-- Portfolio Item 1 -->
+                  <figure class="item" data-groups='["all", "media"]'>
+                    <a href="portfolio2">
+                      <img src="images/portfolio/2.jpg" alt="">
+                      <div>
+                        <h5 class="name">Roemah Yoga Rian</h5>
+                        <small>Media</small>
+                        <i class="pe-7s-icon pe-7s-display2"></i>
+                      </div>
+                    </a>
+                  </figure>
+                  <!-- /Portfolio Item 1 -->
+
                   <!-- Portfolio Item 2 -->
                   <figure class="item" data-groups='["all", "video"]'>
-                    <a href="https://player.vimeo.com/video/97102654?autoplay=1" title="Praesent Dolor Ex"
-                      class="lightbox mfp-iframe">
-                      <img src="https://genexyz.net/resources/images/portfolio/2.jpg" alt="">
+                    <a href="portfolio2" title="Praesent Dolor Ex" class="lightbox mfp-iframe">
+                      <img src="images/portfolio/2.jpg" alt="">
                       <div>
                         <h5 class="name">Pawon Bule</h5>
                         <small>Video</small>
@@ -534,9 +567,8 @@
 
                   <!-- Portfolio Item 3 -->
                   <figure class="item" data-groups='["all","illustration"]'>
-                    <a href="https://genexyz.net/resources/images/portfolio/full/3.jpg" class="lightbox"
-                      title="Duis Eu Eros Viverra">
-                      <img src="https://genexyz.net/resources/images/portfolio/3.jpg" alt="">
+                    <a href="images/portfolio/full/3.jpg" class="lightbox" title="Duis Eu Eros Viverra">
+                      <img src="images/portfolio/3.jpg" alt="">
                       <div>
                         <h5 class="name">Perdana Aksara</h5>
                         <small>Illustration</small>
@@ -549,7 +581,7 @@
                   <!-- Portfolio Item 4 -->
                   <figure class="item" data-groups='["all", "media"]'>
                     <a class="ajax-page-load" href="portfolio-2.html">
-                      <img src="https://genexyz.net/resources/images/portfolio/4.jpg" alt="">
+                      <img src="images/portfolio/4.jpg" alt="">
                       <div>
                         <h5 class="name">Project Name</h5>
                         <small>Media</small>
@@ -561,9 +593,8 @@
 
                   <!-- Portfolio Item 5 -->
                   <figure class="item" data-groups='["all", "illustration"]'>
-                    <a href="https://genexyz.net/resources/images/portfolio/full/5.jpg" class="lightbox"
-                      title="Aliquam Condimentum Magna Rhoncus">
-                      <img src="https://genexyz.net/resources/images/portfolio/5.jpg" alt="">
+                    <a href="images/portfolio/full/5.jpg" class="lightbox" title="Aliquam Condimentum Magna Rhoncus">
+                      <img src="images/portfolio/5.jpg" alt="">
                       <div>
                         <h5 class="name">Project Name</h5>
                         <small>Illustration</small>
@@ -576,7 +607,7 @@
                   <!-- Portfolio Item 6 -->
                   <figure class="item" data-groups='["all", "media"]'>
                     <a class="ajax-page-load" href="portfolio-3.html">
-                      <img src="https://genexyz.net/resources/images/portfolio/6.jpg" alt="">
+                      <img src="images/portfolio/6.jpg" alt="">
                       <div>
                         <h5 class="name">Project Name</h5>
                         <small>Media</small>
@@ -590,7 +621,7 @@
                   <figure class="item" data-groups='["all", "video"]'>
                     <a href="https://player.vimeo.com/video/97102654?autoplay=1" title="Nulla Facilisi"
                       class="lightbox mfp-iframe">
-                      <img src="https://genexyz.net/resources/images/portfolio/7.jpg" alt="">
+                      <img src="images/portfolio/7.jpg" alt="">
                       <div>
                         <h5 class="name">Project Name</h5>
                         <small>Video</small>
@@ -603,7 +634,7 @@
                   <!-- Portfolio Item 8 -->
                   <figure class="item" data-groups='["all",  "media"]'>
                     <a class="ajax-page-load" href="portfolio-4.html">
-                      <img src="https://genexyz.net/resources/images/portfolio/8.jpg" alt="">
+                      <img src="images/portfolio/8.jpg" alt="">
                       <div>
                         <h5 class="name">Project Name</h5>
                         <small>Media</small>
@@ -615,9 +646,8 @@
 
                   <!-- Portfolio Item 9 -->
                   <figure class="item" data-groups='["all","illustration"]'>
-                    <a href="https://genexyz.net/resources/images/portfolio/full/9.jpg" class="lightbox"
-                      title="Mauris Neque Dolor">
-                      <img src="https://genexyz.net/resources/images/portfolio/9.jpg" alt="">
+                    <a href="images/portfolio/full/9.jpg" class="lightbox" title="Mauris Neque Dolor">
+                      <img src="images/portfolio/9.jpg" alt="">
                       <div>
                         <h5 class="name">Project Name</h5>
                         <small>Illustration</small>
@@ -631,7 +661,7 @@
                   <figure class="item" data-groups='["all", "video"]'>
                     <a href="https://player.vimeo.com/video/97102654?autoplay=1" title="Donec Lectus Arcu"
                       class="lightbox mfp-iframe">
-                      <img src="https://genexyz.net/resources/images/portfolio/10.jpg" alt="">
+                      <img src="images/portfolio/10.jpg" alt="">
                       <div>
                         <h5 class="name">Project Name</h5>
                         <small>Video</small>
@@ -643,9 +673,8 @@
 
                   <!-- Portfolio Item 11 -->
                   <figure class="item" data-groups='["all","illustration"]'>
-                    <a href="https://genexyz.net/resources/images/portfolio/full/11.jpg" class="lightbox"
-                      title="Duis Eu Eros Viverra">
-                      <img src="https://genexyz.net/resources/images/portfolio/11.jpg" alt="">
+                    <a href="images/portfolio/full/11.jpg" class="lightbox" title="Duis Eu Eros Viverra">
+                      <img src="images/portfolio/11.jpg" alt="">
                       <div>
                         <h5 class="name">Project Name</h5>
                         <small>Illustration</small>
@@ -658,7 +687,7 @@
                   <!-- Portfolio Item 12 -->
                   <figure class="item" data-groups='["all","media"]'>
                     <a class="ajax-page-load" href="portfolio-5.html">
-                      <img src="https://genexyz.net/resources/images/portfolio/12.jpg" alt="">
+                      <img src="images/portfolio/12.jpg" alt="">
                       <div>
                         <h5 class="name">Project Name</h5>
                         <small>Media</small>
@@ -696,7 +725,7 @@
                     rutrum
                     egestas. Integer ultrices libero sed justo vehicula, eget tincidunt tortor tempus.</p> --}}
                   <p>I'm always available. I prefer to be contacted through
-                    Whatsapp if possible, but emails are also fine ðŸ˜Š.
+                    Whatsapp if possible, but emails are also fine 😊.
                   </p>
                   <div class="contact-info-block">
                     <div class="ci-icon">
@@ -733,7 +762,7 @@
                   </div>
                 </div>
 
-                <!-- <div class="col-sm-6 col-md-6 subpage-block">
+                <div class="col-sm-6 col-md-6 subpage-block">
                   <div class="block-title">
                     <h3>Contact Form</h3>
                   </div>
@@ -770,7 +799,7 @@
                       <input type="submit" class="button btn-send" value="Send message">
                     </div>
                   </form>
-                </div> -->
+                </div>
               </div>
             </div>
           </section>
@@ -844,6 +873,8 @@
       </a>
     </div>
   </div>
+  <!-- /Demo Color changer -->
+
 
   <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
   <script src="{{ asset('js/modernizr.custom.js') }}"></script>
@@ -866,6 +897,5 @@
     crossorigin="anonymous"></script>
 </body>
 
-<!-- Mirrored from lmpixels.com/demo/unique/unique-vcard/index-dark.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Mar 2024 09:30:26 GMT -->
 
 </html>

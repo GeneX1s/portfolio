@@ -12,19 +12,19 @@
   <meta name="author" content="lmtheme" />
   <link rel="shortcut icon" href="favicon.ico">
 
-  <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
-  <link rel="stylesheet" href="/css/normalize.css" type="text/css">
-  <link rel="stylesheet" href="/css/animate.css" type="text/css">
-  <link rel="stylesheet" href="/css/transition-animations.css" type="text/css">
-  <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css" type="text/css">
-  <link rel="stylesheet" href="/css/owl.carousel.css" type="text/css">
-  <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
-  <link rel="stylesheet" href="/css/main-red.css" type="text/css">
-  <link rel="stylesheet" href="/css/pe-icon-7-stroke.css" type="text/css">
+  <link rel="stylesheet" href="/public/css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="/public/css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="/public/css/animate.css" type="text/css">
+  <link rel="stylesheet" href="/public/css/transition-animations.css" type="text/css">
+  <link rel="stylesheet" href="/public/css/jquery.mCustomScrollbar.min.css" type="text/css">
+  <link rel="stylesheet" href="/public/css/owl.carousel.css" type="text/css">
+  <link rel="stylesheet" href="/public/css/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="/public/css/main-red.css" type="text/css">
+  <link rel="stylesheet" href="/public/css/pe-icon-7-stroke.css" type="text/css">
 
 
   <!-- This styles needs for demo -->
-  <link rel="stylesheet" href="/css/lmpixels-demo-panel.css" type="text/css">
+  <link rel="stylesheet" href="/public/css/lmpixels-demo-panel.css" type="text/css">
   <!-- /This styles needs for demo -->
 
   <script>
@@ -51,9 +51,11 @@
   <div class="container">
     @yield('container')
     <style>
-    .container, .container-md, .container-sm {
+      .container,
+      .container-md,
+      .container-sm {
         max-width: unset !important;
-    }
+      }
     </style>
     {{-- yield container supaya bisa dipanggil dari child class(page lain) --}}
   </div>

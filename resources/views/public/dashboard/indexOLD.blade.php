@@ -1,4 +1,4 @@
-@extends("dashboard.layouts.main")
+@extends("public.dashboard.layouts.main")
 @section("container")
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en-US" dir="ltr">
@@ -89,7 +89,7 @@
                                                         aria-label="Toggle Navigation"><span
                                                                 class="navbar-toggle-icon"><span
                                                                         class="toggle-line"></span></span></button>
-                                                <a class="navbar-brand me-1 me-sm-3" href="/">
+                                                <a class="navbar-brand me-1 me-sm-3" href="/public/">
                                                         <div class="d-flex align-items-center"><img class="me-2"
                                                                         src="dasbor/img/icons/spot-illustrations/falcon.png"
                                                                         alt="" width="40" /><span
@@ -1053,7 +1053,7 @@
                                                                         <div
                                                                                 class="bg-white dark__bg-1000 rounded-3 py-2">
                                                                                 <a class="dropdown-item link-600 fw-medium"
-                                                                                        href="/">Default</a><a
+                                                                                        href="/public/">Default</a><a
                                                                                         class="dropdown-item link-600 fw-medium"
                                                                                         href="dashboard/analytics.html">Analytics</a><a
                                                                                         class="dropdown-item link-600 fw-medium"
@@ -1872,7 +1872,7 @@
                                                         data-bs-toggle="tooltip" data-bs-placement="left"
                                                         title="Toggle Navigation"><span class="navbar-toggle-icon"><span
                                                                         class="toggle-line"></span></span></button>
-                                        </div><a class="navbar-brand" href="/">
+                                        </div><a class="navbar-brand" href="/public/">
                                                 <div class="d-flex align-items-center py-3 hidden"><img class="me-2"
                                                                 src="dasbor/img/icons/spot-illustrations/falcon.png"
                                                                 alt="" width="40" /><span
@@ -1897,7 +1897,7 @@
                                                                 </a>
                                                                 <ul class="nav collapse show" id="dashboard">
                                                                         <li class="nav-item"><a class="nav-link active"
-                                                                                        href="/">
+                                                                                        href="/public/">
                                                                                         <div
                                                                                                 class="d-flex align-items-center">
                                                                                                 <span
@@ -4746,7 +4746,7 @@
                                         aria-controls="navbarStandard" aria-expanded="false"
                                         aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
                                                         class="toggle-line"></span></span></button>
-                                <a class="navbar-brand me-1 me-sm-3" href="/">
+                                <a class="navbar-brand me-1 me-sm-3" href="/public/">
                                         <div class="d-flex align-items-center"><img class="me-2"
                                                         src="dasbor/img/icons/spot-illustrations/falcon.png" alt=""
                                                         width="40" /><span
@@ -4762,7 +4762,7 @@
                                                                 aria-labelledby="dashboards">
                                                                 <div class="bg-white dark__bg-1000 rounded-3 py-2"><a
                                                                                 class="dropdown-item link-600 fw-medium"
-                                                                                href="/">Default</a><a
+                                                                                href="/public/">Default</a><a
                                                                                 class="dropdown-item link-600 fw-medium"
                                                                                 href="dashboard/analytics.html">Analytics</a><a
                                                                                 class="dropdown-item link-600 fw-medium"
@@ -6139,7 +6139,7 @@
                                                 aria-controls="navbarVerticalCollapse" aria-expanded="false"
                                                 aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
                                                                 class="toggle-line"></span></span></button>
-                                        <a class="navbar-brand me-1 me-sm-3" href="/">
+                                        <a class="navbar-brand me-1 me-sm-3" href="/public/">
                                                 <div class="d-flex align-items-center"><img class="me-2"
                                                                 src="dasbor/img/icons/spot-illustrations/falcon.png"
                                                                 alt="" width="40" /><span
@@ -7019,7 +7019,7 @@
                                                 aria-controls="navbarVerticalCollapse" aria-expanded="false"
                                                 aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
                                                                 class="toggle-line"></span></span></button>
-                                        <a class="navbar-brand me-1 me-sm-3" href="/">
+                                        <a class="navbar-brand me-1 me-sm-3" href="/public/">
                                                 <div class="d-flex align-items-center"><img class="me-2"
                                                                 src="dasbor/img/icons/spot-illustrations/falcon.png"
                                                                 alt="" width="40" /><span
@@ -7037,7 +7037,7 @@
                                                                         <div
                                                                                 class="bg-white dark__bg-1000 rounded-3 py-2">
                                                                                 <a class="dropdown-item link-600 fw-medium"
-                                                                                        href="/">Default</a><a
+                                                                                        href="/public/">Default</a><a
                                                                                         class="dropdown-item link-600 fw-medium"
                                                                                         href="dashboard/analytics.html">Analytics</a><a
                                                                                         class="dropdown-item link-600 fw-medium"
@@ -8670,7 +8670,8 @@
                                                                                                 src="dasbor/img/icons/weather-icon.png"
                                                                                                 alt="" height="60" />
                                                                                         <div>
-                                                                                                <h6 class="mb-2">Jakarta Pusat</h6>
+                                                                                                <h6 class="mb-2">Jakarta
+                                                                                                        Pusat</h6>
                                                                                                 <div
                                                                                                         class="fs-11 fw-semi-bold">
                                                                                                         <div
@@ -9095,7 +9096,7 @@
                                                         <!--/.bg-holder-->
                                                         <div class="card-body position-relative">
                                                                 <a class="nav-link"
-                                                                        href="/dashboard/transactions/index">
+                                                                        href="/public/dashboard/transactions/index">
                                                                         <i class="fas fa-fw fa-star"></i>
                                                                         <span>index</span></a>
                                                                 <p class="fs-10 mb-0">Your storage will be running out
@@ -10054,7 +10055,7 @@
                                         alt="" width="120" />
                                 <h5>Powered By</h5>
                                 <p class="fs-10">Falcon.</p>
-                                        {{-- <a class="mb-3 btn btn-primary"
+                                {{-- <a class="mb-3 btn btn-primary"
                                         href="https://themes.getbootstrap.com/product/falcon-admin-dashboard-webapp-template/"
                                         target="_blank">Purchase</a> --}}
                         </div>

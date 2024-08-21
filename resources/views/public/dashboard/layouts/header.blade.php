@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('public.dashboard.layouts.main')
 @section('container')
 
 <!DOCTYPE html>
