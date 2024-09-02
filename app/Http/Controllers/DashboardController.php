@@ -102,7 +102,7 @@ class DashboardController extends Controller
     $spendable = ($salary * 12) / 2 - $pengeluaran_tahunan;
     $quota = $salary / 2 - $pengeluaran_bulanan;
 
-    return view('/public/dashboard.index', [
+    return view('/dashboard.index', [
       'spendable' => $spendable,
       'quota' => $quota,
       'pengeluaran_mingguan' => $pengeluaran_mingguan,
@@ -131,7 +131,7 @@ class DashboardController extends Controller
   {
 
 
-    return view('/public/dashboard.posts.create_user');
+    return view('/dashboard.posts.create_user');
   }
 
   /**

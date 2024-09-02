@@ -23,7 +23,7 @@ class IndexController extends Controller
         // $specials = Special::get();
 
 
-        return view('/public/index', [
+        return view('/index', [
             // 'menus' => $menus,
             // 'specials' => $specials,
         ]);
@@ -40,7 +40,7 @@ class IndexController extends Controller
     {
 
 
-        return view('/public/dashboard.posts.create_user');
+        return view('/dashboard.posts.create_user');
 
         // User::create([
         //     'name' => $request->name,
@@ -132,7 +132,7 @@ class IndexController extends Controller
     //         ];
     //     }
     //     dd($data);
-    //     return view('/public/dashboard.posts.show', [
+    //     return view('/dashboard.posts.show', [
     //         'ratings' => $data
     //     ]);
     // }

@@ -28,7 +28,7 @@ class OrderController extends Controller
   public function show(Order $order, Request $request)
   {
     $orders = Order::where('id', $order->id)->get();
-    return view('/public/dashboard.orders.detail', [
+    return view('/dashboard.orders.detail', [
       'orders' => $orders,
     ]);
   }
@@ -53,7 +53,7 @@ class OrderController extends Controller
       })
       ->get();
 
-    return view('/public/dashboard.orders.index', [
+    return view('/dashboard.orders.index', [
       // 'orders' => $data,
       'orders' => $orders,
     ]);
@@ -69,10 +69,10 @@ class OrderController extends Controller
 
     $menus = Menu::get();
 
-    return view('/public/dashboard.orders.create', [
+    return view('/dashboard.orders.create', [
       'menus' => $menus,
     ]);
-    // return view('/public/dashboard.orders.create');
+    // return view('/dashboard.orders.create');
   }
 
   /**

@@ -39,15 +39,17 @@ Route::get('/inner-page', function () {
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/dashboard/users/manage', [LoginController::class, 'manage'])->name('manage')->middleware('auth');
 //name('login') wajib biar gk error klo blom login
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/dashboard/users/update', [LoginController::class, 'update'])->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']); //untuk simpen data yg diregister
 
 // Route::get('/dashboard', function () {
-//     return view('/public/dashboard.index');
+//     return view('/dashboard.index');
 // })->name("dashboard");
 
 
@@ -57,14 +59,16 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 ////////////////Transactions/////////
 Route::get('/dashboard/transactions/index', [TransactionController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/transactions/create', [TransactionController::class, 'create'])->middleware('auth');
+Route::get('/dashboard/setvalue', [TransactionController::class, 'view_setvalue'])->middleware('auth');
 Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
 Route::post('/dashboard/transactions/{transaction}/template', [TransactionController::class, 'template_add'])->middleware('auth');
 Route::post('/dashboard/transactions/template', [TransactionController::class, 'template'])->middleware('auth');
+Route::post('/dashboard/transactions/setvalue', [TransactionController::class, 'setvalue'])->middleware('auth');
 ////////////////////////////////////
 
 ////////////////Orders/////////
-Route::get('/dashboard/orders/index', [OrderController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/orders/create', [OrderController::class, 'create'])->middleware('auth');
+Route::get('/dashboard/users/index', [LoginController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/users/create', [LoginController::class, 'create'])->middleware('auth');
 Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
 Route::post('/dashboard/orders/changeStatus/{order:id}', [OrderController::class, 'changeStatus'])->middleware('auth');
 ////////////////////////////////////

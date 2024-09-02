@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\ApiResponse;
 use App\Models\Ingredients;
+use App\Models\SetValue;
 use App\Models\Template;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Date;
@@ -23,17 +24,6 @@ class TransactionController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-
-  public function show(Transaction $transaction, Ingredients $ingredients)
-  {
-    // dd($transaction->id);
-    // $ingredients = Ingredients::get();
-    // return view('/public/dashboard.transactions.group_edit', [
-    //   'transaction' => $transaction,
-    //   'ingredients' => $ingredients,
-    // ]);
-  }
-
 
   public function index(Request $request)
   {
@@ -87,7 +77,7 @@ class TransactionController extends Controller
       $pengeluaran = $pengeluaran + $minus;
     }
 
-    return view('/public/dashboard.transactions.index', [
+    return view('/dashboard.transactions.index', [
       // 'transactions' => $data,
       'transactions' => $transactions,
       'total' => $total,
@@ -99,7 +89,7 @@ class TransactionController extends Controller
   public function create() //redirect to page
   {
     $templates = Template::get();
-    return view('/public/dashboard.transactions.create', [
+    return view('/dashboard.transactions.create', [
       // 'transactions' => $data,
       'templates' => $templates,
     ]);
@@ -203,4 +193,36 @@ class TransactionController extends Controller
     // Redirect or respond as needed
     return redirect()->back()->with('success', 'Template created successfully.');
   }
+
+
+  public function setvalue(Request $request)
+  {
+
+    $setvalue = Setvalue::where('id', 1)->first();
+
+    $request->validate([
+      'salary' => 'required',
+      'outcome' => 'required',
+    ]);
+    
+    $input = $request->all();
+    
+    
+        $setvalue->update([
+          "status" => "Deleted",
+          'salary' => $input['salary'],
+          'outcome' => $input['outcome'],
+        ]);
+        
+    // Redirect or respond as needed
+    return redirect()->back()->with('success', 'Value updated successfully.');
+  }
+
+  public function view_setvalue()
+  {
+    return view('dashboard.setvalue', [
+    ]);
+  }
+
+
 }

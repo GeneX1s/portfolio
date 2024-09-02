@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('setvalue', function (Blueprint $table) {
             $table->id();
-            $table->integer('salary');//harga
+            $table->integer('salary')->default(5555555);
+            $table->integer('outcome')->default(1550000);//monthly
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-@extends('public.dashboard.layouts.main')
+@extends('dashboard.layouts.main')
 
 <style>
   .img {
@@ -10,7 +10,7 @@
 </style>
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <a class="h2" href="/public/dashboard">Transactions</a>
+  <h1 class="h2">Transactions</h1>
 </div>
 
 @if(session()->has('success'))
@@ -20,8 +20,8 @@
 @endif
 
 <div class="table-responsive col-lg-10">
-  {{-- <a href="/public/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
-    action="{{ route('transactions.index') }}" method="GET">
+  {{-- <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
+    action="{{ route('calculators.index') }}" method="GET">
     @csrf
     <div class="row">
       <div class="col-md-3">
@@ -36,17 +36,11 @@
           <input type="date" class="form-control" id="end_date" name="end_date">
         </div>
       </div>
-
       <div class="col-md-3">
         <div class="mb-3">
-          <label for="status" class="form-label">Status</label>
-          <select class="form-control" name="status" id="status">
-            <option value="Active" {{ old('status')=='Active' ? 'selected' : '' }}>Active</option>
-            <option value="Deleted" {{ old('status')=='Deleted' ? 'selected' : '' }}>Deleted</option>
-            <option value="Pending" {{ old('status')=='Pending' ? 'selected' : '' }}>Pending</option>
-          </select>
+          <label for="name" class="form-label">Nama</label>
+          <input type="text" class="form-control" id="name" name="name">
         </div>
-
       </div>
       <div class="col-md-3">
         <div class="mb-3">
@@ -56,11 +50,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-1">
         <button type="submit" class="btn btn-primary">Search</button>
       </div>
       <div class="col-md">
-        <a href="/public/dashboard/transactions/create" class="btn btn-primary mb-3">Add New</a>
+        <a href="/dashboard/calculators/create" class="btn btn-primary mb-3">Add New</a>
       </div>
     </div>
   </form>
@@ -70,48 +64,35 @@
     <thead class="thead">
       <tr>
         <th scope="col">No.</th>
-        <th scope="col">ID Transaksi</th>
+        <th scope="col">Nama</th>
         <th scope="col">Tanggal</th>
-        <th scope="col">Kategori</th>
+        <th scope="col">Tipe</th>
         <th scope="col">Nominal</th>
         <th scope="col">Deskripsi</th>
-        <th scope="col">Status</th>
+        <th scope="col">Author</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($transactions as $transaction)
+      @foreach ($calculators as $calculator)
       <tr>
         <td>{{$loop->iteration}}</td>
 
-        <td>{{$transaction->nama}}</td>
-        <td>{{$transaction->created_at}}</td>
-        <td>{{$transaction->kategori}}</td>
-        <td>Rp.{{ number_format($transaction->nominal, '2', ',', '.') }}</td>
-        <td>{{$transaction->deskripsi}}</td>
-        <td>{{$transaction->status}}</td>
+        <td>{{$calculator->nama}}</td>
+        <td>{{$calculator->created_at}}</td>
+        <td>{{$calculator->tipe}}</td>
+        <td>Rp.{{ number_format($calculator->nominal, '2', ',', '.') }}</td>
+        <td>{{$calculator->deskripsi}}</td>
+        <td>{{$calculator->status}}</td>
+        <td>{{$calculator->_author}}</td>
 
         <td>
-          <form action="/dashboard/transactions/{{$transaction->id}}" method="post" class="d-inline">
+          <form action="/dashboard/calculators/{{$calculator->id}}" method="post" class="d-inline">
             @method('delete')
             @csrf
-            @if ($transaction->status != "Deleted")
-
             <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
               <i class="fas fa-regular fa-trash"></i>
             </button>
-            @endif
-          </form>
-
-          <form action="/dashboard/transactions/{{ $transaction->id }}/template" method="post" class="d-inline">
-            @csrf
-            @method('POST')
-            <!-- Not strictly necessary with `POST` method -->
-            @if ($transaction->status != "Deleted")
-            <button class="badge bg-success border-0" type="submit">
-              <i class="fas fa-regular fa-plus"></i>
-            </button>
-            @endif
           </form>
 
         </td>
@@ -140,19 +121,5 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-2">
-      <div class="mb-1">
-        <button type="submit" class="btn btn-primary">Batch Select</button>
-        </form>
-      </div>
-    </div>
-    <div class="col-md-1">
-      <div class="mb-1">
-        <a class="btn btn-danger" href="/public/dashboard">Back</a>
-      </div>
-    </div>
-
-  </div>
 </div>
 @endsection

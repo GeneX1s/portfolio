@@ -14,7 +14,7 @@
   <div class="container-fluid">
     <!-- Navbar content goes here -->
 
-    <a class="navbar-brand text-white" href="/public/">Survei Kepuasan</a>
+    <a class="navbar-brand text-white" href="/">Survei Kepuasan</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             @can('admin')
-            <li><a class="dropdown-item" href="/public/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i>My
+            <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i>My
                 Dashboard</a></li>
             <li>
               <hr class="dropdown-divider">

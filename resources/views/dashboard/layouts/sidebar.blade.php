@@ -2,7 +2,7 @@
 <nav class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/public/">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-laugh-wink"></i>
     </div>
@@ -14,7 +14,7 @@
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-    <a class="nav-link" href="/public/dashboard">
+    <a class="nav-link" href="/dashboard">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
@@ -38,26 +38,26 @@
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Foods:</h6>
-        <a class="collapse-item" href="/public/dashboard/menus/index">Menus</a>
-        <a class="collapse-item" href="/public/dashboard/ingredients/index">Ingredients</a>
+        <a class="collapse-item" href="/dashboard/menus/index">Menus</a>
+        <a class="collapse-item" href="/dashboard/ingredients/index">Ingredients</a>
       </div>
     </div>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="/public/dashboard/specials/index">
+    <a class="nav-link" href="/dashboard/specials/index">
       <i class="fas fa-fw fa-star"></i>
       <span>Specials</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="/public/dashboard/events/index">
+    <a class="nav-link" href="/dashboard/events/index">
       <i class="fas fa-fw fa-calendar"></i>
       <span>Events</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="/public/dashboard/chefs/index">
+    <a class="nav-link" href="/dashboard/chefs/index">
       <i class="fas fa-fw fa-person"></i>
       <span>Chefs</span></a>
   </li>
@@ -112,33 +112,33 @@
 
   <!-- Nav Item - Charts -->
   <li class="nav-item">
-    <a class="nav-link" href="/public/dashboard/orders/index">
+    <a class="nav-link" href="/dashboard/orders/index">
       <i class="fas fa-fw fa-list"></i>
       <span>Orders</span></a>
   </li>
 
   <!-- Nav Item - Charts -->
   <li class="nav-item">
-    <a class="nav-link" href="/public/dashboard/inventories/index">
+    <a class="nav-link" href="/dashboard/inventories/index">
       <i class="fas fa-fw fa-dollar-sign"></i>
-      <span>Inventori</span></a>
+      <span>Aset</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="/public/dashboard/employees/index">
+    <a class="nav-link" href="/dashboard/users/manage">
       <i class="fas fa-fw fa-person"></i>
-      <span>Karyawan</span></a>
+      <span>User</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="charts.html">
+    <a class="nav-link" href="/dashboard/setvalue">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Set Value</span></a>
   </li>
 
   <!-- Nav Item - Tables -->
   <li class="nav-item">
-    <a class="nav-link" href="/public/dashboard/transactions/index">
+    <a class="nav-link" href="/dashboard/transactions/index">
       <i class="fas fa-fw fa-table"></i>
       <span>Transactions</span></a>
   </li>

@@ -104,7 +104,7 @@
   <div class="wrapper">
     @auth
     <div class="sidebar">
-      @include('public.dashboard.layouts.sidebar')
+      @include('dashboard.layouts.sidebar')
     </div>
     @endauth
     <div class="content">

@@ -25,6 +25,7 @@ class SetValue extends Authenticatable
 
   protected $fillable = [
     'salary',
+    'outcome',
   ];
 
   /**
