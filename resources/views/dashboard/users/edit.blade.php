@@ -6,8 +6,9 @@
 </div>
 <div class="row">
   <div class="col-lg-8">
-    <form method="post" action="/dashboard/users/{{$user->id}}/edit" class="mb-5" enctype="multipart/form-data">
+    <form method="post" action="/dashboard/users/{{$user->id}}" class="mb-5" enctype="multipart/form-data">
       <!-- multipart form data harus supaya bisa upload file(img dll) -->
+      @method('put')
       @csrf
 
       <div class="mb-3">

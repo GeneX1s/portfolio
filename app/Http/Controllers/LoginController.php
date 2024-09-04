@@ -88,17 +88,48 @@ class LoginController extends Controller
     ]);
   }
   
-  public function edit()
+  public function create()
   {
-    return view('dashboard.users.edit', [
-      'title' => 'Edit'
+    return view('dashboard.users.create', [
+      'title' => 'Create'
     ]);
   }
   
+  public function edit(User $user)
+  {
+    return view('dashboard.users.edit', [
+      'user' => $user,
+    ]);
+  }
+  
+  public function store(Request $request)
+  {
+
+    $request->validate([
+      'username' => 'required',
+      'email' => 'required',
+      'password' => 'required',
+      'role' => 'required',
+    ]);
+    
+    $input = $request->all();
+    $password = bcrypt($input['password']);
+    User::create([
+      'username' => $input['username'],
+      'email' => $input['email'],
+      'password' => $password,
+      'role' => $input['role'],
+    ]);
+
+
+    // Redirect or respond as needed
+    return redirect('/dashboard/users/index')->with('success', 'New user has been added.');
+  }
+
   public function update(Request $request, User $user)
   {
 
-    $user = User::where('id', 1)->first();
+    $user = User::where('id', $user->id)->first();
     
     $request->validate([
       'email' => 'required',
@@ -127,6 +158,16 @@ class LoginController extends Controller
     return view('dashboard.users.index', [
       'users' => $users,
     ]);
+  }
+
+  public function destroy(User $user)
+  {
+
+    $user = User::where('id',$user->id)->first()->delete();
+    
+    // Redirect or respond as needed
+    
+    return redirect()->back()->with('success', 'User Deleted successfully.');
   }
 }
 

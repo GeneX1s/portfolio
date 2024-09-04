@@ -119,7 +119,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="/dashboard/users/manage">
+    <a class="nav-link" href="/dashboard/users/{{ Auth::id() }}/edit">  
       <i class="fas fa-fw fa-person"></i>
       <span>User</span></a>
   </li>

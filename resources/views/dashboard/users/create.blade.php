@@ -5,7 +5,7 @@
   <h1 class="h2">Add New User</h1>
 </div>
 <div class="col-lg-8">
-  <form method="post" action="/dashboard/users/create" class="mb-5" enctype="multipart/form-data">
+  <form method="post" action="/dashboard/users" class="mb-5" enctype="multipart/form-data">
     <!-- multipart form data harus supaya bisa upload file(img dll) -->
     @csrf
 

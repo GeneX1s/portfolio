@@ -11,6 +11,7 @@ use DateTime;
 use App\Models\Special;
 use App\Models\Transaction;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
@@ -253,7 +254,7 @@ class DashboardController extends Controller
     })->pluck('nominal')->sum();
 
     $september = $septemberr - $septemberr_b;
-    
+
     $october = $transactions->filter(function ($transaction) use ($year_now) {
       $transaction_dt = new DateTime($transaction->created_at);
       return $transaction_dt->format('m') === '10'
@@ -329,7 +330,7 @@ class DashboardController extends Controller
         'Earning' => $pendapatan_tahunan,
         'Spending' => $pengeluaran_tahunan,
         'Investment' => $investment_tahunan
-      ]
+      ],
     ]);
   }
 

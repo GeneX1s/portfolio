@@ -64,22 +64,22 @@
         <td>{{$user->username}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->role}}</td>
-        <td>{{$user->status}}</td>
-
+        @if ($user->role == 'admin' || $user->role == 'guest')
+        
         <td>
           <form action="/dashboard/users/{{$user->id}}" method="post" class="d-inline">
             @method('delete')
             @csrf
             @if ($user->status != "Deleted")
-
+            
             <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
               <i class="fas fa-regular fa-trash"></i>
             </button>
             @endif
           </form>
-
+          
           {{-- a href="/dashboard/menus/{{$menu['id']}}/edit" --}}
-          <form action="/dashboard/users/{{ $user->id }}/edit" method="post" class="d-inline">
+          <form action="/dashboard/users/{{ $user->id }}/edit" class="d-inline">
             @csrf
             @method('POST')
             <!-- Not strictly necessary with `POST` method -->
@@ -89,7 +89,8 @@
           </form>
 
         </td>
-
+        @endif
+        
       </tr>
       @endforeach
 
