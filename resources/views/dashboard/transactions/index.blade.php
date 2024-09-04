@@ -140,19 +140,33 @@
     </div>
   </div>
 
+  <style>
+    .btn-custom {
+      width: 100%; /* Make all buttons the same width */
+      padding: 10px; /* Consistent padding */
+      border-radius: 5px; /* Consistent border radius */
+      text-align: center; /* Center text */
+    }
+  </style>
+  
   <div class="row">
     <div class="col-md-2">
       <div class="mb-1">
-        <button type="submit" class="btn btn-primary">Batch Select</button>
-        </form>
+        <button type="submit" class="btn btn-secondary btn-custom">Batch Select</button>
       </div>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-2">
       <div class="mb-1">
-        <a class="btn btn-danger" href="/dashboard">Back</a>
+        <a class="btn btn-warning btn-custom" href="/dashboard">Export to Excel</a>
       </div>
     </div>
-
+    <div class="col-md-2">
+      <div class="mb-1">
+        <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>
+      </div>
+    </div>
   </div>
+  
+  
 </div>
 @endsection

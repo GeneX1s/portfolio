@@ -27,81 +27,96 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
+// Area Chart Example
 
-/* -------------------------------------------------------------------------- */
-/*                                Market Share                                */
-/* -------------------------------------------------------------------------- */
-
-var marketShareInit = function marketShareInit() {
-  var ECHART_MARKET_SHARE = ".echart-market-share";
-  var $echartMarketShare = document.querySelector(ECHART_MARKET_SHARE);
-  if ($echartMarketShare) {
-      var userOptions = utils.getData($echartMarketShare, "options");
-      var chart = window.echarts.init($echartMarketShare);
-      var getDefaultOptions = function getDefaultOptions() {
-          return {
-              color: [
-                  utils.getColors().primary,
-                  utils.getColors().info,
-                  utils.getGrays()[300],
-              ],
-              tooltip: {
-                  trigger: "item",
-                  padding: [7, 10],
-                  backgroundColor: utils.getGrays()["100"],
-                  borderColor: utils.getGrays()["300"],
-                  textStyle: {
-                      color: utils.getGrays()["1100"],
-                  },
-                  borderWidth: 1,
-                  transitionDuration: 0,
-                  formatter: function formatter(params) {
-                      return "<strong>"
-                          .concat(params.data.name, ":</strong> ")
-                          .concat(params.percent, "%");
-                  },
-              },
-              position: function position(pos, params, dom, rect, size) {
-                  return getPosition(pos, params, dom, rect, size);
-              },
-              legend: {
-                  show: false,
-              },
-              series: [
-                  {
-                      type: "pie",
-                      radius: ["100%", "87%"],
-                      avoidLabelOverlap: false,
-                      hoverAnimation: false,
-                      itemStyle: {
-                          borderWidth: 2,
-                          borderColor: utils.getColor("gray-100"),
-                      },
-                      label: {
-                          normal: {
-                              show: false,
-                              position: "center",
-                              textStyle: {
-                                  fontSize: "20",
-                                  fontWeight: "500",
-                                  color: utils.getGrays()["100"],
-                              },
-                          },
-                          emphasis: {
-                              show: false,
-                          },
-                      },
-                      labelLine: {
-                          normal: {
-                              show: false,
-                          },
-                      },
-                      data: userOptions, // Use the dynamic data here
-                  },
-              ],
-          };
-      };
-      echartSetOption(chart, userOptions, getDefaultOptions);
+var ctx = document.getElementById("myAreaChart");
+var transactions = JSON.parse(ctx.getAttribute('data-transactions'));
+var myLineChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: [{
+      label: "Nilai Bersih",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(78, 115, 223, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointBorderColor: "rgba(78, 115, 223, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: transactions,
+      // data: [0, 10000, 5000],
+      // data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 11
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return 'Rp.' + number_format(value);
+          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      intersect: false,
+      mode: 'index',
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': Rp.' + number_format(tooltipItem.yLabel);
+        }
+      }
+    }
   }
-}
-;
+});

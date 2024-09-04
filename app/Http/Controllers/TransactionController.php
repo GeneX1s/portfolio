@@ -146,15 +146,17 @@ class TransactionController extends Controller
   {
 
     $id_transact = Template::where('id', $request->input('template'))->first()->id_transact;
-    // Fetch the transaction details using the provided template ID
     $transaction = Transaction::where('id', $id_transact)->first();
-    // dd($id_transact);
-    // dd($transaction);
+
     if (!$transaction) {
       return redirect()->back()->with('error', 'Transaction not found.');
     }
 
-    // Prepare data for the new template
+    if ($transaction->status == 'Deleted') {
+
+          return redirect()->back()->with('error', 'Template has been deleted');
+  }
+  
     $input = [
       'nama' => $transaction->nama,
       'nominal' => $transaction->nominal,
@@ -163,6 +165,8 @@ class TransactionController extends Controller
       'created_at' => now(),
       'status' => $transaction->status,
     ];
+
+    
 
     // Create a new transaction template
     Transaction::create($input);

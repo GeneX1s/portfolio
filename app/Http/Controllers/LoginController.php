@@ -84,11 +84,18 @@ class LoginController extends Controller
   public function manage()
   {
     return view('dashboard.users.manage', [
-      'title' => 'Users'
+      'title' => 'User Settings'
     ]);
   }
-
-  public function update(Request $request)
+  
+  public function edit()
+  {
+    return view('dashboard.users.edit', [
+      'title' => 'Edit'
+    ]);
+  }
+  
+  public function update(Request $request, User $user)
   {
 
     $user = User::where('id', 1)->first();
@@ -109,4 +116,17 @@ class LoginController extends Controller
     // Redirect or respond as needed
     return redirect()->back()->with('success', 'Value updated successfully.');
   }
+
+  public function list(Request $request)
+  {
+
+    $users = User::get();
+    
+    // Redirect or respond as needed
+    
+    return view('dashboard.users.index', [
+      'users' => $users,
+    ]);
+  }
 }
+

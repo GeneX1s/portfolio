@@ -250,20 +250,24 @@
                                                         <!-- Dropdown - User Information -->
                                                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                                                 aria-labelledby="userDropdown">
-                                                                <a class="dropdown-item" href="#">
-                                                                        <i
-                                                                                class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                                        Profile
-                                                                </a>
+                                                        @can('admin')
+                                                                
+                                                        <a class="dropdown-item" href="/dashboard/profiles">
+                                                                <i
+                                                                class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                                Switch Profile
+                                                        </a>
+                                                        <a class="dropdown-item" href="#">
+                                                                <i
+                                                                        class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                                Audit Log
+                                                        </a>
+                                                        @endcan
+
                                                                 <a class="dropdown-item" href="#">
                                                                         <i
                                                                                 class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                                                         Settings
-                                                                </a>
-                                                                <a class="dropdown-item" href="#">
-                                                                        <i
-                                                                                class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                                        Activity Log
                                                                 </a>
                                                                 <div class="dropdown-divider"></div>
                                                                 <a class="dropdown-item" href="#" data-toggle="modal"
@@ -442,9 +446,8 @@
                                                                 <!-- Card Body -->
                                                                 <div class="card-body">
                                                                         <div class="chart-area">
-                                                                                {{-- <canvas id="myAreaChart"
+                                                                                <canvas id="myAreaChart"
                                                                                         data-transactions="{{ json_encode($area_chart) }}"></canvas>
-                                                                                --}}
                                                                         </div>
                                                                 </div>
                                                         </div>
@@ -563,8 +566,7 @@
                                                                                         aria-valuemin="0"
                                                                                         aria-valuemax="100"></div>
                                                                         </div>
-                                                                        <h4 class="small font-weight-bold">Payout
-                                                                                Details <span
+                                                                        <h4 class="small font-weight-bold">Transactions create and export <span
                                                                                         class="float-right">80%</span>
                                                                         </h4>
                                                                         <div class="progress mb-4">

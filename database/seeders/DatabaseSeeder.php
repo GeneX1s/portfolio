@@ -24,12 +24,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::create([
-            'name' => 'Admin',
             'username' => 'Admin',
             'email' => 'admin@gmail.com',
-            'nik' => '0000',
             'password' => bcrypt('12345'),
-            'is_admin' => 1
+            'role' => 'super-admin'
         ]);
 
         SetValue::create([
