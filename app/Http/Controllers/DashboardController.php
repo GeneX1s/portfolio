@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\Rating;
 use App\Models\SetValue;
 use Illuminate\Http\Request;
 use App\Models\User;
 use DateTime;
-use App\Models\Special;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -32,8 +29,12 @@ class DashboardController extends Controller
     $start_month = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
     $end_month = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
 
+    
+  $userId = Auth::id();
+  $userRole = User::where('id',$userId)->first()->role;
+
     // Fetch transactions
-    $transactions = Transaction::where('status', 'Active')->get();
+    $transactions = Transaction::where('status', 'Active')->where('profile',$userRole)->get();
     $week_outcomes = $transactions->where('kategori', 'Pengeluaran')
       ->whereBetween('created_at', [$start_date, $end_date])
       ->pluck('nominal')->all();
