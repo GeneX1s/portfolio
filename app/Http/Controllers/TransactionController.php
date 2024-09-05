@@ -43,9 +43,9 @@ class TransactionController extends Controller
       $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
     }
 
-    if (!$request->status) {
-      $status_search = "Active";
-    }
+    // if (!$request->status) {
+    //   $status_search = "Active";
+    // }
     if($userRole == 'super-admin'){
      $profile_filter = 'super-admin' ;
     }
@@ -57,7 +57,7 @@ class TransactionController extends Controller
       $profile_filter = 'ryr' ;
       
     }
-    // dd($status_search);
+    // dd($profile_filter);
 
     $transactions = Transaction::query()
       ->when($status_search, function ($query) use ($status_search) {
@@ -124,18 +124,28 @@ class TransactionController extends Controller
     $request->validate([
       'nominal' => 'required',
       'kategori' => 'required',
+      'sub_kategori' => 'required',
       'deskripsi' => 'nullable',
       'created_at' => Carbon::now(),
       'status' => "Pending",
     ]);
     $input = $request->all();
+    $userId = Auth::id();
+    $userRole = User::where('id',$userId)->first()->role;
 
-    // $input['created_at'] = Carbon::parse($today)->toString();
 
     $input['nama'] = 'TR|' . $date;
     $input['created_at'] = Carbon::now()->format('Y-m-d');
     $input['updated_at'] = Carbon::now()->format('Y-m-d');
     $input['status'] = "Active";
+    if($userRole == 'super-admin'){
+      $input['profile'] = $userRole;
+    }else if($userRole == 'admin'){
+      $input['profile'] = 'ryr';
+    }else if($userRole == 'finance'){
+      $input['profile'] = 'ryr';
+    }
+    
 
     // dd($input);
     Transaction::create($input);
@@ -189,6 +199,7 @@ class TransactionController extends Controller
       'nama' => $transaction->nama,
       'nominal' => $transaction->nominal,
       'kategori' => $transaction->kategori,
+      'sub_kategori' => $transaction->sub_kategori,
       'deskripsi' => $transaction->deskripsi,
       'created_at' => now(),
       'status' => $transaction->status,

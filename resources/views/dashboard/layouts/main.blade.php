@@ -5,7 +5,7 @@
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -26,18 +26,14 @@
       display: flex;
     }
 
-    /* .sidebar {
-      flex: 0 0 auto;
-      /* Sidebar does not grow or shrink
-    } */
-
     .sidebar {
-      width: 130px;
+      width: 150px;
       /* Adjust the width as needed */
       position: fixed;
       top: 0;
       left: 0;
       height: 100vh;
+      padding: 20px;
       /* Sidebar takes full height of the viewport */
       overflow-y: auto;
       /* Enable scrolling for the sidebar if it's taller than the viewport */
@@ -67,35 +63,48 @@
 
 
     .content {
+      /* width: 50%; */
       margin-left: 200px;
       /* Ensure content is pushed to the right of the sidebar */
       padding-left: 1rem;
       /* Optional: add padding to the left of the content */
+      padding: 20px;
       /* Ensure that content does not overlap the sidebar */
       z-index: 1;
       /* Content has a lower z-index than the sidebar */
       /* Remove any conflicting position properties */
     }
 
-    .container,
+    /* .container,
     .container-md,
     .container-sm {
       max-width: unset !important;
-    }
+    } */
 
-    .container,
-    .container-fluid,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container-xl {
-      width: 100%;
-      padding-right: .75rem;
-      padding-left: .75rem;
-      margin-right: auto;
-      margin-left: auto;
-    }
+    /* Override default container max-width to make them full-width */
+.container,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+    width: 100%; /* Ensure container spans full width */
+    padding-right: .75rem; /* Add padding as needed */
+    padding-left: .75rem; /* Add padding as needed */
+    margin-right: auto; /* Center the container horizontally */
+    margin-left: auto; /* Center the container horizontally */
+}
+
+/* Ensure .container-fluid spans the full viewport width */
+.container-fluid {
+    width: 100%; /* Full width container */
+    padding-right: .75rem; /* Padding as needed */
+    padding-left: .75rem; /* Padding as needed */
+}
+
+    
   </style>
+{{-- <p class="d-none d-md-block">Visible on medium screens and up</p> --}}
+{{-- <p class="d-block d-md-none">Visible on small screens</p> --}}
 
 </head>
 
@@ -108,7 +117,7 @@
     </div>
     @endauth
     <div class="content">
-      <div class="container">
+      <div class="container-fluid">
         @yield('container')
       </div>
     </div>
@@ -117,13 +126,13 @@
 
 
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
+{{-- <footer class="sticky-footer bg-white">
   <div class="container my-auto">
     <div class="copyright text-center my-auto">
       <span>Copyright &copy; NOD 2023</span>
     </div>
   </div>
-</footer>
+</footer> --}}
 <!-- End of Footer -->
 
 

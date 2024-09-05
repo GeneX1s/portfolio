@@ -1,7 +1,38 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<style>
+  /* Add custom styles */
+.form-control {
+    padding: 1rem; /* Adjust as needed */
+  }
+  .content {
+            width: 100%; /* Default for small screens */
+        }
+
+        @media (min-width: 768px) { /* Medium screens and up */
+            .content {
+                width: 40%; /* 40% width on medium and larger screens */
+            }
+          }
+.row {
+    margin-top: 1%;
+  }
+  
+  .mb-3 {
+    padding-left:8%;
+    margin-bottom: 1rem; /* Adjust as needed */
+  }
+  
+  
+  .fixed-width {
+    width: 100px; /* Set a fixed width */
+    margin-left:5%;
+    margin-bottom: 1rem; /* Adjust as needed */
+  }
+
+</style>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
   <a class="h2" href="/dashboard">Users</a>
 </div>
 
@@ -11,22 +42,22 @@
 </div>
 @endif
 
-<div class="table-responsive col-lg-10">
+<div class="table-responsive">
   {{-- <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
     action="{{ route('users.index') }}" method="GET">
     @csrf
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-mb-3">
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
           <input type="string" class="form-control" id="username" name="username">
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-mb-3">
         <div class="mb-3">
           <label for="role" class="form-label">Role</label>
-          <select class="form-control" name="role" id="role">
+          <select class="form-control" n  ame="role" id="role">
             <option value="super-admin" {{ old('role')=='Super Admin' ? 'selected' : '' }}>Super Admin</option>
             <option value="admin" {{ old('role')=='Admin' ? 'selected' : '' }}>Admin</option>
             <option value="guest" {{ old('role')=='Guest' ? 'selected' : '' }}>Guest</option>
@@ -36,11 +67,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
-        <button type="submit" class="btn btn-primary">Search</button>
+      <div class="col-md-2 sm-3">
+        <button type="submit" class="btn btn-primary fixed-width">Search</button>
       </div>
-      <div class="col-md">
-        <a href="/dashboard/users/create" class="btn btn-primary mb-3">Add New</a>
+      <div class="col-md-2 sm-3">
+        <a href="/dashboard/users/create" class="btn btn-primary fixed-width">Add New</a>
       </div>
     </div>
   </form>
@@ -64,9 +95,9 @@
         <td>{{$user->username}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->role}}</td>
-        @if ($user->role == 'admin' || $user->role == 'guest')
         
         <td>
+          @if ($user->role == 'admin' || $user->role == 'guest')
           <form action="/dashboard/users/{{$user->id}}" method="post" class="d-inline">
             @method('delete')
             @csrf
@@ -88,8 +119,8 @@
             </button>
           </form>
 
+          @endif
         </td>
-        @endif
         
       </tr>
       @endforeach

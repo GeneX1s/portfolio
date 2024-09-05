@@ -32,9 +32,11 @@ class Transaction extends Authenticatable
     'nama',
     'nominal',
     'kategori',
+    'sub_kategori',
     'deskripsi',
     'created_at',
     'status',
+    'profile',
   ];
 
   /**

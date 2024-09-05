@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->integer('nominal');
             $table->string('kategori');
+            $table->string('sub_kategori');
             $table->string('deskripsi')->nullable();
             $table->string('status')->nullable();
             $table->string('profile')->nullable();

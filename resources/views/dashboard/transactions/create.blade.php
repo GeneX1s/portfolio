@@ -30,6 +30,19 @@
         </select>
       </div>
 
+      <div class="mb-3">
+        <label for="sub_kategori" class="form-label">Sub Kategori</label>
+        <select class="form-control" name="sub_kategori">
+          <option value="Bensin" selected> Bensin</option>
+          <option value="Uang Bulanan Mami"> Uang Bulanan Mami</option>
+          <option value="Wifi"> Wifi</option>
+          <option value="Jajan"> Jajan</option>
+          <option value="Online Shop"> Online Shop</option>
+          <option value="Pulsa / Kuota"> Pulsa / Kuota</option>
+          <option value="Perpuluhan"> Perpuluhan</option>
+        </select>
+      </div>
+
 
 
       <div class="mb-3">

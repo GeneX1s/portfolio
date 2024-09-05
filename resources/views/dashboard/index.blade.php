@@ -4,6 +4,8 @@
 
 <body id="page-top">
 
+    <div class="container-fluid">
+
         <!-- Page Wrapper -->
         <div id="wrapper">
 
@@ -783,7 +785,7 @@
                 </div>
         </div>
 
-
+    </div>
 </body>
 
 </html>

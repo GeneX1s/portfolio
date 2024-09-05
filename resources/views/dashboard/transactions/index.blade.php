@@ -7,6 +7,23 @@
     float: left;
     border: 5px solid rgba(255, 255, 255, 0.2);
   }
+
+  .content {
+            width: 100%; /* Default for small screens */
+        }
+
+        @media (min-width: 768px) { /* Medium screens and up */
+            .content {
+                width: 40%; /* 40% width on medium and larger screens */
+            }
+          }
+
+        @media (max-width: 767px) { /* Medium screens and up */
+            .content {
+                width: 100%; /* 40% width on medium and larger screens */
+            }
+          }
+
 </style>
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -19,25 +36,25 @@
 </div>
 @endif
 
-<div class="table-responsive col-lg-10">
+<div class="table-responsive">
   {{-- <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
     action="{{ route('transactions.index') }}" method="GET">
     @csrf
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-12 col-md-6 col-lg-4 w-100">
         <div class="mb-3">
           <label for="start_date" class="form-label">Start Date</label>
           <input type="date" class="form-control" id="start_date" name="start_date">
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-12 col-md-6 col-lg-4 w-100">
         <div class="mb-3">
           <label for="end_date" class="form-label">End Date</label>
           <input type="date" class="form-control" id="end_date" name="end_date">
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-12 col-md-6 col-lg-4 w-100">
         <div class="mb-3">
           <label for="status" class="form-label">Status</label>
           <select class="form-control" name="status" id="status">
@@ -48,18 +65,12 @@
         </div>
 
       </div>
-      <div class="col-md-3">
-        <div class="mb-3">
-          <label for="kategori_1" class="form-label">Jenis</label>
-          <input type="text" class="form-control" id="kategori_1" name="kategori_1">
-        </div>
-      </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-12 col-md-6 col-lg-3 w-100">
         <button type="submit" class="btn btn-primary">Search</button>
       </div>
-      <div class="col-md">
+      <div class="col-12 col-md-6 col-lg-4 w-100">
         <a href="/dashboard/transactions/create" class="btn btn-primary mb-3">Add New</a>
       </div>
     </div>
@@ -123,17 +134,17 @@
   </table>
 
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-3">
         <h6>Total : Rp.{{ number_format($total, '2', ',', '.') }}</h6>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-3">
         <h6>Pendapatan(+) : Rp.{{ number_format($pendapatan, '2', ',', '.') }}</h6>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-3">
         <h6>Pengeluaran(-) : Rp.{{ number_format($pengeluaran, '2', ',', '.') }}</h6>
       </div>
@@ -150,17 +161,17 @@
   </style>
   
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-1">
         <button type="submit" class="btn btn-secondary btn-custom">Batch Select</button>
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-1">
         <a class="btn btn-warning btn-custom" href="/dashboard">Export to Excel</a>
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-1">
         <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>
       </div>

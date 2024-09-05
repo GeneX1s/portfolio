@@ -1,3 +1,20 @@
+<style>
+  /* Ensure nav items are aligned */
+.navbar-nav .nav-item {
+  display: flex;
+  align-items: center; /* Align items vertically */
+    margin: 0; /* Remove any extra margins */
+    padding: 0; /* Remove any extra padding */
+}
+
+/* Adjust alignment if necessary */
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    align-items: center; /* Align items vertically */
+}
+
+  </style>
+
 <!-- Sidebar -->
 <nav class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
