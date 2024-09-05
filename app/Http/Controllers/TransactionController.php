@@ -32,6 +32,10 @@ class TransactionController extends Controller
     $start_date = $request->start_date;
     $end_date = $request->end_date;
 
+    
+  $userId = Auth::id();
+  $userRole = User::where('id',$userId)->first()->role;
+
     if (!$start_date) {
       $start_date = Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s');
     }
@@ -39,9 +43,20 @@ class TransactionController extends Controller
       $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
     }
 
-    // if (!$request->status) {
-    //   $status_search = "Active";
-    // }
+    if (!$request->status) {
+      $status_search = "Active";
+    }
+    if($userRole == 'super-admin'){
+     $profile_filter = 'super-admin' ;
+    }
+    else if($userRole == 'admin'){
+      
+      $profile_filter = 'ryr' ;
+    }
+    else if($userRole == 'finance'){
+      $profile_filter = 'ryr' ;
+      
+    }
     // dd($status_search);
 
     $transactions = Transaction::query()
@@ -50,6 +65,9 @@ class TransactionController extends Controller
       })
       ->when($jenis_search, function ($query) use ($jenis_search) {
         return $query->where('kategori', 'like', '%' . $jenis_search . '%');
+      })
+      ->when($profile_filter, function ($query) use ($profile_filter) {
+        return $query->where('profile', $profile_filter);
       })
       ->when($start_date && $end_date, function ($query) use ($start_date, $end_date) {
         return $query->whereDate('created_at', '>=', $start_date)
@@ -162,9 +180,9 @@ class TransactionController extends Controller
   if($userRole == 'super-admin'){
     $transaction->profile = 'super-admin';
   }else if($userRole == 'admin'){
-    $transaction->profile = 'admin';
+    $transaction->profile = 'ryr';
   }else if($userRole == 'finance'){
-    $transaction->profile = 'finance';
+    $transaction->profile = 'ryr';
     
   }
     $input = [
