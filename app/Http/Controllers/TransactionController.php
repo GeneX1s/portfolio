@@ -157,6 +157,16 @@ class TransactionController extends Controller
           return redirect()->back()->with('error', 'Template has been deleted');
   }
   
+  $userId = Auth::id();
+  $userRole = User::where('id',$userId)->first()->role;
+  if($userRole == 'super-admin'){
+    $transaction->profile = 'super-admin';
+  }else if($userRole == 'admin'){
+    $transaction->profile = 'admin';
+  }else if($userRole == 'finance'){
+    $transaction->profile = 'finance';
+    
+  }
     $input = [
       'nama' => $transaction->nama,
       'nominal' => $transaction->nominal,
@@ -164,6 +174,7 @@ class TransactionController extends Controller
       'deskripsi' => $transaction->deskripsi,
       'created_at' => now(),
       'status' => $transaction->status,
+      'profile' => $transaction->profile,
     ];
 
     
