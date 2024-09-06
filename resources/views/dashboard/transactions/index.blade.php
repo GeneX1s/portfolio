@@ -163,7 +163,7 @@
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-1">
-        <button type="submit" class="btn btn-secondary btn-custom">Batch Select</button>
+        <a class="btn btn-secondary btn-custom" href="/dashboard/transactions/clear">Clear All</a>
       </div>
     </div>
     <div class="col-12 col-md-6 col-lg-4 w-100">

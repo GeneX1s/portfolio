@@ -268,5 +268,11 @@ class TransactionController extends Controller
     ]);
   }
 
+public function clear(){
+
+  $transactions = Transaction::get()->delete();
+
+  return redirect('/dashboard/transactions/index')->with('success', 'Cleared all transaction log.');
+}
 
 }
