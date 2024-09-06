@@ -270,9 +270,11 @@ class TransactionController extends Controller
 
 public function clear(){
 
-  $transactions = Transaction::get()->delete();
+      // Delete all transactions
+      Transaction::query()->delete();
 
   return redirect('/dashboard/transactions/index')->with('success', 'Cleared all transaction log.');
+  // return redirect()->back()->with('success', 'Value updated successfully.');
 }
 
 }

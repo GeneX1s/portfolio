@@ -35,6 +35,13 @@
   {{ session('success') }}
 </div>
 @endif
+@if(session()-> has('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{session('error')}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
 
 <div class="table-responsive">
   {{-- <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
@@ -163,9 +170,16 @@
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-1">
-        <a class="btn btn-secondary btn-custom" href="/dashboard/transactions/clear">Clear All</a>
+          <form action="{{ url('/dashboard/clear/transactions') }}" method="POST">
+              @method('POST') <!-- Use POST if that's what your route expects -->
+              @csrf
+              <button type="submit" class="btn btn-secondary btn-custom">
+                  Clear All
+              </button>
+          </form>
       </div>
-    </div>
+  </div>
+  
     <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-1">
         <a class="btn btn-warning btn-custom" href="/dashboard">Export to Excel</a>

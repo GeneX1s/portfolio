@@ -62,7 +62,7 @@ Route::resource('/dashboard/transactions', TransactionController::class)->middle
 Route::post('/dashboard/transactions/{transaction}/template', [TransactionController::class, 'template_add'])->middleware('auth');
 Route::post('/dashboard/transactions/template', [TransactionController::class, 'template'])->middleware('auth');
 Route::post('/dashboard/transactions/setvalue', [TransactionController::class, 'setvalue'])->middleware('auth');
-Route::post('/dashboard/transactions/clear', [TransactionController::class, 'clear'])->middleware('auth');
+Route::post('/dashboard/clear/transactions', [TransactionController::class, 'clear'])->middleware('auth');
 ////////////////////////////////////
 
 ////////////////Users////////////////
