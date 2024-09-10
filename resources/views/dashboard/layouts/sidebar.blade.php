@@ -136,10 +136,16 @@
   </li>
 
   <li class="nav-item">
+    <a class="nav-link" href="/dashboard/balances/index">  
+      <i class="fas fa-fw fa-person"></i>
+      <span>Balances</span></a>
+  </li>
+
+  {{-- <li class="nav-item">
     <a class="nav-link" href="/dashboard/users/{{ Auth::id() }}/edit">  
       <i class="fas fa-fw fa-person"></i>
       <span>User</span></a>
-  </li>
+  </li> --}}
 
   <li class="nav-item">
     <a class="nav-link" href="/dashboard/setvalue">

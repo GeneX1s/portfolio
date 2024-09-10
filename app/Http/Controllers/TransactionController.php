@@ -108,7 +108,6 @@ class TransactionController extends Controller
   {
     $templates = Template::get();
     return view('/dashboard.transactions.create', [
-      // 'transactions' => $data,
       'templates' => $templates,
     ]);
   }
@@ -125,6 +124,7 @@ class TransactionController extends Controller
       'nominal' => 'required',
       'kategori' => 'required',
       'sub_kategori' => 'required',
+      'balance' => 'required',
       'deskripsi' => 'nullable',
       'created_at' => Carbon::now(),
       'status' => "Pending",
@@ -200,6 +200,7 @@ class TransactionController extends Controller
       'nominal' => $transaction->nominal,
       'kategori' => $transaction->kategori,
       'sub_kategori' => $transaction->sub_kategori,
+      'balance' => $transaction->balance,
       'deskripsi' => $transaction->deskripsi,
       'created_at' => now(),
       'status' => $transaction->status,

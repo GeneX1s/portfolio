@@ -37,6 +37,7 @@ class Transaction extends Authenticatable
     'created_at',
     'status',
     'profile',
+    'balance',
   ];
 
   /**

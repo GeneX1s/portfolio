@@ -313,11 +313,13 @@ class DashboardController extends Controller
     $area_chart = [$januari, $februari, $maret, $april, $mei, $juni, $juli, $agustus, $september, $oktober, $november, $desember];
 
     $salary = SetValue::first()->salary;
+    $fix_outcome = SetValue::first()->fix_outcome;
     $spendable = ($salary * 12) / 2 - $pengeluaran_tahunan;
     $quota = $salary / 2 - $pengeluaran_bulanan;
 
     return view('/dashboard.index', [
       'spendable' => $spendable,
+      'fix_outcome' => $fix_outcome,
       'quota' => $quota,
       'pengeluaran_mingguan' => $pengeluaran_mingguan,
       'pengeluaran_bulanan' => $pengeluaran_bulanan,

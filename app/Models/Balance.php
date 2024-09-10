@@ -4,16 +4,14 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Date;
 
-class Ingredients extends Authenticatable
+class Balance extends Authenticatable
 {
-  use HasApiTokens, HasFactory, Notifiable;
+  use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
   /**
    * The attributes that are mass assignable.
@@ -21,18 +19,16 @@ class Ingredients extends Authenticatable
    * @var array<int, string>
    */
 
-  protected $table = "ingredients";
+  protected $table = "orders";
   protected $primaryKey = 'id';
   public $incrementing = false;
   public $timestamps = false;
 
   protected $fillable = [
     'nama',
-    'nilai',
-    'satuan',
-    'deskripsi',
-    'kategori',
-    '_timestamp',
+    'saldo',
+    'tipe',
+    'updated_at',
   ];
 
   /**
@@ -54,6 +50,4 @@ class Ingredients extends Authenticatable
     'email_verified_at' => 'datetime',
     'password' => 'hashed',
   ];
-
-
 }

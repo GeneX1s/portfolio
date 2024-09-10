@@ -1,16 +1,12 @@
 <?php
 
+use App\Http\Controllers\BalanceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\MenuController;
-use App\Http\Controllers\IngredientController;
-use App\Http\Controllers\SpecialController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +67,14 @@ Route::get('/dashboard/users/edit', [LoginController::class, 'edit'])->middlewar
 Route::get('/dashboard/users/create', [LoginController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/users/{user:id}/edit', [LoginController::class, 'update'])->middleware('auth');
 Route::resource('/dashboard/users', LoginController::class)->middleware('auth');
+////////////////////////////////////
+
+////////////////Balances////////////////
+Route::get('/dashboard/balances/index', [BalanceController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/balances/edit', [BalanceController::class, 'edit'])->middleware('auth');
+Route::get('/dashboard/balances/create', [BalanceController::class, 'create'])->middleware('auth');
+Route::get('/dashboard/balances/{balance:id}/edit', [BalanceController::class, 'update'])->middleware('auth');
+Route::resource('/dashboard/balances', BalanceController::class)->middleware('auth');
 ////////////////////////////////////
 
 
