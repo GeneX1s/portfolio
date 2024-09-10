@@ -29,12 +29,12 @@ class DashboardController extends Controller
     $start_month = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
     $end_month = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
 
-    
-  $userId = Auth::id();
-  $userRole = User::where('id',$userId)->first()->role;
+
+    $userId = Auth::id();
+    $userRole = User::where('id', $userId)->first()->role;
 
     // Fetch transactions
-    $transactions = Transaction::where('status', 'Active')->where('profile',$userRole)->get();
+    $transactions = Transaction::where('status', 'Active')->where('profile', $userRole)->get();
     $week_outcomes = $transactions->where('kategori', 'Pengeluaran')
       ->whereBetween('created_at', [$start_date, $end_date])
       ->pluck('nominal')->all();
@@ -317,6 +317,8 @@ class DashboardController extends Controller
     $spendable = ($salary * 12) / 2 - $pengeluaran_tahunan;
     $quota = $salary / 2 - $pengeluaran_bulanan;
 
+// $top_category = $transactions->where()->pluck()->5;
+
     return view('/dashboard.index', [
       'spendable' => $spendable,
       'fix_outcome' => $fix_outcome,
@@ -334,6 +336,7 @@ class DashboardController extends Controller
         'Spending' => $pengeluaran_tahunan,
         'Investment' => $investment_tahunan
       ],
+      'transactions' => $transactions,
     ]);
   }
 

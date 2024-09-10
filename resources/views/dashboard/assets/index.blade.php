@@ -33,7 +33,7 @@
 
 </style>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-  <a class="h2" href="/dashboard">Balances</a>
+  <a class="h2" href="/dashboard">Assets</a>
 </div>
 
 @if(session()->has('success'))
@@ -44,7 +44,7 @@
 
 <div class="table-responsive">
   {{-- <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
-    action="{{ route('balances.index') }}" method="GET">
+    action="{{ route('assets.index') }}" method="GET">
     @csrf
     <div class="row">
       <div class="col-mb-3">
@@ -71,7 +71,7 @@
         <button type="submit" class="btn btn-primary fixed-width">Search</button>
       </div>
       <div class="col-md-2 sm-3">
-        <a href="/dashboard/balances/create" class="btn btn-primary fixed-width">Add New</a>
+        <a href="/dashboard/assets/create" class="btn btn-primary fixed-width">Add New</a>
       </div>
     </div>
   </form>
@@ -82,22 +82,26 @@
       <tr>
         <th scope="col">No.</th>
         <th scope="col">Nama</th>
-        <th scope="col">Saldo</th>
-        <th scope="col">Tipe</th>
+        <th scope="col">Harga Beli</th>
+        <th scope="col">Tanggal Beli</th>
+        <th scope="col">Jenis</th>
+        <th scope="col">Status</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($balances as $balance)
+      @foreach ($assets as $asset)
       <tr>
         <td>{{$loop->iteration}}</td>
 
-        <td>{{$balance->nama}}</td>
-        <td>{{$balance->saldo}}</td>
-        <td>{{$balance->tipe}}</td>
+        <td>{{$asset->nama}}</td>
+        <td>{{$asset->harga_beli}}</td>
+        <td>{{$asset->tanggal_beli}}</td>
+        <td>{{$asset->jenis}}</td>
+        <td>{{$asset->status}}</td>
         
         <td>
-          <form action="/dashboard/balances/{{$balance->id}}" method="post" class="d-inline">
+          <form action="/dashboard/assets/{{$asset->id}}" method="post" class="d-inline">
             @method('delete')
             @csrf
             
@@ -106,7 +110,7 @@
             </button>
           </form>
           
-          <form action="/dashboard/balances/{{ $balance->id }}/edit" class="d-inline">
+          <form action="/dashboard/assets/{{ $asset->id }}/edit" class="d-inline">
             @csrf
             @method('POST')
             <!-- Not strictly necessary with `POST` method -->

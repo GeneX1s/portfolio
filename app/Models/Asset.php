@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Balance extends Authenticatable
+class Asset extends Authenticatable
 {
   use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,15 +18,17 @@ class Balance extends Authenticatable
    * @var array<int, string>
    */
 
-  protected $table = "balances";
+  protected $table = "assets";
   protected $primaryKey = 'id';
   public $incrementing = false;
   public $timestamps = false;
 
   protected $fillable = [
     'nama',
-    'saldo',
-    'tipe',
+    'harga_beli',
+    'jenis',
+    'status',//sudah dijual, rusak, masih digunakan, dll
+    'tanggal_beli',
     'updated_at',
   ];
 

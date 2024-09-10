@@ -208,7 +208,7 @@ class TransactionController extends Controller
     ];
 
     
-
+dd($input);
     // Create a new transaction template
     Transaction::create($input);
 

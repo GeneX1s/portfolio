@@ -42,7 +42,8 @@
       <div class="mb-3">
         <label for="sub_kategori" class="form-label">Sub Kategori</label>
         <select class="form-control" name="sub_kategori">
-          <option value="Bensin" selected> Bensin</option>
+          <option value="Lainnya" selected> Lainnya</option>
+          <option value="Bensin"> Bensin</option>
           <option value="Uang Bulanan Mami"> Uang Bulanan Mami</option>
           <option value="Wifi"> Wifi</option>
           <option value="Jajan"> Jajan</option>
@@ -51,20 +52,27 @@
           <option value="Perpuluhan"> Perpuluhan</option>
         </select>
       </div>
-
-
+      
+      
 
       <div class="mb-3">
         <label for="deskripsi" class="form-label">Deskripsi</label>
         <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi"
-          autofocus value="{{old('deskripsi')}}">
+        autofocus value="{{old('deskripsi')}}">
         @error('deskripsi')
         <div class="invalid-feedback">
           {{ $message }}
         </div>
         @enderror
       </div>
-
+      
+      <div class="mb-3">
+        <label for="balance" class="form-label">Balance</label>
+        <select class="form-control" name="balance">
+          <option value="Cash" selected> Cash</option>
+          <option value="OCBC"> OCBC</option>
+        </select>
+      </div>
 
       <button type="submit" class="btn btn-primary">Add Transaction</button>
     </form>

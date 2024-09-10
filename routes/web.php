@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\BalanceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
@@ -75,6 +76,14 @@ Route::get('/dashboard/balances/edit', [BalanceController::class, 'edit'])->midd
 Route::get('/dashboard/balances/create', [BalanceController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/balances/{balance:id}/edit', [BalanceController::class, 'update'])->middleware('auth');
 Route::resource('/dashboard/balances', BalanceController::class)->middleware('auth');
+////////////////////////////////////
+
+////////////////Assets////////////////
+Route::get('/dashboard/assets/index', [AssetController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/assets/edit', [AssetController::class, 'edit'])->middleware('auth');
+Route::get('/dashboard/assets/create', [AssetController::class, 'create'])->middleware('auth');
+Route::get('/dashboard/assets/{balance:id}/edit', [AssetController::class, 'update'])->middleware('auth');
+Route::resource('/dashboard/assets', AssetController::class)->middleware('auth');
 ////////////////////////////////////
 
 

@@ -37,10 +37,10 @@
   </li>
 
   <!-- Divider -->
-  <hr class="sidebar-divider">
+  {{-- <hr class="sidebar-divider"> --}}
 
   <!-- Heading -->
-  <div class="sidebar-heading">
+  {{-- <div class="sidebar-heading">
     Website Interface
   </div>
 
@@ -96,7 +96,7 @@
         <a class="collapse-item" href="utilities-other.html">Other</a>
       </div>
     </div>
-  </li>
+  </li> --}}
 
   <!-- Divider -->
   <hr class="sidebar-divider">
@@ -130,14 +130,14 @@
 
   <!-- Nav Item - Charts -->
   <li class="nav-item">
-    <a class="nav-link" href="/dashboard/inventories/index">
+    <a class="nav-link" href="/dashboard/assets/index">
       <i class="fas fa-fw fa-dollar-sign"></i>
       <span>Aset</span></a>
   </li>
 
   <li class="nav-item">
     <a class="nav-link" href="/dashboard/balances/index">  
-      <i class="fas fa-fw fa-person"></i>
+      <i class="fas fa-fw fa-dollar-sign"></i>
       <span>Balances</span></a>
   </li>
 
@@ -170,9 +170,7 @@
 
   <!-- Sidebar Message -->
   <div class="sidebar-card d-none d-lg-flex">
-    {{-- <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..."> --}}
     <p class="text-center mb-2"><strong>Smart Dashboard</strong> For all your administration needs</p>
-    {{-- <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a> --}}
   </div>
 
 </nav>

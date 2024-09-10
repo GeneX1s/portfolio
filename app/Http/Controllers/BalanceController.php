@@ -62,12 +62,13 @@ class BalanceController extends Controller
     ]);
     $inputData['updated_at'] = Date::now();
 
-    $newBal = Balance::where('id', $balance->id)->get();
-    $newBal->update($inputData);
+    $newBal = Balance::where('id', $balance->id)->first();
+    
+    $input = $request->all();
 
-    // $newBal->update([
-    //   "salary" => $salary,
-    // ]);
+    $newBal->update([
+      "saldo" => $input['saldo'],
+    ]);
 
     return redirect('/dashboard/balances/index')->with('success', 'Balance has been updated');
   }
@@ -77,7 +78,7 @@ class BalanceController extends Controller
 
     Balance::destroy($balance->id);
 
-    return redirect('/dashboard/balances/index')->with('success', 'Employee has been deleted');
+    return redirect('/dashboard/balances/index')->with('success', 'Balance has been deleted');
   }
 
 
