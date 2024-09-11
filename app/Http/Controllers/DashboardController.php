@@ -312,6 +312,13 @@ class DashboardController extends Controller
 
     $area_chart = [$januari, $februari, $maret, $april, $mei, $juni, $juli, $agustus, $september, $oktober, $november, $desember];
 
+    $data = [
+      'labels' => ['Earning', 'Spending', 'Investment'],
+      'data' => [55, 30, 15],
+      'backgroundColor' => ['#4e73df', '#1cc88a', '#36b9cc'],
+      'hoverBackgroundColor' => ['#2e59d9', '#17a673', '#2c9faf'],
+  ];
+
     $salary = SetValue::first()->salary;
     $fix_outcome = SetValue::first()->fix_outcome;
     $spendable = ($salary * 12) / 2 - $pengeluaran_tahunan;
@@ -331,11 +338,7 @@ class DashboardController extends Controller
       'investment_tahunan' => $investment_tahunan,
       'persen_bulan_ini' => $persen_bulan_ini,
       'area_chart' => $area_chart,
-      'chartData' => [
-        'Earning' => $pendapatan_tahunan,
-        'Spending' => $pengeluaran_tahunan,
-        'Investment' => $investment_tahunan
-      ],
+      'data' => $data,
       'transactions' => $transactions,
     ]);
   }

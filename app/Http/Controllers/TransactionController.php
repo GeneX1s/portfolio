@@ -4,13 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
-use App\Helpers\ApiResponse;
-use App\Models\Ingredients;
 use App\Models\SetValue;
 use App\Models\Template;
 use Carbon\Carbon;
