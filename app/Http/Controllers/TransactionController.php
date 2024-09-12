@@ -149,17 +149,32 @@ class TransactionController extends Controller
 
     $thisBal = $input['balance'];
     $updateBal = Balance::where('nama', $thisBal)->first();
+    $balHis = new BalanceHis();
+
     
     if ($input['kategori'] == 'Pengeluaran') {
       $newBal = $updateBal->saldo - $input['nominal'];
     } else {
       $newBal = $updateBal->saldo + $input['nominal'];
     }
+
+    $balHis->create([
+                'transaction_id' =>$input['nama'],
+                'balance_name' =>$thisBal,
+                'saldo_before' =>$updateBal->saldo,
+                'saldo_after' =>$newBal,
+    ]);
+
     $updateBal->update([
       'saldo' => $newBal,
     ]);
 
     ///////////////////////////////////////////
+
+    //////////////////balancehis//////////////////
+
+
+    //////////////////////////////////////////////
     return redirect('/dashboard/transactions/index')->with('success', 'New transaction has been added');
   }
 
