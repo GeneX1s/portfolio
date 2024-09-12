@@ -314,7 +314,7 @@ class DashboardController extends Controller
 
     $data = [
       'labels' => ['Earning', 'Spending', 'Investment'],
-      'data' => [55, 30, 15],
+      'data' => [$pendapatan_tahunan, $pengeluaran_tahunan, $investment_tahunan],
       'backgroundColor' => ['#4e73df', '#1cc88a', '#36b9cc'],
       'hoverBackgroundColor' => ['#2e59d9', '#17a673', '#2c9faf'],
   ];

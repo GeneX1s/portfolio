@@ -89,7 +89,7 @@
       <tr>
         <th scope="col">No.</th>
         <th scope="col">ID Transaksi</th>
-        <th scope="col">Tanggal</th>
+        <th scope="col">Source</th>
         <th scope="col">Kategori</th>
         <th scope="col">Nominal</th>
         <th scope="col">Deskripsi</th>
@@ -103,7 +103,7 @@
         <td>{{$loop->iteration}}</td>
 
         <td>{{$transaction->nama}}</td>
-        <td>{{$transaction->created_at}}</td>
+        <td>{{$transaction->balance}}</td>
         <td>{{$transaction->kategori}}</td>
         <td>Rp.{{ number_format($transaction->nominal, '2', ',', '.') }}</td>
         <td>{{$transaction->deskripsi}}</td>

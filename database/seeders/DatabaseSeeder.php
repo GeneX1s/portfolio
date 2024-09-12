@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Balance;
 use App\Models\SetValue;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -32,6 +33,12 @@ class DatabaseSeeder extends Seeder
 
         SetValue::create([
             'salary' => 7500000,
+        ]);
+
+        Balance::create([
+            'nama' => 'BCA',
+            'saldo' => 7500000,
+            'tipe' => 'Bank',
         ]);
     }
 }

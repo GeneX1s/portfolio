@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SetValue;
 use Illuminate\Http\Request;
 use App\Models\Balance;
+use App\Models\BalanceHis;
 use DateTime;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;

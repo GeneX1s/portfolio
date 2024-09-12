@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Special extends Authenticatable
+class BalanceHis extends Authenticatable
 {
   use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,18 +18,17 @@ class Special extends Authenticatable
    * @var array<int, string>
    */
 
-  protected $table = "specials";
+  protected $table = "balance_his";
   protected $primaryKey = 'id';
   public $incrementing = false;
   public $timestamps = false;
 
   protected $fillable = [
-    'title',
-    'header_1',
-    'header_2',
-    'desc',
-    'foto',
-    '_timestamp',
+
+    'transaction_id',
+    'balance_name',
+    'saldo_before',
+    'saldo_after',
   ];
 
   /**
@@ -37,17 +36,7 @@ class Special extends Authenticatable
    *
    * @var array<int, string>
    */
-  protected $hidden = [
-    'remember_token',
-  ];
+  protected $hidden = [];
 
-  /**
-   * The attributes that should be cast.
-   *
-   * @var array<string, string>
-   */
-  protected $casts = [
-    'email_verified_at' => 'datetime',
-    'password' => 'hashed',
-  ];
+  protected $casts = [];
 }
