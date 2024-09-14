@@ -44,12 +44,10 @@
         <select class="form-control" name="sub_kategori">
           <option value="Lainnya" selected> Lainnya</option>
           <option value="Bensin"> Bensin</option>
-          <option value="Uang Bulanan Mami"> Uang Bulanan Mami</option>
-          <option value="Wifi"> Wifi</option>
-          <option value="Jajan"> Jajan</option>
-          <option value="Online Shop"> Online Shop</option>
-          <option value="Pulsa / Kuota"> Pulsa / Kuota</option>
-          <option value="Perpuluhan"> Perpuluhan</option>
+          <option value="Fixed"> Fixed</option>
+          <option value="Internet"> Internet</option>
+          <option value="Lifestyle"> Lifestyle</option>
+          <option value="Topup"> Topup</option>
         </select>
       </div>
       
@@ -70,7 +68,9 @@
         <label for="balance" class="form-label">Balance</label>
         <select class="form-control" name="balance">
           <option value="Cash" selected> Cash</option>
-          <option value="OCBC"> OCBC</option>
+          @foreach ($balances as $balance)
+          <option value="{{$balance->nama}}"> {{$balance->nama}}</option>
+          @endforeach
         </select>
       </div>
 

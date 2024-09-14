@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('balance_his', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('harga');
-            $table->string('body');
-            $table->string('foto');
+            $table->string('transaction_id');
+            $table->string('balance_name');
+            $table->integer('saldo_before');
+            $table->integer('saldo_after');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('balance_his');
     }
 };

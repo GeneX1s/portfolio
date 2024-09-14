@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Balance;
+use App\Models\BalanceHis;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
-use App\Helpers\ApiResponse;
-use App\Models\Ingredients;
 use App\Models\SetValue;
 use App\Models\Template;
 use Carbon\Carbon;
@@ -32,9 +28,9 @@ class TransactionController extends Controller
     $start_date = $request->start_date;
     $end_date = $request->end_date;
 
-    
-  $userId = Auth::id();
-  $userRole = User::where('id',$userId)->first()->role;
+
+    $userId = Auth::id();
+    $userRole = User::where('id', $userId)->first()->role;
 
     if (!$start_date) {
       $start_date = Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s');
@@ -46,16 +42,13 @@ class TransactionController extends Controller
     // if (!$request->status) {
     //   $status_search = "Active";
     // }
-    if($userRole == 'super-admin'){
-     $profile_filter = 'super-admin' ;
-    }
-    else if($userRole == 'admin'){
-      
-      $profile_filter = 'ryr' ;
-    }
-    else if($userRole == 'finance'){
-      $profile_filter = 'ryr' ;
-      
+    if ($userRole == 'super-admin') {
+      $profile_filter = 'super-admin';
+    } else if ($userRole == 'admin') {
+
+      $profile_filter = 'ryr';
+    } else if ($userRole == 'finance') {
+      $profile_filter = 'ryr';
     }
     // dd($profile_filter);
 
@@ -95,7 +88,7 @@ class TransactionController extends Controller
       $pengeluaran = $pengeluaran + $minus;
     }
 
-    return view('/dashboard.transactions.index', [
+    return view('dashboard.transactions.index', [
       // 'transactions' => $data,
       'transactions' => $transactions,
       'total' => $total,
@@ -107,8 +100,10 @@ class TransactionController extends Controller
   public function create() //redirect to page
   {
     $templates = Template::get();
+    $balances = Balance::get();
     return view('/dashboard.transactions.create', [
       'templates' => $templates,
+      'balances' => $balances,
     ]);
   }
 
@@ -131,25 +126,55 @@ class TransactionController extends Controller
     ]);
     $input = $request->all();
     $userId = Auth::id();
-    $userRole = User::where('id',$userId)->first()->role;
+    $userRole = User::where('id', $userId)->first()->role;
 
 
     $input['nama'] = 'TR|' . $date;
     $input['created_at'] = Carbon::now()->format('Y-m-d');
     $input['updated_at'] = Carbon::now()->format('Y-m-d');
     $input['status'] = "Active";
-    if($userRole == 'super-admin'){
+    if ($userRole == 'super-admin') {
       $input['profile'] = $userRole;
-    }else if($userRole == 'admin'){
+    } else if ($userRole == 'admin') {
       $input['profile'] = 'ryr';
-    }else if($userRole == 'finance'){
+    } else if ($userRole == 'finance') {
       $input['profile'] = 'ryr';
     }
-    
+
 
     // dd($input);
     Transaction::create($input);
 
+    //////////////////balance//////////////////
+
+    $thisBal = $input['balance'];
+    $updateBal = Balance::where('nama', $thisBal)->first();
+    $balHis = new BalanceHis();
+
+    
+    if ($input['kategori'] == 'Pengeluaran') {
+      $newBal = $updateBal->saldo - $input['nominal'];
+    } else {
+      $newBal = $updateBal->saldo + $input['nominal'];
+    }
+
+    $balHis->create([
+                'transaction_id' =>$input['nama'],
+                'balance_name' =>$thisBal,
+                'saldo_before' =>$updateBal->saldo,
+                'saldo_after' =>$newBal,
+    ]);
+
+    $updateBal->update([
+      'saldo' => $newBal,
+    ]);
+
+    ///////////////////////////////////////////
+
+    //////////////////balancehis//////////////////
+
+
+    //////////////////////////////////////////////
     return redirect('/dashboard/transactions/index')->with('success', 'New transaction has been added');
   }
 
@@ -157,6 +182,7 @@ class TransactionController extends Controller
   public function destroy(Transaction $transaction, Request $request)
   {
 
+    $balanceHisDeleted = BalanceHis::where('balance_name', $transaction->balance)->delete();
     $transaction = Transaction::where('id', $transaction->id)->first();
 
     $transaction->update([
@@ -182,19 +208,18 @@ class TransactionController extends Controller
 
     if ($transaction->status == 'Deleted') {
 
-          return redirect()->back()->with('error', 'Template has been deleted');
-  }
-  
-  $userId = Auth::id();
-  $userRole = User::where('id',$userId)->first()->role;
-  if($userRole == 'super-admin'){
-    $transaction->profile = 'super-admin';
-  }else if($userRole == 'admin'){
-    $transaction->profile = 'ryr';
-  }else if($userRole == 'finance'){
-    $transaction->profile = 'ryr';
-    
-  }
+      return redirect()->back()->with('error', 'Template has been deleted');
+    }
+
+    $userId = Auth::id();
+    $userRole = User::where('id', $userId)->first()->role;
+    if ($userRole == 'super-admin') {
+      $transaction->profile = 'super-admin';
+    } else if ($userRole == 'admin') {
+      $transaction->profile = 'ryr';
+    } else if ($userRole == 'finance') {
+      $transaction->profile = 'ryr';
+    }
     $input = [
       'nama' => $transaction->nama,
       'nominal' => $transaction->nominal,
@@ -207,8 +232,7 @@ class TransactionController extends Controller
       'profile' => $transaction->profile,
     ];
 
-    
-dd($input);
+
     // Create a new transaction template
     Transaction::create($input);
 
@@ -249,33 +273,32 @@ dd($input);
       'salary' => 'required',
       'outcome' => 'required',
     ]);
-    
+
     $input = $request->all();
-    
-    
-        $setvalue->update([
-          "status" => "Deleted",
-          'salary' => $input['salary'],
-          'outcome' => $input['outcome'],
-        ]);
-        
+
+
+    $setvalue->update([
+      "status" => "Deleted",
+      'salary' => $input['salary'],
+      'outcome' => $input['outcome'],
+    ]);
+
     // Redirect or respond as needed
     return redirect()->back()->with('success', 'Value updated successfully.');
   }
 
   public function view_setvalue()
   {
-    return view('dashboard.setvalue', [
-    ]);
+    return view('dashboard.setvalue', []);
   }
 
-public function clear(){
+  public function clear()
+  {
 
-      // Delete all transactions
-      Transaction::query()->delete();
+    // Delete all transactions
+    Transaction::query()->delete();
 
-  return redirect('/dashboard/transactions/index')->with('success', 'Cleared all transaction log.');
-  // return redirect()->back()->with('success', 'Value updated successfully.');
-}
-
+    return redirect('/dashboard/transactions/index')->with('success', 'Cleared all transaction log.');
+    // return redirect()->back()->with('success', 'Value updated successfully.');
+  }
 }
