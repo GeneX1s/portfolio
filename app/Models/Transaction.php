@@ -38,6 +38,7 @@ class Transaction extends Authenticatable
     'status',
     'profile',
     'balance',
+    'balance_destination',
   ];
 
   /**

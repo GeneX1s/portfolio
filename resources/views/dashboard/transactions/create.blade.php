@@ -1,4 +1,37 @@
 @extends('dashboard.layouts.main')
+<head>
+<style>
+  .sub-kategori-container {
+      display: none;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const kategoriSelect = document.querySelector('select[name="kategori"]');
+      const subKategoriPendapatan = document.querySelector('.sub-kategori-pendapatan');
+      const subKategoriPengeluaran = document.querySelector('.sub-kategori-pengeluaran');
+
+      function updateSubKategoriVisibility() {
+          const value = kategoriSelect.value;
+          if (value === 'Pengeluaran') {
+              subKategoriPengeluaran.style.display = 'block';
+              subKategoriPendapatan.style.display = 'none';
+          } else if (value === 'Pendapatan') {
+              subKategoriPengeluaran.style.display = 'none';
+              subKategoriPendapatan.style.display = 'block';
+          } else {
+              subKategoriPengeluaran.style.display = 'none';
+              subKategoriPendapatan.style.display = 'none';
+          }
+      }
+
+      kategoriSelect.addEventListener('change', updateSubKategoriVisibility);
+
+      // Initialize visibility based on the current selection
+      updateSubKategoriVisibility();
+  });
+</script>
+</head>
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -33,25 +66,40 @@
       <div class="mb-3">
         <label for="kategori" class="form-label">Kategori</label>
         <select class="form-control" name="kategori">
-          <option value="Pendapatan" selected> Pendapatan</option>
-          <option value="Pengeluaran"> Pengeluaran</option>
-          <option value="Investment"> Investment</option>
+            <option value="Pendapatan" selected>Pendapatan</option>
+            <option value="Pengeluaran">Pengeluaran</option>
+            <option value="Investment">Investment</option>
         </select>
-      </div>
+    </div>
 
-      <div class="mb-3">
-        <label for="sub_kategori" class="form-label">Sub Kategori</label>
-        <select class="form-control" name="sub_kategori">
-          <option value="Lainnya" selected> Lainnya</option>
-          <option value="Bensin"> Bensin</option>
-          <option value="Fixed"> Fixed</option>
-          <option value="Internet"> Internet</option>
-          <option value="Lifestyle"> Lifestyle</option>
-          <option value="Topup"> Topup</option>
-        </select>
-      </div>
-      
-      
+    <!-- Sub Kategori for Pengeluaran -->
+    <div class="sub-kategori-pengeluaran sub-kategori-container">
+        <div class="mb-3">
+            <label for="sub_kategori" class="form-label">Sub Kategori</label>
+            <select class="form-control" name="sub_kategori">
+                <option value="Lainnya" selected>Lainnya</option>
+                <option value="Bensin">Bensin</option>
+                <option value="Fixed">Fixed</option>
+                <option value="Internet">Internet</option>
+                <option value="Lifestyle">Lifestyle</option>
+                <option value="Topup">Topup</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Sub Kategori for Pendapatan -->
+    <div class="sub-kategori-pendapatan sub-kategori-container">
+        <div class="mb-3">
+            <label for="sub_kategori" class="form-label">Sub Kategori</label>
+            <select class="form-control" name="sub_kategori">
+                <option value="Gaji" selected>Gaji</option>
+                <option value="Obligasi">Obligasi</option>
+                <option value="Bunga/Cashback">Bunga/Cashback</option>
+                <option value="Angpao">Angpao</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+        </div>
+    </div>
 
       <div class="mb-3">
         <label for="deskripsi" class="form-label">Deskripsi</label>
