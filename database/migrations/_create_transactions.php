@@ -16,11 +16,12 @@ return new class extends Migration
             $table->string('nama');
             $table->integer('nominal');
             $table->string('kategori');
-            $table->string('sub_kategori');
+            $table->string('sub_kategori')->nullable();
             $table->string('deskripsi')->nullable();
             $table->string('status')->nullable();
             $table->string('profile')->nullable();
-            $table->string('balance')->nullable();
+            $table->string('balance');
+            $table->string('balance_destination')->nullable();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
             $table->timestamps();
         });

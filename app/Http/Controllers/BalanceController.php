@@ -6,6 +6,7 @@ use App\Models\SetValue;
 use Illuminate\Http\Request;
 use App\Models\Balance;
 use App\Models\BalanceHis;
+use App\Models\Transaction;
 use DateTime;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -25,13 +26,11 @@ class BalanceController extends Controller
     return view('dashboard.balances.index', [
       'balances' => $balances,
     ]);
-
   }
 
   public function create(Request $request)
   {
-    return view('dashboard.balances.create', [
-    ]);
+    return view('dashboard.balances.create', []);
   }
 
   public function edit(Balance $balance)
@@ -64,7 +63,7 @@ class BalanceController extends Controller
     $inputData['updated_at'] = Date::now();
 
     $newBal = Balance::where('id', $balance->id)->first();
-    
+
     $input = $request->all();
 
     $newBal->update([
@@ -82,5 +81,36 @@ class BalanceController extends Controller
     return redirect('/dashboard/balances/index')->with('success', 'Balance has been deleted');
   }
 
+  public function move(Transaction $transaction, Request $request)
+  {
+    $date = Date::now();
 
+    $balance_from = $request["balance"];
+    $balance_to = $request["balance_destination"];
+    $nominal = $request["nominal"];
+
+    $getBalance = Balance::where('nama',$balance_from)->first()->saldo;
+    $toBalance =  Balance::where('nama',$balance_to)->first()->saldo;
+
+$updateBal = $getBalance - $nominal;
+
+$input = [
+  'nama' => 'TR|' . $date,
+  'nominal' => $request["nominal"],
+  'kategori' => 'Transfer',
+  'balance' => $transaction->balance,
+  'balance_destination' => $transaction->balance_destination,
+  'deskripsi' => $transaction->deskripsi,
+  'created_at' => now(),
+  'status' => $transaction->status,
+  'profile' => $transaction->profile,
+];
+
+Transaction::create($input);
+$moveBal = $toBalance + $nominal;
+
+
+
+    $inputData['updated_at'] = Date::now();
+  }
 }

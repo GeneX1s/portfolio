@@ -10568,6 +10568,8 @@ a:focus {
   }
   .sidebar .sidebar-heading {
     text-align: left;
+    display: block;
+  padding: 0.5rem 1rem;
   }
   .sidebar.toggled {
     overflow: visible;

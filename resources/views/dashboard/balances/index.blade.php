@@ -73,6 +73,9 @@
       <div class="col-md-2 sm-3">
         <a href="/dashboard/balances/create" class="btn btn-primary fixed-width">Add New</a>
       </div>
+      <div class="col-md-2 sm-3">
+        <a href="/dashboard/balances/move" class="btn btn-primary fixed-width">Move Balance</a>
+      </div>
     </div>
   </form>
 
