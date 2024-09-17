@@ -64,13 +64,16 @@ class AssetController extends Controller
       'updated_at' => 'nullable',
     ]);
     $inputData['updated_at'] = Date::now();
+// Retrieve a single asset instance by ID
+$asset = Asset::find($asset->id);
 
-    $newBal = Asset::where('id', $asset->id)->get();
-    $newBal->update($inputData);
+// Check if the asset exists
+if ($asset) {
+    $asset->update($inputData);
+} else {
+  return redirect('/dashboard/assets/index')->with('failed', 'Not Found');
 
-    // $newBal->update([
-    //   "salary" => $salary,
-    // ]);
+}
 
     return redirect('/dashboard/assets/index')->with('success', 'Asset has been updated');
   }

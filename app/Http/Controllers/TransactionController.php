@@ -6,6 +6,7 @@ use App\Models\Balance;
 use App\Models\BalanceHis;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\SetValue;
 use App\Models\Template;
@@ -112,7 +113,7 @@ class TransactionController extends Controller
   {
     // dd($request->all());
     // dd(Auth::id());
-    // $code = md5(Str::random(10));
+    $code = md5(Str::random(10));
     $date = Date::now();
 
     $request->validate([
@@ -129,7 +130,13 @@ class TransactionController extends Controller
     $userRole = User::where('id', $userId)->first()->role;
 
 
-    $input['nama'] = 'TR|' . $date;
+    if ($input['kategori'] == 'Pendapatan') {
+      $input['nama'] = 'INC|' . $code . $date;
+    } else if ($input['kategori'] == 'Pengeluaran') {
+      $input['nama'] = 'OUT|' . $code . $date;
+    } else {
+      $input['nama'] = 'INV|' . $code . $date;
+    }
     $input['created_at'] = Carbon::now()->format('Y-m-d');
     $input['updated_at'] = Carbon::now()->format('Y-m-d');
     $input['status'] = "Active";
@@ -151,7 +158,7 @@ class TransactionController extends Controller
     $updateBal = Balance::where('nama', $thisBal)->first();
     $balHis = new BalanceHis();
 
-    
+
     if ($input['kategori'] == 'Pengeluaran') {
       $newBal = $updateBal->saldo - $input['nominal'];
     } else {
@@ -159,10 +166,10 @@ class TransactionController extends Controller
     }
 
     $balHis->create([
-                'transaction_id' =>$input['nama'],
-                'balance_name' =>$thisBal,
-                'saldo_before' =>$updateBal->saldo,
-                'saldo_after' =>$newBal,
+      'transaction_id' => $input['nama'],
+      'balance_name' => $thisBal,
+      'saldo_before' => $updateBal->saldo,
+      'saldo_after' => $newBal,
     ]);
 
     $updateBal->update([
@@ -171,10 +178,6 @@ class TransactionController extends Controller
 
     ///////////////////////////////////////////
 
-    //////////////////balancehis//////////////////
-
-
-    //////////////////////////////////////////////
     return redirect('/dashboard/transactions/index')->with('success', 'New transaction has been added');
   }
 
@@ -182,8 +185,15 @@ class TransactionController extends Controller
   public function destroy(Transaction $transaction, Request $request)
   {
 
-    $balanceHisDeleted = BalanceHis::where('balance_name', $transaction->balance)->delete();
+    $balanceHis = BalanceHis::where('transaction_id', $transaction->nama)->first();
+    $balanceUpdate = Balance::where('nama', $balanceHis->balance_name)->first();
+
     $transaction = Transaction::where('id', $transaction->id)->first();
+
+
+    $balanceUpdate->update([
+      "saldo" => $balanceHis->saldo_before,
+    ]);
 
     $transaction->update([
       "status" => "Deleted",

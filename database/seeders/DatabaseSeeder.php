@@ -36,6 +36,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Balance::create([
+            'nama' => 'Cash',
+            'saldo' => 7500000,
+            'tipe' => 'Cash',
+        ]);
+
+        Balance::create([
             'nama' => 'BCA',
             'saldo' => 7500000,
             'tipe' => 'Bank',

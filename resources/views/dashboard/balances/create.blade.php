@@ -46,8 +46,8 @@
       <select class="form-control" name="tipe">
         <option value="ewallet" selected> E-Wallet</option>
         <option value="bank">Bank</option>
-        <option value="cash">Cash</option>
         <option value="investment">Investment</option>
+        <option value="cash">Cash</option>
       </select>
     </div>
 

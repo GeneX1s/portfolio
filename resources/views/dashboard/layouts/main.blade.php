@@ -92,6 +92,7 @@
     padding-left: .75rem; /* Add padding as needed */
     margin-right: auto; /* Center the container horizontally */
     margin-left: auto; /* Center the container horizontally */
+    overflow: visible; /* Ensure that content is not clipped */
 }
 
 /* Ensure .container-fluid spans the full viewport width */
@@ -99,6 +100,8 @@
     width: 100%; /* Full width container */
     padding-right: .75rem; /* Padding as needed */
     padding-left: .75rem; /* Padding as needed */
+    overflow: visible; /* Ensure that content is not clipped */
+
 }
 
     

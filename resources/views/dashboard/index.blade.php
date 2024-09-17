@@ -474,7 +474,7 @@
                                                                                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                                                                 <h6
                                                                                         class="m-0 font-weight-bold text-primary">
-                                                                                        Spendings Overview</h6>
+                                                                                        Cashflow Overview</h6>
                                                                                 <div class="dropdown no-arrow">
                                                                                         <a class="dropdown-toggle"
                                                                                                 href="#" role="button"
@@ -642,7 +642,7 @@
                                                                         use App\Models\Transaction;
 
                                                                         $transact =
-                                                                        Transaction::where('status','Active')->get();
+                                                                        Transaction::where('status','Active')->where('kategori','Pengeluaran')->get();
 
                                                                         if($transact){
 

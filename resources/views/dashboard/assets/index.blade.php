@@ -95,7 +95,7 @@
         <td>{{$loop->iteration}}</td>
 
         <td>{{$asset->nama}}</td>
-        <td>{{$asset->harga_beli}}</td>
+        <td>Rp.{{ number_format($asset->harga_beli, '2', ',', '.') }}</td>
         <td>{{$asset->tanggal_beli}}</td>
         <td>{{$asset->jenis}}</td>
         <td>{{$asset->status}}</td>

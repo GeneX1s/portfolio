@@ -82,7 +82,7 @@ Route::resource('/dashboard/balances', BalanceController::class)->middleware('au
 Route::get('/dashboard/assets/index', [AssetController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/assets/edit', [AssetController::class, 'edit'])->middleware('auth');
 Route::get('/dashboard/assets/create', [AssetController::class, 'create'])->middleware('auth');
-Route::get('/dashboard/assets/{balance:id}/edit', [AssetController::class, 'update'])->middleware('auth');
+Route::get('/dashboard/assets/{asset:id}/edit', [AssetController::class, 'update'])->middleware('auth');
 Route::resource('/dashboard/assets', AssetController::class)->middleware('auth');
 ////////////////////////////////////
 

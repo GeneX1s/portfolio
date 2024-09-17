@@ -67,7 +67,7 @@
       <div class="mb-3">
         <label for="balance" class="form-label">Balance</label>
         <select class="form-control" name="balance">
-          <option value="Cash" selected> Cash</option>
+          {{-- <option value="Cash" selected> Cash</option> --}}
           @foreach ($balances as $balance)
           <option value="{{$balance->nama}}"> {{$balance->nama}}</option>
           @endforeach

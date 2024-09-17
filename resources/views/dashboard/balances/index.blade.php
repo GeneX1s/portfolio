@@ -93,7 +93,7 @@
         <td>{{$loop->iteration}}</td>
 
         <td>{{$balance->nama}}</td>
-        <td>{{$balance->saldo}}</td>
+        <td>Rp.{{ number_format($balance->saldo, '2', ',', '.') }}</td>
         <td>{{$balance->tipe}}</td>
         
         <td>

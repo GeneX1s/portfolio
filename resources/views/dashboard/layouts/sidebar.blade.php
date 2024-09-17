@@ -114,7 +114,7 @@
       <span>Users</span>
     </a>
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
+      <div class="bg-white py-2 collapse-inner rounded" style="position: relative; z-index: 999999999;">
         <a class="collapse-item" href="/dashboard/users/manage">Change My Password</a>
         <a class="collapse-item" href="/dashboard/users/index">Users List</a>
       </div>
