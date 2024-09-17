@@ -74,6 +74,8 @@ Route::resource('/dashboard/users', LoginController::class)->middleware('auth');
 Route::get('/dashboard/balances/index', [BalanceController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/balances/edit', [BalanceController::class, 'edit'])->middleware('auth');
 Route::get('/dashboard/balances/create', [BalanceController::class, 'create'])->middleware('auth');
+Route::get('/dashboard/balances/move', [BalanceController::class, 'move'])->middleware('auth');
+Route::post('/dashboard/balances/transfer', [BalanceController::class, 'transfer'])->middleware('auth');
 Route::get('/dashboard/balances/{balance:id}/edit', [BalanceController::class, 'update'])->middleware('auth');
 Route::resource('/dashboard/balances', BalanceController::class)->middleware('auth');
 ////////////////////////////////////

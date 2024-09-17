@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Balance;
 use App\Models\BalanceHis;
 use App\Models\Transaction;
-use DateTime;
 use Carbon\Carbon;
+use DateTime;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
@@ -81,36 +82,54 @@ class BalanceController extends Controller
     return redirect('/dashboard/balances/index')->with('success', 'Balance has been deleted');
   }
 
-  public function move(Transaction $transaction, Request $request)
+  public function move()
+  {
+    $balances = Balance::get();
+    return view('dashboard.balances.move', [
+      'balances' => $balances,
+    ]);
+  }
+
+  public function transfer(Transaction $transaction, Request $request)
   {
     $date = Date::now();
+    $code = md5(Str::random(10));
 
-    $balance_from = $request["balance"];
-    $balance_to = $request["balance_destination"];
+    $balance_from = $request["source"];
+    $balance_to = $request["destination"];
+
+    if ($balance_from == $balance_to) {
+      return redirect('/dashboard/balances/index')->with('error', 'Cannot transfer to same balance');
+    }
     $nominal = $request["nominal"];
 
-    $getBalance = Balance::where('nama',$balance_from)->first()->saldo;
-    $toBalance =  Balance::where('nama',$balance_to)->first()->saldo;
+    $getBalance = Balance::where('nama', $balance_from)->first();
+    $toBalance =  Balance::where('nama', $balance_to)->first();
 
-$updateBal = $getBalance - $nominal;
+    $updateBal = $getBalance->saldo - $nominal;
+    $getBalance->update([
+      'saldo' => $updateBal,
+    ]);
 
-$input = [
-  'nama' => 'TR|' . $date,
-  'nominal' => $request["nominal"],
-  'kategori' => 'Transfer',
-  'balance' => $transaction->balance,
-  'balance_destination' => $transaction->balance_destination,
-  'deskripsi' => $transaction->deskripsi,
-  'created_at' => now(),
-  'status' => $transaction->status,
-  'profile' => $transaction->profile,
-];
+    $updateBal = $toBalance->saldo + $nominal;
+    $toBalance->update([
+      'saldo' => $updateBal,
+    ]);
 
-Transaction::create($input);
-$moveBal = $toBalance + $nominal;
+    $input = [
+      'nama' => 'TRF|' . $code . $date,
+      'nominal' => $request["nominal"],
+      'kategori' => 'Transfer',
+      'balance' => $balance_from,
+      'balance_destination' => $balance_to,
+      'deskripsi' => 'Perpindahan saldo',
+      'created_at' => Carbon::now(),
+      'status' => 'Done',
+      'profile' => 'super-admin',
+    ];
 
+    Transaction::create($input);
 
-
-    $inputData['updated_at'] = Date::now();
+    return redirect('/dashboard/balances/index')->with('success', 'Balance has been updated!');
   }
 }
