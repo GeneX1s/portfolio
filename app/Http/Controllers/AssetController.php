@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SetValue;
 use Illuminate\Http\Request;
 use App\Models\Asset;
 use DateTime;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\Hash;
 
 class AssetController extends Controller
 {

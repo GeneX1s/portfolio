@@ -106,18 +106,22 @@ class BalanceController extends Controller
     $getBalance = Balance::where('nama', $balance_from)->first();
     $toBalance =  Balance::where('nama', $balance_to)->first();
 
-    $updateBal = $getBalance->saldo - $nominal;
+    $saldo_from = $getBalance->saldo;
+    $saldo_to = $toBalance->saldo;
+
+    $updateBal = $saldo_from - $nominal;
     $getBalance->update([
       'saldo' => $updateBal,
     ]);
 
-    $updateBal = $toBalance->saldo + $nominal;
+    $updateBal = $saldo_to + $nominal;
     $toBalance->update([
       'saldo' => $updateBal,
     ]);
 
+    $trxId = 'TRF|' . $code . $date;
     $input = [
-      'nama' => 'TRF|' . $code . $date,
+      'nama' => $trxId,
       'nominal' => $request["nominal"],
       'kategori' => 'Transfer',
       'balance' => $balance_from,
@@ -128,7 +132,24 @@ class BalanceController extends Controller
       'profile' => 'super-admin',
     ];
 
+    $balancehisFrom = [
+      'transaction_id' => $trxId,
+    'balance_name'=>$balance_from,
+    'saldo_before'=>$saldo_from,
+    'saldo_after'=>$getBalance->saldo,
+    ];
+
+    $balancehisTo = [
+      'transaction_id' => $trxId,
+    'balance_name'=>$balance_to,
+    'saldo_before'=>$saldo_to,
+    'saldo_after'=>$toBalance->saldo,
+    ];
+
     Transaction::create($input);
+
+    BalanceHis::create($balancehisFrom);
+    BalanceHis::create($balancehisTo);
 
     return redirect('/dashboard/balances/index')->with('success', 'Balance has been updated!');
   }

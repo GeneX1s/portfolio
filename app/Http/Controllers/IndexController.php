@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rating;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Menu;
-use App\Models\Special;
 use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
