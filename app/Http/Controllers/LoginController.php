@@ -129,16 +129,14 @@ class LoginController extends Controller
   public function update(Request $request, User $user)
   {
 
-    $user = User::where('id', $user->id)->first();
+    $id = Auth::id();
+    $user = User::where('id', $id)->first();
     
     $request->validate([
-      'email' => 'required',
       'password' => 'required',
     ]);
-    
     $input = $request->all();
     $password = bcrypt($input['password']);
-    // dd($input);
     $user->update([
       'email' => $input['email'],
       'password' => $password,
