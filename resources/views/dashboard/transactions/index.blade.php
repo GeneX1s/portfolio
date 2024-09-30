@@ -182,8 +182,9 @@
   
     <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-1">
-        <a class="btn btn-warning btn-custom" href="/dashboard">Export to Excel</a>
-      </div>
+        <a class="btn btn-warning btn-custom" href="{{ url('/dashboard/transactions/export-pdf') }}">Export to PDF</a>
+    </div>
+    
     </div>
     <div class="col-12 col-md-6 col-lg-4 w-100">
       <div class="mb-1">

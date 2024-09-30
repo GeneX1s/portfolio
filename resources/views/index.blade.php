@@ -740,17 +740,17 @@
                       <i class="pe-7s-icon pe-7s-mail"></i>
                     </div>
                     <div class="ci-text">
-                      <h5>Email | <a href="owen.djohan@gmail.com" class="__cf_email__"
+                      {{-- <h5>Email | <a href="owen.djohan@gmail.com" class="__cf_email__"
                           data-cfemail="dabbb6bfa2a9b7b3aeb29abfa2bbb7aab6bff4b9b5b7">owen.djohan@gmail.com</a></h5>
-                    </div>
+                    </div> --}}
                   </div>
                   <div class="contact-info-block">
                     <div class="ci-icon">
                       <i class="pe-7s-icon pe-7s-call"></i>
                     </div>
-                    <div class="ci-text">
+                    {{-- <div class="ci-text">
                       <h5>WhatsApp | 0812 8062 6658</h5>
-                    </div>
+                    </div> --}}
                   </div>
                   <div class="contact-info-block">
                     <div class="ci-icon">

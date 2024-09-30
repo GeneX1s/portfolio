@@ -52,6 +52,7 @@ Route::get('/portfolio1', function () {
 })->name('portfolio1');
 
 ////////////////Transactions////////////////
+Route::get('/dashboard/transactions/export-pdf', [TransactionController::class, 'exportPDF']);
 Route::get('/dashboard/transactions/index', [TransactionController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/transactions/create', [TransactionController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/setvalue', [TransactionController::class, 'view_setvalue'])->middleware('auth');
@@ -60,6 +61,8 @@ Route::post('/dashboard/transactions/{transaction}/template', [TransactionContro
 Route::post('/dashboard/transactions/template', [TransactionController::class, 'template'])->middleware('auth');
 Route::post('/dashboard/transactions/setvalue', [TransactionController::class, 'setvalue'])->middleware('auth');
 Route::post('/dashboard/clear/transactions', [TransactionController::class, 'clear'])->middleware('auth');
+
+
 ////////////////////////////////////
 
 ////////////////Users////////////////

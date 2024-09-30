@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\SetValue;
 use App\Models\Template;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Auth;
@@ -88,7 +89,7 @@ class TransactionController extends Controller
       $total = $total - $minus;
       $pengeluaran = $pengeluaran + $minus;
     }
-
+// dd($total);
     return view('dashboard.transactions.index', [
       // 'transactions' => $data,
       'transactions' => $transactions,
@@ -310,5 +311,13 @@ class TransactionController extends Controller
 
     return redirect('/dashboard/transactions/index')->with('success', 'Cleared all transaction log.');
     // return redirect()->back()->with('success', 'Value updated successfully.');
+  }
+
+  public function exportPDF()
+  {
+      $transactions = Transaction::all();
+      $pdf = FacadePdf::loadView('dashboard.transactions.index', compact('transactions'));
+// $total = 1;
+      return $pdf->download('transactions.pdf');
   }
 }
