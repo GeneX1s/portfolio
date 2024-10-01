@@ -12,17 +12,16 @@
             width: 100%; /* Default for small screens */
         }
 
-        @media (min-width: 768px) { /* Medium screens and up */
-            .content {
-                width: 40%; /* 40% width on medium and larger screens */
-            }
-          }
 
-        @media (max-width: 767px) { /* Medium screens and up */
+        @media (max-width: 1080px) { /* Medium screens and up */
             .content {
                 width: 100%; /* 40% width on medium and larger screens */
             }
           }
+
+          .table-responsive {
+    width: 100%;
+}
 
 </style>
 @section('container')
@@ -88,11 +87,10 @@
     <thead class="thead">
       <tr>
         <th scope="col">No.</th>
-        <th scope="col">ID Transaksi</th>
+        <th scope="col">Deskripsi</th>
         <th scope="col">Source</th>
         <th scope="col">Kategori</th>
         <th scope="col">Nominal</th>
-        <th scope="col">Deskripsi</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>
       </tr>
@@ -102,11 +100,10 @@
       <tr>
         <td>{{$loop->iteration}}</td>
 
-        <td>{{$transaction->nama}}</td>
+        <td>{{$transaction->deskripsi}}</td>
         <td>{{$transaction->balance}}</td>
         <td>{{$transaction->kategori}}</td>
         <td>Rp.{{ number_format($transaction->nominal, '2', ',', '.') }}</td>
-        <td>{{$transaction->deskripsi}}</td>
         <td>{{$transaction->status}}</td>
 
         <td>
