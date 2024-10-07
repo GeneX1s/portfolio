@@ -169,7 +169,7 @@
   </div>
 
   <!-- Sidebar Message -->
-  <div class="sidebar-card d-none d-lg-flex">
+  <div class="sidebar-card d-none d-md-flex">
     <p class="text-center mb-2"><strong>Smart Dashboard</strong> For all your administration needs</p>
   </div>
 

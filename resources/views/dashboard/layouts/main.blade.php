@@ -20,92 +20,65 @@
   <!-- Custom styles for this template-->
   <link href="../../../dasbor/css/sb-admin-2.min.css" rel="stylesheet">
 
-
   <style>
-    .wrapper {
-      display: flex;
-    }
-
-    .sidebar {
-      width: 150px;
-      /* Adjust the width as needed */
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      padding: 20px;
-      /* Sidebar takes full height of the viewport */
-      overflow-y: auto;
-      /* Enable scrolling for the sidebar if it's taller than the viewport */
-      z-index: 1000;
-      /* Ensures the sidebar appears above other content */
-      background-color: #fff;
-      /* Optional: set background color to ensure visibility */
-    }
-
-    /* For WebKit browsers (Chrome, Safari) */
-    .sidebar::-webkit-scrollbar {
-      display: none;
-      /* Hides the scrollbar */
-    }
-
-    /* For Firefox */
-    .sidebar {
-      scrollbar-width: none;
-      /* Hides scrollbar in Firefox */
-    }
-
-    /* For Edge (support for scrollbar-color) */
-    .sidebar {
-      -ms-overflow-style: none;
-      /* Hides scrollbar in older Edge versions */
-    }
-
-
-    .content {
-      /* width: 50%; */
-      margin-left: 200px;
-      /* Ensure content is pushed to the right of the sidebar */
-      padding-left: 1rem;
-      /* Optional: add padding to the left of the content */
-      padding: 20px;
-      /* Ensure that content does not overlap the sidebar */
-      z-index: 1;
-      /* Content has a lower z-index than the sidebar */
-      /* Remove any conflicting position properties */
-    }
-
-    /* .container,
-    .container-md,
-    .container-sm {
-      max-width: unset !important;
-    } */
-
-    /* Override default container max-width to make them full-width */
-.container,
-.container-sm,
-.container-md,
-.container-lg,
-.container-xl {
-    width: 100%; /* Ensure container spans full width */
-    padding-right: .75rem; /* Add padding as needed */
-    padding-left: .75rem; /* Add padding as needed */
-    margin-right: auto; /* Center the container horizontally */
-    margin-left: auto; /* Center the container horizontally */
-    overflow: visible; /* Ensure that content is not clipped */
+/* Base styling */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure full height for body */
 }
 
-/* Ensure .container-fluid spans the full viewport width */
-.container-fluid {
-    width: 100%; /* Full width container */
-    padding-right: .75rem; /* Padding as needed */
-    padding-left: .75rem; /* Padding as needed */
-    overflow: visible; /* Ensure that content is not clipped */
+.wrapper {
+  display: flex; /* Use flexbox for layout */
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 270px !important; /* Fixed width for the sidebar */
+  height: 100vh; /* Full height for the sidebar */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  overflow: hidden;
+  background-color: #f8f9fa; /* Background color */
+  transition: width 0.3s; /* Smooth transition for resizing */
+  position: relative; /* Center vertically */
 
 }
 
-    
+  
+/* Content styling */
+.content {
+  /* margin-left: 250px; Leave space for sidebar */
+  padding: 20px; /* Padding for content */
+  flex-grow: 1; /* Allow content to fill available space */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative; /* Change to relative on mobile */
+    height: auto; /* Allow height to adjust */
+    width: 100%; /* Full width on mobile */
+    display: none; /* Hide sidebar by default */
+  }
+
+  .wrapper {
+    flex-direction: column; /* Stack items on top of each other */
+  }
+
+  .content {
+    margin-left: 0; /* Remove left margin */
+    padding: 10px; /* Reduce padding on mobile */
+  }
+
+  .sidebar.active {
+    display: block; /* Show sidebar when active */
+  }
+}
+
   </style>
+  
 {{-- <p class="d-none d-md-block">Visible on medium screens and up</p> --}}
 {{-- <p class="d-block d-md-none">Visible on small screens</p> --}}
 
