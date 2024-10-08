@@ -3,6 +3,9 @@
 <h1>Assets</h1>                                 |done
 <h1>Clear all data transactions</h1>            |done
 <h1>Audit Log</h1>                              |
+<h1>Toggleable dashboard contents</h1>          |
+<h1>RYR implementation</h1>                     |
+
 @php
 
 // Store a value in the cache for 10 minutes

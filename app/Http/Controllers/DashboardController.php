@@ -322,6 +322,7 @@ class DashboardController extends Controller
     $salary = SetValue::first()->salary;
     $fix_outcome = SetValue::first()->fix_outcome;
     $spendable = ($salary * 12) / 2 - $pengeluaran_tahunan;
+    // $spendable = ($pendapatan_tahunan) / 2 - $pengeluaran_tahunan;
     $quota = $salary / 2 - $pengeluaran_bulanan;
 
 // $top_category = $transactions->where()->pluck()->5;

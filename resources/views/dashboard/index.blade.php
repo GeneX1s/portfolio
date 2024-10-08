@@ -386,9 +386,7 @@
                                                                                                 <div
                                                                                                         class="h5 mb-0 font-weight-bold text-gray-800">
                                                                                                         Rp.{{
-                                                                                                        number_format(($spendable
-                                                                                                        -
-                                                                                                        $pengeluaran_tahunan),
+                                                                                                        number_format(($spendable),
                                                                                                         '2',
                                                                                                         ',', '.') }}
                                                                                                 </div>
@@ -775,7 +773,7 @@
                                                                 </div>
 
                                                                 <!-- Color System -->
-                                                                <div class="row">
+                                                                {{-- <div class="row">
                                                                         <div class="col-lg-6 mb-4">
                                                                                 <div
                                                                                         class="card bg-primary text-white shadow">
@@ -872,7 +870,7 @@
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
-                                                                </div>
+                                                                </div> --}}
 
                                                         </div>
 
