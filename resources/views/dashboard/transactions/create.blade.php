@@ -119,7 +119,6 @@
           @foreach ($balances as $balance)
           <option value="{{$balance->nama}}"> {{$balance->nama}}</option>
           @endforeach
-          <option value="Misc">Misc</option>
         </select>
       </div>
 

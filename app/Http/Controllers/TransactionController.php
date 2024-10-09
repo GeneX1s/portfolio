@@ -185,8 +185,9 @@ class TransactionController extends Controller
 
   public function destroy(Transaction $transaction, Request $request)
   {
-
     $balanceHis = BalanceHis::where('transaction_id', $transaction->nama)->first();
+    // dd($transaction);
+    // dd($balanceHis);
     $balanceUpdate = Balance::where('nama', $balanceHis->balance_name)->first();
 
     $transaction = Transaction::where('id', $transaction->id)->first();

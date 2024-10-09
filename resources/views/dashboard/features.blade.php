@@ -5,6 +5,9 @@
 <h1>Audit Log</h1>                              |
 <h1>Toggleable dashboard contents</h1>          |
 <h1>RYR implementation</h1>                     |
+<h1>New bug sidebar dashboard ilang di mobile</h1>|
+
+
 
 @php
 

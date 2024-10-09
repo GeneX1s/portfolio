@@ -46,5 +46,11 @@ class DatabaseSeeder extends Seeder
             'saldo' => 7500000,
             'tipe' => 'Bank',
         ]);
+
+        Balance::create([
+            'nama' => 'Misc',
+            'saldo' => 0,
+            'tipe' => 'Lainnya',
+        ]);
     }
 }
