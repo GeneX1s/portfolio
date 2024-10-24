@@ -171,6 +171,8 @@ class TransactionController extends Controller
       'balance_name' => $thisBal,
       'saldo_before' => $updateBal->saldo,
       'saldo_after' => $newBal,
+      'description' => $input['deskripsi'],
+      'created_at' => $date,
     ]);
 
     $updateBal->update([
@@ -247,6 +249,34 @@ class TransactionController extends Controller
 
     // Create a new transaction template
     Transaction::create($input);
+
+    //////////////////balance//////////////////
+
+    $thisBal = $input['balance'];
+    $updateBal = Balance::where('nama', $thisBal)->first();
+    $balHis = new BalanceHis();
+
+
+    if ($input['kategori'] == 'Pengeluaran') {
+      $newBal = $updateBal->saldo - $input['nominal'];
+    } else {
+      $newBal = $updateBal->saldo + $input['nominal'];
+    }
+
+    $balHis->create([
+      'transaction_id' => $input['nama'],
+      'balance_name' => $thisBal,
+      'saldo_before' => $updateBal->saldo,
+      'saldo_after' => $newBal,
+      'description' => $input['deskripsi'],
+      'created_at' => now(),
+    ]);
+
+    $updateBal->update([
+      'saldo' => $newBal,
+    ]);
+
+    ///////////////////////////////////////////
 
     // Redirect with success message
     return redirect('/dashboard/transactions/index')->with('success', 'New transaction has been added.');

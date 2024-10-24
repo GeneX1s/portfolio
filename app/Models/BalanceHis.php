@@ -29,6 +29,8 @@ class BalanceHis extends Authenticatable
     'balance_name',
     'saldo_before',
     'saldo_after',
+    'description',
+    'created_at',
   ];
 
   /**

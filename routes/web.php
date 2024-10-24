@@ -80,6 +80,7 @@ Route::get('/dashboard/balances/create', [BalanceController::class, 'create'])->
 Route::get('/dashboard/balances/move', [BalanceController::class, 'move'])->middleware('auth');
 Route::post('/dashboard/balances/transfer', [BalanceController::class, 'transfer'])->middleware('auth');
 Route::get('/dashboard/balances/{balance:id}/edit', [BalanceController::class, 'update'])->middleware('auth');
+Route::get('/dashboard/balances/{balance:id}/history', [BalanceController::class, 'history'])->middleware('auth');
 Route::resource('/dashboard/balances', BalanceController::class)->middleware('auth');
 ////////////////////////////////////
 

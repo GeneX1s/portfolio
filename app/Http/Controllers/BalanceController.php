@@ -137,13 +137,17 @@ class BalanceController extends Controller
     'balance_name'=>$balance_from,
     'saldo_before'=>$saldo_from,
     'saldo_after'=>$getBalance->saldo,
-    ];
-
-    $balancehisTo = [
-      'transaction_id' => $trxId,
+    'description'=>'transfer',
+    'created_at'=>now(),
+  ];
+  
+  $balancehisTo = [
+    'transaction_id' => $trxId,
     'balance_name'=>$balance_to,
     'saldo_before'=>$saldo_to,
     'saldo_after'=>$toBalance->saldo,
+    'description'=>'transfer',
+    'created_at'=>now(),
     ];
 
     Transaction::create($input);
@@ -153,4 +157,19 @@ class BalanceController extends Controller
 
     return redirect('/dashboard/balances/index')->with('success', 'Balance has been updated!');
   }
+
+  public function history(Balance $balance, Request $request){
+    $balancename = $balance->nama;
+    // dd($balance->nama);
+    $balance = Balance::where('nama',$balancename)->first()->saldo;
+    $histories = BalanceHis::where('balance_name',$balancename)->get();
+
+    return view('dashboard.balances.history', [
+
+      'histories' => $histories,
+      'balancename' => $balancename,
+      'balance' => $balance
+    ]);
+  }
+
 }

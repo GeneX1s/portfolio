@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('balance_name');
             $table->integer('saldo_before');
             $table->integer('saldo_after');
+            $table->string('description')->default('.');
             $table->timestamps();
         });
     }

@@ -118,6 +118,15 @@
             </button>
           </form>
 
+          <form action="/dashboard/balances/{{ $balance->id }}/history" class="d-inline">
+            @csrf
+            @method('POST')
+            <!-- Not strictly necessary with `POST` method -->
+            <button class="badge bg-primary border-0" type="submit">
+              <i class="fas fa-regular fa-list"></i>
+            </button>
+          </form>
+
         </td>
         
       </tr>
