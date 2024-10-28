@@ -6,6 +6,15 @@
 .form-control {
     padding: 1rem; /* Adjust as needed */
   }
+   .btn-custom {
+    width: 100%; /* Make all buttons the same width */
+    padding: 10px; /* Consistent padding */
+    border-radius: 5px; /* Consistent border radius */
+    text-align: center; /* Center text */
+  }
+    th, td {
+    text-align: left; /* Align text to the left */
+  }
   .content {
             width: 100%; /* Default for small screens */
         }
@@ -91,6 +100,9 @@
       </tr>
     </thead>
     <tbody>
+      @php
+        $total = 0;
+      @endphp
       @foreach ($balances as $balance)
       <tr>
         <td>{{$loop->iteration}}</td>
@@ -98,7 +110,9 @@
         <td>{{$balance->nama}}</td>
         <td>Rp.{{ number_format($balance->saldo, '2', ',', '.') }}</td>
         <td>{{$balance->tipe}}</td>
-        
+        @php
+          $total = $total + $balance->saldo;
+        @endphp
         <td>
           <form action="/dashboard/balances/{{$balance->id}}" method="post" class="d-inline">
             @method('delete')
@@ -135,6 +149,13 @@
     </tbody>
   </table>
 
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="mb-3">
+        <h6>Total : Rp.{{ number_format($total, '2', ',', '.') }}</h6>
+      </div>
+    </div>
+  </div>
   
     <div class="col-md-2">
       <div class="mb-1">

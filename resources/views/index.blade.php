@@ -370,7 +370,7 @@
                       <h5 class="event-date">2022</h5>
                       <h4 class="event-name">Binus University</h4>
                       <span class="event-description">S1 Sarjana Komputer</span>
-                      <p>Graduate of Binus University from 2018-2022 majoring in computer science.</p>
+                      <p>Graduate of Binus University (2018-2022) majoring in computer science.</p>
                     </div>
                     <!-- Single event -->
                     <!-- <div class="timeline-event te-primary">
@@ -399,21 +399,21 @@
                       <h5 class="event-date">Jul 2022 - Jan 2023</h5>
                       <h4 class="event-name">Developer and Support</h4>
                       <span class="event-description">PT. Duta Nitsuko Abadi</span>
-                      <p>Worked as developer and support for telephone systems company while awaiting graduation.</p>
+                      <p>Worked as developer and support for telephone systems company.</p>
                     </div>
                     <!-- Single event -->
                     <div class="timeline-event te-primary">
                       <h5 class="event-date">Jul 2022 - Jan 2023</h5>
                       <h4 class="event-name">Retail Funding Relationship Manager</h4>
                       <span class="event-description">PT. Bank OCBC NISP Tbk.</span>
-                      <p>Worked full-time as a banker in OCBC NISP after graduation.</p>
+                      <p>Worked full-time as a management trainee banker in OCBC NISP.</p>
                     </div>
                     <!-- Single event -->
                     <div class="timeline-event te-primary">
                       <h5 class="event-date">Nov 2023 - Mar 2024</h5>
                       <h4 class="event-name">Back End developer</h4>
                       <span class="event-description">PT. Indo Artha Teknologi</span>
-                      <p>Worked full time as backend developer in PT IAT working on human capital website and also Artha
+                      <p>Worked full time as backend developer in PT. IAT working on backend projects such as Artha
                         Graha Peduli's website Pasar Murah.</p>
                     </div>
                     <!-- Single event -->
@@ -422,7 +422,7 @@
                       <h4 class="event-name">Core Banking System Developer</h4>
                       <span class="event-description">PT. Bank Artha Graha Internasional Tbk.</span>
                       <p>Currently working full time as Staff Solution and Dev in Artha Graha Bank developing core
-                        banking system that uses T24 and JBase Query Languange as backend.</p>
+                        banking system that uses T24 and JBase Query Languange as backend. Also developed Middleware API using Fiorano.</p>
                     </div>
                   </div>
                 </div>
@@ -449,7 +449,7 @@
                   </div>
 
                   <div class="block-title">
-                    <h3>Coding Skills</h3>
+                    <h3>Skills</h3>
                   </div>
                   <div class="skills-info">
                     <h4>Laravel</h4>
@@ -467,12 +467,12 @@
                       <div class="skill-percentage skill-8"></div>
                     </div>
 
-                    <h4>Core Banking (T24 Temenos)</h4>
+                    <h4>Core Banking (T24 Temenos/ Fiorano)</h4>
                     <div class="skill-container">
                       <div class="skill-percentage skill-7"></div>
                     </div>
 
-                    <h4>Java</h4>
+                    <h4>Golang</h4>
                     <div class="skill-container">
                       <div class="skill-percentage skill-6"></div>
                     </div>
@@ -724,8 +724,7 @@
                   {{-- <p>Sed eleifend sed nibh nec fringilla. Donec eu cursus sem, vitae tristique ante. Cras pretium
                     rutrum
                     egestas. Integer ultrices libero sed justo vehicula, eget tincidunt tortor tempus.</p> --}}
-                  <p>I'm always available. I prefer to be contacted through
-                    Whatsapp if possible, but emails are also fine 😊.
+                  <p>Please email here for all business needs.
                   </p>
                   <div class="contact-info-block">
                     <div class="ci-icon">
@@ -740,18 +739,18 @@
                       <i class="pe-7s-icon pe-7s-mail"></i>
                     </div>
                     <div class="ci-text">
-                      {{-- <h5>Email | <a href="owen.djohan@gmail.com" class="__cf_email__"
-                          data-cfemail="dabbb6bfa2a9b7b3aeb29abfa2bbb7aab6bff4b9b5b7">owen.djohan@gmail.com</a></h5>
-                    </div> --}}
+                      <h5>Email | <a href="owen.djohan@gmail.com" class="__cf_email__"
+                          data-cfemail="dabbb6bfa2a9b7b3aeb29abfa2bbb7aab6bff4b9b5b7">n.owendjohan@yahoo.com</a></h5>
+                    </div>
                   </div>
-                  <div class="contact-info-block">
+                  {{-- <div class="contact-info-block">
                     <div class="ci-icon">
                       <i class="pe-7s-icon pe-7s-call"></i>
                     </div>
-                    {{-- <div class="ci-text">
+                    <div class="ci-text">
                       <h5>WhatsApp | 0812 8062 6658</h5>
-                    </div> --}}
-                  </div>
+                    </div>
+                  </div> --}}
                   <div class="contact-info-block">
                     <div class="ci-icon">
                       <i class="pe-7s-icon pe-7s-check"></i>
