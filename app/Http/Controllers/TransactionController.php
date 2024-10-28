@@ -102,7 +102,7 @@ class TransactionController extends Controller
   public function create() //redirect to page
   {
     $templates = Template::get();
-    $balances = Balance::get();
+    $balances = Balance::whereNot('tipe','Investment')->get();
     return view('/dashboard.transactions.create', [
       'templates' => $templates,
       'balances' => $balances,

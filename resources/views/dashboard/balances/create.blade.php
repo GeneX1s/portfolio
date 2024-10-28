@@ -44,10 +44,10 @@
     <div class="mb-3">
       <label for="tipe" class="form-label">Tipe</label>
       <select class="form-control" name="tipe">
-        <option value="ewallet" selected> E-Wallet</option>
-        <option value="bank">Bank</option>
-        <option value="investment">Investment</option>
-        <option value="cash">Cash</option>
+        <option value="E-Wallet" selected> E-Wallet</option>
+        <option value="Bank">Bank</option>
+        <option value="Investment">Investment</option>
+        <option value="Cash">Cash</option>
       </select>
     </div>
 
