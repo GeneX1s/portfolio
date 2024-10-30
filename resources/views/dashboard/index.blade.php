@@ -352,13 +352,16 @@
                                                                                         <div class="col mr-2">
                                                                                                 <div
                                                                                                         class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                                                                        Pengeluaran(Last
+                                                                                                        Spendable(This
                                                                                                         Week)
                                                                                                 </div>
+                                                                                        @php
+                                                                                $anggaran = ($spendable / 48) - $pengeluaran_mingguan
+                                                                                        @endphp
                                                                                                 <div
                                                                                                         class="h5 mb-0 font-weight-bold text-gray-800">
                                                                                                         Rp.{{
-                                                                                                        number_format($pengeluaran_mingguan,
+                                                                                                        number_format($anggaran,
                                                                                                         '2', ',', '.')
                                                                                                         }}</div>
                                                                                         </div>

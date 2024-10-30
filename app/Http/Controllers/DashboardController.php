@@ -17,8 +17,9 @@ class DashboardController extends Controller
   {
 
     // Get the start and end dates for the current week
-    $start_date = Carbon::now()->startOfWeek()->subWeek()->format('Y-m-d H:i:s');
-    $end_date = Carbon::now()->endOfWeek()->subWeek()->format('Y-m-d H:i:s');
+    // $start_date = Carbon::now()->startOfWeek()->subWeek()->format('Y-m-d H:i:s');
+    $start_date = Carbon::now()->startOfWeek()->format('Y-m-d H:i:s');
+    $end_date = Carbon::now()->endOfWeek()->format('Y-m-d H:i:s');
     $start_year = Carbon::now()->startOfYear()->format('Y-m-d H:i:s');
     $end_year = Carbon::now()->endOfYear()->format('Y-m-d H:i:s');
     $start_month = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
