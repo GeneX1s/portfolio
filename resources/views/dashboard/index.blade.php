@@ -415,7 +415,7 @@
                                                                                                 <div
                                                                                                         class="h5 mb-0 font-weight-bold text-gray-800">
                                                                                                         Rp.{{
-                                                                                                        number_format($pengeluaran_mingguan,
+                                                                                                        number_format($pendapatan_bulanan,
                                                                                                         '2',
                                                                                                         ',', '.') }}
                                                                                                 </div>

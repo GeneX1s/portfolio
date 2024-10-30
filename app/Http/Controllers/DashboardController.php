@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
   public function index(Request $request)
   {
 
@@ -317,15 +312,21 @@ class DashboardController extends Controller
       'data' => [$pendapatan_tahunan, $pengeluaran_tahunan, $investment_tahunan],
       'backgroundColor' => ['#4e73df', '#1cc88a', '#36b9cc'],
       'hoverBackgroundColor' => ['#2e59d9', '#17a673', '#2c9faf'],
-  ];
+    ];
 
+    $allgaji = Transaction::where('sub_kategori', 'Gaji')->whereNot('status', 'Deleted')->get();
     $salary = SetValue::first()->salary;
     $fix_outcome = SetValue::first()->fix_outcome;
-    $spendable = ($salary * 12) / 2 - $pengeluaran_tahunan;
+    $spendable = (($salary * 12) / 2 - $pengeluaran_tahunan) + ($pendapatan_tahunan / 2);
+
+    foreach ($allgaji as $gaji) { //logic ini digunakan untuk mendapat nilai akurat gaji apabila ada pemotongan atau pembulatan lebih/kurang
+      $spendable = ($spendable - $salary / 2) + ($gaji->nominal / 2);
+    }
+
     // $spendable = ($pendapatan_tahunan) / 2 - $pengeluaran_tahunan;
     $quota = $salary / 2 - $pengeluaran_bulanan;
 
-// $top_category = $transactions->where()->pluck()->5;
+    // $top_category = $transactions->where()->pluck()->5;
 
     return view('/dashboard.index', [
       'spendable' => $spendable,
@@ -344,13 +345,6 @@ class DashboardController extends Controller
     ]);
   }
 
-
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
   public function create_user(Request $request)
   {
 
@@ -358,12 +352,6 @@ class DashboardController extends Controller
     return view('/dashboard.posts.create_user');
   }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
   public function store(Request $request)
   {
     $userData = $request->validate([
@@ -381,19 +369,6 @@ class DashboardController extends Controller
     return redirect('/dashboard/posts/employees')->with('success', 'New user has been added');
   }
 
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  \App\Models\Book  $book
-   * @return \Illuminate\Http\Response
-   */
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  \App\Models\Book  $book
-   * @return \Illuminate\Http\Response
-   */
   public function destroy(User $user)
   {
 
