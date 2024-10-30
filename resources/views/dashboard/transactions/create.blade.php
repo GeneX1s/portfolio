@@ -1,36 +1,59 @@
 @extends('dashboard.layouts.main')
 <head>
 <style>
-  .sub-kategori-container {
+  /* .sub-kategori-container {
       display: none;
-  }
+  } */
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
       const kategoriSelect = document.querySelector('select[name="kategori"]');
-      const subKategoriPendapatan = document.querySelector('.sub-kategori-pendapatan');
-      const subKategoriPengeluaran = document.querySelector('.sub-kategori-pengeluaran');
-
-      function updateSubKategoriVisibility() {
-          const value = kategoriSelect.value;
-          if (value === 'Pengeluaran') {
-              subKategoriPengeluaran.style.display = 'block';
-              subKategoriPendapatan.style.display = 'none';
-          } else if (value === 'Pendapatan') {
-              subKategoriPengeluaran.style.display = 'none';
-              subKategoriPendapatan.style.display = 'block';
-          } else {
-              subKategoriPengeluaran.style.display = 'none';
-              subKategoriPendapatan.style.display = 'none';
-          }
+      const subKategoriSelect = document.querySelector('select[name="sub_kategori"]');
+  
+      // Define options for each category
+      const options = {
+          Pendapatan: [
+              { value: 'Gaji', text: 'Gaji' },
+              { value: 'Obligasi', text: 'Obligasi' },
+              { value: 'Bunga/Cashback', text: 'Bunga/Cashback' },
+              { value: 'Angpao', text: 'Angpao' },
+              { value: 'Lainnya', text: 'Lainnya' },
+          ],
+          Pengeluaran: [
+              { value: 'Lainnya', text: 'Lainnya' },
+              { value: 'Bensin', text: 'Bensin' },
+              { value: 'Fixed', text: 'Fixed' },
+              { value: 'Internet', text: 'Internet' },
+              { value: 'Lifestyle', text: 'Lifestyle' },
+              { value: 'Topup', text: 'Topup' },
+          ],
+      };
+  
+      function updateSubKategoriOptions() {
+          const selectedKategori = kategoriSelect.value;
+          const currentOptions = options[selectedKategori] || [];
+  
+          // Clear existing options
+          subKategoriSelect.innerHTML = '';
+  
+          // Populate new options based on selected category
+          currentOptions.forEach(option => {
+              const newOption = document.createElement('option');
+              newOption.value = option.value;
+              newOption.textContent = option.text;
+              subKategoriSelect.appendChild(newOption);
+          });
+  
+          // Reset the selected value if the category changes
+          subKategoriSelect.value = currentOptions.length > 0 ? currentOptions[0].value : '';
       }
-
-      kategoriSelect.addEventListener('change', updateSubKategoriVisibility);
-
-      // Initialize visibility based on the current selection
-      updateSubKategoriVisibility();
+  
+      kategoriSelect.addEventListener('change', updateSubKategoriOptions);
+  
+      // Initialize options based on the current selection
+      updateSubKategoriOptions();
   });
-</script>
+  </script>
 </head>
 
 @section('container')
@@ -72,34 +95,12 @@
         </select>
     </div>
 
-    <!-- Sub Kategori for Pengeluaran -->
-    <div class="sub-kategori-pengeluaran sub-kategori-container">
-        <div class="mb-3">
-            <label for="sub_kategori" class="form-label">Sub Kategori</label>
-            <select class="form-control" name="sub_kategori">
-                <option value="Lainnya" selected>Lainnya</option>
-                <option value="Bensin">Bensin</option>
-                <option value="Fixed">Fixed</option>
-                <option value="Internet">Internet</option>
-                <option value="Lifestyle">Lifestyle</option>
-                <option value="Topup">Topup</option>
-            </select>
-        </div>
-    </div>
-
-    <!-- Sub Kategori for Pendapatan -->
-    <div class="sub-kategori-pendapatan sub-kategori-container">
-        <div class="mb-3">
-            <label for="sub_kategori" class="form-label">Sub Kategori</label>
-            <select class="form-control" name="sub_kategori">
-                <option value="Gaji" selected>Gaji</option>
-                <option value="Obligasi">Obligasi</option>
-                <option value="Bunga/Cashback">Bunga/Cashback</option>
-                <option value="Angpao">Angpao</option>
-                <option value="Lainnya">Lainnya</option>
-            </select>
-        </div>
-    </div>
+  <div class="mb-3">
+      <label for="sub_kategori" class="form-label">Sub Kategori</label>
+      <select class="form-control" name="sub_kategori">
+          <option value="">Pilih Sub Kategori</option>
+      </select>
+  </div>
 
       <div class="mb-3">
         <label for="deskripsi" class="form-label">Deskripsi</label>
