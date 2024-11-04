@@ -23,7 +23,24 @@ class BalanceController extends Controller
    */
   public function index(Request $request)
   {
-    $balances = Balance::get();
+    $search = $request->nama;
+    $tipe = $request->tipe;
+
+    if($search || $tipe){
+      
+      $balances = Balance::query()
+      ->when($search, function ($query) use ($search) {
+        return $query->where('nama', 'like', '%' . $search . '%');
+      })
+      ->when($tipe, function ($query) use ($tipe) {
+        return $query->where('tipe', 'like', '%' . $tipe . '%');
+      })
+      ->get();
+    }else{
+      $balances = Balance::get();
+
+    }
+      
     return view('dashboard.balances.index', [
       'balances' => $balances,
     ]);

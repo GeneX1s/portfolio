@@ -32,7 +32,7 @@
   }
 
   .btn-custom {
-    width: 100%; /* Make all buttons the same width */
+    width: 70%; /* Make all buttons the same width */
     padding: 10px; /* Consistent padding */
     border-radius: 5px; /* Consistent border radius */
     text-align: center; /* Center text */
@@ -108,11 +108,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-md-6 col-lg-3">
-        <button type="submit" class="btn btn-primary">Search</button>
+      <div class="col-12 col-md-6 col-lg-4">
+        <button type="submit" class="btn btn-primary btn-custom">Search</button>
       </div>
       <div class="col-12 col-md-6 col-lg-4">
-        <a href="/dashboard/transactions/create" class="btn btn-primary mb-3">Add New</a>
+        <a href="/dashboard/transactions/create" class="btn btn-primary btn-custom mb-3">Add New</a>
       </div>
     </div>
   </form>

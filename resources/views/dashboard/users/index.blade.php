@@ -6,29 +6,33 @@
 .form-control {
     padding: 1rem; /* Adjust as needed */
   }
-  .content {
-            width: 100%; /* Default for small screens */
-        }
 
-        @media (min-width: 768px) { /* Medium screens and up */
-            .content {
-                width: 40%; /* 40% width on medium and larger screens */
-            }
-          }
+  .content {
+    display: flex;
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Align items to the top */
+    height: auto; /* Allow height to adjust */
+    padding: 20px; /* Add some padding */
+  }
+
+  @media (min-width: 768px) {
+    .content {
+      flex-direction: row; /* Stack items side by side on larger screens */
+      align-items: flex-start; /* Align items to the start */
+      justify-content: space-between; /* Space out items */
+      padding: 40px; /* More padding on larger screens */
+    }
+  }
+
+  .btn-custom {
+    width: 70%; /* Make all buttons the same width */
+    padding: 10px; /* Consistent padding */
+    border-radius: 5px; /* Consistent border radius */
+    text-align: center; /* Center text */
+  }
 .row {
     margin-top: 1%;
-  }
-  
-  .mb-3 {
-    padding-left:8%;
-    margin-bottom: 1rem; /* Adjust as needed */
-  }
-  
-  
-  .fixed-width {
-    width: 100px; /* Set a fixed width */
-    margin-left:5%;
-    margin-bottom: 1rem; /* Adjust as needed */
   }
 
 </style>
@@ -37,24 +41,23 @@
 </div>
 
 @if(session()->has('success'))
-<div class="alert alert-success col-lg-8" role="alert">
+<div class="alert alert-success col-12 col-md-6 col-lg-4" role="alert">
   {{ session('success') }}
 </div>
 @endif
 
 <div class="table-responsive">
-  {{-- <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
-    action="{{ route('users.index') }}" method="GET">
+  <form action="{{ route('users.index') }}" method="GET">
     @csrf
     <div class="row">
-      <div class="col-mb-3">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
           <input type="string" class="form-control" id="username" name="username">
         </div>
       </div>
 
-      <div class="col-mb-3">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="mb-3">
           <label for="role" class="form-label">Role</label>
           <select class="form-control" n  ame="role" id="role">
@@ -67,11 +70,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 sm-3">
-        <button type="submit" class="btn btn-primary fixed-width">Search</button>
+      <div class="col-12 col-md-6 col-lg-4">
+        <button type="submit" class="btn btn-primary btn-custom">Search</button>
       </div>
-      <div class="col-md-2 sm-3">
-        <a href="/dashboard/users/create" class="btn btn-primary fixed-width">Add New</a>
+      <div class="col-12 col-md-6 col-lg-4 mb-3">
+        <a href="/dashboard/users/create" class="btn btn-primary btn-custom">Add New</a>
       </div>
     </div>
   </form>
@@ -109,11 +112,10 @@
             @endif
           </form>
           
-          {{-- a href="/dashboard/menus/{{$menu['id']}}/edit" --}}
+          
           <form action="/dashboard/users/{{ $user->id }}/edit" class="d-inline">
             @csrf
             @method('POST')
-            <!-- Not strictly necessary with `POST` method -->
             <button class="badge bg-warning border-0" type="submit">
               <i class="fas fa-regular fa-pen-nib"></i>
             </button>
@@ -128,20 +130,9 @@
     </tbody>
   </table>
 
-{{-- 
-  <style>
-    .btn-custom {
-      width: 100%; /* Make all buttons the same width */
-      padding: 10px; /* Consistent padding */
-      border-radius: 5px; /* Consistent border radius */
-      text-align: center; /* Center text */
-    }
-  </style> --}}
-  
-    <div class="col-md-2">
-      <div class="mb-1">
+
+    <div class="col-12 col-md-6 col-lg-4">
         <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>
-      </div>
     </div>
   
   

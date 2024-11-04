@@ -29,7 +29,7 @@ class TransactionController extends Controller
     $jenis_search = $request->jenis;
     $start_date = $request->start_date;
     $end_date = $request->end_date;
-
+// dd($status_search);
 
     $userId = Auth::id();
     $userRole = User::where('id', $userId)->first()->role;
