@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use DateTime;
 use App\Models\Transaction;
+use App\Models\Balance;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -52,9 +53,7 @@ class DashboardController extends Controller
       ->whereBetween('created_at', [$start_year, $end_year])
       ->pluck('nominal')->all();
 
-    $investments = $transactions->where('kategori', 'Investment')
-      ->whereBetween('created_at', [$start_year, $end_year])
-      ->pluck('nominal')->all();
+    $investments = Balance::where('tipe','Investment')->pluck('saldo')->all();
 
     $pengeluaran = 0;
     $pengeluaran_tahunan = 0;

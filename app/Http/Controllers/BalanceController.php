@@ -26,21 +26,20 @@ class BalanceController extends Controller
     $search = $request->nama;
     $tipe = $request->tipe;
 
-    if($search || $tipe){
-      
-      $balances = Balance::query()
-      ->when($search, function ($query) use ($search) {
-        return $query->where('nama', 'like', '%' . $search . '%');
-      })
-      ->when($tipe, function ($query) use ($tipe) {
-        return $query->where('tipe', 'like', '%' . $tipe . '%');
-      })
-      ->get();
-    }else{
-      $balances = Balance::get();
+    if ($search || $tipe) {
 
+      $balances = Balance::query()
+        ->when($search, function ($query) use ($search) {
+          return $query->where('nama', 'like', '%' . $search . '%');
+        })
+        ->when($tipe, function ($query) use ($tipe) {
+          return $query->where('tipe', 'like', '%' . $tipe . '%');
+        })
+        ->get();
+    } else {
+      $balances = Balance::get();
     }
-      
+
     return view('dashboard.balances.index', [
       'balances' => $balances,
     ]);
@@ -75,6 +74,8 @@ class BalanceController extends Controller
 
   public function update(Request $request, Balance $balance)
   {
+
+
     $inputData = $request->validate([
       'saldo' => 'required',
     ]);
@@ -84,9 +85,24 @@ class BalanceController extends Controller
 
     $input = $request->all();
 
+    $date = Date::now();
+    $code = md5(Str::random(10));
+    $trxId = 'TRF|' . $code . $date;
+    $balancehis = [
+      'transaction_id' => $trxId,
+      'balance_name' => $balance->nama,
+      'saldo_before' => $balance->saldo,
+      'saldo_after' => $input['saldo'],
+      'description' => 'Update Balance',
+      'created_at' => now(),
+    ];
+
+
     $newBal->update([
       "saldo" => $input['saldo'],
     ]);
+    BalanceHis::create($balancehis);
+
 
     return redirect('/dashboard/balances/index')->with('success', 'Balance has been updated');
   }
@@ -96,6 +112,7 @@ class BalanceController extends Controller
 
     Balance::destroy($balance->id);
 
+    BalanceHis::where('balance_name',$balance->nama)->delete();
     return redirect('/dashboard/balances/index')->with('success', 'Balance has been deleted');
   }
 
@@ -111,7 +128,6 @@ class BalanceController extends Controller
   {
     $date = Date::now();
     $code = md5(Str::random(10));
-
     $balance_from = $request["source"];
     $balance_to = $request["destination"];
 
@@ -151,20 +167,20 @@ class BalanceController extends Controller
 
     $balancehisFrom = [
       'transaction_id' => $trxId,
-    'balance_name'=>$balance_from,
-    'saldo_before'=>$saldo_from,
-    'saldo_after'=>$getBalance->saldo,
-    'description'=>'transfer',
-    'created_at'=>now(),
-  ];
-  
-  $balancehisTo = [
-    'transaction_id' => $trxId,
-    'balance_name'=>$balance_to,
-    'saldo_before'=>$saldo_to,
-    'saldo_after'=>$toBalance->saldo,
-    'description'=>'transfer',
-    'created_at'=>now(),
+      'balance_name' => $balance_from,
+      'saldo_before' => $saldo_from,
+      'saldo_after' => $getBalance->saldo,
+      'description' => 'Transfer Balance',
+      'created_at' => now(),
+    ];
+
+    $balancehisTo = [
+      'transaction_id' => $trxId,
+      'balance_name' => $balance_to,
+      'saldo_before' => $saldo_to,
+      'saldo_after' => $toBalance->saldo,
+      'description' => 'transfer',
+      'created_at' => now(),
     ];
 
     Transaction::create($input);
@@ -175,11 +191,12 @@ class BalanceController extends Controller
     return redirect('/dashboard/balances/index')->with('success', 'Balance has been updated!');
   }
 
-  public function history(Balance $balance, Request $request){
+  public function history(Balance $balance, Request $request)
+  {
     $balancename = $balance->nama;
     // dd($balance->nama);
-    $balance = Balance::where('nama',$balancename)->first()->saldo;
-    $histories = BalanceHis::where('balance_name',$balancename)->get();
+    $balance = Balance::where('nama', $balancename)->first()->saldo;
+    $histories = BalanceHis::where('balance_name', $balancename)->get();
 
     return view('dashboard.balances.history', [
 
@@ -188,5 +205,4 @@ class BalanceController extends Controller
       'balance' => $balance
     ]);
   }
-
 }

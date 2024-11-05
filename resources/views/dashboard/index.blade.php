@@ -446,9 +446,7 @@
                                                                                                 <div
                                                                                                         class="h5 mb-0 font-weight-bold text-gray-800">
                                                                                                         Rp.{{
-                                                                                                        number_format(($quota
-                                                                                                        -
-                                                                                                        $pengeluaran_bulanan),
+                                                                                                        number_format(($quota),
                                                                                                         '2',
                                                                                                         ',', '.') }}
                                                                                                 </div>
