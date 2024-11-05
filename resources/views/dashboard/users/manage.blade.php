@@ -31,8 +31,13 @@
       @enderror
     </div>
 
-
+    
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="mb-1">
     <button type="submit" class="btn btn-primary">Update User</button>
+        <a class="btn btn-danger btn-custom" href="/dashboard">Cancel</a>
+      </div>
+    </div>
   </form>
 
 </div>

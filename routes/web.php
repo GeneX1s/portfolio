@@ -24,11 +24,11 @@ Route::get('/', [IndexController::class, 'index']);
 
 
 Route::get('/portfolio1', function () {
-    return view('/public/portfolio1');
+    return view('portfolio1');
 })->name('portfolio1');
 
 Route::get('/portfolio2', function () {
-    return view('/public/portfolio2');
+    return view('portfolio2');
 })->name('portfolio2');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -46,10 +46,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::get('/dashboard/features', function () {
     return view('/dashboard/features');
 })->name('features');
-
-Route::get('/portfolio1', function () {
-    return view('/public/portfolio1');
-})->name('portfolio1');
 
 ////////////////Transactions////////////////
 Route::get('/dashboard/transactions/export-pdf', [TransactionController::class, 'exportPDF']);

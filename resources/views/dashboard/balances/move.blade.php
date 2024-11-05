@@ -49,8 +49,13 @@
     
 
 
+      <div class="mb-1">
 
     <button type="submit" class="btn btn-primary">Submit</button>
+
+
+      <a class="btn btn-danger btn-custom" href="/dashboard/balances">Cancel</a>
+    </div>
   </form>
 
 </div>

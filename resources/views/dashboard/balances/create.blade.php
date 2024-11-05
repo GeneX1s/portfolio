@@ -7,11 +7,11 @@
 
 
 @if(session()-> has('error'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      {{session('error')}}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{session('error')}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 <div class="col-lg-8">
   <form method="post" action="/dashboard/balances" class="mb-5" enctype="multipart/form-data">
@@ -20,8 +20,8 @@
 
     <div class="mb-3">
       <label for="nama" class="form-label">Nama</label>
-      <input type="string" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama"
-        required autofocus value="{{old('nama')}}">
+      <input type="string" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required
+        autofocus value="{{old('nama')}}">
       @error('nama')
       <div class="invalid-feedback">
         {{ $message }}
@@ -39,7 +39,7 @@
       </div>
       @enderror
     </div>
-    
+
 
     <div class="mb-3">
       <label for="tipe" class="form-label">Tipe</label>
@@ -51,8 +51,11 @@
       </select>
     </div>
 
+    <div class="mb-1">
 
-    <button type="submit" class="btn btn-primary">Add Balance</button>
+      <button type="submit" class="btn btn-primary">Add Balance</button>
+      <a class="btn btn-danger btn-custom" href="/dashboard/balances">Cancel</a>
+    </div>
   </form>
 
 </div>

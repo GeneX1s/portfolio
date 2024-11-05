@@ -11,8 +11,8 @@
 
     <div class="mb-3">
       <label for="salary" class="form-label">Income</label>
-      <input type="number" class="form-control @error('salary') is-invalid @enderror" id="salary" name="salary"
-        required autofocus value="{{old('salary')}}">
+      <input type="number" class="form-control @error('salary') is-invalid @enderror" id="salary" name="salary" required
+        autofocus value="{{old('salary')}}">
       @error('salary')
       <div class="invalid-feedback">
         {{ $message }}
@@ -32,9 +32,12 @@
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Update Value</button>
+    <div class="mb-1">
+      <button type="submit" class="btn btn-primary">Update Value</button>
   </form>
 
+  <a class="btn btn-danger btn-custom" href="/dashboard">Cancel</a>
+</div>
 </div>
 
 

@@ -100,7 +100,7 @@
         <td>{{$user->role}}</td>
         
         <td>
-          @if ($user->role == 'admin' || $user->role == 'guest')
+          @if ($user->role == 'guest' || $user->role == 'finance')
           <form action="/dashboard/users/{{$user->id}}" method="post" class="d-inline">
             @method('delete')
             @csrf

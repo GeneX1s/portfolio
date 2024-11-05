@@ -1,10 +1,5 @@
 @extends('dashboard.layouts.main')
 <head>
-<style>
-  /* .sub-kategori-container {
-      display: none;
-  } */
-</style>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
       const kategoriSelect = document.querySelector('select[name="kategori"]');
@@ -144,16 +139,16 @@
       </div>
 
 
-      <div class="row">
+  <div class="row">
         <div class="col-md-4">
           <button type="submit" class="btn btn-primary btn-custom">Use Template</button>
+        </div>
+        <div class="col-md-2">
+          <a class="btn btn-danger btn-custom" href="/dashboard/transactions/index">Cancel</a>
+        </div>
+      </div>
     </form>
-  </div>
-  <div class="col-md-2">
-    <a class="btn btn-danger btn-custom" href="/dashboard/transactions/index">Back</a>
-  </div>
 
-</div>
 </div>
 </div>
 

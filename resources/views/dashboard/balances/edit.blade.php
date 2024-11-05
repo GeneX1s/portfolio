@@ -23,7 +23,10 @@
         @enderror
       </div>
       
+      <div class="mb-1">
       <button type="submit" class="btn btn-primary">Update Balance</button>
+        <a class="btn btn-danger btn-custom" href="/dashboard/balances">Cancel</a>
+      </div>
     </form>
 
   </div>

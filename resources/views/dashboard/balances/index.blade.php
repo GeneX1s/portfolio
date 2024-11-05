@@ -104,6 +104,8 @@
     <tbody>
       @php
         $total = 0;
+        $investment = 0;
+        $saldo = 0;
       @endphp
       @foreach ($balances as $balance)
       <tr>
@@ -114,6 +116,12 @@
         <td>{{$balance->tipe}}</td>
         @php
           $total = $total + $balance->saldo;
+          if($balance->tipe == 'Investment'){
+            $investment = $investment + $balance->saldo;
+          }else{
+            $saldo = $saldo + $balance->saldo;
+
+          }
         @endphp
         <td>
           <form action="/dashboard/balances/{{$balance->id}}" method="post" class="d-inline">
@@ -155,6 +163,18 @@
     <div class="col-12 col-md-6 col-lg-4">
       <div class="mb-3">
         <h6>Total : Rp.{{ number_format($total, '2', ',', '.') }}</h6>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="mb-3">
+        <h6>Saldo : Rp.{{ number_format($saldo, '2', ',', '.') }}</h6>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="mb-3">
+        <h6>Investment : Rp.{{ number_format($investment, '2', ',', '.') }}</h6>
       </div>
     </div>
   </div>
