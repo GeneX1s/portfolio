@@ -565,12 +565,12 @@
                                                                                 <div class="mt-4 text-center small">
                                                                                         <span class="mr-2">
                                                                                                 <i
-                                                                                                        class="fas fa-circle text-primary"></i>
+                                                                                                        class="fas fa-circle text-success"></i>
                                                                                                 Earning
                                                                                         </span>
                                                                                         <span class="mr-2">
                                                                                                 <i
-                                                                                                        class="fas fa-circle text-success"></i>
+                                                                                                        class="fas fa-circle text-danger"></i>
                                                                                                 Spending
                                                                                         </span>
                                                                                         <span class="mr-2">
