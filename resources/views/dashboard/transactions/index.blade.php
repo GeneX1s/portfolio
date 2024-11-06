@@ -194,7 +194,7 @@
     </div>
     <div class="col-12 col-md-6 col-lg-4">
       <div class="mb-1">
-        <a class="btn btn-warning btn-custom" href="{{ url('/dashboard/transactions/export-pdf') }}">Export to PDF</a>
+        <a class="btn btn-warning btn-custom" href="{{ url('/export-transactions') }}">Export to Excel</a>
       </div>
     </div>
     <div class="col-12 col-md-6 col-lg-4">

@@ -10,7 +10,8 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\SetValue;
 use App\Models\Template;
-use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use App\Exports\TransactionsExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,6 @@ class TransactionController extends Controller
     $start_date = $request->start_date;
     $end_date = $request->end_date;
 // dd($status_search);
-
     $userId = Auth::id();
     $userRole = User::where('id', $userId)->first()->role;
 
@@ -75,7 +75,6 @@ class TransactionController extends Controller
     $pendapatan = 0;
     $pengeluaran = 0;
     $data = [];
-    // foreach ($transactions as $transaction) {
 
     $plus = 0;
     $minus = 0;
@@ -344,11 +343,9 @@ class TransactionController extends Controller
     // return redirect()->back()->with('success', 'Value updated successfully.');
   }
 
-  public function exportPDF()
+  public function exportTransactions(Request $request)
   {
-      $transactions = Transaction::all();
-      $pdf = FacadePdf::loadView('dashboard.transactions.index', compact('transactions'));
-// $total = 1;
-      return $pdf->download('transactions.pdf');
+      
+    return Excel::download(new TransactionsExport($request), 'Transaction.xlsx');
   }
 }

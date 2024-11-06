@@ -57,6 +57,7 @@ Route::post('/dashboard/transactions/{transaction}/template', [TransactionContro
 Route::post('/dashboard/transactions/template', [TransactionController::class, 'template'])->middleware('auth');
 Route::post('/dashboard/transactions/setvalue', [TransactionController::class, 'setvalue'])->middleware('auth');
 Route::post('/dashboard/clear/transactions', [TransactionController::class, 'clear'])->middleware('auth');
+Route::get('/export-transactions', [TransactionController::class, 'exportTransactions']);
 
 
 ////////////////////////////////////
@@ -90,4 +91,3 @@ Route::resource('/dashboard/assets', AssetController::class)->middleware('auth')
 
 
 
-// Route::get('/export-users', [ExportController::class, 'exportUsers']);
