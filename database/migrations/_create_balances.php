@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->integer('saldo');
             $table->string('tipe');
+            $table->integer('dividen')->nullable();
             $table->timestamps();
         });
     }

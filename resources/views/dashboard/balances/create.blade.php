@@ -51,6 +51,17 @@
       </select>
     </div>
 
+    <div class="mb-3">
+      <label for="dividen" class="form-label">Bunga/Dividen(%)</label>
+      <input type="number" class="form-control @error('dividen') is-invalid @enderror" id="dividen" name="dividen" required
+        autofocus value="{{old('dividen')}}">
+      @error('dividen')
+      <div class="invalid-feedback">
+        {{ $message }}
+      </div>
+      @enderror
+    </div>
+
     <div class="mb-1">
 
       <button type="submit" class="btn btn-primary">Add Balance</button>

@@ -177,6 +177,12 @@
         <h6>Investment : Rp.{{ number_format($investment, '2', ',', '.') }}</h6>
       </div>
     </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="mb-3">
+        <h6>Monthly Profit(from invest) : Rp.{{ number_format($profit/12, '2', ',', '.') }}</h6>
+      </div>
+    </div>
   </div>
   
     <div class="col-12 col-md-6 col-lg-4">

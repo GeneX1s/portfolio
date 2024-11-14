@@ -356,7 +356,7 @@
                                                                                                         Week)
                                                                                                 </div>
                                                                                         @php
-                                                                                $anggaran = (($spendable + $pengeluaran_mingguan)/48) - $pengeluaran_mingguan
+                                                                                $anggaran = (($quota/4)- $pengeluaran_mingguan)
                                                                                         @endphp
                                                                                                 <div
                                                                                                         class="h5 mb-0 font-weight-bold text-gray-800">

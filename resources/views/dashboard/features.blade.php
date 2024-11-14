@@ -1,12 +1,13 @@
-<h1>Export data to excel</h1>                   |halt
-<h1>Multiple Profile( untuk RYR) dan users</h1> |done
-<h1>Assets</h1>                                 |done
 <h1>Clear all data transactions</h1>            |done
 <h1>Audit Log</h1>                              |
 <h1>Toggleable dashboard contents</h1>          |
-<h1>RYR implementation</h1>                     |
+<h1>RYR implementation</h1>                     |ongoing
 <h1>New bug sidebar dashboard ilang di mobile</h1>|
 <h1>STATISTICS Tahunan(cth. pengeluaran 2023)</h1>|
+<h1>Investment Earning Total di Index balance</h1>|
+<h1>Penambahan field dividen untuk Balance Investment</h1>|
+<h1>Tambahkan end date untuk investment?</h1>|
+
 
 
 <a class="h1" href="/dashboard">Back</a>

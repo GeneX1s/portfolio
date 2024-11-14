@@ -27,6 +27,7 @@ class Balance extends Authenticatable
     'nama',
     'saldo',
     'tipe',
+    'dividen',
     'updated_at',
   ];
 

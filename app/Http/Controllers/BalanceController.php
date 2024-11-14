@@ -40,8 +40,15 @@ class BalanceController extends Controller
       $balances = Balance::get();
     }
 
+    $investments = $balances->where('tipe','Investment')->all();
+    $profit = 0;
+    foreach($investments as $investment){
+      $profit = $profit + ($investment->saldo * $investment->dividen)/100;
+    }
     return view('dashboard.balances.index', [
       'balances' => $balances,
+      'profit' => $profit,
+
     ]);
   }
 
@@ -63,6 +70,7 @@ class BalanceController extends Controller
       'nama' => 'required|min:1|max:90',
       'saldo' => 'required',
       'tipe' => 'required',
+      'dividen' => 'nullable',
       'updated_at' => 'nullable',
     ]);
     $inputData['updated_at'] = Date::now();
