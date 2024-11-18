@@ -98,6 +98,7 @@
         <th scope="col">Nama</th>
         <th scope="col" onclick="sortTable()">Saldo</th>
         <th scope="col">Tipe</th>
+        <th scope="col">Dividen/Bunga</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -114,6 +115,7 @@
         <td>{{$balance->nama}}</td>
         <td>Rp.{{ number_format($balance->saldo, '2', ',', '.') }}</td>
         <td>{{$balance->tipe}}</td>
+        <td>{{$balance->dividen}}</td>
         @php
           $total = $total + $balance->saldo;
           if($balance->tipe == 'Investment'){

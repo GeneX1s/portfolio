@@ -86,7 +86,6 @@
         <select class="form-control" name="kategori">
             <option value="Pendapatan" selected>Pendapatan</option>
             <option value="Pengeluaran">Pengeluaran</option>
-            <option value="Investment">Investment</option>
         </select>
     </div>
 

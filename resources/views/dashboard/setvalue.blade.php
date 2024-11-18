@@ -12,7 +12,7 @@
     <div class="mb-3">
       <label for="salary" class="form-label">Income</label>
       <input type="number" class="form-control @error('salary') is-invalid @enderror" id="salary" name="salary" required
-        autofocus value="{{old('salary')}}">
+        autofocus value={{ $setvalue->salary }}>
       @error('salary')
       <div class="invalid-feedback">
         {{ $message }}
@@ -23,7 +23,7 @@
     <div class="mb-3">
       <label for="outcome" class="form-label">Outcome</label>
       <input type="number" class="form-control @error('outcome') is-invalid @enderror" id="outcome" name="outcome"
-        required autofocus value="{{old('outcome')}}">
+        required autofocus value="{{ $setvalue->outcome }}">
       @error('outcome')
       <div class="invalid-feedback">
         {{ $message }}

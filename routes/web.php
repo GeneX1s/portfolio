@@ -19,63 +19,66 @@ use App\Http\Controllers\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware('log-user-activity')->group(function () {//audit trail(LogUserActivity.php,Kernel.php)
+    
+    Route::get('/', [IndexController::class, 'index']);
+    
+    
+    Route::get('/portfolio1', function () {
+        return view('portfolio1');
+    })->name('portfolio1');
+    
+    Route::get('/portfolio2', function () {
+        return view('portfolio2');
+    })->name('portfolio2');
 
-Route::get('/', [IndexController::class, 'index']);
-
-
-Route::get('/portfolio1', function () {
-    return view('portfolio1');
-})->name('portfolio1');
-
-Route::get('/portfolio2', function () {
-    return view('portfolio2');
-})->name('portfolio2');
-
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::get('/dashboard/users/manage', [LoginController::class, 'manage'])->name('manage')->middleware('auth');
-//name('login') wajib biar gk error klo blom login
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
-Route::post('/logout', [LoginController::class, 'logout']);
-Route::post('/dashboard/users/update', [LoginController::class, 'update'])->middleware('auth');
-
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']); //untuk simpen data yg diregister
-
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/features', function () {
-    return view('/dashboard/features');
-})->name('features');
-
-////////////////Transactions////////////////
-Route::get('/dashboard/transactions/export-pdf', [TransactionController::class, 'exportPDF']);
-Route::get('/dashboard/transactions/index', [TransactionController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/transactions/create', [TransactionController::class, 'create'])->middleware('auth');
-Route::get('/dashboard/setvalue', [TransactionController::class, 'view_setvalue'])->middleware('auth');
-Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
-Route::post('/dashboard/transactions/{transaction}/template', [TransactionController::class, 'template_add'])->middleware('auth');
-Route::post('/dashboard/transactions/template', [TransactionController::class, 'template'])->middleware('auth');
-Route::post('/dashboard/transactions/setvalue', [TransactionController::class, 'setvalue'])->middleware('auth');
-Route::post('/dashboard/clear/transactions', [TransactionController::class, 'clear'])->middleware('auth');
-Route::get('/export-transactions', [TransactionController::class, 'exportTransactions']);
-
-
-////////////////////////////////////
-
-////////////////Users////////////////
-Route::get('/dashboard/users/index', [LoginController::class, 'list'])->middleware('auth');
-Route::get('/dashboard/users/edit', [LoginController::class, 'edit'])->middleware('auth');
-Route::get('/dashboard/users/create', [LoginController::class, 'create'])->middleware('auth');
-Route::get('/dashboard/users/{user:id}/edit', [LoginController::class, 'update'])->middleware('auth');
-Route::resource('/dashboard/users', LoginController::class)->middleware('auth');
-////////////////////////////////////
-
-////////////////Balances////////////////
-Route::get('/dashboard/balances/index', [BalanceController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/balances/edit', [BalanceController::class, 'edit'])->middleware('auth');
-Route::get('/dashboard/balances/create', [BalanceController::class, 'create'])->middleware('auth');
-Route::get('/dashboard/balances/move', [BalanceController::class, 'move'])->middleware('auth');
-Route::post('/dashboard/balances/transfer', [BalanceController::class, 'transfer'])->middleware('auth');
+    Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+    Route::get('/dashboard/users/manage', [LoginController::class, 'manage'])->name('manage')->middleware('auth');
+    //name('login') wajib biar gk error klo blom login
+    Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
+    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::post('/dashboard/users/update', [LoginController::class, 'update'])->middleware('auth');
+    
+    Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+    Route::post('/register', [RegisterController::class, 'store']); //untuk simpen data yg diregister
+    
+    
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+    Route::get('/dashboard/features', function () {
+        return view('/dashboard/features');
+    })->name('features');
+    //audit log
+    Route::get('/dashboard/audit/index', [DashboardController::class, 'audit'])->middleware('auth');
+    
+    ////////////////Transactions////////////////
+    Route::get('/dashboard/transactions/export-pdf', [TransactionController::class, 'exportPDF']);
+    Route::get('/dashboard/transactions/index', [TransactionController::class, 'index'])->middleware('auth');
+    Route::get('/dashboard/transactions/create', [TransactionController::class, 'create'])->middleware('auth');
+    Route::get('/dashboard/setvalue', [TransactionController::class, 'view_setvalue'])->middleware('auth');
+    Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
+    Route::post('/dashboard/transactions/{transaction}/template', [TransactionController::class, 'template_add'])->middleware('auth');
+    Route::post('/dashboard/transactions/template', [TransactionController::class, 'template'])->middleware('auth');
+    Route::post('/dashboard/transactions/setvalue', [TransactionController::class, 'setvalue'])->middleware('auth');
+    Route::post('/dashboard/clear/transactions', [TransactionController::class, 'clear'])->middleware('auth');
+    Route::get('/export-transactions', [TransactionController::class, 'exportTransactions']);
+    
+    
+    ////////////////////////////////////
+    
+    ////////////////Users////////////////
+    Route::get('/dashboard/users/index', [LoginController::class, 'list'])->middleware('auth');
+    Route::get('/dashboard/users/edit', [LoginController::class, 'edit'])->middleware('auth');
+    Route::get('/dashboard/users/create', [LoginController::class, 'create'])->middleware('auth');
+    Route::get('/dashboard/users/{user:id}/edit', [LoginController::class, 'update'])->middleware('auth');
+    Route::resource('/dashboard/users', LoginController::class)->middleware('auth');
+    ////////////////////////////////////
+    
+    ////////////////Balances////////////////
+    Route::get('/dashboard/balances/index', [BalanceController::class, 'index'])->middleware('auth');
+    Route::get('/dashboard/balances/edit', [BalanceController::class, 'edit'])->middleware('auth');
+    Route::get('/dashboard/balances/create', [BalanceController::class, 'create'])->middleware('auth');
+    Route::get('/dashboard/balances/move', [BalanceController::class, 'move'])->middleware('auth');
+    Route::post('/dashboard/balances/transfer', [BalanceController::class, 'transfer'])->middleware('auth');
 Route::get('/dashboard/balances/{balance:id}/edit', [BalanceController::class, 'update'])->middleware('auth');
 Route::get('/dashboard/balances/{balance:id}/history', [BalanceController::class, 'history'])->middleware('auth');
 Route::resource('/dashboard/balances', BalanceController::class)->middleware('auth');
@@ -90,4 +93,4 @@ Route::resource('/dashboard/assets', AssetController::class)->middleware('auth')
 ////////////////////////////////////
 
 
-
+});

@@ -323,10 +323,7 @@ class DashboardController extends Controller
       $spendable = ($spendable - $salary / 2) + ($gaji->nominal / 2);
     }
 
-    // $spendable = ($pendapatan_tahunan) / 2 - $pengeluaran_tahunan;
     $quota = $salary / 2 - $pengeluaran_bulanan;
-
-    // $top_category = $transactions->where()->pluck()->5;
 
     return view('/dashboard.index', [
       'spendable' => $spendable,

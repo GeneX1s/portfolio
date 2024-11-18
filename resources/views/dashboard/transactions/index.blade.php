@@ -106,6 +106,17 @@
           </select>
         </div>
       </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="mb-3">
+          <label for="jenis" class="form-label">Jenis</label>
+          <select class="form-control" name="jenis" id="jenis">
+            <option value="" {{ old('jenis')=='' ? 'selected' : '' }}></option>
+            <option value="Pendapatan" {{ old('jenis')=='Pendapatan' ? 'selected' : '' }}>Pendapatan</option>
+            <option value="Pengeluaran" {{ old('jenis')=='Pengeluaran' ? 'selected' : '' }}>Pengeluaran</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">
@@ -125,7 +136,7 @@
         <th scope="col">Source</th>
         <th scope="col">Kategori</th>
         <th scope="col">Nominal</th>
-        <th scope="col">Status</th>
+        <th scope="col">Date</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -137,7 +148,7 @@
         <td>{{$transaction->balance}}</td>
         <td>{{$transaction->kategori}}</td>
         <td>Rp.{{ number_format($transaction->nominal, '2', ',', '.') }}</td>
-        <td>{{$transaction->status}}</td>
+        <td>{{$transaction->created_at}}</td>
         <td>
           <form action="/dashboard/transactions/{{$transaction->id}}" method="post" class="d-inline">
             @method('delete')

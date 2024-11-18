@@ -69,7 +69,7 @@ class TransactionController extends Controller
           ->whereDate('created_at', '<=', $end_date);
       })
       // ->where('status', 'Deleted')
-      ->get();
+      ->get()->sortByDesc('created_at');
 
     $total = 0;
     $pendapatan = 0;
@@ -88,9 +88,7 @@ class TransactionController extends Controller
       $total = $total - $minus;
       $pengeluaran = $pengeluaran + $minus;
     }
-// dd($total);
     return view('dashboard.transactions.index', [
-      // 'transactions' => $data,
       'transactions' => $transactions,
       'total' => $total,
       'pendapatan' => $pendapatan,
@@ -114,7 +112,7 @@ class TransactionController extends Controller
     // dd($request->all());
     // dd(Auth::id());
     $code = md5(Str::random(10));
-    $date = Date::now();
+    $date = now();
 
     $request->validate([
       'nominal' => 'required',
@@ -149,7 +147,6 @@ class TransactionController extends Controller
     }
 
 
-    // dd($input);
     Transaction::create($input);
 
     //////////////////balance//////////////////
@@ -187,8 +184,7 @@ class TransactionController extends Controller
   public function destroy(Transaction $transaction, Request $request)
   {
     $balanceHis = BalanceHis::where('transaction_id', $transaction->nama)->first();
-    // dd($transaction);
-    // dd($balanceHis);
+
     $balanceUpdate = Balance::where('nama', $balanceHis->balance_name)->first();
 
     $transaction = Transaction::where('id', $transaction->id)->first();
@@ -330,7 +326,10 @@ class TransactionController extends Controller
 
   public function view_setvalue()
   {
-    return view('dashboard.setvalue', []);
+    $setvalue = SetValue::where('id',1)->first();
+    return view('dashboard.setvalue', [
+      "setvalue" => $setvalue
+    ]);
   }
 
   public function clear()

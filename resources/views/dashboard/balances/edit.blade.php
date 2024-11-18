@@ -15,7 +15,7 @@
       <div class="mb-3">
         <label for="saldo" class="form-label">Saldo</label>
         <input type="integer" class="form-control @error('saldo') is-invalid @enderror" id="saldo" name="saldo" required
-          autofocus value="{{old('saldo')}}">
+          autofocus value="{{$balance->saldo}}">
         @error('saldo')
         <div class="invalid-feedback">
           {{ $message }}
