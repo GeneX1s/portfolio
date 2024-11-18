@@ -8,6 +8,7 @@
 <h1>Sortir transaksi dari yang terbaru</h1>|done
 <h1>Cron Job create transaction fixed outcome dan income</h1>|
 <h1>Implementasi API Mutasi rekening dengan https://moota.co/</h1>|
+<h1>View transaction templates index</h1>|
 
 
 

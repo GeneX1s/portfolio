@@ -32,7 +32,7 @@
   }
 
   .btn-custom {
-    width: 100%; /* Make all buttons the same width */
+    width: 70%; /* Make all buttons the same width */
     padding: 10px; /* Consistent padding */
     border-radius: 5px; /* Consistent border radius */
     text-align: center; /* Center text */
@@ -65,7 +65,7 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <a class="h2" href="/dashboard">Yearly Report</a>
+  <a class="h2" href="/dashboard">Audit Trail</a>
 </div>
 
 @if(session()->has('success'))
@@ -80,26 +80,65 @@
 </div>
 @endif
 
-<div class="row">
-  <div class="col-sm-6 mb-3 mb-sm-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="table-responsive">
+  <form action="{{ route('audit') }}" method="GET">
+    @csrf
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="mb-3">
+          <label for="start_date" class="form-label">Start Date</label>
+          <input type="date" class="form-control" id="start_date" name="start_date">
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="mb-3">
+          <label for="end_date" class="form-label">End Date</label>
+          <input type="date" class="form-control" id="end_date" name="end_date">
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <button type="submit" class="btn btn-primary btn-custom">Search</button>
       </div>
     </div>
-  </div>
-  
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+  </form>
+
+  <table class="table table-striped table-sm">
+    <thead class="thead">
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">UID</th>
+        <th scope="col">Event</th>
+        <th scope="col">Description</th>
+        <th scope="col">Ip Adress</th>
+        <th scope="col">User Agent</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($audits as $audit)
+      <tr>
+        <td>{{$loop->iteration}}</td>
+        <td>{{$audit->user_id}}</td>
+        <td>{{$audit->event}}</td>
+        <td>{{$audit->description}}</td>
+        <td>{{$audit->ip_address}}</td>
+        <td>{{$audit->user_agent}}</td>
+        <td>{{$audit->created_at}}</td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+
+
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="mb-1">
+        <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>
       </div>
     </div>
   </div>
 </div>
-
 @endsection

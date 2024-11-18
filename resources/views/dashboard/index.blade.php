@@ -292,7 +292,7 @@
                                                                 <!-- Dropdown - User Information -->
                                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                                                         aria-labelledby="userDropdown">
-                                                                        @can('admin')
+                                                                        @can('super-admin')
 
                                                                         <a class="dropdown-item"
                                                                                 href="/dashboard/profiles">
@@ -300,7 +300,7 @@
                                                                                         class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                                                                 Switch Profile
                                                                         </a>
-                                                                        <a class="dropdown-item" href="#">
+                                                                        <a class="dropdown-item" href="/dashboard/audit/index">
                                                                                 <i
                                                                                         class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                                                                 Audit Log

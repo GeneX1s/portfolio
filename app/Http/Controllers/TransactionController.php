@@ -18,11 +18,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
 
   public function index(Request $request)
   {
@@ -30,7 +25,7 @@ class TransactionController extends Controller
     $jenis_search = $request->jenis;
     $start_date = $request->start_date;
     $end_date = $request->end_date;
-// dd($status_search);
+
     $userId = Auth::id();
     $userRole = User::where('id', $userId)->first()->role;
 
@@ -41,9 +36,6 @@ class TransactionController extends Controller
       $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
     }
 
-    // if (!$request->status) {
-    //   $status_search = "Active";
-    // }
     if ($userRole == 'super-admin') {
       $profile_filter = 'super-admin';
     } else if ($userRole == 'admin') {
@@ -99,7 +91,7 @@ class TransactionController extends Controller
   public function create() //redirect to page
   {
     $templates = Template::get();
-    $balances = Balance::whereNot('tipe','Investment')->get();
+    $balances = Balance::whereNot('tipe', 'Investment')->get();
     return view('/dashboard.transactions.create', [
       'templates' => $templates,
       'balances' => $balances,
@@ -109,8 +101,6 @@ class TransactionController extends Controller
 
   public function store(Request $request) //create data from input
   {
-    // dd($request->all());
-    // dd(Auth::id());
     $code = md5(Str::random(10));
     $date = now();
 
@@ -300,6 +290,10 @@ class TransactionController extends Controller
     return redirect()->back()->with('success', 'Template created successfully.');
   }
 
+  public function template_index()
+  { //index for templates
+
+  }
 
   public function setvalue(Request $request)
   {
@@ -326,7 +320,7 @@ class TransactionController extends Controller
 
   public function view_setvalue()
   {
-    $setvalue = SetValue::where('id',1)->first();
+    $setvalue = SetValue::where('id', 1)->first();
     return view('dashboard.setvalue', [
       "setvalue" => $setvalue
     ]);
@@ -344,7 +338,36 @@ class TransactionController extends Controller
 
   public function exportTransactions(Request $request)
   {
-      
+
     return Excel::download(new TransactionsExport($request), 'Transaction.xlsx');
+  }
+
+  public function reportIndex()
+  {
+    $firstTrx = Transaction::orderByAsc('created_at')->first();
+    $firstYear = Carbon::parse($firstTrx->created_at)->format('Y');
+    $thisYear = Carbon::now()->format('Y');
+
+    // Prepare an array of years from the first transaction year to the current year
+    $years = range($firstYear, $thisYear);
+    // $years = [];
+    // $count = 0;
+    // while ($firstYear < $thisYear) {
+
+    //   $years[$count] = $firstYear;
+    //   $firstYear = $firstYear + 1;
+    //   $count++;
+    // }
+
+    return view('dashboard.report.index', [
+      'years' => $years,
+    ]);
+  }
+
+  public function reportDetail($year)
+  {
+    $transaction = Transaction::whereYear('created_at',$year)->get();
+
+    //income,outcome,total,new investments,transaction statistics
   }
 }

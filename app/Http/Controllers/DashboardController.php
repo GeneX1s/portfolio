@@ -11,6 +11,7 @@ use App\Models\Balance;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Audit;
 
 class DashboardController extends Controller
 {
@@ -53,7 +54,7 @@ class DashboardController extends Controller
       ->whereBetween('created_at', [$start_year, $end_year])
       ->pluck('nominal')->all();
 
-    $investments = Balance::where('tipe','Investment')->pluck('saldo')->all();
+    $investments = Balance::where('tipe', 'Investment')->pluck('saldo')->all();
 
     $pengeluaran = 0;
     $pengeluaran_tahunan = 0;
@@ -383,6 +384,31 @@ class DashboardController extends Controller
 
     $setvalue->update([
       "salary" => $salary,
+    ]);
+  }
+
+  public function audit(Request $request)
+  {
+
+    $start_date = $request->start_date;
+    $end_date = $request->end_date;
+
+    if (!$start_date) {
+      $start_date = Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s');
+    }
+    if (!$end_date) {
+      $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
+    }
+
+    $audits = Audit::query()
+      ->when($start_date && $end_date, function ($query) use ($start_date, $end_date) {
+        return $query->whereDate('created_at', '>=', $start_date)
+          ->whereDate('created_at', '<=', $end_date);
+      })
+      ->get()->sortByDesc('created_at');
+
+    return view('dashboard.audit.index', [
+      'audits' => $audits
     ]);
   }
 }

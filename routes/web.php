@@ -48,7 +48,7 @@ Route::middleware('log-user-activity')->group(function () {//audit trail(LogUser
         return view('/dashboard/features');
     })->name('features');
     //audit log
-    Route::get('/dashboard/audit/index', [DashboardController::class, 'audit'])->middleware('auth');
+    Route::get('/dashboard/audit/index', [DashboardController::class, 'audit'])->middleware('auth')->name('audit');
     
     ////////////////Transactions////////////////
     Route::get('/dashboard/transactions/export-pdf', [TransactionController::class, 'exportPDF']);
