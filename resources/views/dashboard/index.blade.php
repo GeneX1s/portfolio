@@ -298,7 +298,7 @@
                                                                                 href="/dashboard/profiles">
                                                                                 <i
                                                                                         class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                                                Switch Profile
+                                                                                Login Attempts
                                                                         </a>
                                                                         <a class="dropdown-item" href="/dashboard/audit/index">
                                                                                 <i

@@ -290,9 +290,20 @@ class TransactionController extends Controller
     return redirect()->back()->with('success', 'Template created successfully.');
   }
 
-  public function template_index()
+  public function templates()
   { //index for templates
 
+
+    $templates = Template::get();
+    $transactions = [];
+
+    foreach($templates as $count => $template){
+      $transactions[$count] = Transaction::where('id',$template->id_transact)->get();
+    }
+    return view('dashboard.transactions.templates', [
+      'templates' => $templates,
+      'transactions' => $transactions,
+    ]);
   }
 
   public function setvalue(Request $request)
@@ -344,30 +355,37 @@ class TransactionController extends Controller
 
   public function reportIndex()
   {
-    $firstTrx = Transaction::orderByAsc('created_at')->first();
+
+    // Get transactions with status 'Active', ordered by 'created_at'
+    $transactions = Transaction::where('status', 'Active')
+      ->orderBy('created_at')
+      ->get();
+
+    // Get the first transaction's year and the current year
+    $firstTrx = $transactions->first();
     $firstYear = Carbon::parse($firstTrx->created_at)->format('Y');
     $thisYear = Carbon::now()->format('Y');
 
-    // Prepare an array of years from the first transaction year to the current year
+    // Generate an array of years from the first year to the current year
     $years = range($firstYear, $thisYear);
-    // $years = [];
-    // $count = 0;
-    // while ($firstYear < $thisYear) {
 
-    //   $years[$count] = $firstYear;
-    //   $firstYear = $firstYear + 1;
-    //   $count++;
-    // }
+    // Group transactions by year for faster lookup
+    $groupedByYear = $transactions->groupBy(function ($transaction) {
+      return Carbon::parse($transaction->created_at)->format('Y');
+    });
 
     return view('dashboard.report.index', [
       'years' => $years,
+      'groupedByYear' => $groupedByYear,  // Pass the grouped transactions
     ]);
   }
 
   public function reportDetail($year)
   {
-    $transaction = Transaction::whereYear('created_at',$year)->get();
+    $transaction = Transaction::whereYear('created_at', $year)->get();
 
     //income,outcome,total,new investments,transaction statistics
+    //pendapatan terbanyak dari...
+    //pengeluaran terbanyak dari...
   }
 }

@@ -1,5 +1,5 @@
 <h1>Clear all data transactions</h1>            |done
-<h1>Audit Trail index dan implementasi</h1>     |ongoing
+<h1>Audit Trail clear all button</h1>     |ongoing
 <h1>Toggleable dashboard contents</h1>          |
 <h1>RYR implementation</h1>                     |ongoing
 <h1>New bug sidebar dashboard ilang di mobile</h1>|
@@ -8,7 +8,10 @@
 <h1>Sortir transaksi dari yang terbaru</h1>|done
 <h1>Cron Job create transaction fixed outcome dan income</h1>|
 <h1>Implementasi API Mutasi rekening dengan https://moota.co/</h1>|
-<h1>View transaction templates index</h1>|
+<h1>View transaction templates index</h1>|done
+<h1>Pending payments/transactions index(list hutang atau pembayaran yang belum terjadi)</h1>|
+<h1>index for user login sessions? dan simpen field password</h1>|
+<h1>authenticator for login</h1>|
 
 
 

@@ -6,13 +6,12 @@
 </div>
 <div class="col-lg-8">
   <form method="post" action="/dashboard/users/update" class="mb-5" enctype="multipart/form-data">
-    <!-- multipart form data harus supaya bisa upload file(img dll) -->
     @csrf
 
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
       <input type="string" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
-        required autofocus value="{{old('email')}}">
+        required readonly value="{{ $user->email }}">
       @error('email')
       <div class="invalid-feedback">
         {{ $message }}

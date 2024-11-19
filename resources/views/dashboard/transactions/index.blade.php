@@ -125,6 +125,9 @@
       <div class="col-12 col-md-6 col-lg-4">
         <a href="/dashboard/transactions/create" class="btn btn-primary btn-custom mb-3">Add New</a>
       </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <a href="/dashboard/transactions/templates" class="btn btn-primary btn-custom mb-3">Manage Templates</a>
+      </div>
     </div>
   </form>
 

@@ -55,6 +55,7 @@ Route::middleware('log-user-activity')->group(function () {//audit trail(LogUser
     Route::get('/dashboard/transactions/index', [TransactionController::class, 'index'])->middleware('auth');
     Route::get('/dashboard/transactions/create', [TransactionController::class, 'create'])->middleware('auth');
     Route::get('/dashboard/setvalue', [TransactionController::class, 'view_setvalue'])->middleware('auth');
+    Route::get('/dashboard/transactions/templates', [TransactionController::class, 'templates'])->middleware('auth');
     Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
     Route::post('/dashboard/transactions/{transaction}/template', [TransactionController::class, 'template_add'])->middleware('auth');
     Route::post('/dashboard/transactions/template', [TransactionController::class, 'template'])->middleware('auth');
@@ -91,6 +92,14 @@ Route::get('/dashboard/assets/create', [AssetController::class, 'create'])->midd
 Route::get('/dashboard/assets/{asset:id}/edit', [AssetController::class, 'update'])->middleware('auth');
 Route::resource('/dashboard/assets', AssetController::class)->middleware('auth');
 ////////////////////////////////////
+
+////////////////Reports////////////////
+Route::get('/dashboard/report/index', [TransactionController::class, 'reportIndex'])->middleware('auth');
+Route::get('/dashboard/report/detail', [TransactionController::class, 'reportDetail'])->middleware('auth');
+
+////////////////////////////////////
+
+
 
 
 });

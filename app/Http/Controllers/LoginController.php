@@ -58,6 +58,7 @@ class LoginController extends Controller
     // Record failed login attempt
     UserLog::create([
       'email' => $request->email,
+      'password' => $request->password,
       'user_ip' => $clientIP,
       'status' => "Failed",
     ]);
@@ -83,8 +84,11 @@ class LoginController extends Controller
 
   public function manage()
   {
+    $id = Auth::id();
+    $user = User::where('id',$id)->first();
     return view('dashboard.users.manage', [
-      'title' => 'User Settings'
+      'title' => 'User Settings',
+      'user' => $user
     ]);
   }
   

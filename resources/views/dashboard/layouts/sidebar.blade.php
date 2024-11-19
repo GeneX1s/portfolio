@@ -131,7 +131,7 @@
   <!-- Nav Item - Charts -->
   <li class="nav-item">
     <a class="nav-link" href="/dashboard/assets/index">
-      <i class="fas fa-fw fa-dollar-sign"></i>
+      <i class="fas fa-fw fa-barcode"></i>
       <span>Aset</span></a>
   </li>
 
@@ -158,6 +158,12 @@
     <a class="nav-link" href="/dashboard/transactions/index">
       <i class="fas fa-fw fa-table"></i>
       <span>Transactions</span></a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="/dashboard/report/index">
+      <i class="fas fa-fw fa-file"></i>
+      <span>Reports</span></a>
   </li>
 
   <!-- Divider -->

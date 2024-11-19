@@ -1,71 +1,8 @@
 @extends('dashboard.layouts.main')
 
-<style>
-  .img {
-    width: 70px;
-    border-radius: 50%;
-    float: left;
-    border: 5px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column; /* Stack items vertically on mobile */
-    align-items: center; /* Center items horizontally */
-    justify-content: flex-start; /* Align items to the top */
-    height: auto; /* Allow height to adjust */
-    padding: 20px; /* Add some padding */
-  }
-
-  @media (min-width: 768px) {
-    .content {
-      flex-direction: row; /* Stack items side by side on larger screens */
-      align-items: flex-start; /* Align items to the start */
-      justify-content: space-between; /* Space out items */
-      padding: 40px; /* More padding on larger screens */
-    }
-  }
-
-  .table-responsive {
-    width: 100%;
-    overflow-x: auto; /* Allow horizontal scroll on small screens */
-  }
-
-  .btn-custom {
-    width: 100%; /* Make all buttons the same width */
-    padding: 10px; /* Consistent padding */
-    border-radius: 5px; /* Consistent border radius */
-    text-align: center; /* Center text */
-  }
-
-  .alert {
-    margin-bottom: 20px; /* Add spacing below alerts */
-  }
-
-  table {
-    width: 100%; /* Ensure the table takes full width */
-  }
-
-  th, td {
-    text-align: left; /* Align text to the left */
-  }
-
-  /* Responsive styles for mobile */
-  @media (max-width: 768px) {
-    .btn-custom {
-      padding: 8px; /* Adjust button padding for smaller screens */
-    }
-
-    .row > .col-12 {
-      flex: 0 0 100%; /* Ensure full width for columns on mobile */
-      max-width: 100%; /* Remove any max-width constraint */
-    }
-  }
-</style>
-
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <a class="h2" href="/dashboard">Yearly Report</a>
+  <a class="h2" href="/dashboard">Annual Report</a>
 </div>
 
 @if(session()->has('success'))
@@ -81,25 +18,128 @@
 @endif
 
 <div class="row">
-  <div class="col-sm-6 mb-3 mb-sm-0">
-    <div class="card">
+
+  @foreach ($years as $year)
+    @php
+        // Get transactions for the current year
+        $transactionsForYear = $groupedByYear->get($year, collect());
+
+        // Separate transactions into 'Pendapatan' and 'Pengeluaran'
+        $transactionYrPlus = $transactionsForYear->where('kategori', 'Pendapatan');
+        $transactionYrMin = $transactionsForYear->where('kategori', 'Pengeluaran');
+
+        // Calculate annual earnings and spending
+        $annualEarning = $transactionYrPlus->sum('nominal');
+        $annualSpending = $transactionYrMin->sum('nominal');
+    @endphp
+
+
+  <div class="col-sm-3 mb-3 mb-sm-0">
+    <div class="card mt-5" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">{{ $year }}</h5>
+        <p class="card-text">Click here for detail..</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Annual Earning: Rp.{{ number_format($annualEarning, '2', ',', '.') }}</li>
+        <li class="list-group-item">Annual Spending: Rp.{{ number_format($annualSpending, '2', ',', '.') }}</li>
+        <li class="list-group-item">New Investment: Rp.{{ number_format(22, '2', ',', '.') }}</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Download Report</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+
+
+  </div>
+
+  @endforeach
+  <div class="col-sm-3">
+    <div class="card mt-5" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
       </div>
     </div>
   </div>
-  
-  <div class="col-sm-6">
-    <div class="card">
+
+  <div class="col-sm-3">
+    <div class="card mt-5" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
       </div>
     </div>
   </div>
+
+  <div class="col-sm-3">
+    <div class="card mt-5" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card mt-5" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
+
+
 
 @endsection
