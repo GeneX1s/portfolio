@@ -65,7 +65,7 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <a class="h2" href="/dashboard">Audit Trail</a>
+  <a class="h2" href="/dashboard">Attempts</a>
 </div>
 
 @if(session()->has('success'))
@@ -81,64 +81,40 @@
 @endif
 
 <div class="table-responsive">
-  <form action="{{ route('audit') }}" method="GET">
-    @csrf
-    <div class="row">
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="mb-3">
-          <label for="start_date" class="form-label">Start Date</label>
-          <input type="date" class="form-control" id="start_date" name="start_date">
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="mb-3">
-          <label for="end_date" class="form-label">End Date</label>
-          <input type="date" class="form-control" id="end_date" name="end_date">
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="mb-3">
-          <label for="cek_ip" class="form-label">IP Address</label>
-          <select class="form-control" name="cek_ip" id="cek_ip">
-            @foreach ($ips as $ip)  
-            <option value="{{ $ip }}">{{ $ip }}</option>
-            @endforeach
-            
-          </select>
-        </div>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-md-6 col-lg-4">
-        <button type="submit" class="btn btn-primary btn-custom">Search</button>
-      </div>
-    </div>
-  </form>
 
   <table class="table table-striped table-sm">
     <thead class="thead">
       <tr>
         <th scope="col">No.</th>
-        <th scope="col">UID</th>
-        <th scope="col">Event</th>
-        <th scope="col">Description</th>
-        <th scope="col">Ip Adress</th>
-        <th scope="col">User Agent</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">IP Address</th>
+        <th scope="col">Status</th>
         <th scope="col">Date</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($audits as $audit)
+      @foreach ($attempts as $attempt)
+
       <tr>
         <td>{{$loop->iteration}}</td>
-        <td>{{$audit->user_id}}</td>
-        <td>{{$audit->event}}</td>
-        <td>{{$audit->description}}</td>
-        <td>{{$audit->ip_address}}</td>
-        <td>{{$audit->user_agent}}</td>
-        <td>{{$audit->created_at}}</td>
+        <td>{{$attempt->email}}</td>
+        <td>{{$attempt->password}}</td>
+        <td>{{$attempt->user_ip}}</td>
+        <td>{{$attempt->status}}</td>
+        <td>{{$attempt->created_at}}</td>
+        {{-- <td>
+          <form action="/dashboard/attempts/{{$attempt->id}}" method="post" class="d-inline">
+            @method('delete')
+            @csrf
+            @if ($attempt->status != "Deleted")
+            <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
+              <i class="fas fa-regular fa-trash"></i>
+            </button>
+            @endif
+          </form>
+        </td> --}}
       </tr>
       @endforeach
     </tbody>

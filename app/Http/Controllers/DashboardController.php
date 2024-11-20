@@ -400,6 +400,8 @@ class DashboardController extends Controller
       $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
     }
 
+    $ips = Audit::all()->pluck('ip_address')->unique();
+
     $audits = Audit::query()
       ->when($start_date && $end_date, function ($query) use ($start_date, $end_date) {
         return $query->whereDate('created_at', '>=', $start_date)
@@ -408,7 +410,9 @@ class DashboardController extends Controller
       ->get()->sortByDesc('created_at');
 
     return view('dashboard.audit.index', [
-      'audits' => $audits
+      'audits' => $audits,
+      'ips' => $ips
+      
     ]);
   }
 }

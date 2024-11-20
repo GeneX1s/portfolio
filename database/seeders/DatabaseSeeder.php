@@ -52,5 +52,6 @@ class DatabaseSeeder extends Seeder
             'saldo' => 0,
             'tipe' => 'Lainnya',
         ]);
+
     }
 }

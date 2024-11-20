@@ -35,6 +35,8 @@ Route::middleware('log-user-activity')->group(function () {//audit trail(LogUser
     Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
     Route::get('/dashboard/users/manage', [LoginController::class, 'manage'])->name('manage')->middleware('auth');
     //name('login') wajib biar gk error klo blom login
+
+    Route::get('/dashboard/users/attempt', [LoginController::class, 'attempt'])->name('attempt')->middleware('auth');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
     Route::post('/logout', [LoginController::class, 'logout']);
     Route::post('/dashboard/users/update', [LoginController::class, 'update'])->middleware('auth');

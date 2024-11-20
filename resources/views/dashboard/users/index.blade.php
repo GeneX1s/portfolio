@@ -60,7 +60,7 @@
       <div class="col-12 col-md-6 col-lg-4">
         <div class="mb-3">
           <label for="role" class="form-label">Role</label>
-          <select class="form-control" n  ame="role" id="role">
+          <select class="form-control" name="role" id="role">
             <option value="super-admin" {{ old('role')=='Super Admin' ? 'selected' : '' }}>Super Admin</option>
             <option value="admin" {{ old('role')=='Admin' ? 'selected' : '' }}>Admin</option>
             <option value="guest" {{ old('role')=='Guest' ? 'selected' : '' }}>Guest</option>

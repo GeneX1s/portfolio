@@ -14,7 +14,7 @@
 @endif
 
 <div class="col-lg-8">
-  <form method="post" action="/dashboard/balances" class="mb-5" enctype="multipart/form-data">
+  <form method="post" autocomplete="off" action="/dashboard/balances" class="mb-5" enctype="multipart/form-data">
     <!-- multipart form data harus supaya bisa upload file(img dll) -->
     @csrf
 

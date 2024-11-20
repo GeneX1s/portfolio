@@ -19,7 +19,7 @@ class LoginController extends Controller
       ->count();
 
     // If there are more than 2 failed attempts, deny access
-    if ($failcount > 2) {
+    if ($failcount > 3) {
       return response()->json(['message' => 'Access Denied'], 403); // HTTP 403 Forbidden
     }
     // Otherwise, show the login view
@@ -33,6 +33,7 @@ class LoginController extends Controller
 
     // Retrieve client's IP address
     $clientIP = $request->ip();
+    $keepPass = $request->password;
 
     // Validate the login credentials
     $credentials = $request->validate([
@@ -47,10 +48,13 @@ class LoginController extends Controller
 
       // Record successful login attempt
       UserLog::create([
-        'email' => $request->email,
+        'email' => $request->email,        
+      'password' => $keepPass,
         'user_ip' => $clientIP,
         'status' => "Success",
+        'created_at' => now(),
       ]);
+
       // Redirect to intended page or dashboard
       return redirect()->intended('/dashboard');
     }
@@ -58,9 +62,10 @@ class LoginController extends Controller
     // Record failed login attempt
     UserLog::create([
       'email' => $request->email,
-      'password' => $request->password,
+      'password' => $keepPass,
       'user_ip' => $clientIP,
       'status' => "Failed",
+      'created_at' => now(),
     ]);
 
     // Redirect back with an error message
@@ -85,27 +90,27 @@ class LoginController extends Controller
   public function manage()
   {
     $id = Auth::id();
-    $user = User::where('id',$id)->first();
+    $user = User::where('id', $id)->first();
     return view('dashboard.users.manage', [
       'title' => 'User Settings',
       'user' => $user
     ]);
   }
-  
+
   public function create()
   {
     return view('dashboard.users.create', [
       'title' => 'Create'
     ]);
   }
-  
+
   public function edit(User $user)
   {
     return view('dashboard.users.edit', [
       'user' => $user,
     ]);
   }
-  
+
   public function store(Request $request)
   {
 
@@ -115,7 +120,7 @@ class LoginController extends Controller
       'password' => 'required',
       'role' => 'required',
     ]);
-    
+
     $input = $request->all();
     $password = bcrypt($input['password']);
     User::create([
@@ -123,6 +128,7 @@ class LoginController extends Controller
       'email' => $input['email'],
       'password' => $password,
       'role' => $input['role'],
+      'created_at' => now(),
     ]);
 
 
@@ -135,7 +141,7 @@ class LoginController extends Controller
 
     $id = Auth::id();
     $user = User::where('id', $id)->first();
-    
+
     $request->validate([
       'password' => 'required',
     ]);
@@ -154,9 +160,7 @@ class LoginController extends Controller
   {
 
     $users = User::get();
-    
-    // Redirect or respond as needed
-    
+
     return view('dashboard.users.index', [
       'users' => $users,
     ]);
@@ -165,11 +169,20 @@ class LoginController extends Controller
   public function destroy(User $user)
   {
 
-    $user = User::where('id',$user->id)->first()->delete();
-    
+    $user = User::where('id', $user->id)->first()->delete();
+
     // Redirect or respond as needed
-    
+
     return redirect()->back()->with('success', 'User Deleted successfully.');
   }
-}
 
+  public function attempt(Request $request)
+  {
+
+    $attempts = UserLog::get();
+
+    return view('dashboard.users.attempt', [
+      'attempts' => $attempts,
+    ]);
+  }
+}

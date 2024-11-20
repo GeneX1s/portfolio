@@ -21,22 +21,22 @@ class TransactionSeeder extends Seeder
         $faker = Faker::create();
 
         // Define how many transactions to generate
-        $transactionsCount = 50;  // You can adjust this number to your needs
+        $transactionsCount = 100;  // You can adjust this number to your needs
 
         // Insert fake transactions into the database
         foreach (range(1, $transactionsCount) as $index) {
             Transaction::create([
                 'nama'            => $faker->name,
                 'nominal'         => $faker->randomFloat(2, 1000, 10000), // random number between 1000 and 10000
-                'kategori'        => $faker->randomElement(['Pendapatan','Pengeluaran']),,
+                'kategori'        => $faker->randomElement(['Pendapatan','Pengeluaran']),
                 'sub_kategori'    => $faker->word,
                 'deskripsi'       => $faker->sentence,
                 'status'          => $faker->randomElement(['Active', 'Pending', 'Deleted']), // Example status
                 'profile'         => $faker->randomElement(['super-admin', 'admin', 'ryr']),
                 'balance'         => $faker->word,
                 'balance_destination' => $faker->randomFloat(2, 0, 100000),
-                'created_at'      => Carbon::now()->subDays(rand(1, 30)),  // Random date in the last 30 days
-                'updated_at'      => Carbon::now()->subDays(rand(1, 30)),  // Random date in the last 30 days
+                'created_at'      => Carbon::now()->subDays(rand(1, 300)),  // Random date in the last 30 days
+                'updated_at'      => Carbon::now()->subDays(rand(0, 30)),  // Random date in the last 30 days
             ]);
         }
     }

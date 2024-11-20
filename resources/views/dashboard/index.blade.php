@@ -295,7 +295,7 @@
                                                                         @can('super-admin')
 
                                                                         <a class="dropdown-item"
-                                                                                href="/dashboard/profiles">
+                                                                                href="/dashboard/users/attempt">
                                                                                 <i
                                                                                         class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                                                                 Login Attempts

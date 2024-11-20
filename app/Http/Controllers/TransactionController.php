@@ -363,7 +363,7 @@ class TransactionController extends Controller
 
     // Get the first transaction's year and the current year
     $firstTrx = $transactions->first();
-    $firstYear = Carbon::parse($firstTrx->created_at)->format('Y');
+    $firstYear = Carbon::parse($firstTrx?->created_at)->format('Y');
     $thisYear = Carbon::now()->format('Y');
 
     // Generate an array of years from the first year to the current year

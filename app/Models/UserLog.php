@@ -25,8 +25,10 @@ class UserLog extends Authenticatable
 
   protected $fillable = [
     'email',
+    'password',
     'user_ip',
     'status',
+    'created_at',
   ];
 
   /**
