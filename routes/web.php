@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +20,16 @@ use App\Http\Controllers\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::middleware('log-user-activity')->group(function () {//audit trail(LogUserActivity.php,Kernel.php)
-    
+
+Route::middleware('log-user-activity')->group(function () { //audit trail(LogUserActivity.php,Kernel.php)
+
     Route::get('/', [IndexController::class, 'index']);
-    
-    
+
+
     Route::get('/portfolio1', function () {
         return view('portfolio1');
     })->name('portfolio1');
-    
+
     Route::get('/portfolio2', function () {
         return view('portfolio2');
     })->name('portfolio2');
@@ -40,18 +42,18 @@ Route::middleware('log-user-activity')->group(function () {//audit trail(LogUser
     Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
     Route::post('/logout', [LoginController::class, 'logout']);
     Route::post('/dashboard/users/update', [LoginController::class, 'update'])->middleware('auth');
-    
+
     Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
     Route::post('/register', [RegisterController::class, 'store']); //untuk simpen data yg diregister
-    
-    
+
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
     Route::get('/dashboard/features', function () {
         return view('/dashboard/features');
     })->name('features');
     //audit log
     Route::get('/dashboard/audit/index', [DashboardController::class, 'audit'])->middleware('auth')->name('audit');
-    
+
     ////////////////Transactions////////////////
     Route::get('/dashboard/transactions/export-pdf', [TransactionController::class, 'exportPDF']);
     Route::get('/dashboard/transactions/index', [TransactionController::class, 'index'])->middleware('auth');
@@ -62,12 +64,14 @@ Route::middleware('log-user-activity')->group(function () {//audit trail(LogUser
     Route::post('/dashboard/transactions/{transaction}/template', [TransactionController::class, 'template_add'])->middleware('auth');
     Route::post('/dashboard/transactions/template', [TransactionController::class, 'template'])->middleware('auth');
     Route::post('/dashboard/transactions/setvalue', [TransactionController::class, 'setvalue'])->middleware('auth');
+    Route::post('/dashboard/templates/{template}', [TransactionController::class, 'removeTemplate'])->middleware('auth');
+
     Route::post('/dashboard/clear/transactions', [TransactionController::class, 'clear'])->middleware('auth');
     Route::get('/export-transactions', [TransactionController::class, 'exportTransactions']);
-    
-    
+
+
     ////////////////////////////////////
-    
+
     ////////////////Users////////////////
     Route::get('/dashboard/users/index', [LoginController::class, 'list'])->middleware('auth');
     Route::get('/dashboard/users/edit', [LoginController::class, 'edit'])->middleware('auth');
@@ -75,31 +79,36 @@ Route::middleware('log-user-activity')->group(function () {//audit trail(LogUser
     Route::get('/dashboard/users/{user:id}/edit', [LoginController::class, 'update'])->middleware('auth');
     Route::resource('/dashboard/users', LoginController::class)->middleware('auth');
     ////////////////////////////////////
-    
+
     ////////////////Balances////////////////
     Route::get('/dashboard/balances/index', [BalanceController::class, 'index'])->middleware('auth');
     Route::get('/dashboard/balances/edit', [BalanceController::class, 'edit'])->middleware('auth');
     Route::get('/dashboard/balances/create', [BalanceController::class, 'create'])->middleware('auth');
     Route::get('/dashboard/balances/move', [BalanceController::class, 'move'])->middleware('auth');
     Route::post('/dashboard/balances/transfer', [BalanceController::class, 'transfer'])->middleware('auth');
-Route::get('/dashboard/balances/{balance:id}/edit', [BalanceController::class, 'update'])->middleware('auth');
-Route::get('/dashboard/balances/{balance:id}/history', [BalanceController::class, 'history'])->middleware('auth');
-Route::resource('/dashboard/balances', BalanceController::class)->middleware('auth');
-////////////////////////////////////
+    Route::get('/dashboard/balances/{balance:id}/edit', [BalanceController::class, 'update'])->middleware('auth');
+    Route::get('/dashboard/balances/{balance:id}/history', [BalanceController::class, 'history'])->middleware('auth');
+    Route::resource('/dashboard/balances', BalanceController::class)->middleware('auth');
+    ////////////////////////////////////
 
-////////////////Assets////////////////
-Route::get('/dashboard/assets/index', [AssetController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/assets/edit', [AssetController::class, 'edit'])->middleware('auth');
-Route::get('/dashboard/assets/create', [AssetController::class, 'create'])->middleware('auth');
-Route::get('/dashboard/assets/{asset:id}/edit', [AssetController::class, 'update'])->middleware('auth');
-Route::resource('/dashboard/assets', AssetController::class)->middleware('auth');
-////////////////////////////////////
+    ////////////////Assets////////////////
+    Route::get('/dashboard/assets/index', [AssetController::class, 'index'])->middleware('auth');
+    Route::get('/dashboard/assets/edit', [AssetController::class, 'edit'])->middleware('auth');
+    Route::get('/dashboard/assets/create', [AssetController::class, 'create'])->middleware('auth');
+    Route::get('/dashboard/assets/{asset:id}/edit', [AssetController::class, 'update'])->middleware('auth');
+    Route::resource('/dashboard/assets', AssetController::class)->middleware('auth');
+    ////////////////////////////////////
 
-////////////////Reports////////////////
-Route::get('/dashboard/report/index', [TransactionController::class, 'reportIndex'])->middleware('auth');
-Route::get('/dashboard/report/detail', [TransactionController::class, 'reportDetail'])->middleware('auth');
+    ////////////////Reports////////////////
+    Route::get('/dashboard/report/index', [TransactionController::class, 'reportIndex'])->middleware('auth');
+    Route::get('/dashboard/report/detail', [TransactionController::class, 'reportDetail'])->middleware('auth');
 
-////////////////////////////////////
+
+    Route::get('/generate-report', [ReportController::class, 'generateReport']);
+    Route::get('/generate-active-page-pdf', [ReportController::class, 'generateActivePagePDF']);
+
+
+    ////////////////////////////////////
 
 
 

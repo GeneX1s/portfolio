@@ -110,7 +110,7 @@ class TransactionController extends Controller
       'sub_kategori' => 'required',
       'balance' => 'required',
       'deskripsi' => 'nullable',
-      'created_at' => Carbon::now(),
+      'created_at' => now(),
       'status' => "Pending",
     ]);
     $input = $request->all();
@@ -125,8 +125,8 @@ class TransactionController extends Controller
     } else {
       $input['nama'] = 'INV|' . $code . $date;
     }
-    $input['created_at'] = Carbon::now()->format('Y-m-d');
-    $input['updated_at'] = Carbon::now()->format('Y-m-d');
+    $input['created_at'] = now();
+    $input['updated_at'] = now();
     $input['status'] = "Active";
     if ($userRole == 'super-admin') {
       $input['profile'] = $userRole;
@@ -306,6 +306,13 @@ class TransactionController extends Controller
     ]);
   }
 
+  public function removeTemplate(Template $template){
+
+    $remove = Template::destroy('id',$template);
+
+    return redirect('dashboard.transactions.templates')->with('success', 'Template removed.');
+  }
+
   public function setvalue(Request $request)
   {
 
@@ -350,6 +357,7 @@ class TransactionController extends Controller
   public function exportTransactions(Request $request)
   {
 
+    
     return Excel::download(new TransactionsExport($request), 'Transaction.xlsx');
   }
 
