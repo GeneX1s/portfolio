@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BalanceExport;
+use App\Imports\BalanceImport;
 use App\Models\SetValue;
 use Illuminate\Http\Request;
 use App\Models\Balance;
@@ -13,6 +15,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BalanceController extends Controller
 {
@@ -213,4 +216,26 @@ class BalanceController extends Controller
       'balance' => $balance
     ]);
   }
+
+  
+  public function exportBalances(Request $request)
+  {
+
+    
+    return Excel::download(new BalanceExport(), 'Balance.xlsx');
+  }
+
+  public function import(Request $request)
+    {
+        // Validate the uploaded file
+        $request->validate([
+            'file' => 'required|mimes:xlsx,csv|max:2048',
+        ]);
+
+        // Import the data from the Excel file
+        Excel::import(new BalanceImport, $request->file('file'));
+
+        return back()->with('success', 'Data Imported Successfully');
+    }
+
 }

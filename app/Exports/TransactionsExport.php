@@ -70,7 +70,7 @@ class TransactionsExport implements FromCollection, WithHeadings, WithMapping, W
             'Status',
             'Profile',
             'Balance',
-            'Balance Destination (pindahbuku)',
+            'Balance Destination',
             'Created At',
             'Updated At',
         ];

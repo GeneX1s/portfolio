@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\SetValue;
 use App\Models\Template;
 use App\Exports\TransactionsExport;
+use App\Imports\TransactionImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Date;
@@ -396,4 +397,18 @@ class TransactionController extends Controller
     //pendapatan terbanyak dari...
     //pengeluaran terbanyak dari...
   }
+
+  public function import(Request $request)
+    {
+        // Validate the uploaded file
+        $request->validate([
+            'file' => 'required|mimes:xlsx,csv|max:2048',
+        ]);
+
+        // Import the data from the Excel file
+        Excel::import(new TransactionImport, $request->file('file'));
+
+        return back()->with('success', 'Data Imported Successfully');
+    }
+
 }

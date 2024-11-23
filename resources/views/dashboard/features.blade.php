@@ -12,6 +12,7 @@
 <h1>authenticator for login</h1>|
 <h1>generate report di dashboard index?(belum tau apa aja yg mau digenerate)</h1>|
 <h1>implementasi datatables untuk index dan juga generate pdf,excel,dll</h1>|
+<h1>Penambahan fitur import excel (into Balance and Transaction)untuk upload backup data </h1>|
 
 
 

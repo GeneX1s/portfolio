@@ -68,6 +68,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
 
     Route::post('/dashboard/clear/transactions', [TransactionController::class, 'clear'])->middleware('auth');
     Route::get('/export-transactions', [TransactionController::class, 'exportTransactions']);
+    Route::post('import', [TransactionController::class, 'import'])->name('transactions.import');    
 
 
     ////////////////////////////////////
@@ -89,6 +90,8 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::get('/dashboard/balances/{balance:id}/edit', [BalanceController::class, 'update'])->middleware('auth');
     Route::get('/dashboard/balances/{balance:id}/history', [BalanceController::class, 'history'])->middleware('auth');
     Route::resource('/dashboard/balances', BalanceController::class)->middleware('auth');
+    Route::get('/export-balances', [BalanceController::class, 'exportBalances']);
+    Route::post('import', [BalanceController::class, 'import'])->name('balances.import');
     ////////////////////////////////////
 
     ////////////////Assets////////////////
@@ -109,8 +112,6 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
 
 
     ////////////////////////////////////
-
-
 
 
 });

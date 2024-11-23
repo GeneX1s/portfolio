@@ -131,6 +131,30 @@
     </div>
   </form>
 
+  <form action="{{ route('transactions.import') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    
+    <div class="col-12 col-md-6 col-lg-4">
+        
+      <div class="mb-3">
+        
+        <label class="form-label" for="customFile">Import Data</label>
+        <input type="file" class="form-control" id="customFile" name="file" />
+        
+      </div>
+      
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="mb-3">
+      
+      <button type ="submit" class="btn btn-success btn-custom mb-3">(+)Import from Excel/CSV</a>
+      
+      </div>
+    </div>
+
+</form>
+
+
   <table class="table table-striped table-sm">
     <thead class="thead">
       <tr>
