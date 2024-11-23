@@ -68,7 +68,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
 
     Route::post('/dashboard/clear/transactions', [TransactionController::class, 'clear'])->middleware('auth');
     Route::get('/export-transactions', [TransactionController::class, 'exportTransactions']);
-    Route::post('import', [TransactionController::class, 'import'])->name('transactions.import');    
+    Route::post('transactions.import', [TransactionController::class, 'import'])->name('transactions.import');    
 
 
     ////////////////////////////////////
