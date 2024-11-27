@@ -649,7 +649,7 @@
                                                                         $transact->where('sub_kategori','Lainnya')->sum('nominal');
 
                                                                         $bensin =
-                                                                        $transact->where('sub_kategori','Bensin')->sum('nominal');
+                                                                        $transact->where('sub_kategori','Transport')->sum('nominal');
 
                                                                         $fixed =
                                                                         $transact->where('sub_kategori','Fixed')->sum('nominal');
@@ -696,7 +696,7 @@
                                                                                 </div>
 
                                                                                 <h4 class="small font-weight-bold">
-                                                                                        Bensin <span
+                                                                                        Transport/Bensin <span
                                                                                                 class="float-right">{{
                                                                                                 number_format($percentBensin,
                                                                                                 2) }}%</span>

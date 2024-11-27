@@ -89,6 +89,23 @@ class TransactionController extends Controller
     ]);
   }
 
+  public function pending()
+  {
+    $transactions = Transaction::where('status', 'Pending')
+      ->get()->sortByDesc('created_at');
+
+    $total = 0;
+    $pendapatan = 0;
+    $pengeluaran = 0;
+    
+    return view('dashboard.transactions.index', [
+      'transactions' => $transactions,
+      'total' => $total,
+      'pendapatan' => $pendapatan,
+      'pengeluaran' => $pengeluaran,
+    ]);
+  }
+
   public function create() //redirect to page
   {
     $templates = Template::get();
@@ -112,8 +129,9 @@ class TransactionController extends Controller
       'balance' => 'required',
       'deskripsi' => 'nullable',
       'created_at' => now(),
-      'status' => "Pending",
+      'status' => "required",
     ]);
+
     $input = $request->all();
     $userId = Auth::id();
     $userRole = User::where('id', $userId)->first()->role;
@@ -128,7 +146,7 @@ class TransactionController extends Controller
     }
     $input['created_at'] = now();
     $input['updated_at'] = now();
-    $input['status'] = "Active";
+    // $input['status'] = "Active";
     if ($userRole == 'super-admin') {
       $input['profile'] = $userRole;
     } else if ($userRole == 'admin') {
@@ -411,4 +429,16 @@ class TransactionController extends Controller
         return back()->with('success', 'Data Imported Successfully');
     }
 
+    public function approve(Transaction $transaction){
+
+      // dd($transaction);
+      $update = Transaction::where('id',$transaction->id)->first();
+      
+    $update->update([
+      'status' => "Active",
+    ]);
+
+    return back()->with('success', 'Transaction done');
+
+    }
 }

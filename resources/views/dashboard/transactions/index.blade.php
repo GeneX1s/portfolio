@@ -195,6 +195,15 @@
             </button>
             @endif
           </form>
+          <form action="/dashboard/transactions/{{ $transaction->id }}/approve" method="post" class="d-inline">
+            @csrf
+            @method('POST')
+            @if ($transaction->status == "Pending")
+            <button class="badge bg-warning border-0" type="submit">
+              <i class="fas fa-regular fa-check"></i>
+            </button>
+            @endif
+          </form>
         </td>
       </tr>
       @endforeach

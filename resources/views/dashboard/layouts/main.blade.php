@@ -34,7 +34,8 @@ body {
 
 /* Sidebar styling */
 .sidebar {
-  width: 270px !important; /* Fixed width for the sidebar */
+  /* width: 270px !important; Fixed width for the sidebar */
+  width: 300px; /* Fixed width for the sidebar */
   height: 100vh; /* Full height for the sidebar */
   top: 0; /* Align to the top */
   left: 0; /* Align to the left */

@@ -7,12 +7,15 @@
 <h1>Sortir transaksi dari yang terbaru</h1>|done
 <h1>Cron Job create transaction fixed outcome dan income</h1>|
 <h1>Implementasi API Mutasi rekening dengan https://moota.co/</h1>|
-<h1>Pending payments/transactions index(list hutang atau pembayaran yang belum terjadi)</h1>|
-<h1>index for user login sessions? dan simpen field password</h1>|ongoing
+<h1>Pending payments/transactions index(list hutang atau pembayaran yang belum terjadi)</h1>| done (notes: pake index create transaction tapi masuk   dari url yg beda di web.php)
+
+<h1>index for user login sessions? dan simpen field password</h1>|done(field password gabisa disimpen laravel)
+
 <h1>authenticator for login</h1>|
-<h1>generate report di dashboard index?(belum tau apa aja yg mau digenerate)</h1>|
+<h1>generate report di dashboard index?(belum tau apa aja yg mau digenerate)</h1>| Problem: Karena ada dynamic value, sekarang dompdf belum bisa handle
+
 <h1>implementasi datatables untuk index dan juga generate pdf,excel,dll</h1>|
-<h1>Penambahan fitur import excel (into Balance and Transaction)untuk upload backup data </h1>|
+<h1>Penambahan fitur import excel (into Balance and Transaction)untuk upload backup data </h1>| done
 
 
 

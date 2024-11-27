@@ -16,7 +16,7 @@
           ],
           Pengeluaran: [
               { value: 'Lainnya', text: 'Lainnya' },
-              { value: 'Bensin', text: 'Bensin' },
+              { value: 'Transport', text: 'Transport' },
               { value: 'Fixed', text: 'Fixed' },
               { value: 'Internet', text: 'Internet' },
               { value: 'Lifestyle', text: 'Lifestyle' },
@@ -114,6 +114,14 @@
           @foreach ($balances as $balance)
           <option value="{{$balance->nama}}"> {{$balance->nama}}</option>
           @endforeach
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-control" name="status">
+          <option value="Active" selected> Active</option>
+          <option value="Pending"> Pending</option>
         </select>
       </div>
 
