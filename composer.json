@@ -20,7 +20,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "maatwebsite/excel": "3.1.x-dev",
-        "phpoffice/phpspreadsheet": "1.29.2",
+        "phpoffice/phpspreadsheet": "1.29.4",
         "psr/simple-cache": "3.0"
     },
 
