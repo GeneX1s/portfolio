@@ -47,7 +47,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::post('/register', [RegisterController::class, 'store']); //untuk simpen data yg diregister
 
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+    Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
     Route::get('/dashboard/features', function () {
         return view('/dashboard/features');
     })->name('features');

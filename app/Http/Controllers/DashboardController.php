@@ -18,6 +18,8 @@ class DashboardController extends Controller
   public function index(Request $request)
   {
 
+    $yearFilter = $request->year;
+
     // Get the start and end dates for the current week
     // $start_date = Carbon::now()->startOfWeek()->subWeek()->format('Y-m-d H:i:s');
     $start_date = Carbon::now()->startOfWeek()->format('Y-m-d H:i:s');
@@ -32,7 +34,12 @@ class DashboardController extends Controller
     $userRole = User::where('id', $userId)->first()->role;
 
     // Fetch transactions
-    $transactions = Transaction::where('status', 'Active')->where('profile', $userRole)->get();
+    $transactions = Transaction::query()
+    ->when($yearFilter, function ($query) use ($yearFilter) {
+      return $query->whereYear('created_at', '=',  $yearFilter);
+    })
+    ->where('status', 'Active')->where('profile', $userRole)->get();
+
     $week_outcomes = $transactions->where('kategori', 'Pengeluaran')
       ->whereBetween('created_at', [$start_date, $end_date])
       ->pluck('nominal')->all();
@@ -64,20 +71,21 @@ class DashboardController extends Controller
     $pengeluaran_bulanan = 0;
     $pengeluaran_mingguan = 0;
     $year_now = Carbon::now()->format('Y');
-
+    if($request->year){
+      $year_now = $request->year;
+    }
+    
     foreach ($week_outcomes as $week_outcome) {
       $pengeluaran_mingguan = $pengeluaran_mingguan + $week_outcome;
     }
     foreach ($month_outcomes as $month_outcome) {
       $pengeluaran_bulanan = $pengeluaran_bulanan + $month_outcome;
     }
-
+    $persen_bulan_ini = ($pengeluaran_bulanan / 45000000) * 100;
+    
     foreach ($month_incomes as $month_income) {
       $pendapatan_bulanan = $pendapatan_bulanan + $month_income;
     }
-    $persen_bulan_ini = ($pengeluaran_bulanan / 45000000) * 100;
-    // dd($pengeluaran_bulanan);
-    // dd($persen_bulan_ini);
 
     foreach ($year_outcomes as $year_outcome) {
       $pengeluaran_tahunan = $pengeluaran_tahunan + $year_outcome;
@@ -88,7 +96,7 @@ class DashboardController extends Controller
     foreach ($investments as $investment) {
       $investment_tahunan = $investment_tahunan + $investment;
     }
-
+    
     $january = $transactions->filter(function ($transaction) use ($year_now) {
       $transaction_dt = new DateTime($transaction->created_at);
       return $transaction_dt->format('m') === '01'
@@ -326,6 +334,13 @@ class DashboardController extends Controller
 
     $quota = $salary / 2 - $pengeluaran_bulanan;
 
+    $years = $transactions->map(function($transaction) {
+      return $transaction->created_at; // Ambil tahun dari created_at
+  })->unique(); // Mengambil tahun yang unik
+
+  $result = Transaction::select(Transaction::raw('YEAR(created_at) as year'))->distinct()->get();
+$years = $result->pluck('year')->sort();
+
     return view('/dashboard.index', [
       'spendable' => $spendable,
       'fix_outcome' => $fix_outcome,
@@ -339,6 +354,7 @@ class DashboardController extends Controller
       'persen_bulan_ini' => $persen_bulan_ini,
       'area_chart' => $area_chart,
       'data' => $data,
+      'years' => $years,
       'transactions' => $transactions,
     ]);
   }
