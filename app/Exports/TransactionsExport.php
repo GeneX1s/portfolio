@@ -45,7 +45,7 @@ class TransactionsExport implements FromCollection, WithHeadings, WithMapping, W
         ->when($start_date && $end_date, function ($query) use ($start_date, $end_date) {
             return $query->whereDate('created_at', '>=', $start_date)
                          ->whereDate('created_at', '<=', $end_date);
-        })
+        })->whereNot('status','Deleted')
         ->get();  // Finally, get the filtered results
 
     return $transactions;

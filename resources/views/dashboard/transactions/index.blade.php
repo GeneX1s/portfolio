@@ -144,8 +144,9 @@
       </div>
       
     </div>
+    <div class="row">
     <div class="col-12 col-md-6 col-lg-4">
-      <div class="mb-3">
+    <div class="mb-3">
       
       <button type ="submit" class="btn btn-success btn-custom mb-3">(+)Import from Excel/CSV</a>
       
@@ -154,6 +155,14 @@
 
 </form>
 
+<div class="col-12 col-md-6 col-lg-4">
+  <div class="mb-3">
+  
+    <a class="btn btn-warning btn-custom" href="{{ url('/dashboard/report/generator') }}">Report Generator</a>
+  
+  </div>
+</div>
+</div>
 
   <table class="table table-striped table-sm">
     <thead class="thead">
@@ -241,7 +250,7 @@
     </div>
     <div class="col-12 col-md-6 col-lg-4">
       <div class="mb-1">
-        <a class="btn btn-warning btn-custom" href="{{ url('/export-transactions') }}">Export to Excel</a>
+        <a class="btn btn-warning btn-custom" href="{{ url('/export-transactions') }}">Export All to Excel</a>
       </div>
     </div>
     <div class="col-12 col-md-6 col-lg-4">

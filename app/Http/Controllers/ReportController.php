@@ -42,5 +42,12 @@ class ReportController extends Controller
         return $pdf->download('pdfReport.pdf');
     }
 
+    public function generatorReport(Request $request){
+
+        return view('dashboard.report.generator', [
+          ]);
+
+    }
+
 
 }

@@ -107,6 +107,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     ////////////////Reports////////////////
     Route::get('/dashboard/report/index', [TransactionController::class, 'reportIndex'])->middleware('auth');
     Route::get('/dashboard/report/detail', [TransactionController::class, 'reportDetail'])->middleware('auth');
+    Route::get('/dashboard/report/generator', [ReportController::class, 'generatorReport'])->middleware('auth');
 
 
     Route::get('/generate-report', [ReportController::class, 'generateReport']);
