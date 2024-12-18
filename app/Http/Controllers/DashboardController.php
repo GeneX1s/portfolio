@@ -17,17 +17,22 @@ class DashboardController extends Controller
 {
   public function index(Request $request)
   {
-
+    
+    $date = Carbon::now();
     $yearFilter = $request->year;
+
+    if($request->year){
+      $date = $date->year($yearFilter);
+    }
 
     // Get the start and end dates for the current week
     // $start_date = Carbon::now()->startOfWeek()->subWeek()->format('Y-m-d H:i:s');
-    $start_date = Carbon::now()->startOfWeek()->format('Y-m-d H:i:s');
-    $end_date = Carbon::now()->endOfWeek()->format('Y-m-d H:i:s');
-    $start_year = Carbon::now()->startOfYear()->format('Y-m-d H:i:s');
-    $end_year = Carbon::now()->endOfYear()->format('Y-m-d H:i:s');
-    $start_month = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
-    $end_month = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
+    $start_date = $date->startOfWeek()->format('Y-m-d H:i:s');
+    $end_date = $date->endOfWeek()->format('Y-m-d H:i:s');
+    $start_year = $date->startOfYear()->format('Y-m-d H:i:s');
+    $end_year = $date->endOfYear()->format('Y-m-d H:i:s');
+    $start_month = $date->startOfMonth()->format('Y-m-d H:i:s');
+    $end_month = $date->endOfMonth()->format('Y-m-d H:i:s');
 
 
     $userId = Auth::id();
@@ -61,7 +66,7 @@ class DashboardController extends Controller
       ->whereBetween('created_at', [$start_year, $end_year])
       ->pluck('nominal')->all();
 
-    $investments = Balance::where('tipe', 'Investment')->pluck('saldo')->all();
+    $investments = Balance::where('tipe', 'Investment')->whereYear('created_at',$yearFilter)->pluck('saldo')->all();
 
     $pengeluaran = 0;
     $pengeluaran_tahunan = 0;
@@ -97,224 +102,27 @@ class DashboardController extends Controller
       $investment_tahunan = $investment_tahunan + $investment;
     }
     
-    $january = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '01'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-
-    $january_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '01'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $januari = $january - $january_b;
-
-    $february = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '02'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $february_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '02'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $februari = $february - $february_b;
-
-    $march = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '03'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $march_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '03'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $maret = $march - $march_b;
-
-    $apriil = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '04'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $apriil_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '04'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $april = $apriil - $apriil_b;
-
-    $may = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '05'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $may_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '05'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $mei = $may - $may_b;
-
-    $june = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '06'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $june_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '06'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $juni = $june - $june_b;
-
-    $july = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '07'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $july_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '07'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $juli = $july - $july_b;
-
-    $august = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '08'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $august_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '08'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $agustus = $august - $august_b;
-
-    $septemberr = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '09'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $septemberr_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '09'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $september = $septemberr - $septemberr_b;
-
-    $october = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '10'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $october_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '10'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $oktober = $october - $october_b;
-
-    $novemberr = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '11'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $novemberr_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '11'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $november = $novemberr - $novemberr_b;
-
-    $december = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '12'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pendapatan'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $december_b = $transactions->filter(function ($transaction) use ($year_now) {
-      $transaction_dt = new DateTime($transaction->created_at);
-      return $transaction_dt->format('m') === '12'
-        && $transaction_dt->format('Y') === $year_now
-        && $transaction->kategori === 'Pengeluaran'
-        && $transaction->status === 'Active';
-    })->pluck('nominal')->sum();
-
-    $desember = $december - $december_b;
-
-    $area_chart = [$januari, $februari, $maret, $april, $mei, $juni, $juli, $agustus, $september, $oktober, $november, $desember];
+    $area_chart = [];
+    for($i = 0; $i < 12 ; $i++){
+      $month = str_pad($i + 1, 2, '0', STR_PAD_LEFT);
+      $monthplus = $transactions->filter(function ($transaction) use ($year_now,$month) {
+        $transaction_dt = new DateTime($transaction->created_at);
+        return $transaction_dt->format('m') === $month
+          && $transaction_dt->format('Y') === $year_now
+          && $transaction->kategori === 'Pendapatan'
+          && $transaction->status === 'Active';
+      })->pluck('nominal')->sum();
+  
+      $monthmin = $transactions->filter(function ($transaction) use ($year_now,$month) {
+        $transaction_dt = new DateTime($transaction->created_at);
+        return $transaction_dt->format('m') === $month
+          && $transaction_dt->format('Y') === $year_now
+          && $transaction->kategori === 'Pengeluaran'
+          && $transaction->status === 'Active';
+      })->pluck('nominal')->sum();
+  
+      $area_chart[$i] = $monthplus - $monthmin;
+    }
 
     $data = [
       'labels' => ['Earning', 'Spending', 'Investment'],
@@ -334,11 +142,8 @@ class DashboardController extends Controller
 
     $quota = $salary / 2 - $pengeluaran_bulanan;
 
-    $years = $transactions->map(function($transaction) {
-      return $transaction->created_at; // Ambil tahun dari created_at
-  })->unique(); // Mengambil tahun yang unik
 
-  $result = Transaction::select(Transaction::raw('YEAR(created_at) as year'))->distinct()->get();
+  $result = Transaction::select(Transaction::raw('YEAR(created_at) as year'))->where('status', 'Active')->where('profile', $userRole)->distinct()->get();
 $years = $result->pluck('year')->sort();
 
     return view('/dashboard.index', [
@@ -356,6 +161,7 @@ $years = $result->pluck('year')->sort();
       'data' => $data,
       'years' => $years,
       'transactions' => $transactions,
+      'tahun' => $request->year,
     ]);
   }
 

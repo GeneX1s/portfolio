@@ -383,9 +383,13 @@ class TransactionController extends Controller
   public function reportIndex()
   {
 
+    
+    $userId = Auth::id();
+    $userRole = User::where('id', $userId)->first()->role;
     // Get transactions with status 'Active', ordered by 'created_at'
     $transactions = Transaction::where('status', 'Active')
       ->orderBy('created_at')
+      ->where('profile',$userRole)
       ->get();
 
     // Get the first transaction's year and the current year

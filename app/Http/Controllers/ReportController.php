@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use PhpOffice\PhpSpreadsheet\Writer\Pdf\Dompdf;
+use Dompdf\Options;
 
 class ReportController extends Controller
 {
@@ -41,6 +43,34 @@ class ReportController extends Controller
         // Download the generated PDF
         return $pdf->download('pdfReport.pdf');
     }
+
+    public function generatePDF(Request $request)
+{
+    // Retrieve any dynamic data that will go into the PDF
+    $dynamicData = $this->getDynamicData(); // Example: data from a database or model
+
+    // Pass the dynamic data to the view
+    $view = view('pdf_template', compact('dynamicData'))->render();
+
+    // Configure domPDF options (optional)
+    $options = new Options();
+    $options->set('isHtml5ParserEnabled', true);  // For better HTML5 support
+    $options->set('isPhpEnabled', true);          // Enable PHP functions if needed
+
+    // Initialize domPDF
+    $dompdf = new Dompdf($options);
+    $dompdf->loadHtml($view);
+
+    // Set paper size (optional)
+    $dompdf->setPaper('A4', 'portrait');
+
+    // Render the PDF (first pass)
+    $dompdf->render();
+
+    // Output the PDF (force download or save to file)
+    return $dompdf->stream('output.pdf');
+}
+
 
     public function generatorReport(Request $request){
 

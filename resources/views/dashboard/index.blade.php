@@ -28,7 +28,7 @@
 
                                                 <!-- Topbar Search -->
                                                 {{-- <form
-                                                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                                        class="d-none d-sm-inline-block form-inline mr-2 ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                                                         <div class="input-group">
                                                                 <input type="text"
                                                                         class="form-control bg-light border-0 small"
@@ -42,7 +42,7 @@
                                                         </div>
                                                 </form> --}}
                                                 
-                                                <form class="d-none d-sm-inline-block form-inline mr-2 my-2 my-md-0 mw-100 navbar-search" action="{{ route('dashboard') }}" method="GET">
+                                                <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search" action="{{ route('dashboard') }}" method="GET">
                                                         @csrf
                                                         <div class="input-group">
                                                                 <select class="form-control bg-light small" name="year" id="year">
@@ -304,7 +304,7 @@
                                                                         <span
                                                                                 class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}</span>
                                                                         <img class="img-profile rounded-circle"
-                                                                                src="img/undraw_profile.svg">
+                                                                                src="../../dasbor/img/profile.jpg">
                                                                 </a>
                                                                 <!-- Dropdown - User Information -->
                                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -350,7 +350,7 @@
 
                                                 <!-- Page Heading -->
                                                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                                                        <h1 class="h3 mb-0 text-gray-800">Dashboard | {{ $tahun }}</h1>
                                                         <a href="/generate-active-page-pdf"
                                                                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                                                         class="fas fa-download fa-sm text-white-50"></i>
@@ -574,6 +574,18 @@
                                                                         </div>
                                                                         <!-- Card Body -->
                                                                         <div class="card-body">
+                                                                                <p>Earning: Rp.{{
+                                                                                                        number_format($pendapatan_tahunan,
+                                                                                                        '2',
+                                                                                                        ',', '.') }}</p>
+                                                                                <p>Spending: Rp.{{
+                                                                                                        number_format($pengeluaran_tahunan,
+                                                                                                        '2',
+                                                                                                        ',', '.') }}</p>
+                                                                                <p>Investment: Rp.{{
+                                                                                                        number_format($investment_tahunan,
+                                                                                                        '2',
+                                                                                                        ',', '.') }}</p>
                                                                                 <div class="chart-pie pt-4 pb-2">
                                                                                         <canvas
                                                                                                 id="myPieChart"></canvas>
@@ -899,7 +911,7 @@
                                                                         <div class="card-header py-3">
                                                                                 <h6
                                                                                         class="m-0 font-weight-bold text-primary">
-                                                                                        Illustrations</h6>
+                                                                                        To Do List Reminder:</h6>
                                                                         </div>
                                                                         <div class="card-body">
                                                                                 <div class="text-center">
@@ -908,19 +920,7 @@
                                                                                                 src="img/undraw_posting_photo.svg"
                                                                                                 alt="...">
                                                                                 </div>
-                                                                                <p>Add some quality, svg
-                                                                                        illustrations to your
-                                                                                        project courtesy of <a
-                                                                                                target="_blank"
-                                                                                                rel="nofollow"
-                                                                                                href="https://undraw.co/">unDraw</a>,
-                                                                                        a
-                                                                                        constantly updated
-                                                                                        collection of
-                                                                                        beautiful svg images
-                                                                                        that you can use
-                                                                                        completely free and
-                                                                                        without attribution!
+                                                                                <p>Jangan lupa konfigurasi DomPDF
                                                                                 </p>
                                                                                 <a target="_blank" rel="nofollow"
                                                                                         href="https://undraw.co/">Browse
@@ -934,7 +934,7 @@
                                                                         <div class="card-header py-3">
                                                                                 <h6
                                                                                         class="m-0 font-weight-bold text-primary">
-                                                                                        Development Approach
+                                                                                        Goals:
                                                                                 </h6>
                                                                         </div>
                                                                         <div class="card-body">
