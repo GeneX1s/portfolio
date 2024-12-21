@@ -22,7 +22,20 @@
         </div>
         @enderror
       </div>
-      
+
+      @if($balance->tipe == "Investment")
+      <div class="mb-3">
+        <label for="dividen" class="form-label">Bunga/Dividen</label>
+        <input type="integer" class="form-control @error('dividen') is-invalid @enderror" id="dividen" name="dividen" required
+          autofocus value="{{$balance->dividen}}">
+        @error('dividen')
+        <div class="invalid-feedback">
+          {{ $message }}
+        </div>
+        @enderror
+      </div>
+      @endif
+
       <div class="mb-1">
       <button type="submit" class="btn btn-primary">Update Balance</button>
         <a class="btn btn-danger btn-custom" href="/dashboard/balances">Cancel</a>

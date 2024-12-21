@@ -74,6 +74,7 @@ class BalanceController extends Controller
       'saldo' => 'required',
       'tipe' => 'required',
       'dividen' => 'nullable',
+      'created_at' => 'nullable',
       'updated_at' => 'nullable',
     ]);
     $inputData['updated_at'] = Date::now();
@@ -89,6 +90,7 @@ class BalanceController extends Controller
 
     $inputData = $request->validate([
       'saldo' => 'required',
+      'dividen' => 'nullable',
     ]);
     $inputData['updated_at'] = Date::now();
 
@@ -96,6 +98,7 @@ class BalanceController extends Controller
 
     $input = $request->all();
 
+    // dd($input);
     $date = Date::now();
     $code = md5(Str::random(10));
     $trxId = 'TRF|' . $code . $date;
@@ -111,6 +114,7 @@ class BalanceController extends Controller
 
     $newBal->update([
       "saldo" => $input['saldo'],
+      "dividen" => $input['dividen'],
     ]);
     BalanceHis::create($balancehis);
 

@@ -12,6 +12,7 @@
               { value: 'Obligasi', text: 'Obligasi' },
               { value: 'Bunga/Cashback', text: 'Bunga/Cashback' },
               { value: 'Angpao', text: 'Angpao' },
+              { value: 'Ngajar Yoga', text: 'Ngajar Yoga' },
               { value: 'Lainnya', text: 'Lainnya' },
           ],
           Pengeluaran: [

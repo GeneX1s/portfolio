@@ -137,7 +137,11 @@
         <td>{{$balance->nama}}</td>
         <td>Rp.{{ number_format($balance->saldo, '2', ',', '.') }}</td>
         <td>{{$balance->tipe}}</td>
-        <td>{{$balance->dividen}}</td>
+        <td>{{$balance->dividen}}
+          @if ($balance->dividen) 
+          %
+          @endif
+        </td>
         @php
           $total = $total + $balance->saldo;
           if($balance->tipe == 'Investment'){

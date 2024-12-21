@@ -66,7 +66,9 @@ class DashboardController extends Controller
       ->whereBetween('created_at', [$start_year, $end_year])
       ->pluck('nominal')->all();
 
-    $investments = Balance::where('tipe', 'Investment')->whereYear('created_at',$yearFilter)->pluck('saldo')->all();
+    $investments = Balance::where('tipe', 'Investment')
+    // ->whereYear('created_at',$yearFilter)
+    ->pluck('saldo')->all();
 
     $pengeluaran = 0;
     $pengeluaran_tahunan = 0;
