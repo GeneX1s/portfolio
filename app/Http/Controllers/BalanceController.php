@@ -221,11 +221,11 @@ class BalanceController extends Controller
     ]);
   }
 
-  
+
   public function exportBalances(Request $request)
   {
 
-    
+
     return Excel::download(new BalanceExport(), 'Balance.xlsx');
   }
 

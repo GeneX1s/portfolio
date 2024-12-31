@@ -9,6 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +49,10 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
 
 
     Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
-    Route::get('/dashboard/features', function () {
-        return view('/dashboard/features');
+    Route::get('/dashboard/features/index', function () {
+        return view('/dashboard/features/index');
     })->name('features');
+
     //audit log
     Route::get('/dashboard/audit/index', [DashboardController::class, 'audit'])->middleware('auth')->name('audit');
 
@@ -70,7 +72,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
 
     Route::post('/dashboard/clear/transactions', [TransactionController::class, 'clear'])->middleware('auth');
     Route::get('/export-transactions', [TransactionController::class, 'exportTransactions']);
-    Route::post('transactions.import', [TransactionController::class, 'import'])->name('transactions.import');    
+    Route::post('transactions.import', [TransactionController::class, 'import'])->name('transactions.import');
 
 
     ////////////////////////////////////
@@ -114,6 +116,11 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::get('/generate-active-page-pdf', [ReportController::class, 'generateActivePagePDF']);
 
 
+    Route::get('/dashboard/portfolios/index', [PortfolioController::class, 'index'])->middleware('auth');
+    Route::get('/dashboard/portfolios/create', [PortfolioController::class, 'create'])->middleware('auth');
+    Route::post('/dashboard/portfolios/index', [PortfolioController::class, 'index'])->middleware('auth');
+    Route::post('/dashboard/portfolios/index', [PortfolioController::class, 'index'])->middleware('auth');
+    Route::resource('/dashboard/portfolios', PortfolioController::class)->middleware('auth');
     ////////////////////////////////////
 
 

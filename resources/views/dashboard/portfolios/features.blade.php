@@ -10,6 +10,8 @@
 <h1>Cron Job create transaction fixed outcome dan income</h1>|
 <h1>Implementasi API Mutasi rekening dengan https://moota.co/</h1>|
 <h1>Pending payments/transactions index(list hutang atau pembayaran yang belum terjadi)</h1>| done (notes: pake index create transaction tapi masuk   dari url yg beda di web.php)
+<h1>Upload/ Update CV di Resume </h1>| done
+<h1>Resume dinamis diedit dari dashboard </h1>| done
 
 <h1>index for user login sessions? dan simpen field password</h1>|done(field password gabisa disimpen laravel)
 

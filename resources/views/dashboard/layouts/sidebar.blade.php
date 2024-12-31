@@ -61,7 +61,7 @@
 
   <!-- Nav Item - Charts -->
   <li class="nav-item">
-    <a class="nav-link" href="/dashboard/features">
+    <a class="nav-link" href="/dashboard/features/index">
       <i class="fas fa-fw fa-list"></i>
       <span>Upcoming Features</span></a>
   </li>
@@ -74,7 +74,13 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="/dashboard/balances/index">  
+    <a class="nav-link" href="/dashboard/portfolios/index">
+      <i class="fas fa-fw fa-barcode"></i>
+      <span>Portfolio</span></a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="/dashboard/balances/index">
       <i class="fas fa-fw fa-dollar-sign"></i>
       <span>Balances</span></a>
   </li>
