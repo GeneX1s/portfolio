@@ -2,43 +2,51 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Update Balance</h1>
+  <h1 class="h2">Update feature</h1>
 </div>
 <div class="row">
   <div class="col-lg-8">
-    <form method="post" action="/dashboard/balances/{{$balance->id}}" class="mb-5" enctype="multipart/form-data">
+    <form method="post" action="/dashboard/features/{{$feature->id}}" class="mb-5" enctype="multipart/form-data">
       <!-- multipart form data harus supaya bisa upload file(img dll) -->
       @method('put')
       @csrf
 
-  
+
       <div class="mb-3">
-        <label for="saldo" class="form-label">Saldo</label>
-        <input type="integer" class="form-control @error('saldo') is-invalid @enderror" id="saldo" name="saldo" required
-          autofocus value="{{$balance->saldo}}">
-        @error('saldo')
+        <label for="name" class="form-label">Nama</label>
+        <input type="string" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required
+          autofocus value="{{old('name')}}">
+        @error('name')
         <div class="invalid-feedback">
           {{ $message }}
         </div>
         @enderror
       </div>
 
-      @if($balance->tipe == "Investment")
       <div class="mb-3">
-        <label for="dividen" class="form-label">Bunga/Dividen</label>
-        <input type="integer" class="form-control @error('dividen') is-invalid @enderror" id="dividen" name="dividen" required
-          autofocus value="{{$balance->dividen}}">
-        @error('dividen')
+        <label for="description" class="form-label">Deskripsi</label>
+        <input type="integer" class="form-control @error('description') is-invalid @enderror" id="description" name="description" required
+          autofocus value="{{old('description')}}">
+        @error('description')
         <div class="invalid-feedback">
           {{ $message }}
         </div>
         @enderror
       </div>
-      @endif
+
+
+      <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-control" name="status">
+          <option value="Ongoing" selected> Ongoing</option>
+          <option value="Pending">Pending</option>
+        </select>
+      </div>
 
       <div class="mb-1">
-      <button type="submit" class="btn btn-primary">Update Balance</button>
-        <a class="btn btn-danger btn-custom" href="/dashboard/balances">Cancel</a>
+
+        <button type="submit" class="btn btn-primary">Update Feature</button>
+        <a class="btn btn-danger btn-custom" href="/dashboard/features">Cancel</a>
       </div>
     </form>
 

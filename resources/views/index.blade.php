@@ -53,7 +53,7 @@
     ga('create', 'UA-96534204-1', 'auto');
     ga('send', 'pageview');
 
-    
+
   </script>
 
   <script src="js/jquery-2.1.3.min.js"></script>
@@ -188,11 +188,11 @@
                     <li><span class="title">Age</span><span class="value">{{$birthday}}</span></li>
                     <li><span class="title">Residence</span><span class="value">Indonesia</span></li>
                     <li><span class="title">City</span><span class="value">Jakarta</span></li>
-                    <li><span class="title">e-mail</span><span class="value"><a href="owen.djohan@gmail.com"><span
+                    <li><span class="title">e-mail</span><span class="value"><a href="nicholas_owen@outlook.com"><span
                             class="__cf_email__"
-                            data-cfemail="c7a2aaa6aeab87a2bfa6aab7aba2e9a4a8aa">owen.djohan@gmail.com</span></a></span>
+                            data-cfemail="c7a2aaa6aeab87a2bfa6aab7aba2e9a4a8aa">nicholas_owen@outlook.com</span></a></span>
                     </li>
-                    <li><span class="title">Phone</span><span class="value">0812 8062 6658</span></li>
+                    <li><span class="title">Phone</span><span class="value">-</span></li>
                     <li><span class="title">Job</span><span class="value">Developer</span></li>
                     <li><span class="title">Freelance</span><span class="value available">Available</span></li>
                   </ul>
@@ -213,7 +213,7 @@
 
               <!-- Services block -->
               <div class="block-title">
-                <h3>Services</h3>
+                <h3>What I'm Offering</h3>
               </div>
 
               <div class="row">
@@ -221,8 +221,8 @@
                   <div class="service-block">
                     <div class="service-info">
                       <img src="images/service/web_design_icon.png" alt="Responsive Design">
-                      <h4>Website Design</h4>
-                      <p>I can build website for all your needs and business.</p>
+                      <h4>Building App/Website</h4>
+                      <p>Building apps/web apps for all needs and business.</p>
                     </div>
                   </div>
                 </div>
@@ -232,8 +232,8 @@
                     <div class="service-info">
                       <img src="images/service/app_dev.png" alt="Photography">
                       <h4>Application Development</h4>
-                      <p>I'm also experienced on developing varioys applications ranging from core banking system to
-                        simple applications like cashier system .</p>
+                      <p>I'm also experienced on developing various applications ranging from core banking system to
+                        simple apps.</p>
                     </div>
                   </div>
                 </div>
@@ -242,8 +242,8 @@
                   <div class="service-block">
                     <div class="service-info">
                       <img src="images/service/creativity_icon.png" alt="Creativity">
-                      <h4>Consultation</h4>
-                      <p>Consulting service for your system or business flow design.</p>
+                      <h4>Prototyping</h4>
+                      <p>Prototyping or consulting service for your system or business flow design.</p>
                     </div>
                   </div>
                 </div>
@@ -323,7 +323,7 @@
                   <div class="fun-fact-block">
                     <i class="pe-7s-icon pe-7s-portfolio"></i>
                     <h4>Experiences</h4>
-                    <span class="fun-value">3 years</span>
+                    <span class="fun-value">7 years</span>
                   </div>
                 </div>
 
@@ -739,8 +739,8 @@
                       <i class="pe-7s-icon pe-7s-mail"></i>
                     </div>
                     <div class="ci-text">
-                      <h5>Email | <a href="owen.djohan@gmail.com" class="__cf_email__"
-                          data-cfemail="dabbb6bfa2a9b7b3aeb29abfa2bbb7aab6bff4b9b5b7">n.owendjohan@yahoo.com</a></h5>
+                      <h5>Email | <a href="nicholas_owen@outlook.com" class="__cf_email__"
+                          data-cfemail="dabbb6bfa2a9b7b3aeb29abfa2bbb7aab6bff4b9b5b7">nicholas_owen@outlook.com</a></h5>
                     </div>
                   </div>
                   {{-- <div class="contact-info-block">

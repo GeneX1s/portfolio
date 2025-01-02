@@ -40,14 +40,14 @@ body {
   top: 0; /* Align to the top */
   left: 0; /* Align to the left */
   overflow-y: auto; /* Enable scrolling if content overflows */
-  overflow: hidden;
+  overflow: visible;
   background-color: #f8f9fa; /* Background color */
   transition: width 0.3s; /* Smooth transition for resizing */
   position: relative; /* Center vertically */
 
 }
 
-  
+
 /* Content styling */
 .content {
   /* margin-left: 250px; Leave space for sidebar */
@@ -61,9 +61,29 @@ body {
     position: relative; /* Change to relative on mobile */
     height: auto; /* Allow height to adjust */
     width: 100%; /* Full width on mobile */
-    display: none; /* Hide sidebar by default */
+    display: block !important;
+    z-index: 1000; /* Ensures sidebar is on top */
+    align-content: center;
+
+    overflow-y: auto; /* Enable scrolling if content overflows */
+  overflow: visible;
+  background-color: #f8f9fa; /* Background color */
+  transition: width 0.3s; /* Smooth transition for resizing */
+
   }
 
+  .topbar {
+    z-index: 1001;          /* Ensures it stays on top of other content */
+    position: fixed;        /* Makes the topbar stay fixed when scrolling */
+    top: 0;                 /* Position it at the top of the page */
+    left: 0;                /* Align it to the left of the page */
+    width: 100%;            /* Make it span the full width of the page */
+}
+
+  /* Ensure the sidebar doesn't collapse immediately on small screens */
+.sidebar.toggled {
+    display: none !important;
+}
   .wrapper {
     flex-direction: column; /* Stack items on top of each other */
   }
@@ -79,7 +99,7 @@ body {
 }
 
   </style>
-  
+
 {{-- <p class="d-none d-md-block">Visible on medium screens and up</p> --}}
 {{-- <p class="d-block d-md-none">Visible on small screens</p> --}}
 

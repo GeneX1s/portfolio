@@ -10,6 +10,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\FeatureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,13 +115,23 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
 
     Route::get('/generate-report', [ReportController::class, 'generateReport']);
     Route::get('/generate-active-page-pdf', [ReportController::class, 'generateActivePagePDF']);
+    ////////////////////////////////////
 
 
+    //////////////portfolio///////////////
     Route::get('/dashboard/portfolios/index', [PortfolioController::class, 'index'])->middleware('auth');
     Route::get('/dashboard/portfolios/create', [PortfolioController::class, 'create'])->middleware('auth');
     Route::post('/dashboard/portfolios/index', [PortfolioController::class, 'index'])->middleware('auth');
     Route::post('/dashboard/portfolios/index', [PortfolioController::class, 'index'])->middleware('auth');
     Route::resource('/dashboard/portfolios', PortfolioController::class)->middleware('auth');
+    ////////////////////////////////////
+
+    //////////////features///////////////
+    Route::get('/dashboard/features/index', [FeatureController::class, 'index'])->middleware('auth');
+    Route::get('/dashboard/features/create', [FeatureController::class, 'create'])->middleware('auth');
+    Route::post('/dashboard/features/index', [FeatureController::class, 'index'])->middleware('auth');
+    Route::post('/dashboard/features/index', [FeatureController::class, 'index'])->middleware('auth');
+    Route::resource('/dashboard/features', FeatureController::class)->middleware('auth');
     ////////////////////////////////////
 
 

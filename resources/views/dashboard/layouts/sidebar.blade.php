@@ -13,6 +13,26 @@
     align-items: center; /* Align items vertically */
 }
 
+#collapseUtilities {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+
+/* Optional: To center nav items in the sidebar */
+.sidebar .nav-item {
+    display: flex;
+    justify-content: center; /* Horizontally center nav items */
+    width: 100%; /* Ensure each item takes full width */
+}
+
+.sidebar .nav-link {
+    display: block; /* Make links block elements */
+    text-align: center; /* Center text within each nav item */
+}
+
+}
   </style>
 
 <!-- Sidebar -->
