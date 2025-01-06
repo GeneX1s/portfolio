@@ -61,7 +61,7 @@ body {
     position: relative; /* Change to relative on mobile */
     height: auto; /* Allow height to adjust */
     width: 100%; /* Full width on mobile */
-    display: block !important;
+    display: none ;
     z-index: 1000; /* Ensures sidebar is on top */
     align-content: center;
 
@@ -82,7 +82,7 @@ body {
 
   /* Ensure the sidebar doesn't collapse immediately on small screens */
 .sidebar.toggled {
-    display: none !important;
+    display: block !important;
 }
   .wrapper {
     flex-direction: column; /* Stack items on top of each other */
