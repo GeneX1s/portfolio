@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('user_logs', function (Blueprint $table) {
             $table->id();
             $table->string('email');
-            $table->string('password')->nullable();
             $table->string('user_ip');
             $table->string('status');
             $table->timestamps();

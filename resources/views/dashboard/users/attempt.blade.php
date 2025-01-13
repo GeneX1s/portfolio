@@ -87,7 +87,6 @@
       <tr>
         <th scope="col">No.</th>
         <th scope="col">Email</th>
-        <th scope="col">Password</th>
         <th scope="col">IP Address</th>
         <th scope="col">Status</th>
         <th scope="col">Date</th>
@@ -100,7 +99,6 @@
       <tr>
         <td>{{$loop->iteration}}</td>
         <td>{{$attempt->email}}</td>
-        <td>{{$attempt->password}}</td>
         <td>{{$attempt->user_ip}}</td>
         <td>{{$attempt->status}}</td>
         <td>{{$attempt->created_at}}</td>
