@@ -33,7 +33,6 @@ class LoginController extends Controller
 
     // Retrieve client's IP address
     $clientIP = $request->ip();
-    $keepPass = $request->password;
 
     // Validate the login credentials
     $credentials = $request->validate([
@@ -48,8 +47,7 @@ class LoginController extends Controller
 
       // Record successful login attempt
       UserLog::create([
-        'email' => $request->email,        
-      'password' => $keepPass,
+        'email' => $request->email,
         'user_ip' => $clientIP,
         'status' => "Success",
         'created_at' => now(),
@@ -62,7 +60,6 @@ class LoginController extends Controller
     // Record failed login attempt
     UserLog::create([
       'email' => $request->email,
-      'password' => $keepPass,
       'user_ip' => $clientIP,
       'status' => "Failed",
       'created_at' => now(),
