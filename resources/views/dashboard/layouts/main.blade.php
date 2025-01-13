@@ -5,7 +5,8 @@
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --}}
+  <meta name="viewport" content="width=1024, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -61,7 +62,7 @@ body {
     position: relative; /* Change to relative on mobile */
     height: auto; /* Allow height to adjust */
     width: 100%; /* Full width on mobile */
-    display: none ;
+    display: block !important; /* Ensure sidebar is shown */;
     z-index: 1000; /* Ensures sidebar is on top */
     align-content: center;
 
@@ -78,11 +79,12 @@ body {
     top: 0;                 /* Position it at the top of the page */
     left: 0;                /* Align it to the left of the page */
     width: 100%;            /* Make it span the full width of the page */
+    margin-bottom: 10%
 }
 
   /* Ensure the sidebar doesn't collapse immediately on small screens */
 .sidebar.toggled {
-    display: block !important;
+    display: none !important;
 }
   .wrapper {
     flex-direction: column; /* Stack items on top of each other */
