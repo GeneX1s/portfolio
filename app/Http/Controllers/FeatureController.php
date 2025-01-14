@@ -9,9 +9,23 @@ use App\Models\Features;
 class FeatureController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $features = Features::all();
+
+        $search = $request->name;
+        $status = $request->status;
+
+
+        // $features = Features::all();
+        $features = Features::query()
+            ->when($search, function ($query) use ($search) {
+                return $query->where('name', 'like', '%' . $search . '%');
+            })
+            ->when($status, function ($query) use ($status) {
+                return $query->where('status', 'like', '%' . $status . '%');
+            })
+            ->get();
+            
         return view('dashboard.features.index', compact('features'));
     }
 
@@ -29,7 +43,7 @@ class FeatureController extends Controller
             'created_at' => 'nullable',
             'updated_at' => 'nullable',
         ]);
-// dd($input);
+        // dd($input);
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
@@ -54,19 +68,19 @@ class FeatureController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
+        $input = $request->validate([
+            'name' => 'required',
+            'status' => 'required',
             'description' => 'required',
-            'image' => 'image',
+            'created_at' => 'nullable',
+            'updated_at' => 'nullable',
         ]);
 
+        $input['updated_at'] = now();
+        $input = $request->all();
+
         $feature = Features::findOrFail($id);
-        $feature->title = $request->title;
-        $feature->description = $request->description;
-        if ($request->hasFile('image')) {
-            $feature->image = $request->file('image')->store('images', 'public');
-        }
-        $feature->save();
+        $feature->update($input);
 
         return redirect()->route('dashboard.features.index');
     }

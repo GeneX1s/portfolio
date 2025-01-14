@@ -4,14 +4,13 @@
   document.addEventListener('DOMContentLoaded', function() {
       const kategoriSelect = document.querySelector('select[name="kategori"]');
       const subKategoriSelect = document.querySelector('select[name="sub_kategori"]');
-  
+
       // Define options for each category
       const options = {
           Pendapatan: [
               { value: 'Gaji', text: 'Gaji' },
-              { value: 'Obligasi', text: 'Obligasi' },
-              { value: 'Bunga/Cashback', text: 'Bunga/Cashback' },
-              { value: 'Angpao', text: 'Angpao' },
+              { value: 'Investasi/Cashback', text: 'Investasi/Cashback' },
+              { value: 'Angpao/Hadiah', text: 'Angpao/Hadiah' },
               { value: 'Ngajar Yoga', text: 'Ngajar Yoga' },
               { value: 'Lainnya', text: 'Lainnya' },
           ],
@@ -24,14 +23,14 @@
               { value: 'Topup', text: 'Topup' },
           ],
       };
-  
+
       function updateSubKategoriOptions() {
           const selectedKategori = kategoriSelect.value;
           const currentOptions = options[selectedKategori] || [];
-  
+
           // Clear existing options
           subKategoriSelect.innerHTML = '';
-  
+
           // Populate new options based on selected category
           currentOptions.forEach(option => {
               const newOption = document.createElement('option');
@@ -39,13 +38,13 @@
               newOption.textContent = option.text;
               subKategoriSelect.appendChild(newOption);
           });
-  
+
           // Reset the selected value if the category changes
           subKategoriSelect.value = currentOptions.length > 0 ? currentOptions[0].value : '';
       }
-  
+
       kategoriSelect.addEventListener('change', updateSubKategoriOptions);
-  
+
       // Initialize options based on the current selection
       updateSubKategoriOptions();
   });
@@ -64,7 +63,7 @@
     </div>
     @endif
 
-    
+
 <div class="row">
   <div class="col-lg-8">
     <form method="post" autocomplete="off" action="/dashboard/transactions" class="mb-5" enctype="multipart/form-data">
@@ -107,7 +106,7 @@
         </div>
         @enderror
       </div>
-      
+
       <div class="mb-3">
         <label for="balance" class="form-label">Balance</label>
         <select class="form-control" name="balance">

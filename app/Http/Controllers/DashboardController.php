@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactUS;
 use App\Models\SetValue;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -15,14 +16,15 @@ use App\Models\Audit;
 
 class DashboardController extends Controller
 {
-  public function index(Request $request)
-  {
-    
-    $date = Carbon::now();
+    public function index(Request $request)
+    {
+
+        $date = Carbon::now();
+        $salary = SetValue::first()->salary;
     $yearFilter = $request->year;
 
     if($request->year){
-      $date = $date->year($yearFilter);
+        $date = $date->year($yearFilter);
     }
 
     // Get the start and end dates for the current week
@@ -81,15 +83,15 @@ class DashboardController extends Controller
     if($request->year){
       $year_now = $request->year;
     }
-    
+
     foreach ($week_outcomes as $week_outcome) {
       $pengeluaran_mingguan = $pengeluaran_mingguan + $week_outcome;
     }
     foreach ($month_outcomes as $month_outcome) {
       $pengeluaran_bulanan = $pengeluaran_bulanan + $month_outcome;
     }
-    $persen_bulan_ini = ($pengeluaran_bulanan / 45000000) * 100;
-    
+    $persen_bulan_ini = ($pengeluaran_bulanan / ($salary*6)) * 100;
+
     foreach ($month_incomes as $month_income) {
       $pendapatan_bulanan = $pendapatan_bulanan + $month_income;
     }
@@ -103,7 +105,7 @@ class DashboardController extends Controller
     foreach ($investments as $investment) {
       $investment_tahunan = $investment_tahunan + $investment;
     }
-    
+
     $area_chart = [];
     for($i = 0; $i < 12 ; $i++){
       $month = str_pad($i + 1, 2, '0', STR_PAD_LEFT);
@@ -114,7 +116,7 @@ class DashboardController extends Controller
           && $transaction->kategori === 'Pendapatan'
           && $transaction->status === 'Active';
       })->pluck('nominal')->sum();
-  
+
       $monthmin = $transactions->filter(function ($transaction) use ($year_now,$month) {
         $transaction_dt = new DateTime($transaction->created_at);
         return $transaction_dt->format('m') === $month
@@ -122,7 +124,7 @@ class DashboardController extends Controller
           && $transaction->kategori === 'Pengeluaran'
           && $transaction->status === 'Active';
       })->pluck('nominal')->sum();
-  
+
       $area_chart[$i] = $monthplus - $monthmin;
     }
 
@@ -134,22 +136,34 @@ class DashboardController extends Controller
     ];
 
     $allgaji = Transaction::where('sub_kategori', 'Gaji')->whereNot('status', 'Deleted')->get();
-    $salary = SetValue::first()->salary;
     $fix_outcome = SetValue::first()->fix_outcome;
-    $spendable = (($salary * 12) / 2 - $pengeluaran_tahunan) + ($pendapatan_tahunan / 2);
+    $spendable = (($salary * 12) / 2 - $pengeluaran_tahunan) + ($pendapatan_tahunan / 2);//jatah tahun ini
 
     foreach ($allgaji as $gaji) { //logic ini digunakan untuk mendapat nilai akurat gaji apabila ada pemotongan atau pembulatan lebih/kurang
       $spendable = ($spendable - $salary / 2) + ($gaji->nominal / 2);
     }
 
-    $quota = $salary / 2 - $pengeluaran_bulanan;
+    $quota = $salary / 2 - $pengeluaran_bulanan;//jatah bulan ini
 
 
   $result = Transaction::select(Transaction::raw('YEAR(created_at) as year'))->where('status', 'Active')->where('profile', $userRole)->distinct()->get();
 $years = $result->pluck('year')->sort();
 
+$messages = ContactUS::where('status', 'Unread')->get()->sortByDesc('created_at');
+
+if ($messages->isEmpty()) {
+    // Create a default Eloquent model with the same structure
+    $messages = collect([new ContactUS([
+        'name' => 'No messages',
+        'email' => 'noemail@example.com',
+        'status' => 'None',
+        'message' => 'No unread messages available'
+    ])]);
+}
+// dd($messages);
     return view('/dashboard.index', [
       'spendable' => $spendable,
+      'messages' => $messages,
       'fix_outcome' => $fix_outcome,
       'quota' => $quota,
       'pengeluaran_mingguan' => $pengeluaran_mingguan,
@@ -236,7 +250,7 @@ $years = $result->pluck('year')->sort();
     return view('dashboard.audit.index', [
       'audits' => $audits,
       'ips' => $ips
-      
+
     ]);
   }
 }

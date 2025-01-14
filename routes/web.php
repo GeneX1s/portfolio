@@ -1,5 +1,6 @@
 <?php
 
+use App\ContactUS;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\BalanceController;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\FeatureController;
+use App\Http\Controllers\ContactUSController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,12 +129,16 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     ////////////////////////////////////
 
     //////////////features///////////////
-    Route::get('/dashboard/features/index', [FeatureController::class, 'index'])->middleware('auth');
-    Route::get('/dashboard/features/create', [FeatureController::class, 'create'])->middleware('auth');
-    Route::post('/dashboard/features/index', [FeatureController::class, 'index'])->middleware('auth');
-    Route::post('/dashboard/features/index', [FeatureController::class, 'index'])->middleware('auth');
+    Route::get('/dashboard/features/index', [FeatureController::class, 'index'])->middleware('auth')->name('dashboard.features.index');
+    Route::get('/dashboard/features/create', [FeatureController::class, 'create'])->middleware('auth')->name('dashboard.features.create');
     Route::resource('/dashboard/features', FeatureController::class)->middleware('auth');
+
+
+    ///////////Contact Us////////////////
+    // Route::get('contact-us', 'ContactUSController@contactUS');
+    // Route::post('contact-us', ['as' => 'contactus.store', 'uses' => 'ContactUSController@contactUSPost']);
+    Route::get('/dashboard/contactus/index', [ContactUSController::class, 'contactUS'])->middleware('auth')->name('dashboard.contactus.index');
+    Route::get('/dashboard/contactus/create', [ContactUSController::class, 'create'])->middleware('auth')->name('dashboard.contactus.create');
+    Route::resource('/dashboard/contactus', ContactUSController::class)->middleware('auth');
     ////////////////////////////////////
-
-
 });

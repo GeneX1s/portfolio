@@ -192,19 +192,19 @@
                             class="__cf_email__"
                             data-cfemail="c7a2aaa6aeab87a2bfa6aab7aba2e9a4a8aa">nicholas_owen@outlook.com</span></a></span>
                     </li>
-                    <li><span class="title">Phone</span><span class="value">-</span></li>
-                    <li><span class="title">Job</span><span class="value">Developer</span></li>
+                    {{-- <li><span class="title">Phone</span><span class="value">-</span></li> --}}
+                    <li><span class="title">Hobby</span><span class="value">Yoga/Games</span></li>
                     <li><span class="title">Freelance</span><span class="value available">Available</span></li>
                   </ul>
 
                   <ul class="social-links">
-                    <li><a class="tip social-button" href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    {{-- <li><a class="tip social-button" href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li> --}}
                     <!-- Full list of social icons: http://fontawesome.io/icons/#brand -->
-                    <li><a class="tip social-button" href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="tip social-button" href="#" title="Google Plus"><i class="fa fa-linkedin"></i></a>
+                    {{-- <li><a class="tip social-button" href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li> --}}
+                    <li><a class="tip social-button" href="https://id.linkedin.com/in/nicholas-owen-4262171b8" title="Google Plus"><i class="fa fa-linkedin"></i></a>
                     </li>
-                    <li><a class="tip social-button" href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
-                    <li><a class="tip social-button" href="#" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                    {{-- <li><a class="tip social-button" href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li> --}}
+                    <li><a class="tip social-button" href="https://www.instagram.com/n_ow3n/?__d=1%3Futm_source%3Dig_embed" title="Instagram"><i class="fa fa-instagram"></i></a></li>
                     <!--<li><a class="tip social-button" href="#" title="last.fm"><i class="fa fa-lastfm"></i></a></li>-->
                     <!--<li><a class="tip social-button" href="#" title="Dribbble"><i class="fa fa-dribbble"></i></a></li>-->
                   </ul>
@@ -765,9 +765,15 @@
                   <div class="block-title">
                     <h3>Contact Form</h3>
                   </div>
-                  <form id="contact-form" method="post"
-                    action="https://lmpixels.com/demo/unique/unique-vcard/contact_form/contact_form.php">
 
+                  @if(session()->has('success'))
+<div class="alert alert-success col-lg-8" role="alert">
+  {{ session('success') }}
+</div>
+@endif
+                  <form method="post" action="/dashboard/contactus">
+
+                    @csrf
                     <div class="messages"></div>
 
                     <div class="controls">
@@ -795,7 +801,7 @@
                         <div class="help-block with-errors"></div>
                       </div>
 
-                      <input type="submit" class="button btn-send" value="Send message">
+                      <button type="submit" class="button btn-send">Send Message </button>
                     </div>
                   </form>
                 </div>
