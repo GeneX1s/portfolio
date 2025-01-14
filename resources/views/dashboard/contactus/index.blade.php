@@ -125,6 +125,7 @@
                                         <td>{{ $msg->email }}</td>
                                         <td>{{ $msg->message }}</td>
                                         <td>{{ $msg->created_at }}</td>
+                                        <td>
 
                                         <form action="/dashboard/contactus/{{$msg->id}}" method="post" class="d-inline">
                                             @method('delete')
@@ -155,6 +156,12 @@
                     </div>
                 </div>
 
+                <div class="row mb-3">
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>
+                    </div>
+                </div>
             </div>
             <!-- /.container-fluid -->
 
