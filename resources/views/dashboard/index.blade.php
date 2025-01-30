@@ -915,6 +915,8 @@
                                                                                 </div>
                                                                                 <p>Jangan lupa konfigurasi DomPDF
                                                                                 </p>
+                                                                                <p>Untuk todo list lainnya ambil dari features
+                                                                                </p>
                                                                                 <a target="_blank" rel="nofollow"
                                                                                         href="https://undraw.co/">Browse
                                                                                         Illustrations on

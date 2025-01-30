@@ -31,6 +31,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'super-admin'
         ]);
 
+        User::create([
+            'username' => 'RYR',
+            'email' => 'roemahyogarian@gmail.com',
+            'password' => bcrypt('12345'),
+            'role' => 'ryr'
+        ]);
+
         SetValue::create([
             'salary' => 1000000,
         ]);

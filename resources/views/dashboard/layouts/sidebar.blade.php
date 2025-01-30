@@ -58,86 +58,87 @@
 
   <!-- Divider -->
   <hr class="sidebar-divider">
-
-  <!-- Heading -->
-  <div class="sidebar-heading">
+@can('super-admin')
+<!-- Heading -->
+<div class="sidebar-heading">
     Administration
-  </div>
+</div>
 
-  <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-      aria-controls="collapsePages">
-      <i class="fas fa-fw fa-person"></i>
-      <span>Users</span>
-    </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded" style="position: relative; z-index: 999999999;">
+    aria-controls="collapsePages">
+    <i class="fas fa-fw fa-person"></i>
+    <span>Users</span>
+</a>
+<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded" style="position: relative; z-index: 999999999;">
         <a class="collapse-item" href="/dashboard/users/manage">Change My Password</a>
         <a class="collapse-item" href="/dashboard/users/index">Users List</a>
-      </div>
     </div>
-  </li>
+</div>
+</li>
 
-  <!-- Nav Item - Charts -->
-  <li class="nav-item">
+<!-- Nav Item - Charts -->
+<li class="nav-item">
     <a class="nav-link" href="/dashboard/features/index">
-      <i class="fas fa-fw fa-list"></i>
-      <span>Upcoming Features</span></a>
-  </li>
+        <i class="fas fa-fw fa-list"></i>
+        <span>Upcoming Features</span></a>
+    </li>
 
-  <!-- Nav Item - Charts -->
-  <li class="nav-item">
-    <a class="nav-link" href="/dashboard/assets/index">
-      <i class="fas fa-fw fa-barcode"></i>
-      <span>Aset</span></a>
-  </li>
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="/dashboard/assets/index">
+            <i class="fas fa-fw fa-barcode"></i>
+            <span>Aset</span></a>
+        </li>
 
-  <li class="nav-item">
-    <a class="nav-link" href="/dashboard/portfolios/index">
-      <i class="fas fa-fw fa-barcode"></i>
-      <span>Portfolio</span></a>
-  </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/dashboard/portfolios/index">
+                <i class="fas fa-fw fa-barcode"></i>
+                <span>Portfolio</span></a>
+            </li>
 
-  <li class="nav-item">
-    <a class="nav-link" href="/dashboard/balances/index">
-      <i class="fas fa-fw fa-dollar-sign"></i>
-      <span>Balances</span></a>
-  </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard/balances/index">
+                    <i class="fas fa-fw fa-dollar-sign"></i>
+                    <span>Balances</span></a>
+                </li>
 
-  <li class="nav-item">
-    <a class="nav-link" href="/dashboard/setvalue">
-      <i class="fas fa-fw fa-chart-area"></i>
-      <span>Set Value</span></a>
-  </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/setvalue">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Set Value</span></a>
+                    </li>
 
 
-   <!-- Nav Item - Utilities Collapse Menu -->
-   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
-      aria-controls="collapseUtilities">
-      <i class="fas fa-fw fa-table"></i>
-      <span>Transactions</span>
-    </a>
-    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Transactions:</h6>
-        <a class="collapse-item" href="/dashboard/transactions/index">List All</a>
-        <a class="collapse-item" href="/dashboard/transactions/pending">List Pending</a>
-      </div>
-    </div>
-  </li>
+                    <!-- Nav Item - Utilities Collapse Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+                        aria-controls="collapseUtilities">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Transactions</span>
+                    </a>
+                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Transactions:</h6>
+                            <a class="collapse-item" href="/dashboard/transactions/index">List All</a>
+                            <a class="collapse-item" href="/dashboard/transactions/pending">List Pending</a>
+                        </div>
+                    </div>
+                </li>
 
-  <li class="nav-item">
-    <a class="nav-link" href="/dashboard/report/index">
-      <i class="fas fa-fw fa-file"></i>
-      <span>Reports</span></a>
-  </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/report/index">
+                        <i class="fas fa-fw fa-file"></i>
+                        <span>Reports</span></a>
+                    </li>
+                    @endcan
 
-  <!-- Divider -->
-  <hr class="sidebar-divider d-none d-md-block">
+                    <!-- Divider -->
+                    <hr class="sidebar-divider d-none d-md-block">
 
-  <!-- Sidebar Toggler (Sidebar) -->
+                    <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>
   </div>
