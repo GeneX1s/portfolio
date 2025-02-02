@@ -1,13 +1,3 @@
-<!--
-
-Nama table : ryr_attendance
-
-Nama murid | Status | Tanggal | Tipe Pembayaran(nullable) | Status Pembayaran | Kelas | Deskripsi
-Yenkhe | Hadir | 25/1/2024 | Transfer | Belum Lunas | Kelas Okta
-Yanna | Hadir | 25/1/2024 | Bulanan |  Lunas | Special Class Henri Take | Special Class Januari 2025
--->
-
-
 <?php
 
 namespace App\Models\RYR;
@@ -18,23 +8,24 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class ryr_attendance extends Model
+
+class ryr_teachers extends Model
 {
   use HasApiTokens, HasFactory, Notifiable;
 
-  protected $table = "ryr_attendance";
+  protected $table = "ryr_teachers";
   protected $primaryKey = 'id';
   public $incrementing = false;
   public $timestamps = false;
 
   protected $fillable = [
-    'nama_member',
+    'nama',
+    'salary',
+    'join_date',
+    'dob',
+    'jenis_kelamin',
     'status',
-    'tanggal',
-    'payment_type',
-    'payment_status',
-    'class_name',
-    'description',
+    'deskripsi',
   ];
 
   /**

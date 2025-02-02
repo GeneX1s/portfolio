@@ -13,6 +13,8 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\ContactUSController;
+use App\Http\Controllers\RYR\ClassController;
+use App\Http\Controllers\RYR\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,6 +136,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::resource('/dashboard/features', FeatureController::class)->middleware('auth');
 
 
+
     ///////////Contact Us////////////////
     // Route::get('contact-us', 'ContactUSController@contactUS');
     // Route::post('contact-us', ['as' => 'contactus.store', 'uses' => 'ContactUSController@contactUSPost']);
@@ -142,3 +145,14 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::resource('/dashboard/contactus', ContactUSController::class)->middleware('auth');
     ////////////////////////////////////
 });
+
+//////////////RYR///////////////
+//Classes
+Route::get('/dashboard/ryr/classes/index', [ClassController::class, 'index'])->middleware('auth')->name('dashboard.classes.index');
+Route::get('/dashboard/ryr/classes/create', [ClassController::class, 'create'])->middleware('auth')->name('dashboard.classes.create');
+Route::resource('/dashboard/ryr/classes', ClassController::class)->middleware('auth');
+
+//members
+Route::get('/dashboard/ryr/members/index', [MemberController::class, 'index'])->middleware('auth')->name('dashboard.members.index');
+Route::get('/dashboard/ryr/members/create', [MemberController::class, 'create'])->middleware('auth')->name('dashboard.members.create');
+Route::resource('/dashboard/ryr/members', MemberController::class)->middleware('auth');

@@ -8,14 +8,15 @@ Silvie | Non member | 25/1/2025 | 199 kelas |
 
  <?php
 
-namespace App\Models;
+namespace App\Models\RYR;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class ryr_members extends Authenticatable
+class ryr_members extends Model
 {
   use HasApiTokens, HasFactory, Notifiable;
 
@@ -29,7 +30,7 @@ class ryr_members extends Authenticatable
     'tipe',
     'join_date',
     'total_attendance',
-    'usia',
+    'dob',
     'jenis_kelamin',
     'deskripsi',
   ];

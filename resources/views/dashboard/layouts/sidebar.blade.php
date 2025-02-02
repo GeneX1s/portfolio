@@ -133,7 +133,13 @@
                         <i class="fas fa-fw fa-file"></i>
                         <span>Reports</span></a>
                     </li>
+
                     @endcan
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/ryr/classes">
+                            <i class="fas fa-fw fa-file"></i>
+                            <span>Classes</span></a>
+                        </li>
 
                     <!-- Divider -->
                     <hr class="sidebar-divider d-none d-md-block">

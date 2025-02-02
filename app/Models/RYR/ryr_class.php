@@ -1,33 +1,32 @@
-<!--
-
-Nama table : ryr_class
-
-Nama kelas | Teacher | Hari Schedule | Biaya | Deskripsi
-Aan Power | Aan | Selasa pagi | 75000 |
-
-INTERFACE:
--Kelas
-
-->New entry
-Pilih kelas:
->Okta
->Agung
->Aan
-Pilih Tanggal:
-
-
-Holiday?? -->
-
 <?php
 
-namespace App\Models;
+namespace App\Models\RYR;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class ryr_class extends Authenticatable
+// Nama table : ryr_class
+
+// Nama kelas | Teacher | Hari Schedule | Biaya | Deskripsi
+// Aan Power | Aan | Selasa pagi | 75000 |
+
+// INTERFACE:
+// -Kelas
+
+// ->New entry
+// Pilih kelas:
+// >Okta
+// >Agung
+// >Aan
+// Pilih Tanggal:
+
+
+// Holiday??
+
+class ryr_class extends Model
 {
   use HasApiTokens, HasFactory, Notifiable;
 
