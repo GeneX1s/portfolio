@@ -141,6 +141,12 @@
                             <span>Classes</span></a>
                         </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/ryr/teachers">
+                            <i class="fas fa-fw fa-file"></i>
+                            <span>Teachers</span></a>
+                        </li>
+
                     <!-- Divider -->
                     <hr class="sidebar-divider d-none d-md-block">
 

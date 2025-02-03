@@ -37,6 +37,7 @@ class ryr_class extends Model
 
   protected $fillable = [
     'nama_kelas',
+    'tipe',//public, private
     'teacher',
     'schedule',
     'biaya',

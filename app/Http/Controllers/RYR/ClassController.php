@@ -53,7 +53,7 @@ class ClassController extends Controller
             'teacher' => 'required',
             'schedule' => 'required',
             'biaya' => 'required',
-            'description' => 'required',
+            'description' => 'nullable',
         ]);
         // dd($input);
         $input['created_at'] = now();
@@ -63,7 +63,7 @@ class ClassController extends Controller
 
         // dd('ok');
 
-        return redirect('/dashboard/classes/index')->with('success', 'New class has been added');
+        return redirect('/dashboard/ryr/classes')->with('success', 'New class has been added');
     }
 
     public function show($id)
@@ -75,7 +75,13 @@ class ClassController extends Controller
     public function edit($id)
     {
         $class = ryr_class::findOrFail($id);
-        return view('dashboard.ryr.classes.edit');
+
+        $teachers = ryr_teachers::where('status','Active')->get();
+
+        return view('dashboard.ryr.classes.edit',[
+            'class' => $class,
+            'teachers' => $teachers,
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -85,7 +91,7 @@ class ClassController extends Controller
             'teacher' => 'required',
             'schedule' => 'required',
             'biaya' => 'required',
-            'description' => 'required',
+            'description' => 'nullable',
         ]);
 
         $input['updated_at'] = now();

@@ -44,7 +44,7 @@
 
 </style>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-  <a class="h2" href="/dashboard">Classes</a>
+  <a class="h2" href="/dashboard">Teachers</a>
 </div>
 
 @if(session()->has('success'))
@@ -55,24 +55,23 @@
 
 <div class="table-responsive">
   {{-- <a href="/dashboard/ryr/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
-    action="{{ route('classes.index') }}" method="GET">
+    action="{{ route('teachers.index') }}" method="GET">
     @csrf
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">
         <div class="mb-3">
-          <label for="nama_kelas" class="form-label">Nama Kelas</label>
-          <input type="string" class="form-control" id="nama_kelas" name="nama_kelas">
+          <label for="nama" class="form-label">Nama</label>
+          <input type="string" class="form-control" id="nama" name="nama">
         </div>
       </div>
 
       <div class="col-12 col-md-6 col-lg-4">
         <div class="mb-3">
-          <label for="teacher" class="form-label">Teacher</label>
-          <select class="form-control" name="teacher" id="teacher">
+          <label for="status" class="form-label">Teacher</label>
+          <select class="form-control" name="status" id="status">
             <option value=""></option>
-                @foreach ($teachers as $teacher)
-                <option value="{{$teacher->nama}}"> {{$teacher->nama}}</option>
-                @endforeach
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
           </select>
         </div>
       </div>
@@ -82,12 +81,12 @@
         <button type="submit" class="btn btn-primary btn-custom mb-3">Search</button>
       </div>
       <div class="col-12 col-md-6 col-lg-4">
-        <a href="/dashboard/ryr/classes/create" class="btn btn-primary btn-custom mb-3">Add New</a>
+        <a href="/dashboard/ryr/teachers/create" class="btn btn-primary btn-custom mb-3">Add New</a>
       </div>
     </div>
   </form>
 
-  {{-- <form action="{{ route('classes.import') }}" method="POST" enctype="multipart/form-data">
+  {{-- <form action="{{ route('teachers.import') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="col-12 col-md-6 col-lg-4">
@@ -114,29 +113,33 @@
     <thead class="thead">
       <tr>
         <th scope="col">No.</th>
-        <th scope="col">Nama Kelas</th>
-        <th scope="col">Tipe</th>
-        <th scope="col">Teacher</th>
-        <th scope="col">Schedule</th>
-        <th scope="col">Biaya</th>
+        <th scope="col">Nama</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Join Date</th>
+        <th scope="col">Birthday</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Status</th>
         <th scope="col">Deskripsi</th>
+        <th scope="col">Foto</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($classes as $class)
+      @foreach ($teachers as $teacher)
       <tr>
         <td>{{$loop->iteration}}</td>
 
-        <td>{{$class->nama_kelas}}</td>
-        <td>{{$class->tipe}}</td>
-        <td>{{$class->teacher}}</td>
-        <td>{{$class->schedule}}</td>
-        <td>Rp.{{ number_format($class->biaya, '2', ',', '.') }}</td>
-        <td>{{$class->description}}</td>
+        <td>{{$teacher->nama}}</td>
+        <td>Rp.{{ number_format($teacher->salary, '2', ',', '.') }}</td>
+        <td>{{$teacher->join_date}}</td>
+        <td>{{$teacher->dob}}</td>
+        <td>{{$teacher->jenis_kelamin}}</td>
+        <td>{{$teacher->status}}</td>
+        <td>{{$teacher->deskripsi}}</td>
+        <td>{{$teacher->foto}}</td>
 
         <td>
-          <form action="/dashboard/ryr/classes/{{$class->id}}" method="post" class="d-inline">
+          <form action="/dashboard/ryr/teachers/{{$teacher->id}}" method="post" class="d-inline">
             @method('delete')
             @csrf
 
@@ -145,7 +148,7 @@
             </button>
           </form>
 
-          <form action="/dashboard/ryr/classes/{{ $class->id }}/edit" class="d-inline">
+          <form action="/dashboard/ryr/teachers/{{ $teacher->id }}/edit" class="d-inline">
             @csrf
             @method('POST')
             <!-- Not strictly necessary with `POST` method -->
@@ -153,16 +156,6 @@
               <i class="fas fa-regular fa-pen-nib"></i>
             </button>
           </form>
-
-          <form action="/dashboard/ryr/classes/{{ $class->id }}/history" class="d-inline">
-            @csrf
-            @method('POST')
-            <!-- Not strictly necessary with `POST` method -->
-            <button class="badge bg-primary border-0" type="submit">
-              <i class="fas fa-regular fa-list"></i>
-            </button>
-          </form>
-
         </td>
 
       </tr>
@@ -174,7 +167,7 @@
   <div class="row">
   <div class="col-12 col-md-6 col-lg-4">
     <div class="mb-1">
-      <a class="btn btn-warning btn-custom" href="{{ url('/export-classes') }}">Export to Excel</a>
+      <a class="btn btn-warning btn-custom" href="{{ url('/export-teachers') }}">Export to Excel</a>
     </div>
   </div>
 

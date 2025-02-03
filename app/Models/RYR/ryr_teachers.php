@@ -25,6 +25,7 @@ class ryr_teachers extends Model
     'dob',
     'jenis_kelamin',
     'status',
+    'foto',
     'deskripsi',
   ];
 

@@ -15,6 +15,8 @@ use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\ContactUSController;
 use App\Http\Controllers\RYR\ClassController;
 use App\Http\Controllers\RYR\MemberController;
+use App\Http\Controllers\RYR\TeacherController;
+use App\Http\Controllers\RYR\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -156,3 +158,13 @@ Route::resource('/dashboard/ryr/classes', ClassController::class)->middleware('a
 Route::get('/dashboard/ryr/members/index', [MemberController::class, 'index'])->middleware('auth')->name('dashboard.members.index');
 Route::get('/dashboard/ryr/members/create', [MemberController::class, 'create'])->middleware('auth')->name('dashboard.members.create');
 Route::resource('/dashboard/ryr/members', MemberController::class)->middleware('auth');
+
+//teachers
+Route::get('/dashboard/ryr/teachers/index', [TeacherController::class, 'index'])->middleware('auth')->name('dashboard.teachers.index');
+Route::get('/dashboard/ryr/teachers/create', [TeacherController::class, 'create'])->middleware('auth')->name('dashboard.teachers.create');
+Route::resource('/dashboard/ryr/teachers', TeacherController::class)->middleware('auth');
+
+//attendances
+Route::get('/dashboard/ryr/attendances/index', [AttendanceController::class, 'index'])->middleware('auth')->name('dashboard.attendances.index');
+Route::get('/dashboard/ryr/attendances/create', [AttendanceController::class, 'create'])->middleware('auth')->name('dashboard.attendances.create');
+Route::resource('/dashboard/ryr/attendances', AttendanceController::class)->middleware('auth');

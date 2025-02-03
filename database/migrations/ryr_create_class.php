@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('ryr_class', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kelas');
+            $table->string('tipe');//public, private
             $table->string('teacher');
             $table->string('schedule');
             $table->integer('biaya');

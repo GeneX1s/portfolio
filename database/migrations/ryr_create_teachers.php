@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('salary');
-            $table->date('join_date');
-            $table->date('dob');
+            $table->date('join_date')->default(now());
+            $table->date('dob')->nullable();
             $table->string('jenis_kelamin');
-            $table->text('deskripsi');
-            $table->string('status');
+            $table->text('deskripsi')->nullable();
+            $table->string('status')->default('Active');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

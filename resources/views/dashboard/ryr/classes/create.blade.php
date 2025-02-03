@@ -14,13 +14,13 @@
 @endif
 
 <div class="col-lg-8">
-    <form method="post" autocomplete="off" action="/dashboard/balances" class="mb-5" enctype="multipart/form-data">
+    <form method="post" autocomplete="off" action="/dashboard/ryr/classes" class="mb-5" enctype="multipart/form-data">
         <!-- multipart form data harus supaya bisa upload file(img dll) -->
         @csrf
 
         <div class="mb-3">
             <label for="nama_kelas" class="form-label">Nama Kelas</label>
-            <input type="string" class="form-control @error('nama_kelas') is-invalid @enderror" id="nama_kelas"
+            <input type="text" class="form-control @error('nama_kelas') is-invalid @enderror" id="nama_kelas"
                 name="nama_kelas" required autofocus value="{{old('nama_kelas')}}">
             @error('nama_kelas')
             <div class="invalid-feedback">
@@ -30,8 +30,16 @@
         </div>
 
         <div class="mb-3">
+            <label for="tipe" class="form-label">Tipe</label>
+            <select class="form-control" name="tipe">
+                <option value="Public"> Public</option>
+                <option value="Private"> Private</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label for="biaya" class="form-label">Biaya</label>
-            <input type="integer" class="form-control @error('biaya') is-invalid @enderror" id="biaya" name="biaya"
+            <input type="number" class="form-control @error('biaya') is-invalid @enderror" id="biaya" name="biaya"
                 required autofocus value="{{old('biaya')}}">
             @error('biaya')
             <div class="invalid-feedback">
@@ -52,7 +60,7 @@
 
         <div class="mb-3">
             <label for="schedule" class="form-label">Schedule</label>
-            <input type="string" class="form-control @error('schedule') is-invalid @enderror" id="schedule"
+            <input type="text" class="form-control @error('schedule') is-invalid @enderror" id="schedule"
                 name="schedule" required autofocus value="{{old('schedule')}}">
             @error('schedule')
             <div class="invalid-feedback">
@@ -63,8 +71,8 @@
 
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input type="string" class="form-control @error('description') is-invalid @enderror" id="description"
-                name="description" required autofocus value="{{old('description')}}">
+            <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
+                name="description"  autofocus value="{{old('description')}}">
             @error('description')
             <div class="invalid-feedback">
                 {{ $message }}

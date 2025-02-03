@@ -1,95 +1,107 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\RYR;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Features;
+use App\Models\RYR\ryr_attendance;
+use App\Http\Controllers\Controller;
 
-class FeatureController extends Controller
+class AttendanceController extends Controller
 {
 
     public function index(Request $request)
     {
 
-        $search = $request->name;
+        $search = $request->nama;
         $status = $request->status;
 
 
-        // $features = Features::all();
-        $features = Features::query()
+        // $attendance = ryr_attendance::all();
+        $attendances = ryr_attendance::query()
             ->when($search, function ($query) use ($search) {
-                return $query->where('name', 'like', '%' . $search . '%');
+                return $query->where('nama', 'like', '%' . $search . '%');
             })
             ->when($status, function ($query) use ($status) {
                 return $query->where('status', 'like', '%' . $status . '%');
             })
             ->get();
 
-        return view('dashboard.features.index', compact('features'));
+        return view('dashboard.ryr.attendances.index',[
+            'attendances' => $attendances,
+        ]);
     }
 
     public function create()
     {
-        return view('dashboard.features.create');
+        return view('dashboard.ryr.attendances.create');
     }
 
     public function store(Request $request)
     {
         $input = $request->validate([
-            'name' => 'required',
-            'status' => 'required',
-            'description' => 'required',
-            'created_at' => 'nullable',
-            'updated_at' => 'nullable',
+            'nama' => 'required',
+            'salary' => 'required',
+            'join_date' => 'nullable',
+            'dob' => 'nullable',
+            'jenis_kelamin' => 'required',
+            'status' => 'nullable',
+            'foto' => 'nullable',
+            'deskripsi' => 'nullable',
         ]);
-        // dd($input);
+        $input['join_date'] = now();
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
-        Features::create($input);
+        // dd($input);
+        ryr_attendance::create($input);
 
         // dd('ok');
 
-        return redirect('/dashboard/features/index')->with('success', 'New feature has been added');
+        return redirect('/dashboard/ryr/attendances/index')->with('success', 'New attendance has been added');
     }
 
     public function show($id)
     {
-        $feature = Features::findOrFail($id);
-        return view('dashboard.features.show', compact('feature'));
+        $attendance = ryr_attendance::findOrFail($id);
+        return view('dashboard.ryr.attendances.show', compact('ryr_attendance'));
     }
 
     public function edit($id)
     {
-        $feature = Features::findOrFail($id);
-        return view('dashboard.features.edit', compact('feature'));
+        $attendance = ryr_attendance::findOrFail($id);
+        return view('dashboard.ryr.attendances.edit',[
+            'attendance' => $attendance,
+        ]);
     }
 
     public function update(Request $request, $id)
     {
         $input = $request->validate([
-            'name' => 'required',
+            'nama' => 'required',
+            'salary' => 'required',
+            'join_date' => 'required',
+            'dob' => 'required',
+            'jenis_kelamin' => 'required',
             'status' => 'required',
-            'description' => 'required',
-            'created_at' => 'nullable',
-            'updated_at' => 'nullable',
+            'foto' => 'nullable',
+            'deskripsi' => 'required',
         ]);
 
         $input['updated_at'] = now();
         $input = $request->all();
 
-        $feature = Features::findOrFail($id);
-        $feature->update($input);
+        $attendance = ryr_attendance::findOrFail($id);
+        $attendance->update($input);
 
-        return redirect()->route('dashboard.features.index');
+        return redirect()->route('dashboard.ryr.attendances.index');
     }
 
     public function destroy($id)
     {
-        $feature = Features::findOrFail($id);
-        $feature->delete();
+        $attendance = ryr_attendance::findOrFail($id);
+        $attendance->delete();
 
-        return redirect()->route('dashboard.features.index');
+        return redirect()->route('dashboard.ryr.attendances.index');
     }
 }
