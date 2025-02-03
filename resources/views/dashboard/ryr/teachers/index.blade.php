@@ -67,7 +67,7 @@
 
       <div class="col-12 col-md-6 col-lg-4">
         <div class="mb-3">
-          <label for="status" class="form-label">Teacher</label>
+          <label for="status" class="form-label">Status</label>
           <select class="form-control" name="status" id="status">
             <option value=""></option>
                 <option value="Active">Active</option>

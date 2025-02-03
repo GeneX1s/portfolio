@@ -61,7 +61,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="dob" class="form-label">Tanggal Lahir</label>
+            <label for="dob" class="form-label">Tanggal Lahir(optional)</label>
             <input type="date" class="form-control @error('dob') is-invalid @enderror" id="dob"
                 name="dob" autofocus value="{{today()}}">
             @error('dob')
