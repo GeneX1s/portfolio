@@ -17,6 +17,7 @@ use App\Http\Controllers\RYR\ClassController;
 use App\Http\Controllers\RYR\MemberController;
 use App\Http\Controllers\RYR\TeacherController;
 use App\Http\Controllers\RYR\AttendanceController;
+use App\Http\Controllers\RYR\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -168,3 +169,8 @@ Route::resource('/dashboard/ryr/teachers', TeacherController::class)->middleware
 Route::get('/dashboard/ryr/attendances/index', [AttendanceController::class, 'index'])->middleware('auth')->name('dashboard.attendances.index');
 Route::get('/dashboard/ryr/attendances/create', [AttendanceController::class, 'create'])->middleware('auth')->name('dashboard.attendances.create');
 Route::resource('/dashboard/ryr/attendances', AttendanceController::class)->middleware('auth');
+
+//schedules
+Route::get('/dashboard/ryr/schedules/index', [ScheduleController::class, 'index'])->middleware('auth')->name('dashboard.schedules.index');
+Route::get('/dashboard/ryr/schedules/create', [ScheduleController::class, 'create'])->middleware('auth')->name('dashboard.schedules.create');
+Route::resource('/dashboard/ryr/schedules', ScheduleController::class)->middleware('auth');

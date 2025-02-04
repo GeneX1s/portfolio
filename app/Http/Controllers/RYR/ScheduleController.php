@@ -4,10 +4,10 @@ namespace App\Http\Controllers\RYR;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\RYR\ryr_members;
+use App\Models\RYR\ryr_schedule;
 use App\Http\Controllers\Controller;
 
-class MemberController extends Controller
+class ScheduleController extends Controller
 {
 
     public function index(Request $request)
@@ -17,8 +17,8 @@ class MemberController extends Controller
         $tipe = $request->tipe;
 
 
-        // $member = ryr_members::all();
-        $member = ryr_members::query()
+        // $schedule = ryr_schedule::all();
+        $schedule = ryr_schedule::query()
             ->when($search, function ($query) use ($search) {
                 return $query->where('nama_murid', 'like', '%' . $search . '%');
             })
@@ -27,74 +27,78 @@ class MemberController extends Controller
             })
             ->get();
 
-        return view('dashboard.members.index', compact('ryr_members'));
+        return view('dashboard.ryr.schedules.index', compact('ryr_schedule'));
     }
 
     public function create()
     {
-        return view('dashboard.members.create');
+        return view('dashboard.ryr.schedules.create');
     }
 
     public function store(Request $request)
     {
         $input = $request->validate([
-            'nama_murid' => 'required',
-            'tipe' => 'required',
-            'join_date' => 'required',
-            'total_attendance' => 'required',
-            'dob' => 'required',
-            'jenis_kelamin' => 'required',
-            'deskripsi' => 'required',
+            'class_id' => 'required',
+            'class_name' => 'required',
+            'member_id' => 'required',
+            'member_name' => 'required',
+            'status' => 'required',
+            'tanggal' => 'required|date',
+            'payment_type' => 'required',
+            'payment_status' => 'required',
+            'description' => 'required',
         ]);
         // dd($input);
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
-        ryr_members::create($input);
+        ryr_schedule::create($input);
 
         // dd('ok');
 
-        return redirect('/dashboard/members/index')->with('success', 'New member has been added');
+        return redirect('/dashboard/ryr/schedules/index')->with('success', 'New schedule has been added');
     }
 
     public function show($id)
     {
-        $member = ryr_members::findOrFail($id);
-        return view('dashboard.members.show', compact('ryr_members'));
+        $schedule = ryr_schedule::findOrFail($id);
+        return view('dashboard.ryr.schedules.show', compact('ryr_schedule'));
     }
 
     public function edit($id)
     {
-        $member = ryr_members::findOrFail($id);
-        return view('dashboard.members.edit', compact('ryr_members'));
+        $schedule = ryr_schedule::findOrFail($id);
+        return view('dashboard.ryr.schedules.edit', compact('ryr_schedule'));
     }
 
     public function update(Request $request, $id)
     {
         $input = $request->validate([
-            'nama_murid' => 'required',
-            'tipe' => 'required',
-            'join_date' => 'required',
-            'total_attendance' => 'required',
-            'dob' => 'required',
-            'jenis_kelamin' => 'required',
-            'deskripsi' => 'required',
+            'class_id' => 'required',
+            'class_name' => 'required',
+            'member_id' => 'required',
+            'member_name' => 'required',
+            'status' => 'required',
+            'tanggal' => 'required|date',
+            'payment_type' => 'required',
+            'payment_status' => 'required',
+            'description' => 'required',
         ]);
 
         $input['updated_at'] = now();
         $input = $request->all();
 
-        $member = ryr_members::findOrFail($id);
-        $member->update($input);
+        $schedule = ryr_schedule::findOrFail($id);
+        $schedule->update($input);
 
-        return redirect()->route('dashboard.members.index');
+        return redirect()->route('dashboard.ryr.schedules.index');
     }
 
     public function destroy($id)
     {
-        $member = ryr_members::findOrFail($id);
-        $member->delete();
+        $schedule = ryr_schedule::findOrFail($id);
+        $schedule->delete();
 
-        return redirect()->route('dashboard.members.index');
+        return redirect()->route('dashboard.ryr.schedules.index');
     }
 }

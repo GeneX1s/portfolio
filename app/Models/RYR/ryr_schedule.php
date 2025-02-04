@@ -1,10 +1,3 @@
-Untuk jadi
-option saat membuat
-attendance class
-
-Mengikat antara
-members dan class
-
 <?php
 
 namespace App\Models\RYR;
@@ -25,12 +18,15 @@ class ryr_schedule extends Model
   public $timestamps = false;
 
   protected $fillable = [
-    'id_member',
-    'nama_member',
-    'id_kelas',
-    'nama_kelas',
-    'tipe',
-    'deskripsi',
+    'class_id',
+    'class_name',
+    'member_id',
+    'member_name',
+    'status',
+    'tanggal',
+    'payment_type',
+    'payment_status',
+    'description'
   ];
 
   /**

@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('nama_murid');
             $table->string('tipe');
             $table->date('join_date');
-            $table->integer('total_attendance');
+            $table->integer('total_attendance')->default(0);
             $table->date('dob');
             $table->string('jenis_kelamin');
-            $table->text('deskripsi');
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }

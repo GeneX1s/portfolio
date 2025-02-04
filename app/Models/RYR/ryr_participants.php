@@ -8,22 +8,21 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class ryr_members extends Model
+class ryr_participants extends Model
 {
   use HasApiTokens, HasFactory, Notifiable;
 
-  protected $table = "ryr_members";
+  protected $table = "ryr_participants";
   protected $primaryKey = 'id';
   public $incrementing = false;
   public $timestamps = false;
 
   protected $fillable = [
-    'nama_murid',
+    'id_member',
+    'nama_member',
+    'id_kelas',
+    'nama_kelas',
     'tipe',
-    'join_date',
-    'total_attendance',
-    'dob',
-    'jenis_kelamin',
     'deskripsi',
   ];
 

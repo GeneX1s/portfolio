@@ -54,8 +54,7 @@
 @endif
 
 <div class="table-responsive">
-  {{-- <a href="/dashboard/ryr/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
-    action="{{ route('teachers.index') }}" method="GET">
+  <form action="{{ route('teachers.index') }}" method="GET">
     @csrf
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">

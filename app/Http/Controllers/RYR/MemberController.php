@@ -27,12 +27,14 @@ class MemberController extends Controller
             })
             ->get();
 
-        return view('dashboard.members.index', compact('ryr_members'));
+        return view('dashboard.ryr.members.index',[
+            'members' => $member,
+        ]);
     }
 
     public function create()
     {
-        return view('dashboard.members.create');
+        return view('dashboard.ryr.members.create');
     }
 
     public function store(Request $request)
@@ -41,12 +43,15 @@ class MemberController extends Controller
             'nama_murid' => 'required',
             'tipe' => 'required',
             'join_date' => 'required',
-            'total_attendance' => 'required',
-            'dob' => 'required',
+            'total_attendance' => 'nullable',
+            'dob' => 'nullable',
             'jenis_kelamin' => 'required',
             'deskripsi' => 'required',
         ]);
         // dd($input);
+        if($input['join_date'] == null){
+            $input['join_date'] = now();
+        }
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
@@ -54,19 +59,21 @@ class MemberController extends Controller
 
         // dd('ok');
 
-        return redirect('/dashboard/members/index')->with('success', 'New member has been added');
+        return redirect('/dashboard/ryr/members/index')->with('success', 'New member has been added');
     }
 
     public function show($id)
     {
         $member = ryr_members::findOrFail($id);
-        return view('dashboard.members.show', compact('ryr_members'));
+        return view('dashboard.ryr.members.show');
     }
 
     public function edit($id)
     {
         $member = ryr_members::findOrFail($id);
-        return view('dashboard.members.edit', compact('ryr_members'));
+        return view('dashboard.ryr.members.edit',[
+            'member' => $member,
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -75,8 +82,8 @@ class MemberController extends Controller
             'nama_murid' => 'required',
             'tipe' => 'required',
             'join_date' => 'required',
-            'total_attendance' => 'required',
-            'dob' => 'required',
+            'total_attendance' => 'nullable',
+            'dob' => 'nullable',
             'jenis_kelamin' => 'required',
             'deskripsi' => 'required',
         ]);
@@ -87,7 +94,7 @@ class MemberController extends Controller
         $member = ryr_members::findOrFail($id);
         $member->update($input);
 
-        return redirect()->route('dashboard.members.index');
+        return redirect()->route('dashboard.ryr.members.index');
     }
 
     public function destroy($id)
@@ -95,6 +102,6 @@ class MemberController extends Controller
         $member = ryr_members::findOrFail($id);
         $member->delete();
 
-        return redirect()->route('dashboard.members.index');
+        return redirect()->route('dashboard.ryr.members.index');
     }
 }
