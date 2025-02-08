@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('ryr_participants', function (Blueprint $table) {
             $table->id();
-            $table->string('id_member')->required();
-            $table->string('nama_member')->required();
+            $table->string('id_member')->nullable();//bisa aja murid baru atau temporary
+            $table->string('nama_member')->nullable();
             $table->string('id_kelas')->required();
             $table->string('nama_kelas')->required();
-            $table->string('tipe')->required();
+            $table->string('tipe')->required();//temporary atau member
             $table->text('deskripsi')->required();
             $table->timestamps();
         });

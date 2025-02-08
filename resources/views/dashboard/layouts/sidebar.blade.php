@@ -144,10 +144,21 @@
     </li>
 
     @endcan
+
+    <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="/dashboard/ryr/classes">
-            <i class="fas fa-fw fa-file"></i>
-            <span>Classes</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
+            aria-expanded="true" aria-controls="collapseUtilities2">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Classes</span>
+        </a>
+        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Classes:</h6>
+                <a class="collapse-item" href="/dashboard/ryr/classes">Manage</a>
+                <a class="collapse-item" href="/dashboard/ryr/participants">Sessions</a>
+            </div>
+        </div>
     </li>
 
     <li class="nav-item">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\RYR\ryr_participants;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ParticipantController extends Controller
 {
@@ -95,4 +96,33 @@ class ParticipantController extends Controller
 
         return redirect()->route('dashboard.ryr.participants.index');
     }
+
+    public function participantsGroup(Request $request)
+{
+    // Validate the incoming request to ensure 'participants' is an array and each participant has a name and email
+    $request->validate([
+        'participants' => 'required|array',
+        'participants.*.name' => 'required|string|max:255',  // Ensure participant name is required and a string
+        'participants.*.email' => 'required|email|max:255', // Ensure valid email
+    ]);
+
+    // Loop through the participants array from the request
+    foreach ($request->participants as $participant) {
+        // Prepare the input data to insert into the database
+        $input = [
+            'class_id' => $request->class_id, // assuming you want to associate participants with a class
+            'name' => $participant['name'],
+            'email' => $participant['email'],
+        ];
+
+        // Insert the new participant into the 'participants' table (replace with your actual table name)
+        DB::table('participants')->insert($input);
+        // Alternatively, if you have a Participant model, you could use:
+        // Participant::create($input);
+    }
+
+    // Redirect back to the menu index page with a success message
+    return redirect('/dashboard/menus/index')->with('success', 'Participants have been updated');
+}
+
 }
