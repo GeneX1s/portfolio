@@ -116,7 +116,7 @@
         <th scope="col">Salary</th>
         <th scope="col">Join Date</th>
         <th scope="col">Birthday</th>
-        <th scope="col">Gender</th>
+        {{-- <th scope="col">Gender</th> --}}
         <th scope="col">Status</th>
         <th scope="col">Deskripsi</th>
         <th scope="col">Foto</th>
@@ -132,7 +132,7 @@
         <td>Rp.{{ number_format($teacher->salary, '2', ',', '.') }}</td>
         <td>{{$teacher->join_date}}</td>
         <td>{{$teacher->dob}}</td>
-        <td>{{$teacher->jenis_kelamin}}</td>
+        {{-- <td>{{$teacher->jenis_kelamin}}</td> --}}
         <td>{{$teacher->status}}</td>
         <td>{{$teacher->deskripsi}}</td>
         <td>{{$teacher->foto}}</td>

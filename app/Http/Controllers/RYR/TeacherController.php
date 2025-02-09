@@ -88,16 +88,19 @@ class TeacherController extends Controller
             'deskripsi' => 'nullable',
         ]);
 
+        // dd($input['join_date']);
         if($input['join_date'] == null){
-        	$input['join_date'] = now();
+            $request['join_date'] = now();
         }
+        // $input['join_date'] = now();
+        // dd($request['join_date']);
         $input['updated_at'] = now();
         $input = $request->all();
 
         $teacher = ryr_teachers::findOrFail($id);
         $teacher->update($input);
 
-        return redirect()->route('dashboard.ryr.teachers.index');
+        return redirect()->route('dashboard.teachers.index');
     }
 
     public function destroy($id)

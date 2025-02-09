@@ -76,6 +76,18 @@
           </select>
         </div>
       </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="mb-3">
+          <label for="tipe" class="form-label">Tipe</label>
+          <select class="form-control" name="tipe" id="tipe">
+            <option value=""></option>
+                <option value="Public"> Public</option>
+                <option value="Private"> Private</option>
+                
+          </select>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">

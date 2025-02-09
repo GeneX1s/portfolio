@@ -102,27 +102,25 @@ class ParticipantController extends Controller
     // Validate the incoming request to ensure 'participants' is an array and each participant has a name and email
     $request->validate([
         'participants' => 'required|array',
-        'participants.*.name' => 'required|string|max:255',  // Ensure participant name is required and a string
-        'participants.*.email' => 'required|email|max:255', // Ensure valid email
+        'participants.*.id_member' => 'required|string|max:255',
+        'participants.*.nama_member' => 'required|string|max:255',
     ]);
 
     // Loop through the participants array from the request
     foreach ($request->participants as $participant) {
         // Prepare the input data to insert into the database
         $input = [
-            'class_id' => $request->class_id, // assuming you want to associate participants with a class
-            'name' => $participant['name'],
-            'email' => $participant['email'],
+            'class_id' => $request->id_kelas, // assuming you want to associate participants with a class
+            'id_member' => $participant['id_member'],
+            'nama_member' => $participant['nama_member'],
         ];
 
-        // Insert the new participant into the 'participants' table (replace with your actual table name)
-        DB::table('participants')->insert($input);
-        // Alternatively, if you have a Participant model, you could use:
-        // Participant::create($input);
+        // DB::table('participants')->insert($input);
+        ryr_participants::create($input);
     }
 
     // Redirect back to the menu index page with a success message
-    return redirect('/dashboard/menus/index')->with('success', 'Participants have been updated');
+    return redirect('/dashboard/ryr/participants/index')->with('success', 'Participants have been updated');
 }
 
 }

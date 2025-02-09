@@ -6,7 +6,7 @@
 </div>
 <div class="row">
     <div class="col-lg-8">
-        <form method="post" action="/dashboard/balances/{{$balance->id}}" class="mb-5" enctype="multipart/form-data">
+        <form method="post" action="/dashboard/ryr/members/{{$member->id}}" class="mb-5" enctype="multipart/form-data">
             <!-- multipart form data harus supaya bisa upload file(img dll) -->
             @method('put')
             @csrf
@@ -64,7 +64,7 @@
             <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi(optional)</label>
                 <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
-                    name="deskripsi" autofocus value="{{$memmber->deskripsi}}">
+                    name="deskripsi" autofocus value="{{$member->deskripsi}}">
                 @error('deskripsi')
                 <div class="invalid-feedback">
                     {{ $message }}

@@ -27,7 +27,7 @@ class MemberController extends Controller
             })
             ->get();
 
-        return view('dashboard.ryr.members.index',[
+        return view('dashboard.ryr.members.index', [
             'members' => $member,
         ]);
     }
@@ -42,14 +42,14 @@ class MemberController extends Controller
         $input = $request->validate([
             'nama_murid' => 'required',
             'tipe' => 'required',
-            'join_date' => 'required',
+            'join_date' => 'nullable',
             'total_attendance' => 'nullable',
             'dob' => 'nullable',
             'jenis_kelamin' => 'required',
-            'deskripsi' => 'required',
+            'deskripsi' => 'nullable',
         ]);
         // dd($input);
-        if($input['join_date'] == null){
+        if ($input['join_date'] == null) {
             $input['join_date'] = now();
         }
         $input['created_at'] = now();
@@ -71,7 +71,7 @@ class MemberController extends Controller
     public function edit($id)
     {
         $member = ryr_members::findOrFail($id);
-        return view('dashboard.ryr.members.edit',[
+        return view('dashboard.ryr.members.edit', [
             'member' => $member,
         ]);
     }
@@ -81,20 +81,23 @@ class MemberController extends Controller
         $input = $request->validate([
             'nama_murid' => 'required',
             'tipe' => 'required',
-            'join_date' => 'required',
+            'join_date' => 'nullable',
             'total_attendance' => 'nullable',
             'dob' => 'nullable',
             'jenis_kelamin' => 'required',
-            'deskripsi' => 'required',
+            'deskripsi' => 'nullable',
         ]);
 
+        if ($input['join_date'] == null) {
+            $request['join_date'] = now();
+        }
         $input['updated_at'] = now();
         $input = $request->all();
 
         $member = ryr_members::findOrFail($id);
         $member->update($input);
 
-        return redirect()->route('dashboard.ryr.members.index');
+        return redirect()->route('dashboard.members.index');
     }
 
     public function destroy($id)

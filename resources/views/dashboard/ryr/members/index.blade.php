@@ -119,7 +119,7 @@
         <th scope="col">Join Date</th>
         <th scope="col">Total Attendance</th>
         <th scope="col">Tanggal Lahir</th>
-        <th scope="col">Gender</th>
+        {{-- <th scope="col">Gender</th> --}}
         <th scope="col">Deskripsi</th>
         <th scope="col">Action</th>
       </tr>
@@ -134,7 +134,7 @@
         <td>{{$member->join_date}}</td>
         <td>{{$member->total_attendance}}</td>
         <td>{{$member->dob}}</td>
-        <td>{{$member->jenis_kelamin}}</td>
+        {{-- <td>{{$member->jenis_kelamin}}</td> --}}
         <td>{{$member->deskripsi}}</td>
         <td>
           <form action="/dashboard/ryr/members/{{$member->id}}" method="post" class="d-inline">

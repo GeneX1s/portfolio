@@ -16,6 +16,7 @@ class ClassController extends Controller
 
         $search = $request->nama_kelas;
         $teacher = $request->teacher;
+        $tipe = $request->tipe;
 
 
         // $class = ryr_class::all();
@@ -25,6 +26,9 @@ class ClassController extends Controller
             })
             ->when($teacher, function ($query) use ($teacher) {
                 return $query->where('teacher', 'like', '%' . $teacher . '%');
+            })
+            ->when($tipe, function ($query) use ($tipe) {
+                return $query->where('tipe', 'like', '%' . $tipe . '%');
             })
             ->get();
 
@@ -53,6 +57,7 @@ class ClassController extends Controller
             'teacher' => 'required',
             'schedule' => 'required',
             'biaya' => 'required',
+            'tipe' => 'required',
             'description' => 'nullable',
         ]);
         // dd($input);
@@ -91,6 +96,7 @@ class ClassController extends Controller
             'teacher' => 'required',
             'schedule' => 'required',
             'biaya' => 'required',
+            'tipe' => 'required',
             'description' => 'nullable',
         ]);
 

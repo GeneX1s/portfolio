@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('tipe');
             $table->date('join_date');
             $table->integer('total_attendance')->default(0);
-            $table->date('dob');
+            $table->date('dob')->nullable();
             $table->string('jenis_kelamin');
             $table->text('deskripsi')->nullable();
             $table->timestamps();

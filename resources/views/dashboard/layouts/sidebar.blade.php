@@ -155,8 +155,8 @@
         <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Classes:</h6>
-                <a class="collapse-item" href="/dashboard/ryr/classes">Manage</a>
-                <a class="collapse-item" href="/dashboard/ryr/participants">Sessions</a>
+                <a class="collapse-item" href="/dashboard/ryr/classes">Jadwal</a>
+                <a class="collapse-item" href="/dashboard/ryr/participants">Sesi</a>
             </div>
         </div>
     </li>
