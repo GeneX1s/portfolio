@@ -5,13 +5,15 @@
 <h1 class="h2">Edit Participants for {{ $class_name }}</h1>
 
 <div class="col-lg-8">
-    <form method="post" action="/dashboard/ryr/participants/{{$id_kelas}}" class="mb-5" enctype="multipart/form-data">
+    <form method="post" action="/dashboard/ryr/participants/{{$id_kelas}}/input" class="mb-5" enctype="multipart/form-data">
         @csrf
 
         <div id="participants-container">
             <!-- Participant fields will be added here -->
         </div>
-
+{{-- @php
+    dd($id_kelas);
+@endphp --}}
         <button type="button" id="add-participant-btn" class="btn btn-primary">Add Participant</button>
 
         <button type="submit" class="btn btn-success">Save</button>
@@ -31,8 +33,8 @@
       const newParticipantField = `
 
           <div class="mb-3">
-            <label for="member_${participantCount}" class="form-label">Murid ${participantCount}</label>
-            <select class="form-control" id ="member_${participantCount}" name="member_${participantCount}">
+            <label for="id_member_${participantCount}" class="form-label">Murid ${participantCount}</label>
+            <select class="form-control" id ="id_member_${participantCount}" name="id_member_[${participantCount}][id_member]" required>
                 @foreach ($members as $member)
                 <option value="{{$member->id}}"> {{$member->nama_murid}}</option>
                 @endforeach

@@ -127,9 +127,10 @@ class ParticipantController extends Controller
         $request->validate([
             'participants' => 'required|array',
             'participants.*.id_member' => 'required|string|max:255',
-            'participants.*.nama_member' => 'required|string|max:255',
+            // 'participants.*.nama_member' => 'required|string|max:255',
         ]);
 
+        // dd($request);
 
         // Loop through the participants array from the request
         foreach ($request->participants as $participant) {
