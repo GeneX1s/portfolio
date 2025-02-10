@@ -84,7 +84,7 @@
             <option value=""></option>
                 <option value="Public"> Public</option>
                 <option value="Private"> Private</option>
-                
+
           </select>
         </div>
       </div>
@@ -166,7 +166,7 @@
             </button>
           </form>
 
-          <form action="/dashboard/ryr/classes/{{ $class->id }}/history" class="d-inline">
+          <form action="/dashboard/ryr/participants/{{ $class->id }}/index" class="d-inline">
             @csrf
             @method('POST')
             <!-- Not strictly necessary with `POST` method -->

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\RYR\ryr_class;
 use App\Http\Controllers\Controller;
+use App\Models\RYR\ryr_participants;
 use App\Models\RYR\ryr_teachers;
 
 class ClassController extends Controller
@@ -65,6 +66,12 @@ class ClassController extends Controller
         $input['updated_at'] = now();
 
         ryr_class::create($input);
+        // ryr_participants::create([
+        //     'id_kelas' => Str::random(10),
+        //     'nama_kelas' => $input['nama_kelas'],
+        //     'tipe' => $input['tipe'],
+        //     'deskripsi' => $input['description'],
+        // ]);
 
         // dd('ok');
 

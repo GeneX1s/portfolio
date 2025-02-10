@@ -44,7 +44,7 @@
 
 </style>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-  <a class="h2" href="/dashboard">Members</a>
+  <a class="h2" href="/dashboard/ryr/classes">Peserta {{ $class->nama_kelas }}</a>
 </div>
 
 @if(session()->has('success'))
@@ -82,7 +82,7 @@
         <button type="submit" class="btn btn-primary btn-custom mb-3">Search</button>
       </div>
       <div class="col-12 col-md-6 col-lg-4">
-        <a href="/dashboard/ryr/members/create" class="btn btn-primary btn-custom mb-3">Add New</a>
+        <a href="/dashboard/ryr/participants/{{$class->id}}/edit" class="btn btn-primary btn-custom mb-3">Add New</a>
       </div>
     </div>
   </form>
@@ -125,12 +125,12 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($classes as $class)
+      @foreach ($participants as $participant)
       <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{ $class->nama_kelas }}</h5>
-          <p class="card-text">{{ $class->description }}</p>
+          <h5 class="card-title">{{ $participant->nama_kelas }}</h5>
+          <p class="card-text">{{ $participant->description }}</p>
           <a href="/dashboard/ryr/participants/detail" class="btn btn-primary">Edit members</a>
         </div>
       </div>
@@ -147,7 +147,7 @@
   </div>
 
     <div class="col-12 col-md-6 col-lg-4">
-        <a class="btn btn-danger btn-custom" href="/dashboard/ryr">Back</a>
+        <a class="btn btn-danger btn-custom" href="/dashboard/ryr/classes">Back</a>
     </div>
   </div>
 

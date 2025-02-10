@@ -17,6 +17,7 @@ use App\Http\Controllers\RYR\ClassController;
 use App\Http\Controllers\RYR\MemberController;
 use App\Http\Controllers\RYR\TeacherController;
 use App\Http\Controllers\RYR\AttendanceController;
+use App\Http\Controllers\RYR\ParticipantController;
 use App\Http\Controllers\RYR\ScheduleController;
 
 /*
@@ -174,3 +175,9 @@ Route::resource('/dashboard/ryr/attendances', AttendanceController::class)->midd
 Route::get('/dashboard/ryr/schedules/index', [ScheduleController::class, 'index'])->middleware('auth')->name('dashboard.schedules.index');
 Route::get('/dashboard/ryr/schedules/create', [ScheduleController::class, 'create'])->middleware('auth')->name('dashboard.schedules.create');
 Route::resource('/dashboard/ryr/schedules', ScheduleController::class)->middleware('auth');
+
+//participants
+Route::get('/dashboard/ryr/participants/{id}/index', [ParticipantController::class, 'indexGroup'])->middleware('auth');
+Route::get('/dashboard/ryr/participants/{id}/edit', [ParticipantController::class, 'edit'])->middleware('auth')->name('dashboard.participants.create');
+Route::resource('/dashboard/ryr/participants', ParticipantController::class)->middleware('auth');
+Route::post('/dashboard/ryr/participants/{id}', [ParticipantController::class, 'participantsGroup'])->middleware('auth');
