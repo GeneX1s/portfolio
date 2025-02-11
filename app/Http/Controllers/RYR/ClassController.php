@@ -62,18 +62,12 @@ class ClassController extends Controller
             'description' => 'nullable',
         ]);
         // dd($input);
+        $code = Str::random(5);
+        $input['id'] = $input['teacher'].'-'.$code;
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
         ryr_class::create($input);
-        // ryr_participants::create([
-        //     'id_kelas' => Str::random(10),
-        //     'nama_kelas' => $input['nama_kelas'],
-        //     'tipe' => $input['tipe'],
-        //     'deskripsi' => $input['description'],
-        // ]);
-
-        // dd('ok');
 
         return redirect('/dashboard/ryr/classes')->with('success', 'New class has been added');
     }

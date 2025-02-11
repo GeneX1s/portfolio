@@ -20,7 +20,7 @@
 
     <div class="mb-3">
       <label for="nama" class="form-label">Nama</label>
-      <input type="string" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required
+      <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required
         autofocus value="{{old('nama')}}">
       @error('nama')
       <div class="invalid-feedback">
@@ -31,7 +31,7 @@
 
     <div class="mb-3">
       <label for="saldo" class="form-label">Saldo</label>
-      <input type="integer" class="form-control @error('saldo') is-invalid @enderror" id="saldo" name="saldo" required
+      <input type="number" class="form-control @error('saldo') is-invalid @enderror" id="saldo" name="saldo" required
         autofocus value="{{old('saldo')}}">
       @error('saldo')
       <div class="invalid-feedback">

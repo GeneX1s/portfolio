@@ -45,7 +45,7 @@
 </style>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-  <a class="h2" href="/dashboard/ryr/classes">{{ $class->nama_kelas }}</a>
+  <a class="h2" href="/dashboard/ryr/schedules">{{ $schedule->nama_schedule }}</a>
 </div>
 
 @if(session()->has('success'))

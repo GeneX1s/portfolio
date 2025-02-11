@@ -44,7 +44,7 @@
 
 </style>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-  <a class="h2" href="/dashboard">Members</a>
+  <a class="h2" href="/dashboard">Schedules</a>
 </div>
 
 @if(session()->has('success'))
@@ -55,7 +55,7 @@
 
 <div class="table-responsive">
   {{-- <a href="/dashboard/ryr/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
-    action="{{ route('members.index') }}" method="GET">
+    action="{{ route('schedules.index') }}" method="GET">
     @csrf
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">
@@ -67,12 +67,12 @@
 
       <div class="col-12 col-md-6 col-lg-4">
         <div class="mb-3">
-          <label for="tipe" class="form-label">Tipe</label>
+          <label for="tipe" class="form-label">Kelas</label>
           <select class="form-control" name="tipe" id="tipe">
-            <option value=""></option>
-            <option value="Non-Member">Non-Member</option>
-            <option value="Bulanan 1">Bulanan 1</option>
-            <option value="Bulanan Special">Bulanan Special</option>
+              <option value=""></option>
+              @foreach ($classes as $class)
+              <option value="{{ $class->id }}">{{ $class->name }}</option>
+            @endforeach
           </select>
         </div>
       </div>
@@ -82,12 +82,12 @@
         <button type="submit" class="btn btn-primary btn-custom mb-3">Search</button>
       </div>
       <div class="col-12 col-md-6 col-lg-4">
-        <a href="/dashboard/ryr/members/create" class="btn btn-primary btn-custom mb-3">Add New</a>
+        <a href="/dashboard/ryr/schedules/create" class="btn btn-primary btn-custom mb-3">Add New</a>
       </div>
     </div>
   </form>
 
-  {{-- <form action="{{ route('members.import') }}" method="POST" enctype="multipart/form-data">
+  {{-- <form action="{{ route('schedules.import') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="col-12 col-md-6 col-lg-4">
@@ -114,30 +114,28 @@
     <thead class="thead">
       <tr>
         <th scope="col">No.</th>
-        <th scope="col">Nama Murid</th>
+        <th scope="col">Nama Kelas</th>
         <th scope="col">Tipe</th>
-        <th scope="col">Join Date</th>
-        <th scope="col">Total Attendance</th>
-        <th scope="col">Tanggal Lahir</th>
-        <th scope="col">Gender</th>
+        <th scope="col">Tanggal</th>
+        <th scope="col">Total Murid</th>
         <th scope="col">Deskripsi</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($members as $member)
+      @foreach ($schedules as $schedule)
       <tr>
         <td>{{$loop->iteration}}</td>
 
-        <td>{{$member->nama_murid}}</td>
-        <td>{{$member->tipe}}</td>
-        <td>{{$member->join_date}}</td>
-        <td>{{$member->total_attendance}}</td>
-        <td>{{$member->dob}}</td>
-        <td>{{$member->jenis_kelamin}}</td>
-        <td>{{$member->deskripsi}}</td>
+        <td>{{$schedule->nama_murid}}</td>
+        <td>{{$schedule->tipe}}</td>
+        <td>{{$schedule->join_date}}</td>
+        <td>{{$schedule->total_attendance}}</td>
+        <td>{{$schedule->dob}}</td>
+        <td>{{$schedule->jenis_kelamin}}</td>
+        <td>{{$schedule->deskripsi}}</td>
         <td>
-          <form action="/dashboard/ryr/members/{{$member->id}}" method="post" class="d-inline">
+          <form action="/dashboard/ryr/schedules/{{$schedule->id}}" method="post" class="d-inline">
             @method('delete')
             @csrf
 
@@ -146,7 +144,7 @@
             </button>
           </form>
 
-          <form action="/dashboard/ryr/members/{{ $member->id }}/edit" class="d-inline">
+          <form action="/dashboard/ryr/schedules/{{ $schedule->id }}/edit" class="d-inline">
             @csrf
             @method('POST')
             <!-- Not strictly necessary with `POST` method -->
@@ -155,7 +153,7 @@
             </button>
           </form>
 
-          <form action="/dashboard/ryr/members/{{ $member->id }}/history" class="d-inline">
+          <form action="/dashboard/ryr/schedules/{{ $schedule->id }}/history" class="d-inline">
             @csrf
             @method('POST')
             <!-- Not strictly necessary with `POST` method -->
@@ -175,7 +173,7 @@
   <div class="row">
   <div class="col-12 col-md-6 col-lg-4">
     <div class="mb-1">
-      <a class="btn btn-warning btn-custom" href="{{ url('/export-members') }}">Export to Excel</a>
+      <a class="btn btn-warning btn-custom" href="{{ url('/export-schedules') }}">Export to Excel</a>
     </div>
   </div>
 

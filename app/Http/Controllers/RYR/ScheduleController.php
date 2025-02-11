@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\RYR\ryr_schedule;
 use App\Http\Controllers\Controller;
+use App\Models\RYR\ryr_class;
 
 class ScheduleController extends Controller
 {
@@ -32,7 +33,11 @@ class ScheduleController extends Controller
 
     public function create()
     {
-        return view('dashboard.ryr.schedules.create');
+        $classes = ryr_class::all();
+
+        return view('dashboard.ryr.schedules.create',[
+            'classes' => $classes,
+        ]);
     }
 
     public function store(Request $request)

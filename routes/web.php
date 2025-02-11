@@ -180,4 +180,5 @@ Route::resource('/dashboard/ryr/schedules', ScheduleController::class)->middlewa
 Route::get('/dashboard/ryr/participants/{id}/index', [ParticipantController::class, 'indexGroup'])->middleware('auth');
 Route::get('/dashboard/ryr/participants/{id}/edit', [ParticipantController::class, 'edit'])->middleware('auth')->name('dashboard.participants.create');
 Route::resource('/dashboard/ryr/participants', ParticipantController::class)->middleware('auth');
-Route::post('/dashboard/ryr/participants/{id}/input', [ParticipantController::class, 'participantsGroup'])->middleware('auth');
+Route::post('/dashboard/ryr/participants/{id}', [ParticipantController::class, 'participantsGroup'])->middleware('auth');
+Route::delete('/dashboard/ryr/participants/{id}/delete', [ParticipantController::class, 'deleteGroup'])->middleware('auth');

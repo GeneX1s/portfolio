@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('id_kelas')->required();
             $table->string('nama_kelas')->required();
             $table->string('tipe')->required();//temporary atau member
-            $table->text('deskripsi')->required();
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }

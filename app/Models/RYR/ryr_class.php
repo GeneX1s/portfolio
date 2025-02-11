@@ -36,6 +36,7 @@ class ryr_class extends Model
   public $timestamps = false;
 
   protected $fillable = [
+    'id',
     'nama_kelas',
     'tipe',//public, private
     'teacher',

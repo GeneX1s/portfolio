@@ -1,84 +1,44 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Update Balance</h1>
-</div>
-<div class="row">
-    <div class="col-lg-8">
-        <form method="post" action="/dashboard/balances/{{$balance->id}}" class="mb-5" enctype="multipart/form-data">
-            <!-- multipart form data harus supaya bisa upload file(img dll) -->
-            @method('put')
-            @csrf
 
-            <div class="mb-3">
-                <label for="nama_murid" class="form-label">Nama Murid</label>
-                <input type="text" class="form-control @error('nama_murid') is-invalid @enderror" id="nama_murid"
-                    name="nama_murid" required autofocus value="{{$member->nama_murid}}">
-                @error('nama_murid')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
+<h1 class="h2">Edit Participants for Yoga Class</h1>
 
-            <div class="mb-3">
-                <label for="tipe" class="form-label">Tipe</label>
-                <select class="form-control" name="tipe">
-                    <option value="Non-Member">Non-Member</option>
-                    <option value="Bulanan 1">Bulanan 1(800k)</option>
-                    <option value="Bulanan Special">Bulanan Special(400k)</option>
-                </select>
-            </div>
+<div class="col-lg-8">
+  <form method="post" action="/dashboard/participants/{{$class->id}}" class="mb-5" enctype="multipart/form-data">
+    @csrf
 
-            <div class="mb-3">
-                <label for="jenis_kelamin" class="form-label">Gender</label>
-                <select class="form-control" name="jenis_kelamin">
-                    <option value="Pria">Pria</option>
-                    <option value="Wanita">Wanita</option>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label for="join_date" class="form-label">Join Date</label>
-                <input type="date" class="form-control @error('join_date') is-invalid @enderror" id="join_date"
-                    name="join_date" readonly autofocus value="{{today()}}">
-                @error('join_date')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-                <label for="dob" class="form-label">Tanggal Lahir(optional)</label>
-                <input type="date" class="form-control @error('dob') is-invalid @enderror" id="dob" name="dob" autofocus
-                    value="{{today()}}">
-                @error('dob')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-                <label for="deskripsi" class="form-label">Deskripsi(optional)</label>
-                <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
-                    name="deskripsi" autofocus value="{{$memmber->deskripsi}}">
-                @error('deskripsi')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-
-            <div class="mb-1">
-
-                <button type="submit" class="btn btn-primary">Update Member</button>
-                <a class="btn btn-danger btn-custom" href="/dashboard/ryr/members">Cancel</a>
-            </div>
-
-        </form>
-
+    <div id="participants-container">
+      <!-- Participant fields will be added here -->
     </div>
-    @endsection
+
+    <button type="button" id="add-participant-btn" class="btn btn-primary">Add Participant</button>
+    <button type="submit" class="btn btn-success">Save Participants for Yoga Class</button>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('participants-container');
+    const addButton = document.getElementById('add-participant-btn');
+    let participantCount = 0;
+
+    addButton.addEventListener('click', function() {
+      participantCount++;
+
+      const newParticipantField = `
+        <div class="mb-3">
+          <label for="nama_member_${participantCount}" class="form-label">Participant ${participantCount}</label>
+          <input type="text" class="form-control" id="nama_member_${participantCount}" name="participants[${participantCount}][nama_member]" required placeholder="Enter participant's name">
+
+
+          <input type="text" class="form-control mt-2" id="id_member_${participantCount}" name="participants[${participantCount}][id_member]" placeholder="Enter participant's ID">
+        </div>
+      `;
+
+      container.insertAdjacentHTML('beforeend', newParticipantField);
+    });
+  });
+</script>
+
+@endsection

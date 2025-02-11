@@ -26,8 +26,11 @@ class ParticipantController extends Controller
             })
             ->where('id_kelas', $id)
             ->get();
-            // dd($id);
-            $class = ryr_class::where('id', $id)->first();
+
+        // dd($id);
+        // $class = ryr_class::get();
+        // dd($class);
+        $class = ryr_class::where('id', $id)->first();
 
         // Return the view without dynamically injecting $id into the path
         return view('dashboard.ryr.participants.index', [
@@ -72,24 +75,24 @@ class ParticipantController extends Controller
 
     public function edit($id)
     {
-        $participant = ryr_participants::where('id_kelas',$id)->get();
+        $participant = ryr_participants::where('id_kelas', $id)->get();
 
         $members = ryr_members::get();
         // dd($members);
         $class = ryr_class::where('id', $id)->first();
         $class_name = 0;
 
-
-        if(!$participant->isEmpty()){
-            $class = $participant->id_kelas;
-            $class_name = $participant->nama_kelas;
+        // dd($participant);
+        if (!$participant->isEmpty()) {
+            $class = $participant[0]['id_kelas'];
+            $class_name = $participant[0]['nama_kelas'];
         }
-// dd($id);
+        // dd($id);
         return view('dashboard.ryr.participants.edit', [
             'participant' => $participant,
             'members' => $members,
             'id_kelas' => $id,
-            'class_name' => $class->nama_kelas,
+            'class_name' => $class_name,
 
         ]);
     }
@@ -122,7 +125,7 @@ class ParticipantController extends Controller
         return redirect()->route('dashboard.participants.index');
     }
 
-    public function participantsGroup(Request $request)
+    public function participantsGroup(Request $request, $id)
     {
         $request->validate([
             'participants' => 'required|array',
@@ -130,34 +133,46 @@ class ParticipantController extends Controller
             // 'participants.*.nama_member' => 'required|string|max:255',
         ]);
 
-        // dd($request);
-
         // Loop through the participants array from the request
         foreach ($request->participants as $participant) {
 
             $member = ryr_members::where('id', $participant['id_member'])->first();
+            $class = ryr_class::where('id', $id)->first();
+
             $participant['nama_member'] = $member->nama_member;
             $participant['id_kelas'] = $member->id_kelas;
             $participant['nama_kelas'] = $member->nama_kelas;
             $participant['tipe'] = $member->tipe;
             $participant['deskripsi'] = $member->deskripsi;
 
-            dd($request->id_kelas);
-            $input = [
-                'id_kelas' => $request->id_kelas,
-                // 'id_kelas' => $participant['id_kelas'],
-                'id_member' => $participant['id_member'],
-                'nama_member' => $participant['nama_member'],
-                'nama_kelas' => $participant['nama_kelas'],
-                'tipe' => $participant['tipe'],
-                'deskripsi' => $participant['deskripsi']
-            ];
+            // dd($class);
 
-            // DB::table('participants')->insert($input);
+            $input = [
+                'id_kelas' => $id,
+                'id_member' => $participant['id_member'],
+                'nama_member' => $member->nama_murid,
+                'nama_kelas' => $class->nama_kelas,
+                'tipe' => $member->tipe,
+                'deskripsi' => $member->deskripsi,
+            ];
+            $input['deskripsi'] = 'p';
+
             ryr_participants::create($input);
         }
 
-        // Redirect back to the menu index page with a success message
-        return redirect('/dashboard/ryr/participants/index')->with('success', 'Participants have been updated');
+
+        return redirect('/dashboard/ryr/participants/' . $id . '/index')->with('success', 'Participants have been updated');
+    }
+
+    public function deleteGroup(Request $request)
+    {
+
+        // dd($request->id);
+        $id = ryr_participants::where('id', $request->id)->first()->id;
+        $class = ryr_participants::where('id', $id)->first()->id_kelas;
+        ryr_participants::where('id', $id)->delete();
+
+        // return redirect()->route('participants.index', ['id' => $id])->with('success', 'Participant has been deleted');
+        return redirect('/dashboard/ryr/participants/' . $class . '/index')->with('success', 'Participant has been deleted');
     }
 }

@@ -1,44 +1,73 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-
-<h1 class="h2">Edit Participants for Yoga Class</h1>
-
-<div class="col-lg-8">
-  <form method="post" action="/dashboard/participants/{{$class->id}}" class="mb-5" enctype="multipart/form-data">
-    @csrf
-
-    <div id="participants-container">
-      <!-- Participant fields will be added here -->
-    </div>
-
-    <button type="button" id="add-participant-btn" class="btn btn-primary">Add Participant</button>
-    <button type="submit" class="btn btn-success">Save Participants for Yoga Class</button>
-  </form>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">New Yoga Class Session</h1>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('participants-container');
-    const addButton = document.getElementById('add-participant-btn');
-    let participantCount = 0;
 
-    addButton.addEventListener('click', function() {
-      participantCount++;
+@if(session()-> has('error'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{session('error')}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
-      const newParticipantField = `
-        <div class="mb-3">
-          <label for="nama_member_${participantCount}" class="form-label">Participant ${participantCount}</label>
-          <input type="text" class="form-control" id="nama_member_${participantCount}" name="participants[${participantCount}][nama_member]" required placeholder="Enter participant's name">
+<div class="col-lg-8">
+  <form method="post" autocomplete="off" action="/dashboard/schedules" class="mb-5" enctype="multipart/form-data">
+    <!-- multipart form data harus supaya bisa upload file(img dll) -->
+    @csrf
+
+    <div class="mb-3">
+      <label for="class_name" class="form-label">Kelas</label>
+      <input type="text" class="form-control @error('class_name') is-invalid @enderror" id="class_name" name="class_name" required
+        autofocus value="{{old('class_name')}}">
+      @error('class_name')
+      <div class="invalid-feedback">
+        {{ $message }}
+      </div>
+      @enderror
+    </div>
+
+    <div class="mb-3">
+      <label for="saldo" class="form-label">Saldo</label>
+      <input type="number" class="form-control @error('saldo') is-invalid @enderror" id="saldo" name="saldo" required
+        autofocus value="{{old('saldo')}}">
+      @error('saldo')
+      <div class="invalid-feedback">
+        {{ $message }}
+      </div>
+      @enderror
+    </div>
 
 
-          <input type="text" class="form-control mt-2" id="id_member_${participantCount}" name="participants[${participantCount}][id_member]" placeholder="Enter participant's ID">
-        </div>
-      `;
+    <div class="mb-3">
+      <label for="class_name" class="form-label">Kelas</label>
+      <select class="form-control" name="class_name">
+        @foreach ($classes as $class)
+        <option value="{{ $class->id }}"> {{ $class->name }}</option>
+        @endforeach
+      </select>
+    </div>
 
-      container.insertAdjacentHTML('beforeend', newParticipantField);
-    });
-  });
-</script>
+    <div class="mb-3">
+      <label for="dividen" class="form-label">Bunga/Dividen(%)</label>
+      <input type="number" class="form-control @error('dividen') is-invalid @enderror" id="dividen" name="dividen" required
+        autofocus value="{{old('dividen')}}">
+      @error('dividen')
+      <div class="invalid-feedback">
+        {{ $message }}
+      </div>
+      @enderror
+    </div>
+
+    <div class="mb-1">
+
+      <button type="submit" class="btn btn-primary">Add Balance</button>
+      <a class="btn btn-danger btn-custom" href="/dashboard/balances">Cancel</a>
+    </div>
+  </form>
+
+</div>
 
 @endsection
