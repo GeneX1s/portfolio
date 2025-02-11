@@ -4,7 +4,7 @@ namespace App\Http\Controllers\RYR;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\RYR\ryr_schedule;
+use App\Models\RYR\ryr_schedules;
 use App\Http\Controllers\Controller;
 use App\Models\RYR\ryr_class;
 
@@ -15,27 +15,36 @@ class ScheduleController extends Controller
     {
 
         $search = $request->nama_murid;
-        $tipe = $request->tipe;
+        $class_name = $request->class_name;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
 
 
-        // $schedule = ryr_schedule::all();
-        $schedule = ryr_schedule::query()
-            ->when($search, function ($query) use ($search) {
-                return $query->where('nama_murid', 'like', '%' . $search . '%');
+        // $schedule = ryr_schedules::all();
+        $schedule = ryr_schedules::query()
+            ->when($start_date && $end_date, function ($query) use ($start_date, $end_date) {
+                return $query->whereDate('created_at', '>=', $start_date)
+                    ->whereDate('created_at', '<=', $end_date);
             })
-            ->when($tipe, function ($query) use ($tipe) {
-                return $query->where('tipe', 'like', '%' . $tipe . '%');
+            ->when($class_name, function ($query) use ($class_name) {
+                return $query->where('class_name', 'like', '%' . $class_name . '%');
             })
             ->get();
 
-        return view('dashboard.ryr.schedules.index', compact('ryr_schedule'));
+            $classes = ryr_class::all();
+
+        return view('dashboard.ryr.schedules.index', [
+            'schedules' => $schedule,
+            'search' => $search,
+            'classes' => $classes,
+        ]);
     }
 
     public function create()
     {
         $classes = ryr_class::all();
 
-        return view('dashboard.ryr.schedules.create',[
+        return view('dashboard.ryr.schedules.create', [
             'classes' => $classes,
         ]);
     }
@@ -44,20 +53,15 @@ class ScheduleController extends Controller
     {
         $input = $request->validate([
             'class_id' => 'required',
-            'class_name' => 'required',
-            'member_id' => 'required',
-            'member_name' => 'required',
-            'status' => 'required',
             'tanggal' => 'required|date',
-            'payment_type' => 'required',
-            'payment_status' => 'required',
-            'description' => 'required',
+            'description' => 'nullable',
         ]);
         // dd($input);
+        $input['status'] = 'Ongoing';
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
-        ryr_schedule::create($input);
+        ryr_schedules::create($input);
 
         // dd('ok');
 
@@ -66,34 +70,29 @@ class ScheduleController extends Controller
 
     public function show($id)
     {
-        $schedule = ryr_schedule::findOrFail($id);
-        return view('dashboard.ryr.schedules.show', compact('ryr_schedule'));
+        $schedule = ryr_schedules::findOrFail($id);
+        return view('dashboard.ryr.schedules.show', compact('ryr_schedules'));
     }
 
     public function edit($id)
     {
-        $schedule = ryr_schedule::findOrFail($id);
-        return view('dashboard.ryr.schedules.edit', compact('ryr_schedule'));
+        $schedule = ryr_schedules::findOrFail($id);
+        return view('dashboard.ryr.schedules.edit', compact('ryr_schedules'));
     }
 
     public function update(Request $request, $id)
     {
         $input = $request->validate([
             'class_id' => 'required',
-            'class_name' => 'required',
-            'member_id' => 'required',
-            'member_name' => 'required',
-            'status' => 'required',
             'tanggal' => 'required|date',
-            'payment_type' => 'required',
-            'payment_status' => 'required',
-            'description' => 'required',
+            'description' => 'nullable',
         ]);
 
+        $input['status'] = 'Done';
         $input['updated_at'] = now();
         $input = $request->all();
 
-        $schedule = ryr_schedule::findOrFail($id);
+        $schedule = ryr_schedules::findOrFail($id);
         $schedule->update($input);
 
         return redirect()->route('dashboard.ryr.schedules.index');
@@ -101,7 +100,7 @@ class ScheduleController extends Controller
 
     public function destroy($id)
     {
-        $schedule = ryr_schedule::findOrFail($id);
+        $schedule = ryr_schedules::findOrFail($id);
         $schedule->delete();
 
         return redirect()->route('dashboard.ryr.schedules.index');

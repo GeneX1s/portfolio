@@ -145,6 +145,9 @@
 
     @endcan
 
+    <div class="sidebar-heading">
+        RYR
+    </div>
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
@@ -156,7 +159,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Classes:</h6>
                 <a class="collapse-item" href="/dashboard/ryr/classes">Jadwal</a>
-                <a class="collapse-item" href="/dashboard/ryr/participants">Sesi</a>
+                <a class="collapse-item" href="/dashboard/ryr/schedules">Sesi</a>
             </div>
         </div>
     </li>

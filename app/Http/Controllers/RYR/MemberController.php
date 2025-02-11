@@ -13,7 +13,7 @@ class MemberController extends Controller
     public function index(Request $request)
     {
 
-        $search = $request->nama_murid;
+        $search = $request->nama;
         $tipe = $request->tipe;
 
 

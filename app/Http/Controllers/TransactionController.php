@@ -97,7 +97,7 @@ class TransactionController extends Controller
     $total = 0;
     $pendapatan = 0;
     $pengeluaran = 0;
-    
+
     return view('dashboard.transactions.index', [
       'transactions' => $transactions,
       'total' => $total,
@@ -376,14 +376,14 @@ class TransactionController extends Controller
   public function exportTransactions(Request $request)
   {
 
-    
+
     return Excel::download(new TransactionsExport($request), 'Transaction.xlsx');
   }
 
   public function reportIndex()
   {
 
-    
+
     $userId = Auth::id();
     $userRole = User::where('id', $userId)->first()->role;
     // Get transactions with status 'Active', ordered by 'created_at'
@@ -437,7 +437,7 @@ class TransactionController extends Controller
 
       // dd($transaction);
       $update = Transaction::where('id',$transaction->id)->first();
-      
+
     $update->update([
       'status' => "Active",
     ]);

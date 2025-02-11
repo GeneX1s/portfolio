@@ -25,6 +25,7 @@ class ParticipantController extends Controller
                 return $query->where('tipe', 'like', '%' . $tipe . '%');
             })
             ->where('id_kelas', $id)
+            ->where('grup', 'Template')
             ->get();
 
         // dd($id);
@@ -41,11 +42,6 @@ class ParticipantController extends Controller
     }
 
 
-    public function create()
-    {
-        return view('dashboard.participants.create');
-    }
-
     public function store(Request $request)
     {
         $input = $request->validate([
@@ -54,9 +50,12 @@ class ParticipantController extends Controller
             'id_kelas' => 'required',
             'nama_kelas' => 'required',
             'tipe' => 'required',
+            'payment_type' => 'required',
+            'payment_status' => 'required',
             'deskripsi' => 'required',
         ]);
         // dd($input);
+        $input['grup'] = 'Template';
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
@@ -65,12 +64,6 @@ class ParticipantController extends Controller
         // dd('ok');
 
         return redirect('/dashboard/ryr/participants/index')->with('success', 'New participant has been added');
-    }
-
-    public function show($id)
-    {
-        $participant = ryr_participants::findOrFail($id);
-        return view('dashboard.participants.show', compact('ryr_participants'));
     }
 
     public function edit($id)
@@ -105,22 +98,17 @@ class ParticipantController extends Controller
             'id_kelas' => 'required',
             'nama_kelas' => 'required',
             'tipe' => 'required',
+            'payment_type' => 'required',
+            'payment_status' => 'required',
             'deskripsi' => 'required',
         ]);
 
+        $input['grup'] = 'Template';
         $input['updated_at'] = now();
         $input = $request->all();
 
         $participant = ryr_participants::findOrFail($id);
         $participant->update($input);
-
-        return redirect()->route('dashboard.participants.index');
-    }
-
-    public function destroy($id)
-    {
-        $participant = ryr_participants::findOrFail($id);
-        $participant->delete();
 
         return redirect()->route('dashboard.participants.index');
     }
@@ -153,6 +141,7 @@ class ParticipantController extends Controller
                 'nama_member' => $member->nama_murid,
                 'nama_kelas' => $class->nama_kelas,
                 'tipe' => $member->tipe,
+                'grup' => 'Template',
                 'deskripsi' => $member->deskripsi,
             ];
             $input['deskripsi'] = 'p';

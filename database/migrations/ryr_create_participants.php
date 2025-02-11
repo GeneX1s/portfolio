@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('id_kelas')->required();
             $table->string('nama_kelas')->required();
             $table->string('tipe')->required();//temporary atau member
+            $table->string('grup')->required();//template atau schedule
+            $table->string('payment_type')->required();// transfer or cash
+            $table->string('payment_status')->nullable();
             $table->text('deskripsi')->nullable();
             $table->timestamps();
         });

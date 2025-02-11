@@ -23,6 +23,8 @@ class ryr_participants extends Model
     'id_kelas',
     'nama_kelas',
     'tipe',
+    'payment_type',
+    'payment_status',
     'deskripsi',
   ];
 

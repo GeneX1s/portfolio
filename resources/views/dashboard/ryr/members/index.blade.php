@@ -180,7 +180,7 @@
   </div>
 
     <div class="col-12 col-md-6 col-lg-4">
-        <a class="btn btn-danger btn-custom" href="/dashboard/ryr">Back</a>
+        <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>
     </div>
   </div>
 

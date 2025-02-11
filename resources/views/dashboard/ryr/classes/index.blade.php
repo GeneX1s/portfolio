@@ -44,7 +44,7 @@
 
 </style>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-  <a class="h2" href="/dashboard">Classes</a>
+  <a class="h2" href="/dashboard">Jadwal Kelas</a>
 </div>
 
 @if(session()->has('success'))
