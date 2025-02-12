@@ -45,7 +45,7 @@
 </style>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-  <a class="h2" href="/dashboard/ryr/schedules">{{ $schedule->nama_schedule }}</a>
+  <a class="h2" href="/dashboard/ryr/schedules">{{ $schedule->class_name }}, {{ $schedule->tanggal }}</a>
 </div>
 
 @if(session()->has('success'))
@@ -55,7 +55,6 @@
 @endif
 
 <h5 class = "mt-2">Total Profit: </h5>
-<h5>Monthly Average: </h5>
 <h5>This year's profit: </h5>
 <div class="table-responsive">
   {{-- <a href="/dashboard/ryr/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
@@ -86,7 +85,7 @@
         <button type="submit" class="btn btn-primary btn-custom mb-3">Search</button>
       </div>
       <div class="col-12 col-md-6 col-lg-4">
-        <a href="/dashboard/ryr/participants/{{$class->id}}/edit" class="btn btn-primary btn-custom mb-3">Add New</a>
+        <a href="/dashboard/ryr/schedules/{{$schedule->id}}/detailgroup" class="btn btn-primary btn-custom mb-3">Add New</a>
       </div>
     </div>
   </form>
@@ -139,8 +138,8 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $participant->nama_member }}</td>
             <td>{{ $participant->tipe }}</td>
-            <td>{{ $attendance }}</td>
-            <td>{{ $participant->deskripsi }}</td>
+            <td>{{ $participant->payment_type }}</td>
+            <td>{{ $participant->payment_status}}</td>
             <td>
 
             <form action="/dashboard/ryr/participants/{{ $participant->id }}/delete" method="POST" class="d-inline">

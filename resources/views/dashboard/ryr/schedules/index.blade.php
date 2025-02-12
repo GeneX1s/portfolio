@@ -154,7 +154,7 @@
 
                 <td>{{$schedule->class_name}}</td>
                 <td>{{$schedule->tipe}}</td>
-                <td>{{$schedule->join_date}}</td>
+                <td>{{$schedule->tanggal}}</td>
                 <td>{{$schedule->total_attendance}}</td>
                 <td>{{$schedule->deskripsi}}</td>
                 <td>
@@ -176,7 +176,7 @@
                         </button>
                     </form>
 
-                    <form action="/dashboard/ryr/schedules/{{ $schedule->id }}/history" class="d-inline">
+                    <form action="/dashboard/ryr/schedules/{{ $schedule->id }}/detail" class="d-inline">
                         @csrf
                         @method('POST')
                         <!-- Not strictly necessary with `POST` method -->

@@ -14,7 +14,7 @@
 @endif
 
 <div class="col-lg-8">
-  <form method="post" autocomplete="off" action="/dashboard/schedules" class="mb-5" enctype="multipart/form-data">
+  <form method="post" autocomplete="off" action="/dashboard/ryr/schedules" class="mb-5" enctype="multipart/form-data">
     <!-- multipart form data harus supaya bisa upload file(img dll) -->
     @csrf
 
@@ -24,7 +24,7 @@
       <label for="class_id" class="form-label">Pilih Kelas:</label>
       <select class="form-control" name="class_id">
         @foreach ($classes as $class)
-        <option value="{{ $class->id }}"> {{ $class->name }}</option>
+        <option value="{{ $class->id }}"> {{ $class->nama_kelas }}</option>
         @endforeach
       </select>
     </div>

@@ -174,6 +174,9 @@ Route::resource('/dashboard/ryr/attendances', AttendanceController::class)->midd
 //schedules
 Route::get('/dashboard/ryr/schedules/index', [ScheduleController::class, 'index'])->middleware('auth')->name('dashboard.schedules.index');
 Route::get('/dashboard/ryr/schedules/create', [ScheduleController::class, 'create'])->middleware('auth')->name('dashboard.schedules.create');
+Route::get('/dashboard/ryr/schedules/{id}/detail', [ScheduleController::class, 'indexGroup'])->middleware('auth')->name('dashboard.schedules.create');
+Route::post('/dashboard/ryr/schedules/{id}/editgroup', [ScheduleController::class, 'editGroup'])->middleware('auth')->name('dashboard.schedules.create');
+Route::get('/dashboard/ryr/schedules/{id}/detailgroup', [ScheduleController::class, 'detailGroup'])->middleware('auth')->name('dashboard.schedules.create');
 Route::resource('/dashboard/ryr/schedules', ScheduleController::class)->middleware('auth');
 
 //participants
