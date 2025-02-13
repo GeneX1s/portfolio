@@ -9,6 +9,19 @@
         @method('put')
         @csrf
 
+
+
+        <div class="mb-3">
+            <label for="nama_kelas" class="form-label">Nama Kelas</label>
+            <input type="text" class="form-control @error('nama_kelas') is-invalid @enderror" id="nama_kelas"
+                name="nama_kelas" autofocus value="{{old('nama_kelas')}}">
+            @error('nama_kelas')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+
         <div class="mb-3">
             <label for="class_id" class="form-label">Pilih Kelas:</label>
             <select class="form-control" name="class_id">

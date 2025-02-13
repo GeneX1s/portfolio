@@ -10,6 +10,8 @@ use App\Models\RYR\ryr_class;
 use App\Models\RYR\ryr_members;
 use App\Models\RYR\ryr_participants;
 
+use function PHPUnit\Framework\isEmpty;
+
 class ScheduleController extends Controller
 {
 
@@ -20,22 +22,28 @@ class ScheduleController extends Controller
         $class_name = $request->class_name;
         $start_date = $request->start_date;
         $end_date = $request->end_date;
+        $status = $request->status;
 
-
+        // dd($request->all());
         // $schedule = ryr_schedules::all();
         $schedule = ryr_schedules::query()
             ->when($start_date && $end_date, function ($query) use ($start_date, $end_date) {
-                return $query->whereDate('created_at', '>=', $start_date)
-                    ->whereDate('created_at', '<=', $end_date);
+                return $query->whereDate('tanggal', '>=', $start_date)
+                    ->whereDate('tanggal', '<=', $end_date);
             })
             ->when($class_name, function ($query) use ($class_name) {
                 return $query->where('class_name', 'like', '%' . $class_name . '%');
             })
+            ->when($status, function ($query) use ($status) {
+                return $query->where('status', 'like', '%' . $status . '%');
+            })
             ->get();
 
         $classes = ryr_class::all();
+        $participants = ryr_participants::all();
 
         return view('dashboard.ryr.schedules.index', [
+            'participants' => $participants,
             'schedules' => $schedule,
             'search' => $search,
             'classes' => $classes,
@@ -46,7 +54,8 @@ class ScheduleController extends Controller
     {
         $search = $request->nama_murid;
         $tipe = $request->tipe;
-
+        $payment_status = $request->payment_status;
+// dd($request->all());
         $schedule = ryr_schedules::where('id', $id)->first();
         $participants = ryr_participants::query()
             ->when($search, function ($query) use ($search) {
@@ -54,6 +63,9 @@ class ScheduleController extends Controller
             })
             ->when($tipe, function ($query) use ($tipe) {
                 return $query->where('tipe', 'like', '%' . $tipe . '%');
+            })
+            ->when($payment_status, function ($query) use ($payment_status) {
+                return $query->where('payment_status', 'like', '%' . $payment_status . '%');
             })
             ->where('id_schedule', $id)
             ->where('grup', 'Schedule')
@@ -82,13 +94,25 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $input = $request->validate([
-            'class_id' => 'required',
             'tanggal' => 'required|date',
-            'description' => 'nullable',
         ]);
-        // dd($input);
-        $class_name = ryr_class::where('id', $input['class_id'])->first()->nama_kelas;
-        $input['class_name'] = $class_name;
+
+        $input = $request->all();
+        if (empty($input['class_id'])) {
+            $input['class_id'] = 0;
+        }
+
+        $code = md5(Str::random(5));
+        if ($input['class_id'] != 0) {
+
+            $class = ryr_class::where('id', $input['class_id'])->first();
+            $input['class_name'] = $class->nama_kelas;
+            $input['teacher_name'] = $class->teacher;
+            $input['tipe'] = 'Regular';
+        } else {
+            $input['class_id'] = substr($input['teacher_name'], 0, 5) . '_' . $code;
+            $input['tipe'] = 'Special';
+        }
         $input['status'] = 'Ongoing';
         $input['created_at'] = now();
         $input['updated_at'] = now();
@@ -160,10 +184,10 @@ class ScheduleController extends Controller
             // dd($class);
 
             $input = [
-                'id_kelas' => $class->id,
+                'id_kelas' => $schedule->class_id,
                 'id_member' => $participant['id_member'],
                 'nama_member' => $member->nama_murid,
-                'nama_kelas' => $class->nama_kelas,
+                'nama_kelas' => $schedule->class_name,
                 'tipe' => $member->tipe,
                 'grup' => 'Schedule',
                 'payment_type' => 'Cash',
@@ -203,5 +227,16 @@ class ScheduleController extends Controller
             'class_name' => $class_name,
 
         ]);
+    }
+    public function deleteGroup(Request $request)
+    {
+
+        // dd($request->id);
+        $id = ryr_participants::where('id', $request->id)->first()->id;
+        $class = ryr_participants::where('id', $id)->first()->id_kelas;
+        ryr_participants::where('id', $id)->delete();
+
+        // return redirect()->route('participants.index', ['id' => $id])->with('success', 'Participant has been deleted');
+        return redirect('/dashboard/ryr/schedules/' . $id . '/detail')->with('success', 'Participants have been updated');
     }
 }

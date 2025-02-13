@@ -82,8 +82,16 @@
                     <select class="form-control" name="class_name" id="class_name">
                         <option value=""></option>
                         @foreach ($classes as $class)
-                        <option value="{{ $class->id }}">{{ $class->name }}</option>
+                        <option value="{{ $class->id }}">{{ $class->nama_kelas }}</option>
                         @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-control" name="status" id="status">
+                        <option value=""></option>
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Done">Done</option>
                     </select>
                 </div>
             </div>
@@ -143,20 +151,26 @@
                 <th scope="col">Tipe</th>
                 <th scope="col">Tanggal</th>
                 <th scope="col">Total Murid</th>
-                <th scope="col">Deskripsi</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($schedules as $schedule)
+            @php
+                $count = $participants
+            ->where('id_schedule', $schedule->id)
+            ->where('grup', 'Schedule')
+            ->count();
+            @endphp
             <tr>
                 <td>{{$loop->iteration}}</td>
 
                 <td>{{$schedule->class_name}}</td>
                 <td>{{$schedule->tipe}}</td>
                 <td>{{$schedule->tanggal}}</td>
-                <td>{{$schedule->total_attendance}}</td>
-                <td>{{$schedule->deskripsi}}</td>
+                <td>{{$count}}</td>
+                <td>{{$schedule->status}}</td>
                 <td>
                     <form action="/dashboard/ryr/schedules/{{$schedule->id}}" method="post" class="d-inline">
                         @method('delete')

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('class_id'); //OKTA_060225
             $table->string('class_name');
+            $table->string('teacher_name');
+            $table->string('tipe');// public / private
             $table->string('status');
             $table->date('tanggal');
             $table->text('description')->nullable();

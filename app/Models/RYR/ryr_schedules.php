@@ -22,6 +22,7 @@ class ryr_schedules extends Model
         'class_name',
         'status',
         'tanggal',
+        'tipe',
         'description'
     ];
 

@@ -55,16 +55,15 @@
 @endif
 
 <h5 class = "mt-2">Total Profit: </h5>
-<h5>This year's profit: </h5>
 <div class="table-responsive">
-  {{-- <a href="/dashboard/ryr/posts/create" class="btn btn-primary mb-3">Insert New Product</a> --}}<form
-    action="{{ route('members.index') }}" method="GET">
+
+    <form action="{{ url('/dashboard/ryr/schedules/' . $schedule->id . '/detail') }}" method="GET">
     @csrf
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">
         <div class="mb-3">
-          <label for="nama" class="form-label">Nama Murid</label>
-          <input type="string" class="form-control" id="nama" name="nama">
+          <label for="nama_murid" class="form-label">Nama Murid</label>
+          <input type="string" class="form-control" id="nama_murid" name="nama_murid">
         </div>
       </div>
 
@@ -79,6 +78,19 @@
           </select>
         </div>
       </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="mb-3">
+          <label for="payment_status" class="form-label">Status Pembayaran</label>
+          <select class="form-control" name="payment_status" id="payment_status">
+            <option value=""></option>
+            <option value="Done">Done</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </div>
+      </div>
+
+
     </div>
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">
@@ -158,12 +170,12 @@
   <div class="row">
   <div class="col-12 col-md-6 col-lg-4">
     <div class="mb-1">
-      <a class="btn btn-warning btn-custom" href="{{ url('/export-members') }}">Export to Excel</a>
+      <a class="btn btn-warning btn-custom" href="{{ url('/export-members') }}">Finish</a>
     </div>
   </div>
 
     <div class="col-12 col-md-6 col-lg-4">
-        <a class="btn btn-danger btn-custom" href="/dashboard/ryr/classes">Back</a>
+        <a class="btn btn-danger btn-custom" href="/dashboard/ryr/schedules">Back</a>
     </div>
   </div>
 
