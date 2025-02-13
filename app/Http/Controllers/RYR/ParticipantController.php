@@ -142,6 +142,7 @@ class ParticipantController extends Controller
                 'nama_kelas' => $class->nama_kelas,
                 'tipe' => $member->tipe,
                 'grup' => 'Template',
+                'payment_type' => 'Transfer',
                 'deskripsi' => $member->deskripsi,
             ];
             $input['deskripsi'] = 'p';

@@ -129,8 +129,6 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     //////////////portfolio///////////////
     Route::get('/dashboard/portfolios/index', [PortfolioController::class, 'index'])->middleware('auth');
     Route::get('/dashboard/portfolios/create', [PortfolioController::class, 'create'])->middleware('auth');
-    Route::post('/dashboard/portfolios/index', [PortfolioController::class, 'index'])->middleware('auth');
-    Route::post('/dashboard/portfolios/index', [PortfolioController::class, 'index'])->middleware('auth');
     Route::resource('/dashboard/portfolios', PortfolioController::class)->middleware('auth');
     ////////////////////////////////////
 
@@ -174,9 +172,9 @@ Route::resource('/dashboard/ryr/attendances', AttendanceController::class)->midd
 //schedules
 Route::get('/dashboard/ryr/schedules/index', [ScheduleController::class, 'index'])->middleware('auth')->name('dashboard.schedules.index');
 Route::get('/dashboard/ryr/schedules/create', [ScheduleController::class, 'create'])->middleware('auth')->name('dashboard.schedules.create');
-Route::get('/dashboard/ryr/schedules/{id}/detail', [ScheduleController::class, 'indexGroup'])->middleware('auth')->name('dashboard.schedules.create');
-Route::post('/dashboard/ryr/schedules/{id}/editgroup', [ScheduleController::class, 'editGroup'])->middleware('auth')->name('dashboard.schedules.create');
-Route::get('/dashboard/ryr/schedules/{id}/detailgroup', [ScheduleController::class, 'detailGroup'])->middleware('auth')->name('dashboard.schedules.create');
+Route::get('/dashboard/ryr/schedules/{id}/detail', [ScheduleController::class, 'indexGroup'])->middleware('auth');
+Route::get('/dashboard/ryr/schedules/{id}', [ScheduleController::class, 'detailGroup'])->middleware('auth');
+Route::post('/dashboard/ryr/schedules/{id}/participant', [ScheduleController::class, 'editGroup'])->middleware('auth');
 Route::resource('/dashboard/ryr/schedules', ScheduleController::class)->middleware('auth');
 
 //participants

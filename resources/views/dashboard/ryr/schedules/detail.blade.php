@@ -85,7 +85,7 @@
         <button type="submit" class="btn btn-primary btn-custom mb-3">Search</button>
       </div>
       <div class="col-12 col-md-6 col-lg-4">
-        <a href="/dashboard/ryr/schedules/{{$schedule->id}}/detailgroup" class="btn btn-primary btn-custom mb-3">Add New</a>
+        <a href="/dashboard/ryr/schedules/{{$schedule->id}}" class="btn btn-primary btn-custom mb-3">Add New</a>
       </div>
     </div>
   </form>
@@ -122,8 +122,8 @@
         <th scope="col">No.</th>
         <th scope="col">Nama Murid</th>
         <th scope="col">Tipe</th>
-        <th scope="col">Total Attendance</th>
-        <th scope="col">Deskripsi</th>
+        <th scope="col">Tipe Pembayaran</th>
+        <th scope="col">Status Pembayaran</th>
         <th scope="col">Action</th>
       </tr>
     </thead>

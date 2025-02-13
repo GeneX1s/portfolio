@@ -124,7 +124,7 @@
         <th scope="col">Nama Murid</th>
         <th scope="col">Tipe</th>
         <th scope="col">Total Attendance</th>
-        <th scope="col">Deskripsi</th>
+        <th scope="col">Pembayaran</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -140,7 +140,7 @@
             <td>{{ $participant->nama_member }}</td>
             <td>{{ $participant->tipe }}</td>
             <td>{{ $attendance }}</td>
-            <td>{{ $participant->deskripsi }}</td>
+            <td>{{ $participant->payment_type }}</td>
             <td>
 
             <form action="/dashboard/ryr/participants/{{ $participant->id }}/delete" method="POST" class="d-inline">

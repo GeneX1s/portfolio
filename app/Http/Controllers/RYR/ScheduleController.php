@@ -55,7 +55,7 @@ class ScheduleController extends Controller
             ->when($tipe, function ($query) use ($tipe) {
                 return $query->where('tipe', 'like', '%' . $tipe . '%');
             })
-            ->where('id_kelas', $schedule->class_id)
+            ->where('id_schedule', $id)
             ->where('grup', 'Schedule')
             ->get();
 
@@ -160,21 +160,24 @@ class ScheduleController extends Controller
             // dd($class);
 
             $input = [
-                'id_kelas' => $id,
+                'id_kelas' => $class->id,
                 'id_member' => $participant['id_member'],
                 'nama_member' => $member->nama_murid,
                 'nama_kelas' => $class->nama_kelas,
                 'tipe' => $member->tipe,
                 'grup' => 'Schedule',
+                'payment_type' => 'Cash',
+                'id_schedule' => $id,
                 'deskripsi' => $member->deskripsi,
             ];
+            $input['grup'] = 'Schedule';
             $input['deskripsi'] = 'p';
-            dd($input);
+            // dd($input);
             ryr_participants::create($input);
         }
 
 
-        return redirect('/dashboard/ryr/schedules/' . $id . '/index')->with('success', 'Participants have been updated');
+        return redirect('/dashboard/ryr/schedules/' . $id . '/detail')->with('success', 'Participants have been updated');
     }
 
     public function detailGroup($id)
