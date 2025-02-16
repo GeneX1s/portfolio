@@ -11,10 +11,10 @@
       @method('put')
       @csrf
 
-  
+
       <div class="mb-3">
         <label for="saldo" class="form-label">Saldo</label>
-        <input type="integer" class="form-control @error('saldo') is-invalid @enderror" id="saldo" name="saldo" required
+        <input type="number" class="form-control @error('saldo') is-invalid @enderror" id="saldo" name="saldo" required
           autofocus value="{{$balance->saldo}}">
         @error('saldo')
         <div class="invalid-feedback">
@@ -26,7 +26,7 @@
       @if($balance->tipe == "Investment")
       <div class="mb-3">
         <label for="dividen" class="form-label">Bunga/Dividen</label>
-        <input type="integer" class="form-control @error('dividen') is-invalid @enderror" id="dividen" name="dividen" required
+        <input type="number" class="form-control @error('dividen') is-invalid @enderror" id="dividen" name="dividen" required
           autofocus value="{{$balance->dividen}}">
         @error('dividen')
         <div class="invalid-feedback">
