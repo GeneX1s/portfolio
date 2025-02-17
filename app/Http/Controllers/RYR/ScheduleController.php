@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\RYR\ryr_class;
 use App\Models\RYR\ryr_members;
 use App\Models\RYR\ryr_participants;
+use App\Models\Transaction;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -55,7 +56,7 @@ class ScheduleController extends Controller
         $search = $request->nama_murid;
         $tipe = $request->tipe;
         $payment_status = $request->payment_status;
-// dd($request->all());
+        // dd($request->all());
         $schedule = ryr_schedules::where('id', $id)->first();
         $participants = ryr_participants::query()
             ->when($search, function ($query) use ($search) {
@@ -70,14 +71,26 @@ class ScheduleController extends Controller
             ->where('id_schedule', $id)
             ->where('grup', 'Schedule')
             ->get();
-
+        // dd($id);
+        // dd($schedule);
         $class = ryr_class::where('id', $schedule->class_id)->first();
+        $total = 0;
 
+        foreach ($participants as $participant) {
+            if ($participant->tipe == 'Non-Member') {
+                $total = $total + 1000000;
+            } else if ($participant->tipe == 'Bulanan 1') {
+                // $total = $total + 800000;
+            } else {
+                // $total = $total + 400000;
+            }
+        }
 
         return view('dashboard.ryr.schedules.detail', [
             'participants' => $participants,
             'schedule' => $schedule,
             'id' => $id,
+            'total' => $total,
             'class' => $class,
         ]);
     }
@@ -104,10 +117,11 @@ class ScheduleController extends Controller
 
         $code = md5(Str::random(5));
         if ($input['class_id'] != 0) {
-
             $class = ryr_class::where('id', $input['class_id'])->first();
             $input['class_name'] = $class->nama_kelas;
             $input['teacher_name'] = $class->teacher;
+            $input['harga'] = $class->biaya;
+            // dd($class->teacher);
             $input['tipe'] = 'Regular';
         } else {
             $input['class_id'] = substr($input['teacher_name'], 0, 5) . '_' . $code;
@@ -190,6 +204,7 @@ class ScheduleController extends Controller
                 'nama_kelas' => $schedule->class_name,
                 'tipe' => $member->tipe,
                 'grup' => 'Schedule',
+                'harga' => $participant['harga'],
                 'payment_type' => 'Cash',
                 'id_schedule' => $id,
                 'deskripsi' => $member->deskripsi,
@@ -231,12 +246,36 @@ class ScheduleController extends Controller
     public function deleteGroup(Request $request)
     {
 
+        //id adalah milik participant
         // dd($request->id);
-        $id = ryr_participants::where('id', $request->id)->first()->id;
-        $class = ryr_participants::where('id', $id)->first()->id_kelas;
-        ryr_participants::where('id', $id)->delete();
+        $schedule = ryr_participants::where('id', $request->id)->first()->id_schedule;
+        ryr_participants::where('id', $request->id)->delete();
 
         // return redirect()->route('participants.index', ['id' => $id])->with('success', 'Participant has been deleted');
-        return redirect('/dashboard/ryr/schedules/' . $id . '/detail')->with('success', 'Participants have been updated');
+        return redirect('/dashboard/ryr/schedules/' . $schedule . '/detail')->with('success', 'Participant has been deleted');
+    }
+
+    public function finalize($id, Request $request)
+    {
+        $schedules = ryr_schedules::where('id', $id)->first();
+
+        $input = [];
+        $input['status'] = 'Done';
+
+        $schedules->update($input);
+
+        Transaction::create([
+            'nominal' => $request['nominal'],
+            'kategori' => 'Pendapatan',
+            'sub_kategori' => 'required',
+            'balance' => 'RYR',
+            'deskripsi' => 'nullable',
+            'created_at' => now(),
+            'status' => "Active",
+        ]);
+
+        return view('dashboard.ryr.schedules.finalize', [
+            'schedules' => $schedules,
+        ]);
     }
 }

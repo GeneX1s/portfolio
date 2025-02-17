@@ -60,7 +60,7 @@
 
 <hr>
 
-  <h3>Private Class</h3>
+  <h3>Special Class</h3>
   <form method="post" autocomplete="off" action="/dashboard/ryr/schedules" class="mb-5" enctype="multipart/form-data">
     <!-- multipart form data harus supaya bisa upload file(img dll) -->
     @csrf
@@ -89,6 +89,16 @@
         @enderror
     </div>
 
+    <div class="mb-3">
+        <label for="harga" class="form-label">Harga</label>
+        <input type="number" class="form-control @error('harga') is-invalid @enderror" id="harga"
+            name="harga" autofocus value="{{old('harga')}}">
+        @error('harga')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
+    </div>
 
 
     <div class="mb-3">

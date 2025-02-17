@@ -20,9 +20,11 @@ class ryr_schedules extends Model
     protected $fillable = [
         'class_id',
         'class_name',
+        'teacher_name',
         'status',
         'tanggal',
         'tipe',
+        'harga',
         'description'
     ];
 
