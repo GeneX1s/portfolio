@@ -174,9 +174,13 @@ Route::get('/dashboard/ryr/schedules/index', [ScheduleController::class, 'index'
 Route::get('/dashboard/ryr/schedules/create', [ScheduleController::class, 'create'])->middleware('auth')->name('dashboard.schedules.create');
 Route::get('/dashboard/ryr/schedules/{id}/detail', [ScheduleController::class, 'indexGroup'])->middleware('auth')->name('dashboard.schedules.detail');
 Route::get('/dashboard/ryr/schedules/{id}', [ScheduleController::class, 'detailGroup'])->middleware('auth');
+Route::get('/dashboard/ryr/schedules/{id}/editparticipant', [ScheduleController::class, 'editParticipant'])->middleware('auth')->name('dashboard.ryr.edit');
+Route::put('/dashboard/ryr/schedules/{id}/updateParticipant', [ScheduleController::class, 'updateParticipant'])->middleware('auth');
 Route::post('/dashboard/ryr/schedules/{id}/participant', [ScheduleController::class, 'editGroup'])->middleware('auth');
+Route::post('/dashboard/ryr/schedules/{id}/finalize', [ScheduleController::class, 'finalize'])->middleware('auth')->name('dashboard.ryr.finalize');
 Route::delete('/dashboard/ryr/schedules/{id}/delete', [ScheduleController::class, 'deleteGroup'])->middleware('auth');
 Route::resource('/dashboard/ryr/schedules', ScheduleController::class)->middleware('auth');
+
 
 //participants
 Route::get('/dashboard/ryr/participants/{id}/index', [ParticipantController::class, 'indexGroup'])->middleware('auth');

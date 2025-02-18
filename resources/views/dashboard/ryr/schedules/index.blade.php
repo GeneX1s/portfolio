@@ -158,7 +158,7 @@
         <tbody>
             @foreach ($schedules as $schedule)
             @php
-                $count = $participants
+            $count = $participants
             ->where('id_schedule', $schedule->id)
             ->where('grup', 'Schedule')
             ->count();
@@ -172,6 +172,7 @@
                 <td>{{$count}}</td>
                 <td>{{$schedule->status}}</td>
                 <td>
+                    @if ($schedule->status == 'Ongoing')
                     <form action="/dashboard/ryr/schedules/{{$schedule->id}}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
@@ -181,6 +182,7 @@
                         </button>
                     </form>
 
+                    @if($schedule->tipe != 'Regular')
                     <form action="/dashboard/ryr/schedules/{{ $schedule->id }}/edit" class="d-inline">
                         @csrf
                         @method('POST')
@@ -190,6 +192,8 @@
                         </button>
                     </form>
 
+                    @endif
+
                     <form action="/dashboard/ryr/schedules/{{ $schedule->id }}/detail" class="d-inline">
                         @csrf
                         @method('POST')
@@ -198,6 +202,7 @@
                             <i class="fas fa-regular fa-list"></i>
                         </button>
                     </form>
+                    @endif
 
                 </td>
 
@@ -208,11 +213,6 @@
     </table>
 
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="mb-1">
-                <a class="btn btn-warning btn-custom" href="{{ url('/export-schedules') }}">Export to Excel</a>
-            </div>
-        </div>
 
         <div class="col-12 col-md-6 col-lg-4">
             <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>

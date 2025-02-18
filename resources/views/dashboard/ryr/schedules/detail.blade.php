@@ -161,9 +161,11 @@
             @foreach ($participants as $participant)
 
             @php
-            $total = 0;
 
-            $input = 30000
+
+            if($participant->payment_status == 'Done'){
+            $total += $participant->nominal;
+            }
             @endphp
             <tr>
                 <td>{{ $loop->iteration }}</td>
@@ -173,6 +175,7 @@
                 <td>{{ $participant->payment_status}}</td>
                 <td>
 
+                    <a class="btn btn-warning btn-sm" href="{{ route('dashboard.ryr.edit', $participant->id) }}">Edit</a>
                     <form action="/dashboard/ryr/schedules/{{ $participant->id }}/delete" method="POST"
                         class="d-inline">
                         @method('delete')

@@ -54,13 +54,12 @@
     <div class="mb-1">
 
       <button type="submit" class="btn btn-primary">Create Session</button>
-      <a class="btn btn-danger btn-custom" href="/dashboard/ryr/schedules">Cancel</a>
     </div>
   </form>
 
 <hr>
 
-  <h3>Special Class</h3>
+  <h3>Special/Private Class</h3>
   <form method="post" autocomplete="off" action="/dashboard/ryr/schedules" class="mb-5" enctype="multipart/form-data">
     <!-- multipart form data harus supaya bisa upload file(img dll) -->
     @csrf
