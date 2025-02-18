@@ -72,7 +72,7 @@
 </div>
 @endif
 
-<h5 class="mt-2">Total Profit: </h5>
+<h5 class="mt-2">Total Profit: {{ $total }}</h5>
 <div class="table-responsive">
 
     <form action="{{ url('/dashboard/ryr/schedules/' . $schedule->id . '/detail') }}" method="GET">
@@ -162,10 +162,23 @@
 
             @php
 
+            if($schedule->tipe != 'Special'){//kelas terjadwal
+
+            if($participant->tipe == 'Reguler'){
+            $total += $schedule->harga;
+            }else{
+            $total += 40000;
+            }
+
+            }else{//special class
+            $total += $schedule->harga;
+            }
+
 
             if($participant->payment_status == 'Done'){
-            $total += $participant->nominal;
+            $done =+= $participant->nominal;
             }
+
             @endphp
             <tr>
                 <td>{{ $loop->iteration }}</td>
@@ -175,7 +188,8 @@
                 <td>{{ $participant->payment_status}}</td>
                 <td>
 
-                    <a class="btn btn-warning btn-sm" href="{{ route('dashboard.ryr.edit', $participant->id) }}">Edit</a>
+                    <a class="btn btn-warning btn-sm"
+                        href="{{ route('dashboard.ryr.edit', $participant->id) }}">Edit</a>
                     <form action="/dashboard/ryr/schedules/{{ $participant->id }}/delete" method="POST"
                         class="d-inline">
                         @method('delete')

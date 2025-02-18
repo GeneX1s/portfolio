@@ -15,8 +15,9 @@
 
 <div class="col-lg-8">
 
-  <form method="post" autocomplete="off" action="/dashboard/ryr/schedules/{{ $schedule->id }}" class="mb-5" enctype="multipart/form-data">
+  <form method="post" autocomplete="off" action="/dashboard/ryr/schedules/{{ $schedule->id }}/update" class="mb-5" enctype="multipart/form-data">
     <!-- multipart form data harus supaya bisa upload file(img dll) -->
+    @method('put')
     @csrf
 
 
@@ -79,7 +80,7 @@
 
     <div class="mb-1">
 
-      <button type="submit" class="btn btn-primary">Create Session</button>
+      <button type="submit" class="btn btn-primary">Update Session</button>
       <a class="btn btn-danger btn-custom" href="/dashboard/ryr/schedules">Cancel</a>
     </div>
   </form>

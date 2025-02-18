@@ -152,29 +152,15 @@ class ScheduleController extends Controller
             'tanggal' => 'required|date',
         ]);
         $input = $request->all();
-//
-if (empty($input['class_id'])) {
-    $input['class_id'] = 0;
-}
 
-$code = md5(Str::random(5));
-if ($input['class_id'] != 0) {
-    $class = ryr_class::where('id', $input['class_id'])->first();
-    $input['class_name'] = $class->nama_kelas;
-    $input['teacher_name'] = $class->teacher;
-    $input['harga'] = $class->biaya;
-    $input['tipe'] = 'Regular';
-} else {
-    $input['class_id'] = substr($input['teacher_name'], 0, 5) . '_' . $code;
-    $input['tipe'] = 'Special';
-}
-//
-        if($request['class_id']){
-            $class_name = ryr_class::where('id', $input['class_id'])->first()->nama_kelas;
-        }else{
-            $class_name = $input['nama_kelas'];
+        if (empty($input['class_id'])) {
+            $input['class_id'] = 0;
         }
-        $input['class_name'] = $class_name;
+        // dd($input);
+        $code = md5(Str::random(5));
+        $input['class_id'] = substr($input['teacher_name'], 0, 5) . '_' . $code;
+        $input['tipe'] = 'Special';
+        // $input['class_name'] = $input['nama_kelas'];
         $input['status'] = 'Done';
         $input['updated_at'] = now();
         // dd($input);
@@ -216,10 +202,10 @@ if ($input['class_id'] != 0) {
 
             // dd($class);
             // dd($member['tipe']);
-            if($member['tipe'] != 'Regular'){
+            if ($member['tipe'] != 'Regular') {
                 // dd('tes');
                 $payType = 'Bulanan';
-            }else{
+            } else {
                 $payType = 'Cash';
             }
 
@@ -297,10 +283,10 @@ if ($input['class_id'] != 0) {
         ]);
     }
 
-    public function updateParticipant(Request $request,$id)
+    public function updateParticipant(Request $request, $id)
     {
         $participant = ryr_participants::findOrFail($id);
-// dd($request);
+        // dd($request);
         $input = $request->all();
 
         $participant->update($input);
@@ -311,6 +297,9 @@ if ($input['class_id'] != 0) {
 
     public function finalize($id, Request $request)
     {
+
+        $code = md5(Str::random(10));
+        $date = now();
         $schedules = ryr_schedules::where('id', $id)->first();
 
         $input = [];
@@ -318,7 +307,10 @@ if ($input['class_id'] != 0) {
 
         $schedules->update($input);
 
+        $nama_trx= 'RYR|' . $code . $date;
+
         Transaction::create([
+            'nama' => $nama_trx,
             'nominal' => $request['nominal'],
             'kategori' => 'Pendapatan',
             'sub_kategori' => 'required',
