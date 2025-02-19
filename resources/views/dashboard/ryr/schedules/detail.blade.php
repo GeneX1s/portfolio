@@ -71,8 +71,10 @@
     {{ session('success') }}
 </div>
 @endif
-
-<h5 class="mt-2">Total Profit: {{ $total }}</h5>
+@php
+    $done = 0;
+@endphp
+<h5 class="mt-2">Biaya Kelas: Rp.{{ number_format($schedule->harga, '2', ',', '.')}}</h5>
 <div class="table-responsive">
 
     <form action="{{ url('/dashboard/ryr/schedules/' . $schedule->id . '/detail') }}" method="GET">
@@ -93,6 +95,7 @@
                         <option value="Non-Member">Non-Member</option>
                         <option value="Bulanan 1">Bulanan 1</option>
                         <option value="Bulanan Special">Bulanan Special</option>
+                        <option value="Guest">Guest</option>
                     </select>
                 </div>
             </div>
@@ -162,21 +165,26 @@
 
             @php
 
+            $plus = 0;
             if($schedule->tipe != 'Special'){//kelas terjadwal
 
-            if($participant->tipe == 'Reguler'){
+            if($participant->tipe == 'Regular' || $participant->tipe == 'Guest'){//peserta biasa
             $total += $schedule->harga;
-            }else{
+            $plus += $schedule->harga;
+            }else{//bulanan
             $total += 40000;
+            $plus += 40000;
             }
 
             }else{//special class
             $total += $schedule->harga;
+            $plus += $schedule->harga;
             }
 
 
+
             if($participant->payment_status == 'Done'){
-            $done =+= $participant->nominal;
+            $done += $plus;
             }
 
             @endphp
@@ -203,6 +211,8 @@
         </tbody>
     </table>
     <h6 class=>Total Participants: {{ $participants->count() }}</h6>
+    <h6 class=>Total : Rp.{{ number_format($total, '2', ',', '.')}}</h6>
+    <h6 class=>Terbayar : Rp.{{ number_format($done, '2', ',', '.')}}</h6>
 
 
     <form action="{{ route('dashboard.ryr.finalize', $schedule->id) }}" method="POST">

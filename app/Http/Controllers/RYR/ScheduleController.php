@@ -182,13 +182,40 @@ class ScheduleController extends Controller
     public function editGroup(Request $request, $id)
     {
         $request->validate([
-            'participants' => 'required|array',
-            'participants.*.id_member' => 'required|string|max:255',
+            // 'participants' => 'required|array',
+            // 'participants.*.id_member' => 'required|string|max:255',
             // 'participants.*.nama_member' => 'required|string|max:255',
         ]);
 
         $schedule = ryr_schedules::where('id', $id)->first();
+        if (!$request->guests == null)
+        foreach($request->guests as $guest) {
+            // dd($guest);
+            $temp_id = md5(Str::random(10));
+            $guest['id'] = $temp_id;
+
+            $input = [
+                'id_kelas' => $schedule->class_id,
+                'id_member' => $temp_id,
+                'nama_member' => $guest['nama_member'],
+                'nama_kelas' => $schedule->class_name,
+                'tipe' => 'Guest',
+                'grup' => 'Schedule',
+                // 'harga' => $participant['harga'],
+                'payment_type' => 'Cash',
+                'id_schedule' => $id,
+            ];
+
+            $input['grup'] = 'Schedule';
+            $input['payment_status'] = 'Pending';
+            $input['deskripsi'] = 'Peserta baru';
+            // dd($input);
+            ryr_participants::create($input);
+        }
+
         // Loop through the participants array from the request
+
+        if (!$request->participants == null)
         foreach ($request->participants as $participant) {
 
             $member = ryr_members::where('id', $participant['id_member'])->first();
@@ -222,7 +249,8 @@ class ScheduleController extends Controller
                 'deskripsi' => $member->deskripsi,
             ];
             $input['grup'] = 'Schedule';
-            $input['deskripsi'] = 'p';
+            $input['payment_status'] = 'Pending';
+            $input['deskripsi'] = 'Peserta reguler';
             // dd($input);
             ryr_participants::create($input);
         }
@@ -307,19 +335,19 @@ class ScheduleController extends Controller
 
         $schedules->update($input);
 
-        $nama_trx= 'RYR|' . $code . $date;
-
+        $nama_trx = 'RYR|' . $code . $date;
+        $desc = $schedules->class_name;
         Transaction::create([
             'nama' => $nama_trx,
             'nominal' => $request['nominal'],
             'kategori' => 'Pendapatan',
             'sub_kategori' => 'required',
             'balance' => 'RYR',
-            'deskripsi' => 'nullable',
+            'deskripsi' => $desc,
             'created_at' => now(),
             'status' => "Active",
         ]);
 
-        return redirect('/dashboard/ryr/schedules/' . $id . '/detail')->with('success', 'Class finalized');
+        return redirect('/dashboard/ryr/schedules/')->with('success', 'Class finalized');
     }
 }

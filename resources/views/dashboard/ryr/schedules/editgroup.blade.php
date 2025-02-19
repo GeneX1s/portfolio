@@ -43,9 +43,9 @@
 
       const newParticipantField1 = `
         <div class="mb-3" id="participant-${participantCount1}">
-          <label for="nama_member_${participantCount1}" class="form-label">Participant ${participantCount1}</label>
-          <input type="text" class="form-control" id="nama_member_${participantCount1}" name="participants[${participantCount1}][nama_member]" required placeholder="Enter participant's name">
-          <input type="text" class="form-control mt-2" id="id_member_${participantCount1}" name="participants[${participantCount1}][id_member]" placeholder="Enter participant's ID">
+          <label for="nama_murid_${participantCount1}" class="form-label">Participant ${participantCount1}</label>
+          <input type="text" class="form-control" id="nama_murid_${participantCount1}" name="guests[${participantCount1}][nama_member]" required placeholder="Enter participant's name">
+
           <button type="button" class="btn btn-danger mt-2" onclick="removeParticipant('participant-${participantCount1}')">-</button>
         </div>
       `;

@@ -44,14 +44,14 @@ body {
   overflow: visible;
   background-color: #f8f9fa; /* Background color */
   transition: width 0.3s; /* Smooth transition for resizing */
-  position: relative; /* Center vertically */
+  position: fixed; /* Center vertically */
 
 }
 
 
 /* Content styling */
 .content {
-  /* margin-left: 250px; Leave space for sidebar */
+  margin-left: 220px; Leave space for sidebar
   padding: 20px; /* Padding for content */
   flex-grow: 1; /* Allow content to fill available space */
 }
@@ -59,7 +59,7 @@ body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .sidebar {
-    position: relative; /* Change to relative on mobile */
+    position: fixed; /* Change to relative on mobile */
     height: auto; /* Allow height to adjust */
     width: 100%; /* Full width on mobile */
     display: block !important; /* Ensure sidebar is shown */;
@@ -91,7 +91,7 @@ body {
   }
 
   .content {
-    margin-left: 0; /* Remove left margin */
+    margin-left: 300px; /* Remove left margin */
     padding: 10px; /* Reduce padding on mobile */
   }
 
