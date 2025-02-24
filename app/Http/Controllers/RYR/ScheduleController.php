@@ -128,6 +128,11 @@ class ScheduleController extends Controller
             $input['teacher_name'] = $class->teacher;
             $input['harga'] = $class->biaya;
             // dd($class->teacher);
+            if (strpos($class->nama_kelas, 'Wallrope') !== false) {
+                $input['tipe'] = 'Wallrope';
+            } else {
+                $input['tipe'] = 'Regular';
+            }
             $input['tipe'] = 'Regular';
         } else {
             $input['class_id'] = substr($input['teacher_name'], 0, 5) . '_' . $code;
@@ -347,7 +352,7 @@ class ScheduleController extends Controller
             'nama' => $nama_trx,
             'nominal' => $request['nominal'],
             'kategori' => 'Pendapatan',
-            'sub_kategori' => $schedules->teacher_name,
+            'sub_kategori' => $schedules->tipe,
             'balance' => 'RYR',
             'deskripsi' => $desc,
             'created_at' => now(),

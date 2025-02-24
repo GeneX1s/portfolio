@@ -15,7 +15,7 @@
 
 <div class="col-lg-8">
 
-    <h3>Regular Class</h3>
+    <h3>Regular/Wallrope Class</h3>
   <form method="post" autocomplete="off" action="/dashboard/ryr/schedules" class="mb-5" enctype="multipart/form-data">
     <!-- multipart form data harus supaya bisa upload file(img dll) -->
     @csrf

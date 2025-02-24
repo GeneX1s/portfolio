@@ -144,9 +144,14 @@ class DashboardController extends Controller
             'hoverBackgroundColor' => ['#006400', '#8B0000', '#00008B'],
         ];
 
+        //RYR
+        $wallrope = $transactions->where('sub_kategori', 'Rian')->pluck('nominal')->sum();
+        $hatha = $transactions->where('sub_kategori', 'Hatha')->pluck('nominal')->sum();
+        $special = $transactions->where('sub_kategori', 'Special')->pluck('nominal')->sum();
+
         $piedata2 = [
             'labels' => ['Wallrope', 'Hatha', 'Special'],
-            'data' => [$pendapatan_tahunan, $pengeluaran_tahunan, $investment_tahunan],
+            'data' => [$wallrope, $hatha, $special],
             'backgroundColor' => ['#1cc88a', '#FF0000', '#36b9cc'],
             'hoverBackgroundColor' => ['#006400', '#8B0000', '#00008B'],
         ];
