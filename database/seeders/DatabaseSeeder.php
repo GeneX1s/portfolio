@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         ryr_teachers::create([
-            'nama' => 'John Doe',
+            'nama' => 'Okta',
             'salary' => '5000000',
             'join_date' => now(),
             'dob' => '1990-01-01',
@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
             'id' => 'OKTA_060225',
             'nama_kelas' => 'Yoga for Beginners',
             'tipe' => 'public', // public, private
-            'teacher' => 'John Doe',
+            'teacher' => 'Okta',
             'schedule' => 'Monday and Wednesday 6-7 PM',
             'biaya' => 200000,
             'description' => 'A beginner level yoga class focusing on basic postures and breathing techniques.',
@@ -93,7 +93,7 @@ class DatabaseSeeder extends Seeder
             'id' => 'OKTA_060226',
             'nama_kelas' => 'Yoga for Intermediate',
             'tipe' => 'public', // public, private
-            'teacher' => 'John Doe',
+            'teacher' => 'Okta',
             'schedule' => 'Tuesday and Thursday 6-7 PM',
             'biaya' => 200000,
             'description' => 'An intermediate level yoga class focusing on more advanced postures and breathing techniques.',

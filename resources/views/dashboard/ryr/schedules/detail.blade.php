@@ -218,7 +218,7 @@
     <form action="{{ route('dashboard.ryr.finalize', $schedule->id) }}" method="POST">
         @csrf
         <!-- Hidden fields to pass values -->
-        <input type="hidden" name="nominal" value="{{ $total }}">
+        <input type="hidden" name="nominal" value="{{ $done }}">
         <input type="hidden" name="deskripsi" value="{{ $schedule->class_name }}">
 
         <div class="row">
