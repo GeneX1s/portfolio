@@ -360,11 +360,12 @@
                                                                                 <div
                                                                                         class="row no-gutters align-items-center">
                                                                                         <div class="col mr-2">
+                                                                                            @if (auth()->user()->role == 'super-admin')
                                                                                                 <div
-                                                                                                        class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                                                                        Spendable(This
-                                                                                                        Week)
-                                                                                                </div>
+                                                                                                class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                                                Spendable(This
+                                                                                                Week)
+                                                                                            </div>
                                                                                         @php
                                                                                 $anggaran = (($quota/4)- $pengeluaran_mingguan)
                                                                                         @endphp
@@ -375,6 +376,23 @@
                                                                                                         '2', ',', '.')
                                                                                                         }}</div>
                                                                                         </div>
+
+                                                                                        @endif
+                                                                                        @if (auth()->user()->role == 'ryr')
+                                                                                        {{-- {{ dd(auth()->user()->role) }} --}}
+                                                                                        <div
+                                                                                                class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                                                Income(This
+                                                                                                Week)
+                                                                                            </div>
+                                                                                                <div
+                                                                                                        class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                                                        Rp.{{
+                                                                                                        number_format($pendapatan_mingguan,
+                                                                                                        '2', ',', '.')
+                                                                                                        }}</div>
+                                                                                        </div>
+                                                                                        @endif
                                                                                         <div class="col-auto">
                                                                                                 <i
                                                                                                         class="fas fa-calendar fa-2x text-gray-300"></i>

@@ -51,6 +51,10 @@ class DashboardController extends Controller
       ->whereBetween('created_at', [$start_date, $end_date])
       ->pluck('nominal')->all();
 
+    $week_incomes = $transactions->where('kategori', 'Pendapatan')
+      ->whereBetween('created_at', [$start_date, $end_date])
+      ->pluck('nominal')->all();
+
     $month_outcomes = $transactions->where('kategori', 'Pengeluaran')
       ->whereBetween('created_at', [$start_month, $end_month])
       ->pluck('nominal')->all();
@@ -79,6 +83,7 @@ class DashboardController extends Controller
     $pendapatan_bulanan = 0;
     $pengeluaran_bulanan = 0;
     $pengeluaran_mingguan = 0;
+    $pendapatan_mingguan = 0;
     $year_now = Carbon::now()->format('Y');
     if($request->year){
       $year_now = $request->year;
@@ -86,6 +91,10 @@ class DashboardController extends Controller
 
     foreach ($week_outcomes as $week_outcome) {
       $pengeluaran_mingguan = $pengeluaran_mingguan + $week_outcome;
+    }
+
+    foreach ($week_incomes as $week_income) {
+      $pendapatan_mingguan = $pendapatan_mingguan + $week_income;
     }
     foreach ($month_outcomes as $month_outcome) {
       $pengeluaran_bulanan = $pengeluaran_bulanan + $month_outcome;
@@ -167,6 +176,7 @@ if ($messages->isEmpty()) {
       'fix_outcome' => $fix_outcome,
       'quota' => $quota,
       'pengeluaran_mingguan' => $pengeluaran_mingguan,
+      'pendapatan_mingguan' => $pendapatan_mingguan,
       'pengeluaran_bulanan' => $pengeluaran_bulanan,
       'pendapatan_bulanan' => $pendapatan_bulanan,
       'pengeluaran_tahunan' => $pengeluaran_tahunan,
