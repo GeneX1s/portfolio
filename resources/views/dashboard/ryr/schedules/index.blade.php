@@ -215,6 +215,18 @@
     <div class="row">
 
         <div class="col-12 col-md-6 col-lg-4">
+            <div class="mb-1">
+              <form action="{{ url('/dashboard/clear/schedules') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-secondary btn-custom"
+                onclick="return confirm('Are you sure?')">
+                  Clear All
+                </button>
+              </form>
+            </div>
+          </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
             <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>
         </div>
     </div>

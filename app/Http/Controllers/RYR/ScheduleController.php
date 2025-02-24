@@ -10,6 +10,7 @@ use App\Models\RYR\ryr_class;
 use App\Models\RYR\ryr_members;
 use App\Models\RYR\ryr_participants;
 use App\Models\Transaction;
+use Carbon\Carbon;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -25,8 +26,13 @@ class ScheduleController extends Controller
         $end_date = $request->end_date;
         $status = $request->status;
 
-        // dd($request->all());
-        // $schedule = ryr_schedules::all();
+        if (!$start_date) {
+            $start_date = Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s');
+          }
+          if (!$end_date) {
+            $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
+          }
+
         $schedule = ryr_schedules::query()
             ->when($start_date && $end_date, function ($query) use ($start_date, $end_date) {
                 return $query->whereDate('tanggal', '>=', $start_date)
@@ -38,7 +44,7 @@ class ScheduleController extends Controller
             ->when($status, function ($query) use ($status) {
                 return $query->where('status', 'like', '%' . $status . '%');
             })
-            ->get();
+            ->get()->sortByDesc('created_at');;
 
         $classes = ryr_class::all();
         $participants = ryr_participants::all();
@@ -341,13 +347,24 @@ class ScheduleController extends Controller
             'nama' => $nama_trx,
             'nominal' => $request['nominal'],
             'kategori' => 'Pendapatan',
-            'sub_kategori' => 'required',
+            'sub_kategori' => $schedules->teacher_name,
             'balance' => 'RYR',
             'deskripsi' => $desc,
             'created_at' => now(),
+            'profile' => 'RYR',
             'status' => "Active",
         ]);
 
         return redirect('/dashboard/ryr/schedules/')->with('success', 'Class finalized');
+    }
+
+    public function clear()
+    {
+
+      // Delete all transactions
+      ryr_schedules::query()->delete();
+
+      return redirect('/dashboard/ryr/schedules')->with('success', 'Cleared all schedules.');
+      // return redirect()->back()->with('success', 'Value updated successfully.');
     }
 }

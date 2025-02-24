@@ -179,6 +179,7 @@ Route::put('/dashboard/ryr/schedules/{id}/update', [ScheduleController::class, '
 Route::put('/dashboard/ryr/schedules/{id}/updateParticipant', [ScheduleController::class, 'updateParticipant'])->middleware('auth');
 Route::post('/dashboard/ryr/schedules/{id}/participant', [ScheduleController::class, 'editGroup'])->middleware('auth');
 Route::post('/dashboard/ryr/schedules/{id}/finalize', [ScheduleController::class, 'finalize'])->middleware('auth')->name('dashboard.ryr.finalize');
+Route::post('/dashboard/clear/schedules', [ScheduleController::class, 'clear'])->middleware('auth');
 Route::delete('/dashboard/ryr/schedules/{id}/delete', [ScheduleController::class, 'deleteGroup'])->middleware('auth');
 Route::resource('/dashboard/ryr/schedules', ScheduleController::class)->middleware('auth');
 

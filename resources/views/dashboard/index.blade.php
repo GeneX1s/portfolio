@@ -290,13 +290,14 @@
 
                                                         <!-- Nav Item - User Information -->
                                                         <li class="nav-item dropdown no-arrow">
+                                                            <p class="mt-3 text-gray-600">Welcome Back, {{ auth()->user()->username }}</p>
                                                                 <a class="nav-link dropdown-toggle" href="#"
                                                                         id="userDropdown" role="button"
                                                                         data-toggle="dropdown" aria-haspopup="true"
                                                                         aria-expanded="false">
                                                                         <span
                                                                                 class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}</span>
-                                                                        <img class="img-profile rounded-circle"
+                                                                        <img class="img-profile rounded-circle" style="width: 40px; height: 40px; object-fit: cover;"
                                                                                 src="../../dasbor/img/profile.jpg">
                                                                 </a>
                                                                 <!-- Dropdown - User Information -->
