@@ -127,13 +127,13 @@ class ScheduleController extends Controller
             $input['class_name'] = $class->nama_kelas;
             $input['teacher_name'] = $class->teacher;
             $input['harga'] = $class->biaya;
-            // dd($class->teacher);
+            // dd($class->nama_kelas);
             if (strpos($class->nama_kelas, 'Wallrope') !== false) {
+                // dd('tes');
                 $input['tipe'] = 'Wallrope';
             } else {
                 $input['tipe'] = 'Regular';
             }
-            $input['tipe'] = 'Regular';
         } else {
             $input['class_id'] = substr($input['teacher_name'], 0, 5) . '_' . $code;
             $input['tipe'] = 'Special';
