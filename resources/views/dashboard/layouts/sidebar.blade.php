@@ -178,7 +178,7 @@
             </div>
         </div>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/ryr/teachers">
             <i class="fas fa-fw fa-person"></i>
@@ -189,6 +189,12 @@
         <a class="nav-link" href="/dashboard/ryr/members">
             <i class="fas fa-fw fa-person"></i>
             <span>Members</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/portfolio2">
+            <i class="fas fa-fw fa-person"></i>
+            <span>RYR</span></a>
     </li>
 
     <!-- Divider -->

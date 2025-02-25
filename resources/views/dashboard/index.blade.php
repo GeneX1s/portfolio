@@ -83,6 +83,8 @@
                                 </div>
                             </li>
 
+                            @can('super-admin')
+
                             <!-- Nav Item - Alerts -->
                             <li class="nav-item dropdown no-arrow mx-1">
                                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -242,6 +244,7 @@
                                 </div>
                             </li>
 
+                            @endcan
                             <div class="topbar-divider d-none d-sm-block"></div>
 
                             <!-- Nav Item - User Information -->
@@ -996,7 +999,7 @@
                             </div>
                         </div>
                         @endif
-                        
+
                     </div>
                     <!-- /.container-fluid -->
 

@@ -25,7 +25,7 @@ class ryrSchedules extends Model
         'tanggal',
         'tipe',
         'harga',
-        'description'
+        'profit',
     ];
 
     /**

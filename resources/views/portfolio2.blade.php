@@ -34,7 +34,7 @@
 </head>
 
 <body>
-  
+
 
   <!-- Header Area Start -->
   <header class="top">
@@ -869,7 +869,6 @@
   <script src="portfolio2/js/main.js"></script>
 </body>
 
-<!-- Mirrored from htmldemo.net/handstand/handstand/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jul 2024 02:12:33 GMT -->
 
 </html>
 
