@@ -133,23 +133,23 @@
 
   <form action="{{ route('transactions.import') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    
+
     <div class="col-12 col-md-6 col-lg-4">
-        
+
       <div class="mb-3">
-        
+
         <label class="form-label" for="customFile">Import Data</label>
         <input type="file" class="form-control" id="customFile" name="file" />
-        
+
       </div>
-      
+
     </div>
     <div class="row">
     <div class="col-12 col-md-6 col-lg-4">
     <div class="mb-3">
-      
+
       <button type ="submit" class="btn btn-success btn-custom mb-3">(+)Import from Excel/CSV</a>
-      
+
       </div>
     </div>
 
@@ -157,11 +157,23 @@
 
 <div class="col-12 col-md-6 col-lg-4">
   <div class="mb-3">
-  
+
     <a class="btn btn-warning btn-custom" href="{{ url('/dashboard/report/generator') }}">Report Generator</a>
-  
+
   </div>
 </div>
+
+<div class="col-12 col-md-6 col-lg-4">
+  <div class="mb-3">
+
+    <form action="{{ url('/dashboard/transactions/monthlyCron') }}" method="POST" class="d-inline">
+      @csrf
+      <button type="submit" class="btn btn-warning btn-custom">Trigger Monthly</button>
+    </form>
+
+  </div>
+</div>
+
 </div>
 
   <table class="table table-striped table-sm">

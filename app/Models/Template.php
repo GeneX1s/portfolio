@@ -30,6 +30,7 @@ class Template extends Authenticatable
   protected $fillable = [
     'id_transact',
     'name',
+    'flag',
   ];
 
   /**

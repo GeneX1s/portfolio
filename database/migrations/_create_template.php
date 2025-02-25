@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_transact');
             $table->string('name');
+            $table->string('flag')->nullable();
             $table->timestamps();
         });
     }

@@ -375,4 +375,22 @@ class ScheduleController extends Controller
         return redirect('/dashboard/ryr/schedules')->with('success', 'Cleared all schedules.');
         // return redirect()->back()->with('success', 'Value updated successfully.');
     }
+
+    public function pay($id){
+
+        // $schedules = ryrSchedules::where('id', $id)->first();
+        $participant = ryrParticipants::where('id', $id)->first();
+        $input = [];
+
+        if($participant->payment_status == 'Done'){
+            $input['payment_status'] = 'Pending';
+        }else{
+            $input['payment_status'] = 'Done';
+        }
+
+
+        $participant->update($input);
+
+        return redirect('/dashboard/ryr/schedules/' . $participant->id_schedule . '/detail')->with('success', 'Payment updated');
+    }
 }

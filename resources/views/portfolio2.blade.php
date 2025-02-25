@@ -1,7 +1,7 @@
 {{-- Pawon Bule --}}
 {{-- @extends('layouts.main') --}}
 {{-- @section('container') --}}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>

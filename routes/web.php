@@ -77,6 +77,8 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::post('/dashboard/transactions/template', [TransactionController::class, 'template'])->middleware('auth');
     Route::post('/dashboard/transactions/setvalue', [TransactionController::class, 'setvalue'])->middleware('auth');
     Route::post('/dashboard/transactions/{transaction}/approve', [TransactionController::class, 'approve'])->middleware('auth');
+    Route::post('/dashboard/transactions/monthlyCron', [TransactionController::class, 'monthlyCron'])->middleware('auth');
+    Route::post('/dashboard/templates/{id}/setMonthly', [TransactionController::class, 'setMonthly'])->middleware('auth');
     Route::post('/dashboard/templates/{template}', [TransactionController::class, 'removeTemplate'])->middleware('auth');
 
     Route::post('/dashboard/clear/transactions', [TransactionController::class, 'clear'])->middleware('auth');
@@ -180,6 +182,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::post('/dashboard/ryr/schedules/{id}/participant', [ScheduleController::class, 'editGroup'])->middleware('auth');
     Route::post('/dashboard/ryr/schedules/{id}/finalize', [ScheduleController::class, 'finalize'])->middleware('auth')->name('dashboard.ryr.finalize');
     Route::post('/dashboard/clear/schedules', [ScheduleController::class, 'clear'])->middleware('auth');
+    Route::post('/dashboard/ryr/schedules/{id}/pay', [ScheduleController::class, 'pay'])->middleware('auth');
     Route::delete('/dashboard/ryr/schedules/{id}/delete', [ScheduleController::class, 'deleteGroup'])->middleware('auth');
     Route::resource('/dashboard/ryr/schedules', ScheduleController::class)->middleware('auth');
 

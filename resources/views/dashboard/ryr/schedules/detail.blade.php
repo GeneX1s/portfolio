@@ -196,6 +196,12 @@
                 <td>{{ $participant->payment_status}}</td>
                 <td>
 
+                    <form action="/dashboard/ryr/schedules/{{ $participant->id }}/pay" method="POST"
+                        class="d-inline">
+                        @method('post')
+                        @csrf
+                        <button class="btn btn-success btn-sm">Pay</button>
+                    </form>
                     <a class="btn btn-warning btn-sm"
                         href="{{ route('dashboard.ryr.edit', $participant->id) }}">Edit</a>
                     <form action="/dashboard/ryr/schedules/{{ $participant->id }}/delete" method="POST"

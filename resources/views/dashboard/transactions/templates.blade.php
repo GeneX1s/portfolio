@@ -91,6 +91,7 @@
         <th scope="col">Deskripsi</th>
         <th scope="col">Nominal</th>
         <th scope="col">Date</th>
+        <th scope="col">Flag</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -99,7 +100,7 @@
     @php
 
         $trx = \App\Models\Transaction::where('id', $template->id_transact)->first();
-        
+
     @endphp
 
       <tr>
@@ -109,11 +110,19 @@
         <td>{{$trx->deskripsi}}</td>
         <td>Rp.{{ number_format($trx->nominal, '2', ',', '.') }}</td>
         <td>{{$trx->created_at}}</td>
+        <td>{{$template->flag}}</td>
         <td>
+          <form action="/dashboard/templates/{{$template->id}}/setMonthly" method="post" class="d-inline">
+            @method('post')
+            @csrf
+            @if ($template->status != "Deleted")
+            <button class="badge bg-success border-0">
+              <i class="fas fa-regular fa-pen-nib"></i>
+            </button>
+          </form>
           <form action="/dashboard/templates/{{$template->id}}" method="post" class="d-inline">
             @method('delete')
             @csrf
-            @if ($template->status != "Deleted")
             <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
               <i class="fas fa-regular fa-trash"></i>
             </button>
