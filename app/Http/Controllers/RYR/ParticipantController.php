@@ -59,6 +59,10 @@ class ParticipantController extends Controller
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
+        if($input['tipe'] != 'Regular'){
+            $input['payment_type'] = 'Bulanan';
+        }
+
         ryr_participants::create($input);
 
         // dd('ok');

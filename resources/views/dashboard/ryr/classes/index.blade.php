@@ -184,11 +184,11 @@
   </table>
 
   <div class="row">
-  <div class="col-12 col-md-6 col-lg-4">
+  {{-- <div class="col-12 col-md-6 col-lg-4">
     <div class="mb-1">
       <a class="btn btn-warning btn-custom" href="{{ url('/export-classes') }}">Export to Excel</a>
     </div>
-  </div>
+  </div> --}}
 
     <div class="col-12 col-md-6 col-lg-4">
         <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>

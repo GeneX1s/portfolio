@@ -210,7 +210,7 @@
 
         </tbody>
     </table>
-    <h6 class=>Total Participants: {{ $participants->count() }}</h6>
+    <h6 class=>Total Murid: {{ $participants->count() }}</h6>
     <h6 class=>Total : Rp.{{ number_format($total, '2', ',', '.')}}</h6>
     <h6 class=>Terbayar : Rp.{{ number_format($done, '2', ',', '.')}}</h6>
 

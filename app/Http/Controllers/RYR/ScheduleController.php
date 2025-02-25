@@ -230,7 +230,7 @@ class ScheduleController extends Controller
         foreach ($request->participants as $participant) {
 
             $member = ryr_members::where('id', $participant['id_member'])->first();
-            $class = ryr_class::where('id', $schedule->class_id)->first();
+            $template = ryr_participants::where('id', $participant['id_member'])->where('grup','Template')->first();
 
             $participant['nama_member'] = $member->nama_member;
             $participant['id_kelas'] = $member->id_kelas;
@@ -238,14 +238,16 @@ class ScheduleController extends Controller
             $participant['tipe'] = $member->tipe;
             $participant['deskripsi'] = $member->deskripsi;
 
-            // dd($class);
-            // dd($member['tipe']);
-            if ($member['tipe'] != 'Regular') {
-                // dd('tes');
-                $payType = 'Bulanan';
-            } else {
-                $payType = 'Cash';
-            }
+            // if ($member['tipe'] != 'Regular') {
+
+            //     $payType = 'Bulanan';
+            // }
+                if($template){
+                    $payType = $template->payment_type;
+                }else{
+                    $payType = 'Cash';
+                }
+
 
             $input = [
                 'id_kelas' => $schedule->class_id,

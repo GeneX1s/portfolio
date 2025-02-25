@@ -93,7 +93,11 @@ class TransactionController extends Controller
 
   public function pending()
   {
-    $transactions = Transaction::where('status', 'Pending')
+
+    $userId = Auth::id();
+    $userRole = User::where('id', $userId)->first()->role;
+
+    $transactions = Transaction::where('status', 'Pending')->where('profile', $userRole)
       ->get()->sortByDesc('created_at');
 
     $total = 0;

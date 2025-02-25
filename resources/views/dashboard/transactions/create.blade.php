@@ -136,20 +136,26 @@
       @csrf
       @method('POST')
       <!-- Not strictly necessary with `POST` method -->
+      @can('super-admin')
+
       <div class="mb-3">
-        <label for="template" class="form-label">Use Template</label>
-        <select class="form-control" name="template">
-          @foreach ($templates as $template)
-          <option value="{{$template->id}}" selected> {{$template->name}}</option>
-          @endforeach
-        </select>
-      </div>
-
-
-  <div class="row">
-        <div class="col-md-4">
-          <button type="submit" class="btn btn-primary btn-custom">Use Template</button>
+          <label for="template" class="form-label">Use Template</label>
+          <select class="form-control" name="template">
+              @foreach ($templates as $template)
+              <option value="{{$template->id}}" selected> {{$template->name}}</option>
+              @endforeach
+            </select>
         </div>
+        @endcan
+
+
+
+      <div class="row">
+          @can('super-admin')
+          <div class="col-md-4">
+              <button type="submit" class="btn btn-primary btn-custom">Use Template</button>
+            </div>
+            @endcan
         <div class="col-md-2">
           <a class="btn btn-danger btn-custom" href="/dashboard/transactions/index">Cancel</a>
         </div>
