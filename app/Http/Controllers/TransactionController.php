@@ -44,6 +44,8 @@ class TransactionController extends Controller
       $profile_filter = 'ryr';
     } else if ($userRole == 'finance') {
       $profile_filter = 'ryr';
+    }else if ($userRole == 'ryr') {
+      $profile_filter = 'ryr';
     }
     // dd($profile_filter);
 
@@ -194,14 +196,19 @@ class TransactionController extends Controller
   {
     $balanceHis = BalanceHis::where('transaction_id', $transaction->nama)->first();
 
-    $balanceUpdate = Balance::where('nama', $balanceHis->balance_name)->first();
+    if($balanceHis){
+      $balanceUpdate = Balance::where('nama', $balanceHis->balance_name)->first();
+      if($balanceUpdate){
+
+          $balanceUpdate->update([
+            "saldo" => $balanceHis->saldo_before,
+          ]);
+      }
+    }
+
 
     $transaction = Transaction::where('id', $transaction->id)->first();
 
-
-    $balanceUpdate->update([
-      "saldo" => $balanceHis->saldo_before,
-    ]);
 
     $transaction->update([
       "status" => "Deleted",

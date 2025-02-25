@@ -995,8 +995,8 @@
 
                             </div>
                         </div>
-
                         @endif
+                        
                     </div>
                     <!-- /.container-fluid -->
 
