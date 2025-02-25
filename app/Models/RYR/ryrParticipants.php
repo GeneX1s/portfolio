@@ -8,24 +8,25 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-
-class ryr_teachers extends Model
+class ryrParticipants extends Model
 {
   use HasApiTokens, HasFactory, Notifiable;
 
-  protected $table = "ryr_teachers";
+  protected $table = "ryrParticipants";
   protected $primaryKey = 'id';
   public $incrementing = false;
   public $timestamps = false;
 
   protected $fillable = [
-    'nama',
-    'salary',
-    'join_date',
-    'dob',
-    'jenis_kelamin',
-    'status',
-    'foto',
+    'id_member',
+    'nama_member',
+    'id_kelas',
+    'nama_kelas',
+    'tipe',
+    'grup',
+    'payment_type',
+    'payment_status',
+    'id_schedule',
     'deskripsi',
   ];
 
@@ -34,9 +35,7 @@ class ryr_teachers extends Model
    *
    * @var array<int, string>
    */
-  protected $hidden = [
-  ];
+  protected $hidden = [];
 
-  protected $casts = [
-  ];
+  protected $casts = [];
 }

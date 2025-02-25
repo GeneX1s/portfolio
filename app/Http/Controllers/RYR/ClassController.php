@@ -4,10 +4,10 @@ namespace App\Http\Controllers\RYR;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\RYR\ryr_class;
+use App\Models\RYR\ryrClasses;
 use App\Http\Controllers\Controller;
-use App\Models\RYR\ryr_participants;
-use App\Models\RYR\ryr_teachers;
+use App\Models\RYR\ryrParticipants;
+use App\Models\RYR\ryrTeachers;
 
 class ClassController extends Controller
 {
@@ -20,8 +20,8 @@ class ClassController extends Controller
         $tipe = $request->tipe;
 
 
-        // $class = ryr_class::all();
-        $classes = ryr_class::query()
+        // $class = ryrClasses::all();
+        $classes = ryrClasses::query()
             ->when($search, function ($query) use ($search) {
                 return $query->where('nama_kelas', 'like', '%' . $search . '%');
             })
@@ -34,8 +34,8 @@ class ClassController extends Controller
             ->get();
 
 
-            $teachers = ryr_teachers::where('status','Active')->get();
-        return view('dashboard.ryr.classes.index',[
+        $teachers = ryrTeachers::where('status', 'Active')->get();
+        return view('dashboard.ryr.classes.index', [
 
             'classes' => $classes,
             'teachers' => $teachers,
@@ -45,8 +45,8 @@ class ClassController extends Controller
     public function create()
     {
 
-        $teachers = ryr_teachers::where('status','Active')->get();
-        return view('dashboard.ryr.classes.create',[
+        $teachers = ryrTeachers::where('status', 'Active')->get();
+        return view('dashboard.ryr.classes.create', [
             'teachers' => $teachers,
         ]);
     }
@@ -63,28 +63,28 @@ class ClassController extends Controller
         ]);
         // dd($input);
         $code = Str::random(5);
-        $input['id'] = $input['teacher'].'-'.$code;
+        $input['id'] = $input['teacher'] . '-' . $code;
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
-        ryr_class::create($input);
+        ryrClasses::create($input);
 
         return redirect('/dashboard/ryr/classes')->with('success', 'New class has been added');
     }
 
     public function show($id)
     {
-        $class = ryr_class::findOrFail($id);
+        $class = ryrClasses::findOrFail($id);
         return view('dashboard.ryr.classes.show');
     }
 
     public function edit($id)
     {
-        $class = ryr_class::findOrFail($id);
+        $class = ryrClasses::findOrFail($id);
 
-        $teachers = ryr_teachers::where('status','Active')->get();
+        $teachers = ryrTeachers::where('status', 'Active')->get();
 
-        return view('dashboard.ryr.classes.edit',[
+        return view('dashboard.ryr.classes.edit', [
             'class' => $class,
             'teachers' => $teachers,
         ]);
@@ -104,7 +104,7 @@ class ClassController extends Controller
         $input['updated_at'] = now();
         $input = $request->all();
 
-        $class = ryr_class::findOrFail($id);
+        $class = ryrClasses::findOrFail($id);
         $class->update($input);
 
         return redirect()->route('dashboard.ryr.classes.index');
@@ -112,7 +112,7 @@ class ClassController extends Controller
 
     public function destroy($id)
     {
-        $class = ryr_class::findOrFail($id);
+        $class = ryrClasses::findOrFail($id);
         $class->delete();
 
         return redirect()->route('dashboard.ryr.classes.index');

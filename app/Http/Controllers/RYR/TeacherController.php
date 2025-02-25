@@ -4,7 +4,7 @@ namespace App\Http\Controllers\RYR;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\RYR\ryr_teachers;
+use App\Models\RYR\ryrTeachers;
 use App\Http\Controllers\Controller;
 
 class TeacherController extends Controller
@@ -17,8 +17,8 @@ class TeacherController extends Controller
         $status = $request->status;
 
 
-        // $teacher = ryr_teachers::all();
-        $teachers = ryr_teachers::query()
+        // $teacher = ryrTeachers::all();
+        $teachers = ryrTeachers::query()
             ->when($search, function ($query) use ($search) {
                 return $query->where('nama', 'like', '%' . $search . '%');
             })
@@ -27,7 +27,7 @@ class TeacherController extends Controller
             })
             ->get();
 
-        return view('dashboard.ryr.teachers.index',[
+        return view('dashboard.ryr.teachers.index', [
             'teachers' => $teachers,
         ]);
     }
@@ -54,7 +54,7 @@ class TeacherController extends Controller
         $input['updated_at'] = now();
 
         // dd($input);
-        ryr_teachers::create($input);
+        ryrTeachers::create($input);
 
         // dd('ok');
 
@@ -63,14 +63,14 @@ class TeacherController extends Controller
 
     public function show($id)
     {
-        $teacher = ryr_teachers::findOrFail($id);
-        return view('dashboard.ryr.teachers.show', compact('ryr_teachers'));
+        $teacher = ryrTeachers::findOrFail($id);
+        return view('dashboard.ryr.teachers.show', compact('ryrTeachers'));
     }
 
     public function edit($id)
     {
-        $teacher = ryr_teachers::findOrFail($id);
-        return view('dashboard.ryr.teachers.edit',[
+        $teacher = ryrTeachers::findOrFail($id);
+        return view('dashboard.ryr.teachers.edit', [
             'teacher' => $teacher,
         ]);
     }
@@ -89,7 +89,7 @@ class TeacherController extends Controller
         ]);
 
         // dd($input['join_date']);
-        if($input['join_date'] == null){
+        if ($input['join_date'] == null) {
             $request['join_date'] = now();
         }
         // $input['join_date'] = now();
@@ -97,7 +97,7 @@ class TeacherController extends Controller
         $input['updated_at'] = now();
         $input = $request->all();
 
-        $teacher = ryr_teachers::findOrFail($id);
+        $teacher = ryrTeachers::findOrFail($id);
         $teacher->update($input);
 
         return redirect()->route('dashboard.teachers.index');
@@ -105,7 +105,7 @@ class TeacherController extends Controller
 
     public function destroy($id)
     {
-        $teacher = ryr_teachers::findOrFail($id);
+        $teacher = ryrTeachers::findOrFail($id);
         $teacher->delete();
 
         return redirect()->route('dashboard.ryr.teachers.index');

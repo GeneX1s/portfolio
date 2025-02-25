@@ -4,10 +4,10 @@ namespace App\Http\Controllers\RYR;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\RYR\ryr_participants;
-use App\Models\RYR\ryr_class;
+use App\Models\RYR\ryrParticipants;
+use App\Models\RYR\ryrClasses;
 use App\Http\Controllers\Controller;
-use App\Models\RYR\ryr_members;
+use App\Models\RYR\ryrMembers;
 use Illuminate\Support\Facades\DB;
 
 class ParticipantController extends Controller
@@ -17,7 +17,7 @@ class ParticipantController extends Controller
         $search = $request->nama_murid;
         $tipe = $request->tipe;
 
-        $participants = ryr_participants::query()
+        $participants = ryrParticipants::query()
             ->when($search, function ($query) use ($search) {
                 return $query->where('nama_murid', 'like', '%' . $search . '%');
             })
@@ -29,9 +29,9 @@ class ParticipantController extends Controller
             ->get();
 
         // dd($id);
-        // $class = ryr_class::get();
+        // $class = ryrClasses::get();
         // dd($class);
-        $class = ryr_class::where('id', $id)->first();
+        $class = ryrClasses::where('id', $id)->first();
 
         // Return the view without dynamically injecting $id into the path
         return view('dashboard.ryr.participants.index', [
@@ -59,11 +59,11 @@ class ParticipantController extends Controller
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
-        if($input['tipe'] != 'Regular'){
+        if ($input['tipe'] != 'Regular') {
             $input['payment_type'] = 'Bulanan';
         }
 
-        ryr_participants::create($input);
+        ryrParticipants::create($input);
 
         // dd('ok');
 
@@ -72,11 +72,11 @@ class ParticipantController extends Controller
 
     public function edit($id)
     {
-        $participant = ryr_participants::where('id_kelas', $id)->get();
+        $participant = ryrParticipants::where('id_kelas', $id)->get();
 
-        $members = ryr_members::get();
+        $members = ryrMembers::get();
         // dd($members);
-        $class = ryr_class::where('id', $id)->first();
+        $class = ryrClasses::where('id', $id)->first();
         $class_name = 0;
 
         // dd($participant);
@@ -111,7 +111,7 @@ class ParticipantController extends Controller
         $input['updated_at'] = now();
         $input = $request->all();
 
-        $participant = ryr_participants::findOrFail($id);
+        $participant = ryrParticipants::findOrFail($id);
         $participant->update($input);
 
         return redirect()->route('dashboard.participants.index');
@@ -128,8 +128,8 @@ class ParticipantController extends Controller
         // Loop through the participants array from the request
         foreach ($request->participants as $participant) {
 
-            $member = ryr_members::where('id', $participant['id_member'])->first();
-            $class = ryr_class::where('id', $id)->first();
+            $member = ryrMembers::where('id', $participant['id_member'])->first();
+            $class = ryrClasses::where('id', $id)->first();
 
             $participant['nama_member'] = $member->nama_member;
             $participant['id_kelas'] = $member->id_kelas;
@@ -151,7 +151,7 @@ class ParticipantController extends Controller
             ];
             $input['deskripsi'] = 'p';
 
-            ryr_participants::create($input);
+            ryrParticipants::create($input);
         }
 
 
@@ -162,9 +162,9 @@ class ParticipantController extends Controller
     {
 
         // dd($request->id);
-        $id = ryr_participants::where('id', $request->id)->first()->id;
-        $class = ryr_participants::where('id', $id)->first()->id_kelas;
-        ryr_participants::where('id', $id)->delete();
+        $id = ryrParticipants::where('id', $request->id)->first()->id;
+        $class = ryrParticipants::where('id', $id)->first()->id_kelas;
+        ryrParticipants::where('id', $id)->delete();
 
         // return redirect()->route('participants.index', ['id' => $id])->with('success', 'Participant has been deleted');
         return redirect('/dashboard/ryr/participants/' . $class . '/index')->with('success', 'Participant has been deleted');

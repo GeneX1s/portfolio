@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ryr_schedules', function (Blueprint $table) {
+        Schema::create('ryrSchedules', function (Blueprint $table) {
             $table->id();
             $table->string('class_id'); //OKTA_060225
             $table->string('class_name');
             $table->string('teacher_name');
-            $table->string('tipe');// public / private
+            $table->string('tipe'); // public / private
             $table->string('status');
             $table->string('harga');
             $table->date('tanggal');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ryr_schedules');
+        Schema::dropIfExists('ryrSchedules');
     }
 };

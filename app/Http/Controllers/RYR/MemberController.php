@@ -4,7 +4,7 @@ namespace App\Http\Controllers\RYR;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\RYR\ryr_members;
+use App\Models\RYR\ryrMembers;
 use App\Http\Controllers\Controller;
 
 class MemberController extends Controller
@@ -17,8 +17,8 @@ class MemberController extends Controller
         $tipe = $request->tipe;
 
 
-        // $member = ryr_members::all();
-        $member = ryr_members::query()
+        // $member = ryrMembers::all();
+        $member = ryrMembers::query()
             ->when($search, function ($query) use ($search) {
                 return $query->where('nama_murid', 'like', '%' . $search . '%');
             })
@@ -55,7 +55,7 @@ class MemberController extends Controller
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
-        ryr_members::create($input);
+        ryrMembers::create($input);
 
         // dd('ok');
 
@@ -64,13 +64,13 @@ class MemberController extends Controller
 
     public function show($id)
     {
-        $member = ryr_members::findOrFail($id);
+        $member = ryrMembers::findOrFail($id);
         return view('dashboard.ryr.members.show');
     }
 
     public function edit($id)
     {
-        $member = ryr_members::findOrFail($id);
+        $member = ryrMembers::findOrFail($id);
         return view('dashboard.ryr.members.edit', [
             'member' => $member,
         ]);
@@ -94,7 +94,7 @@ class MemberController extends Controller
         $input['updated_at'] = now();
         $input = $request->all();
 
-        $member = ryr_members::findOrFail($id);
+        $member = ryrMembers::findOrFail($id);
         $member->update($input);
 
         return redirect()->route('dashboard.members.index');
@@ -102,7 +102,7 @@ class MemberController extends Controller
 
     public function destroy($id)
     {
-        $member = ryr_members::findOrFail($id);
+        $member = ryrMembers::findOrFail($id);
         $member->delete();
 
         return redirect()->route('dashboard.ryr.members.index');

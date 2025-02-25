@@ -5,9 +5,9 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Balance;
-use App\Models\RYR\ryr_class;
-use App\Models\RYR\ryr_members;
-use App\Models\RYR\ryr_teachers;
+use App\Models\RYR\ryrClasses;
+use App\Models\RYR\ryrMembers;
+use App\Models\RYR\ryrTeachers;
 use App\Models\SetValue;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
             'tipe' => 'Lainnya',
         ]);
 
-        ryr_teachers::create([
+        ryrTeachers::create([
             'nama' => 'Okta',
             'salary' => '5000000',
             'join_date' => now(),
@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
             'status' => 'Active',
         ]);
 
-        ryr_class::create([
+        ryrClasses::create([
             'id' => 'OKTA_060225',
             'nama_kelas' => 'Yoga for Beginners',
             'tipe' => 'public', // public, private
@@ -89,7 +89,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'A beginner level yoga class focusing on basic postures and breathing techniques.',
         ]);
 
-        ryr_class::create([
+        ryrClasses::create([
             'id' => 'OKTA_060226',
             'nama_kelas' => 'Yoga for Intermediate',
             'tipe' => 'public', // public, private
@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'An intermediate level yoga class focusing on more advanced postures and breathing techniques.',
         ]);
 
-        ryr_members::create([
+        ryrMembers::create([
             'nama_murid' => 'Jane Doe',
             'tipe' => 'Regular',
             'join_date' => now(),
@@ -109,7 +109,7 @@ class DatabaseSeeder extends Seeder
             'deskripsi' => 'A dedicated member of the yoga class.',
         ]);
 
-        ryr_members::create([
+        ryrMembers::create([
             'nama_murid' => 'Alice Smith',
             'tipe' => 'Regular',
             'join_date' => now(),
@@ -119,7 +119,7 @@ class DatabaseSeeder extends Seeder
             'deskripsi' => 'A dedicated member of the yoga class.',
         ]);
 
-        ryr_members::create([
+        ryrMembers::create([
             'nama_murid' => 'Bob Johnson',
             'tipe' => 'Regular',
             'join_date' => now(),

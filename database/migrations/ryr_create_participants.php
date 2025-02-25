@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ryr_participants', function (Blueprint $table) {
+        Schema::create('ryrParticipants', function (Blueprint $table) {
             $table->id();
-            $table->string('id_member')->nullable();//bisa aja murid baru atau temporary
+            $table->string('id_member')->nullable(); //bisa aja murid baru atau temporary
             $table->string('nama_member')->nullable();
             $table->string('id_kelas')->required();
             $table->string('nama_kelas')->required();
-            $table->string('tipe')->required();//temporary atau member
-            $table->string('grup')->default('Template');//template atau schedule
-            $table->string('payment_type')->required();// transfer or cash
+            $table->string('tipe')->required(); //temporary atau member
+            $table->string('grup')->default('Template'); //template atau schedule
+            $table->string('payment_type')->required(); // transfer or cash
             $table->string('payment_status')->nullable();
             $table->string('id_schedule')->nullable();
             $table->text('deskripsi')->nullable();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ryr_participants');
+        Schema::dropIfExists('ryrParticipants');
     }
 };

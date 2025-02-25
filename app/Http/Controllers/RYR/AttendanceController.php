@@ -4,7 +4,7 @@ namespace App\Http\Controllers\RYR;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\RYR\ryr_attendance;
+use App\Models\RYR\ryrAttendances;
 use App\Http\Controllers\Controller;
 
 class AttendanceController extends Controller
@@ -17,8 +17,8 @@ class AttendanceController extends Controller
         $status = $request->status;
 
 
-        // $attendance = ryr_attendance::all();
-        $attendances = ryr_attendance::query()
+        // $attendance = ryrAttendances::all();
+        $attendances = ryrAttendances::query()
             ->when($search, function ($query) use ($search) {
                 return $query->where('nama', 'like', '%' . $search . '%');
             })
@@ -27,7 +27,7 @@ class AttendanceController extends Controller
             })
             ->get();
 
-        return view('dashboard.ryr.attendances.index',[
+        return view('dashboard.ryr.attendances.index', [
             'attendances' => $attendances,
         ]);
     }
@@ -54,7 +54,7 @@ class AttendanceController extends Controller
         $input['updated_at'] = now();
 
         // dd($input);
-        ryr_attendance::create($input);
+        ryrAttendances::create($input);
 
         // dd('ok');
 
@@ -63,14 +63,14 @@ class AttendanceController extends Controller
 
     public function show($id)
     {
-        $attendance = ryr_attendance::findOrFail($id);
-        return view('dashboard.ryr.attendances.show', compact('ryr_attendance'));
+        $attendance = ryrAttendances::findOrFail($id);
+        return view('dashboard.ryr.attendances.show', compact('ryrAttendances'));
     }
 
     public function edit($id)
     {
-        $attendance = ryr_attendance::findOrFail($id);
-        return view('dashboard.ryr.attendances.edit',[
+        $attendance = ryrAttendances::findOrFail($id);
+        return view('dashboard.ryr.attendances.edit', [
             'attendance' => $attendance,
         ]);
     }
@@ -91,7 +91,7 @@ class AttendanceController extends Controller
         $input['updated_at'] = now();
         $input = $request->all();
 
-        $attendance = ryr_attendance::findOrFail($id);
+        $attendance = ryrAttendances::findOrFail($id);
         $attendance->update($input);
 
         return redirect()->route('dashboard.ryr.attendances.index');
@@ -99,7 +99,7 @@ class AttendanceController extends Controller
 
     public function destroy($id)
     {
-        $attendance = ryr_attendance::findOrFail($id);
+        $attendance = ryrAttendances::findOrFail($id);
         $attendance->delete();
 
         return redirect()->route('dashboard.ryr.attendances.index');

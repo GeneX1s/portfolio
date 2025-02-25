@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ryr_class', function (Blueprint $table) {
+        Schema::create('ryrClasses', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('nama_kelas');
-            $table->string('tipe');//public, private
+            $table->string('tipe'); //public, private
             $table->string('teacher');
             $table->string('schedule');
             $table->integer('biaya');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ryr_class');
+        Schema::dropIfExists('ryrClasses');
     }
 };

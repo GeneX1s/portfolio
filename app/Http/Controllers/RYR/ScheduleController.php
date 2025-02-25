@@ -4,11 +4,11 @@ namespace App\Http\Controllers\RYR;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\RYR\ryr_schedules;
+use App\Models\RYR\ryrSchedules;
 use App\Http\Controllers\Controller;
-use App\Models\RYR\ryr_class;
-use App\Models\RYR\ryr_members;
-use App\Models\RYR\ryr_participants;
+use App\Models\RYR\ryrClasses;
+use App\Models\RYR\ryrMembers;
+use App\Models\RYR\ryrParticipants;
 use App\Models\Transaction;
 use Carbon\Carbon;
 
@@ -28,12 +28,12 @@ class ScheduleController extends Controller
 
         if (!$start_date) {
             $start_date = Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s');
-          }
-          if (!$end_date) {
+        }
+        if (!$end_date) {
             $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
-          }
+        }
 
-        $schedule = ryr_schedules::query()
+        $schedule = ryrSchedules::query()
             ->when($start_date && $end_date, function ($query) use ($start_date, $end_date) {
                 return $query->whereDate('tanggal', '>=', $start_date)
                     ->whereDate('tanggal', '<=', $end_date);
@@ -46,8 +46,8 @@ class ScheduleController extends Controller
             })
             ->get()->sortByDesc('created_at');;
 
-        $classes = ryr_class::all();
-        $participants = ryr_participants::all();
+        $classes = ryrClasses::all();
+        $participants = ryrParticipants::all();
 
         return view('dashboard.ryr.schedules.index', [
             'participants' => $participants,
@@ -63,8 +63,8 @@ class ScheduleController extends Controller
         $tipe = $request->tipe;
         $payment_status = $request->payment_status;
         // dd($request->all());
-        $schedule = ryr_schedules::where('id', $id)->first();
-        $participants = ryr_participants::query()
+        $schedule = ryrSchedules::where('id', $id)->first();
+        $participants = ryrParticipants::query()
             ->when($search, function ($query) use ($search) {
                 return $query->where('nama_member', 'like', '%' . $search . '%');
             })
@@ -79,7 +79,7 @@ class ScheduleController extends Controller
             ->get();
         // dd($id);
         // dd($schedule);
-        $class = ryr_class::where('id', $schedule->class_id)->first();
+        $class = ryrClasses::where('id', $schedule->class_id)->first();
         $total = 0;
 
         foreach ($participants as $participant) {
@@ -103,7 +103,7 @@ class ScheduleController extends Controller
 
     public function create()
     {
-        $classes = ryr_class::all();
+        $classes = ryrClasses::all();
 
         return view('dashboard.ryr.schedules.create', [
             'classes' => $classes,
@@ -123,7 +123,7 @@ class ScheduleController extends Controller
 
         $code = md5(Str::random(5));
         if ($input['class_id'] != 0) {
-            $class = ryr_class::where('id', $input['class_id'])->first();
+            $class = ryrClasses::where('id', $input['class_id'])->first();
             $input['class_name'] = $class->nama_kelas;
             $input['teacher_name'] = $class->teacher;
             $input['harga'] = $class->biaya;
@@ -142,7 +142,7 @@ class ScheduleController extends Controller
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
-        ryr_schedules::create($input);
+        ryrSchedules::create($input);
 
         // dd('ok');
 
@@ -151,8 +151,8 @@ class ScheduleController extends Controller
 
     public function edit($id)
     {
-        $schedule = ryr_schedules::findOrFail($id);
-        $classes = ryr_class::all();
+        $schedule = ryrSchedules::findOrFail($id);
+        $classes = ryrClasses::all();
         return view('dashboard.ryr.schedules.edit', compact('schedule', 'classes'));
     }
 
@@ -176,7 +176,7 @@ class ScheduleController extends Controller
         $input['updated_at'] = now();
         // dd($input);
 
-        $schedule = ryr_schedules::findOrFail($id);
+        $schedule = ryrSchedules::findOrFail($id);
         $schedule->update($input);
 
         return redirect('/dashboard/ryr/schedules/index')->with('success', 'Schedule has been updated');
@@ -184,7 +184,7 @@ class ScheduleController extends Controller
 
     public function destroy($id)
     {
-        $schedule = ryr_schedules::findOrFail($id);
+        $schedule = ryrSchedules::findOrFail($id);
         $schedule->delete();
 
         return redirect()->route('dashboard.schedules.index');
@@ -198,75 +198,75 @@ class ScheduleController extends Controller
             // 'participants.*.nama_member' => 'required|string|max:255',
         ]);
 
-        $schedule = ryr_schedules::where('id', $id)->first();
+        $schedule = ryrSchedules::where('id', $id)->first();
         if (!$request->guests == null)
-        foreach($request->guests as $guest) {
-            // dd($guest);
-            $temp_id = md5(Str::random(10));
-            $guest['id'] = $temp_id;
+            foreach ($request->guests as $guest) {
+                // dd($guest);
+                $temp_id = md5(Str::random(10));
+                $guest['id'] = $temp_id;
 
-            $input = [
-                'id_kelas' => $schedule->class_id,
-                'id_member' => $temp_id,
-                'nama_member' => $guest['nama_member'],
-                'nama_kelas' => $schedule->class_name,
-                'tipe' => 'Guest',
-                'grup' => 'Schedule',
-                // 'harga' => $participant['harga'],
-                'payment_type' => 'Cash',
-                'id_schedule' => $id,
-            ];
+                $input = [
+                    'id_kelas' => $schedule->class_id,
+                    'id_member' => $temp_id,
+                    'nama_member' => $guest['nama_member'],
+                    'nama_kelas' => $schedule->class_name,
+                    'tipe' => 'Guest',
+                    'grup' => 'Schedule',
+                    // 'harga' => $participant['harga'],
+                    'payment_type' => 'Cash',
+                    'id_schedule' => $id,
+                ];
 
-            $input['grup'] = 'Schedule';
-            $input['payment_status'] = 'Pending';
-            $input['deskripsi'] = 'Peserta baru';
-            // dd($input);
-            ryr_participants::create($input);
-        }
+                $input['grup'] = 'Schedule';
+                $input['payment_status'] = 'Pending';
+                $input['deskripsi'] = 'Peserta baru';
+                // dd($input);
+                ryrParticipants::create($input);
+            }
 
         // Loop through the participants array from the request
 
         if (!$request->participants == null)
-        foreach ($request->participants as $participant) {
+            foreach ($request->participants as $participant) {
 
-            $member = ryr_members::where('id', $participant['id_member'])->first();
-            $template = ryr_participants::where('id', $participant['id_member'])->where('grup','Template')->first();
+                $member = ryrMembers::where('id', $participant['id_member'])->first();
+                $template = ryrParticipants::where('id', $participant['id_member'])->where('grup', 'Template')->first();
 
-            $participant['nama_member'] = $member->nama_member;
-            $participant['id_kelas'] = $member->id_kelas;
-            $participant['nama_kelas'] = $member->nama_kelas;
-            $participant['tipe'] = $member->tipe;
-            $participant['deskripsi'] = $member->deskripsi;
+                $participant['nama_member'] = $member->nama_member;
+                $participant['id_kelas'] = $member->id_kelas;
+                $participant['nama_kelas'] = $member->nama_kelas;
+                $participant['tipe'] = $member->tipe;
+                $participant['deskripsi'] = $member->deskripsi;
 
-            // if ($member['tipe'] != 'Regular') {
+                // if ($member['tipe'] != 'Regular') {
 
-            //     $payType = 'Bulanan';
-            // }
-                if($template){
+                //     $payType = 'Bulanan';
+                // }
+                if ($template) {
                     $payType = $template->payment_type;
-                }else{
+                } else {
                     $payType = 'Cash';
                 }
 
 
-            $input = [
-                'id_kelas' => $schedule->class_id,
-                'id_member' => $participant['id_member'],
-                'nama_member' => $member->nama_murid,
-                'nama_kelas' => $schedule->class_name,
-                'tipe' => $member->tipe,
-                'grup' => 'Schedule',
-                // 'harga' => $participant['harga'],
-                'payment_type' => $payType,
-                'id_schedule' => $id,
-                'deskripsi' => $member->deskripsi,
-            ];
-            $input['grup'] = 'Schedule';
-            $input['payment_status'] = 'Pending';
-            $input['deskripsi'] = 'Peserta reguler';
-            // dd($input);
-            ryr_participants::create($input);
-        }
+                $input = [
+                    'id_kelas' => $schedule->class_id,
+                    'id_member' => $participant['id_member'],
+                    'nama_member' => $member->nama_murid,
+                    'nama_kelas' => $schedule->class_name,
+                    'tipe' => $member->tipe,
+                    'grup' => 'Schedule',
+                    // 'harga' => $participant['harga'],
+                    'payment_type' => $payType,
+                    'id_schedule' => $id,
+                    'deskripsi' => $member->deskripsi,
+                ];
+                $input['grup'] = 'Schedule';
+                $input['payment_status'] = 'Pending';
+                $input['deskripsi'] = 'Peserta reguler';
+                // dd($input);
+                ryrParticipants::create($input);
+            }
 
 
         return redirect('/dashboard/ryr/schedules/' . $id . '/detail')->with('success', 'Participants have been updated');
@@ -274,12 +274,12 @@ class ScheduleController extends Controller
 
     public function detailGroup($id)
     {
-        $participant = ryr_participants::where('id_kelas', $id)->get();
+        $participant = ryrParticipants::where('id_kelas', $id)->get();
 
-        $schedule = ryr_schedules::where('id', $id)->first();
-        $members = ryr_members::get();
+        $schedule = ryrSchedules::where('id', $id)->first();
+        $members = ryrMembers::get();
         // dd($members);
-        $class = ryr_class::where('id', $id)->first();
+        $class = ryrClasses::where('id', $id)->first();
         $class_name = 0;
 
         // dd($participant);
@@ -301,8 +301,8 @@ class ScheduleController extends Controller
 
         //id adalah milik participant
         // dd($request->id);
-        $schedule = ryr_participants::where('id', $request->id)->first()->id_schedule;
-        ryr_participants::where('id', $request->id)->delete();
+        $schedule = ryrParticipants::where('id', $request->id)->first()->id_schedule;
+        ryrParticipants::where('id', $request->id)->delete();
 
         // return redirect()->route('participants.index', ['id' => $id])->with('success', 'Participant has been deleted');
         return redirect('/dashboard/ryr/schedules/' . $schedule . '/detail')->with('success', 'Participant has been deleted');
@@ -310,11 +310,11 @@ class ScheduleController extends Controller
 
     public function editParticipant($id)
     {
-        $participant = ryr_participants::findOrFail($id);
+        $participant = ryrParticipants::findOrFail($id);
         // dd($participant);
-        $schedule = ryr_schedules::where('id', $participant->id_schedule)->first();
-        $members = ryr_members::get();
-        $class = ryr_class::where('id', $participant->id_kelas)->first();
+        $schedule = ryrSchedules::where('id', $participant->id_schedule)->first();
+        $members = ryrMembers::get();
+        $class = ryrClasses::where('id', $participant->id_kelas)->first();
         // dd($class);
         return view('dashboard.ryr.schedules.editparticipant', [
             'participant' => $participant,
@@ -326,7 +326,7 @@ class ScheduleController extends Controller
 
     public function updateParticipant(Request $request, $id)
     {
-        $participant = ryr_participants::findOrFail($id);
+        $participant = ryrParticipants::findOrFail($id);
         // dd($request);
         $input = $request->all();
 
@@ -341,7 +341,7 @@ class ScheduleController extends Controller
 
         $code = md5(Str::random(10));
         $date = now();
-        $schedules = ryr_schedules::where('id', $id)->first();
+        $schedules = ryrSchedules::where('id', $id)->first();
 
         $input = [];
         $input['status'] = 'Done';
@@ -369,10 +369,10 @@ class ScheduleController extends Controller
     public function clear()
     {
 
-      // Delete all transactions
-      ryr_schedules::query()->delete();
+        // Delete all transactions
+        ryrSchedules::query()->delete();
 
-      return redirect('/dashboard/ryr/schedules')->with('success', 'Cleared all schedules.');
-      // return redirect()->back()->with('success', 'Value updated successfully.');
+        return redirect('/dashboard/ryr/schedules')->with('success', 'Cleared all schedules.');
+        // return redirect()->back()->with('success', 'Value updated successfully.');
     }
 }
