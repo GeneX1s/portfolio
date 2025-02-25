@@ -84,8 +84,8 @@
       <div class="mb-3">
         <label for="kategori" class="form-label">Kategori</label>
         <select class="form-control" name="kategori">
-            <option value="Pendapatan" selected>Pendapatan</option>
-            <option value="Pengeluaran">Pengeluaran</option>
+            <option value="Pengeluaran" selected>Pengeluaran</option>
+            <option value="Pendapatan">Pendapatan</option>
         </select>
     </div>
 
@@ -111,9 +111,15 @@
         <label for="balance" class="form-label">Balance</label>
         <select class="form-control" name="balance">
           {{-- <option value="Cash" selected> Cash</option> --}}
+          @if (auth()->user()->role == 'super-admin')
+
           @foreach ($balances as $balance)
           <option value="{{$balance->nama}}"> {{$balance->nama}}</option>
           @endforeach
+          @else
+          <option value="RYR"> RYR</option>
+
+          @endif
         </select>
       </div>
 
