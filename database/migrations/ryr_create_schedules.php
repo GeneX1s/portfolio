@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('harga');
             $table->date('tanggal');
-            $table->text('description')->nullable();
+            $table->integer('profit')->default(0);
             $table->timestamps();
         });
     }

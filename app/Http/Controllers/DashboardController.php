@@ -29,14 +29,14 @@ class DashboardController extends Controller
 
         // Get the start and end dates for the current week
         // $start_date = Carbon::now()->startOfWeek()->subWeek()->format('Y-m-d H:i:s');
-        $start_date = $date->startOfWeek()->format('Y-m-d H:i:s');
-        $end_date = $date->endOfWeek()->format('Y-m-d H:i:s');
-        $start_year = $date->startOfYear()->format('Y-m-d H:i:s');
-        $end_year = $date->endOfYear()->format('Y-m-d H:i:s');
-        $start_month = $date->startOfMonth()->format('Y-m-d H:i:s');
-        $end_month = $date->endOfMonth()->format('Y-m-d H:i:s');
+        $start_date = $date->copy()->startOfWeek()->format('Y-m-d H:i:s');
+        $end_date = $date->copy()->endOfWeek()->format('Y-m-d H:i:s');
+        $start_year = $date->copy()->startOfYear()->format('Y-m-d H:i:s');
+        $end_year = $date->copy()->endOfYear()->format('Y-m-d H:i:s');
+        $start_month = $date->copy()->startOfMonth()->format('Y-m-d H:i:s');
+        $end_month = $date->copy()->endOfMonth()->format('Y-m-d H:i:s');
 
-
+// dd($start_month);
         $userId = Auth::id();
         $userRole = User::where('id', $userId)->first()->role;
 
@@ -99,8 +99,6 @@ class DashboardController extends Controller
         foreach ($month_outcomes as $month_outcome) {
             $pengeluaran_bulanan = $pengeluaran_bulanan + $month_outcome;
         }
-        $persen_bulan_ini = ($pengeluaran_bulanan / ($salary * 6)) * 100;
-
         foreach ($month_incomes as $month_income) {
             $pendapatan_bulanan = $pendapatan_bulanan + $month_income;
         }
@@ -145,8 +143,8 @@ class DashboardController extends Controller
         ];
 
         //RYR
-        $wallrope = $transactions->where('sub_kategori', 'Rian')->pluck('nominal')->sum();
-        $hatha = $transactions->where('sub_kategori', 'Hatha')->pluck('nominal')->sum();
+        $wallrope = $transactions->where('sub_kategori', 'Wallrope')->pluck('nominal')->sum();
+        $hatha = $transactions->where('sub_kategori', 'Regular')->pluck('nominal')->sum();
         $special = $transactions->where('sub_kategori', 'Special')->pluck('nominal')->sum();
 
         $piedata2 = [
@@ -194,10 +192,9 @@ class DashboardController extends Controller
             'pengeluaran_tahunan' => $pengeluaran_tahunan,
             'pendapatan_tahunan' => $pendapatan_tahunan,
             'investment_tahunan' => $investment_tahunan,
-            'persen_bulan_ini' => $persen_bulan_ini,
             'area_chart' => $area_chart,
             'piedata' => $piedata,
-            'piedata2' => $piedata2,
+            'piedata_ryr' => $piedata2,
             'years' => $years,
             'transactions' => $transactions,
             'tahun' => $request->year,

@@ -524,16 +524,13 @@
                                             <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                                 aria-labelledby="dropdownMenuLink">
                                                 <div class="dropdown-header">
-                                                    Dropdown Header:
+                                                    Options:
                                                 </div>
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another
-                                                    action</a>
+                                                <a class="dropdown-item" href="#">View Details</a>
+                                                <a class="dropdown-item" href="#">Download Report</a>
                                                 <div class="dropdown-divider">
                                                 </div>
-                                                <a class="dropdown-item" href="#">Something
-                                                    else
-                                                    here</a>
+                                                <a class="dropdown-item" href="#">Settings</a>
                                             </div>
                                         </div>
                                     </div>
@@ -642,7 +639,7 @@
 
                                     @php
                                     $pie = [];
-                                    $pie = $piedata2;
+                                    $pie = $piedata_ryr;
                                     @endphp
                                     @endif <script>
                                         document.addEventListener('DOMContentLoaded', function() {
@@ -690,6 +687,15 @@
                         <!-- Content Row -->
                         <div class="row">
 
+                            @php
+                            // use App\Models\Transaction;
+
+                            if(auth()->user()->role == 'ryr'){
+                            $title = "Class Profit";
+                            }else{
+                            $title = "Incomes";
+                            }
+                            @endphp
                             <!-- Content Column -->
                             <div class="col-lg-6 mb-4">
 
@@ -697,65 +703,69 @@
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary">
-                                            Spendings Category</h6>
+                                            Spendings</h6>
                                     </div>
 
                                     @php
-                                    use App\Models\Transaction;
 
-                                    $transact =
-                                    Transaction::where('status','Active')->where('kategori','Pengeluaran')->get();
+                                    $transact = $transactions->filter(function($transaction) {
+                                        return $transaction->kategori == 'Pengeluaran';
+                                    });
+                                    // Transaction::where('status','Active')->where('kategori','Pengeluaran')->where('profile',auth()->user()->role)->get();
+
+                                    $transact2 = $transactions->filter(function($transaction) {
+                                        return $transaction->kategori == 'Pendapatan';
+                                    });
+                                    // Transaction::where('status','Active')->where('kategori','Pendapatan')->where('profile',auth()->user()->role)->get();
 
                                     if($transact){
+                                    $total = 0;
+                                    $sub_kategori = [];
+                                    $categories = $transact->pluck('sub_kategori')->unique();
 
-                                    $lainnya =
-                                    $transact->where('sub_kategori','Lainnya')->sum('nominal');
+                                    foreach($categories as $category){
+                                    $sub_kategori[$category] = [
+                                    'nominal' => $transact->where('sub_kategori',$category)->sum('nominal'),
+                                    'percent' => ($transact->where('sub_kategori',$category)->sum('nominal') /
+                                    $transact->sum('nominal')) * 100
+                                    ];
+                                    }
+                                    }
 
-                                    $bensin =
-                                    $transact->where('sub_kategori','Transport')->sum('nominal');
+                                    if($transact2){
+                                    $total = 0;
+                                    $sub_kategori2 = [];
+                                    $categories = $transact2->pluck('sub_kategori')->unique();
 
-                                    $fixed =
-                                    $transact->where('sub_kategori','Fixed')->sum('nominal');
-
-                                    $internet =
-                                    $transact->where('sub_kategori','Internet')->sum('nominal');
-
-                                    $lifestyle =
-                                    $transact->where('sub_kategori','Lifestyle')->sum('nominal');
-
-                                    $total = $lainnya + $bensin + $fixed + $internet
-                                    + $lifestyle ;
-
-                                    // Calculate percentages
-                                    $percentLainnya = $total > 0 ? ($lainnya /
-                                    $total) * 100 : 0;
-                                    $percentBensin = $total > 0 ? ($bensin / $total)
-                                    * 100 : 0;
-                                    $percentFixed = $total > 0 ? ($fixed / $total) *
-                                    100 : 0;
-                                    $percentInternet = $total > 0 ? ($internet /
-                                    $total) * 100 : 0;
-                                    $percentLifestyle = $total > 0 ? ($lifestyle /
-                                    $total) * 100 : 0;
+                                    foreach($categories as $category){
+                                    $sub_kategori2[$category] = [
+                                    'nominal' => $transact2->where('sub_kategori',$category)->sum('nominal'),
+                                    'percent' => ($transact2->where('sub_kategori',$category)->sum('nominal') /
+                                    $transact2->sum('nominal')) * 100
+                                    ];
+                                    }
                                     }
 
                                     @endphp
 
                                     <div class="card-body">
+
+                                        @foreach ($sub_kategori as $sub_name => $sub)
+
                                         <h4 class="small font-weight-bold">
-                                            Lainnya <span class="float-right">{{
-                                                number_format($percentLainnya,
-                                                2) }}%</span>
+                                            {{ $sub_name }} <span class="float-right">{{
+                                                number_format($sub['percent'], 2) }}%</span>
                                         </h4>
                                         <div class="progress mb-4">
                                             <div class="progress-bar bg-danger" role="progressbar"
-                                                style="width: {{ number_format($percentLainnya, 2) }}%"
-                                                aria-valuenow="{{ number_format($percentLainnya, 2) }}"
-                                                aria-valuemin="0" aria-valuemax="100">
+                                                style="width: {{ number_format($sub['percent'], 2) }}%"
+                                                aria-valuenow="{{ number_format($sub['percent'], 2)}}" aria-valuemin="0"
+                                                aria-valuemax="100">
                                             </div>
                                         </div>
+                                        @endforeach
 
-                                        <h4 class="small font-weight-bold">
+                                        {{-- <h4 class="small font-weight-bold">
                                             Transport/Bensin <span class="float-right">{{
                                                 number_format($percentBensin,
                                                 2) }}%</span>
@@ -802,17 +812,9 @@
                                                 aria-valuenow="{{ number_format($percentLifestyle, 2) }}"
                                                 aria-valuemin="0" aria-valuemax="100">
                                             </div>
-                                        </div>
+                                        </div> --}}
 
-                                        <h4 class="small font-weight-bold">
-                                            Account Setup
-                                            <span class="float-right">Complete!</span>
-                                        </h4>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-muted" role="progressbar" style="width: 100%"
-                                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
 
@@ -904,6 +906,43 @@
 
                             <div class="col-lg-6 mb-4">
 
+                                <!-- Project Card Example -->
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">
+                                            {{ $title }}</h6>
+                                    </div>
+
+
+                                    <div class="card-body">
+
+                                        @foreach ($sub_kategori2 as $sub_name => $sub)
+
+                                        <h4 class="small font-weight-bold">
+                                            {{ $sub_name }} <span class="float-right">{{
+                                                number_format($sub['percent'], 2) }}%</span>
+                                        </h4>
+                                        <div class="progress mb-4">
+                                            <div class="progress-bar bg-success" role="progressbar"
+                                                style="width: {{ number_format($sub['percent'], 2) }}%"
+                                                aria-valuenow="{{ number_format($sub['percent'], 2)}}" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                            </div>
+                                        </div>
+                                        @endforeach
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        @if (auth()->user()->role == 'super-admin')
+
+                        <div class="row">
+                            <div class="col-lg-6 mb-4">
+
                                 <!-- Illustrations -->
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
@@ -957,6 +996,7 @@
                             </div>
                         </div>
 
+                        @endif
                     </div>
                     <!-- /.container-fluid -->
 

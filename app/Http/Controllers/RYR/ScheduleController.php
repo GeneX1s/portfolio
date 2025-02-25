@@ -343,6 +343,7 @@ class ScheduleController extends Controller
 
         $input = [];
         $input['status'] = 'Done';
+        $input['profit'] = $request['nominal'];
 
         $schedules->update($input);
 
