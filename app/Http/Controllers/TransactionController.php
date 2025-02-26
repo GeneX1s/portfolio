@@ -225,21 +225,21 @@ class TransactionController extends Controller
     }
 
 
-    public function template(Request $request)
+    public function template($id = null, Request $request = null)
     {
+        if ($id) {
+            $id_transact = Template::where('id', $id)->first()->id_transact;
+        } else {
+            $id_transact = Template::where('id', $request->input('template'))->first()->id_transact;
+        }
 
-        $id_transact = Template::where('id', $request->input('template'))->first()->id_transact;
         $transaction = Transaction::where('id', $id_transact)->first();
 
-        // if (!$transaction) {
-        //   return redirect()->back()->with('error', 'Transaction not found.');
-        // }
         if (!$transaction) {
             abort(404, 'Transaction not found.');
         }
 
         if ($transaction->status == 'Deleted') {
-
             return redirect()->back()->with('error', 'Template has been deleted');
         }
 
@@ -252,6 +252,7 @@ class TransactionController extends Controller
         } else if ($userRole == 'finance') {
             $transaction->profile = 'ryr';
         }
+
         $input = [
             'nama' => $transaction->nama,
             'nominal' => $transaction->nominal,
@@ -264,7 +265,6 @@ class TransactionController extends Controller
             'profile' => $transaction->profile,
         ];
 
-
         // Create a new transaction template
         Transaction::create($input);
 
@@ -273,7 +273,6 @@ class TransactionController extends Controller
         $thisBal = $input['balance'];
         $updateBal = Balance::where('nama', $thisBal)->first();
         $balHis = new BalanceHis();
-
 
         if ($input['kategori'] == 'Pengeluaran') {
             $newBal = $updateBal->saldo - $input['nominal'];
@@ -383,6 +382,7 @@ class TransactionController extends Controller
 
         // Delete all transactions
         Transaction::query()->delete();
+        Template::query()->delete();
 
         return redirect('/dashboard/transactions/index')->with('success', 'Cleared all transaction log.');
         // return redirect()->back()->with('success', 'Value updated successfully.');
@@ -467,7 +467,7 @@ class TransactionController extends Controller
 
         foreach ($monthlies as $monthly) {
             $this->template($monthly->id);
-            dd('hi');
+            // dd('hi');
         }
         return back()->with('success', 'Monthly transactions generated');
     }
