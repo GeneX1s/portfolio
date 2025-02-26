@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->integer('saldo');
             $table->string('tipe');
-            $table->float('dividen', 8, 2)->nullable();
+            $table->float('dividen', 4, 2)->nullable();
             $table->timestamps();
         });
     }
