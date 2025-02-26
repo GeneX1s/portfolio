@@ -23,10 +23,10 @@
         @enderror
       </div>
 
-      @if($balance->tipe == "Investment")
+      {{-- @if($balance->tipe == "Investment") --}}
       <div class="mb-3">
         <label for="dividen" class="form-label">Bunga/Dividen</label>
-        <input type="number" class="form-control @error('dividen') is-invalid @enderror" id="dividen" name="dividen" required
+        <input type="number" step="0.01" class="form-control @error('dividen') is-invalid @enderror" id="dividen" name="dividen" required
           autofocus value="{{$balance->dividen}}">
         @error('dividen')
         <div class="invalid-feedback">
@@ -34,7 +34,7 @@
         </div>
         @enderror
       </div>
-      @endif
+      {{-- @endif --}}
 
       <div class="mb-1">
       <button type="submit" class="btn btn-primary">Update Balance</button>
