@@ -10,7 +10,9 @@
   <meta name="description" content="Nicholas Owen- Portfolio" />
   <meta name="keywords" content="vcard, resposnive, retina, resume, jquery, css3, bootstrap, Unique, portfolio" />
   <meta name="author" content="lmtheme" />
-  <link rel="shortcut icon" href="favicon.ico">
+  {{-- <link rel="shortcut icon" href="/public/images/favicon.ico"> --}}
+
+  <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
   <link rel="stylesheet" href="/public/css/bootstrap.css" type="text/css">
   <link rel="stylesheet" href="/public/css/normalize.css" type="text/css">

@@ -11,7 +11,7 @@
   <meta name="description" content="Nicholas Owen- Portfolio" />
   <meta name="keywords" content="vcard, resposnive, retina, resume, jquery, css3, bootstrap, Unique, portfolio" />
   <meta name="author" content="lmtheme" />
-  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="shortcut icon" href="images/favicon.ico">
 
   <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ asset('css/normalize.css') }}" type="text/css">
@@ -768,7 +768,7 @@
                       <h5>Freelance Available</h5>
                     </div>
                   </div>
-                </div>  
+                </div>
                 <div class="col-sm-6 col-md-6 subpage-block">
                   <div class="block-title">
                     <h3>Contact Form</h3>

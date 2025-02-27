@@ -40,9 +40,9 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
         return view('portfolio1');
     })->name('portfolio1');
 
-    Route::get('/portfolio2', function () {
-        return view('portfolio2');
-    })->name('portfolio2');
+    Route::get('/ryr', function () {
+        return view('ryr');
+    })->name('ryr');
 
     Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
     Route::get('/dashboard/users/manage', [LoginController::class, 'manage'])->name('manage')->middleware('auth');

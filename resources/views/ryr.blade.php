@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Favicon Icon -->
-  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
   <link rel="stylesheet" href="portfolio2/css/bootstrap.min.css">
   <link rel="stylesheet" href="portfolio2/css/font-awesome.min.css">
@@ -86,7 +86,7 @@
                 <div class="text-content-wrapper">
                   <div class="text-content text-start">
                     <h5>Welcome to Roemah Yoga Rian</h5>
-                    <h1>Keep <span>Refresh & Strong</span> Your Body</h1>
+                    <h1>Keep <span>Refresh & Strengthen</span> Your Body</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer auctor pharetra iss neque.
                       Nullam cursus elit sit amet justo interdum facilisis id at tortor. </p>
                     <a class="banner-btn" href="gallery.html" data-text="read more"><span>read more</span></a>
