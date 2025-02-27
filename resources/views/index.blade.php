@@ -710,6 +710,15 @@
             <div class="border-block-top-110"></div>
             <div class="section-inner">
               <div class="section-title-block">
+
+                @if(session()->has('success'))
+                <div class="alert alert-success col-sm-2" role="alert" style="position: absolute; top: 10px; right: 10px; z-index: 1000; font-size: 1em; padding: 5px; text-align: center;">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="background: none; border: none; font-size: 1.2em; line-height: 1; position: absolute; top: 5px; right: 5px;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
                 <div class="section-title-wrapper">
                   <h2 class="section-title">Contact</h2>
                   <h5 class="section-description">Get in Touch</h5>
@@ -759,23 +768,27 @@
                       <h5>Freelance Available</h5>
                     </div>
                   </div>
-                </div>
-
+                </div>  
                 <div class="col-sm-6 col-md-6 subpage-block">
                   <div class="block-title">
                     <h3>Contact Form</h3>
                   </div>
 
-                  @if(session()->has('success'))
-<div class="alert alert-success col-lg-8" role="alert">
-  {{ session('success') }}
-</div>
-@endif
-                  <form method="post" action="/dashboard/contactus">
+                @php
+                    $submitCount = session('submit_count', 0);
+                @endphp
+
+                @if ($submitCount < 2)
+                    <form method="post" action="/dashboard/contactus">
+                        @php
+                            session(['submit_count' => $submitCount + 1]);
+                        @endphp
+                @else
+                    <p>You have reached the submission limit for this session.</p>
+                @endif
 
                     @csrf
                     <div class="messages"></div>
-
                     <div class="controls">
                       <div class="form-group">
                         <input id="form_name" type="text" name="name" class="form-control" placeholder="Full Name"
@@ -801,8 +814,9 @@
                         <div class="help-block with-errors"></div>
                       </div>
 
-                      <button type="submit" class="button btn-send">Send Message </button>
+                      <button type="submit" class="button btn-send" onsubmit="return ('Thanks for reaching out!')">Send Message </button>
                     </div>
+
                   </form>
                 </div>
               </div>

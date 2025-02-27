@@ -146,7 +146,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     // Route::post('contact-us', ['as' => 'contactus.store', 'uses' => 'ContactUSController@contactUSPost']);
     Route::get('/dashboard/contactus/index', [ContactUSController::class, 'contactUS'])->middleware('auth')->name('dashboard.contactus.index');
     Route::get('/dashboard/contactus/create', [ContactUSController::class, 'create'])->middleware('auth')->name('dashboard.contactus.create');
-    Route::resource('/dashboard/contactus', ContactUSController::class)->middleware('auth');
+    Route::resource('/dashboard/contactus', ContactUSController::class);
     /////////////////////////////////
 });
 
