@@ -28,6 +28,7 @@ class Balance extends Authenticatable
     'saldo',
     'tipe',
     'dividen',
+    'penerima_dividen',
     'updated_at',
   ];
 

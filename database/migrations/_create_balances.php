@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('saldo');
             $table->string('tipe');
             $table->float('dividen', 4, 2)->nullable();
+            $table->string('penerima_dividen')->nullable();
             $table->timestamps();
         });
     }

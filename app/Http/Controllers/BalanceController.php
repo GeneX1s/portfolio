@@ -57,12 +57,17 @@ class BalanceController extends Controller
 
     public function create(Request $request)
     {
-        return view('dashboard.balances.create', []);
+        $balances = Balance::get();
+        return view('dashboard.balances.create', [
+            'balances' => $balances,
+        ]);
     }
 
     public function edit(Balance $balance)
     {
+        $balances = Balance::get();
         return view('dashboard.balances.edit', [
+            'balances' => $balances,
             'balance' => $balance
         ]);
     }

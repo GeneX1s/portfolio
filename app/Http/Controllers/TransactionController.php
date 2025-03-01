@@ -464,10 +464,44 @@ class TransactionController extends Controller
     public function monthlyCron()
     {
         $monthlies = Template::where('flag', 'Monthly')->get();
+        $investments = Balance::where('tipe', 'Investment')->get();
 
         foreach ($monthlies as $monthly) {
             $this->template($monthly->id);
             // dd('hi');
+        }
+
+        foreach($investments as $investment){
+            if($investment->dividen > 0){
+                $dividen = (($investment->dividen * $investment->saldo) / 100)/12;
+                $id = 'DIV|' . md5(Str::random(10)) . now();
+                Transaction::create([
+                    'nama' => $id,
+                    'nominal' => $dividen,
+                    'kategori' => 'Pendapatan',
+                    'sub_kategori' => 'Investment',
+                    'balance' => $investment->penerima_dividen,
+                    'deskripsi' => 'Dividen' . $investment->nama . now(),
+                    'created_at' => now(),
+                    'status' => 'Active',
+                    'profile' => 'super-admin',
+                ]);
+
+                $balHis = new BalanceHis();
+                $newBalance = $investment->saldo + $dividen;
+                $balHis->create([
+                    'transaction_id' => $id,
+                    'balance_name' => $investment->penerima_dividen,
+                    'saldo_before' => $investment->saldo,
+                    'saldo_after' => $newBalance,
+                    'description' => 'Dividen' . $investment->nama . now(),
+                    'created_at' => now(),
+                ]);
+
+                $investment->update([
+                    'saldo' => $newBalance,
+                ]);
+            }
         }
         return back()->with('success', 'Monthly transactions generated');
     }
