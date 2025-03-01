@@ -40,8 +40,8 @@ body {
   height: 100vh; /* Full height for the sidebar */
   top: 0; /* Align to the top */
   left: 0; /* Align to the left */
-  overflow-y: auto; /* Enable scrolling if content overflows */
-  /* overflow: visible; */
+overflow-y: auto; /* Enable scrolling if content overflows */
+  overflow: visible;
   background-color: #f8f9fa; /* Background color */
   transition: width 0.3s; /* Smooth transition for resizing */
   position: fixed; /* Center vertically */
