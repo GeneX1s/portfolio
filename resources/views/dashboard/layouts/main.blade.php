@@ -41,7 +41,7 @@ body {
   top: 0; /* Align to the top */
   left: 0; /* Align to the left */
   overflow-y: auto; /* Enable scrolling if content overflows */
-  overflow: visible;
+  /* overflow: visible; */
   background-color: #f8f9fa; /* Background color */
   transition: width 0.3s; /* Smooth transition for resizing */
   position: fixed; /* Center vertically */
@@ -51,7 +51,7 @@ body {
 
 /* Content styling */
 .content {
-  margin-left: 220px; Leave space for sidebar
+  margin-left: 300px; Leave space for sidebar
   padding: 20px; /* Padding for content */
   flex-grow: 1; /* Allow content to fill available space */
 }
@@ -91,7 +91,7 @@ body {
   }
 
   .content {
-    margin-left: 300px; /* Remove left margin */
+    margin-left: 400px; /* Remove left margin */
     padding: 10px; /* Reduce padding on mobile */
   }
 
