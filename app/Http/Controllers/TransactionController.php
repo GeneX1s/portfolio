@@ -464,7 +464,9 @@ class TransactionController extends Controller
     public function monthlyCron()
     {
         $monthlies = Template::where('flag', 'Monthly')->get();
-        $investments = Balance::where('tipe', 'Investment')->get();
+        $investments = Balance::where('tipe', 'Investment')
+            ->whereNotNull('penerima_dividen')
+            ->get();
 
         foreach ($monthlies as $monthly) {
             $this->template($monthly->id);
@@ -488,17 +490,18 @@ class TransactionController extends Controller
                 ]);
 
                 $balHis = new BalanceHis();
-                $newBalance = $investment->saldo + $dividen;
+                $destAcct = Balance::where('id', $investment->penerima_dividen)->first();
+                $newBalance = $destAcct->saldo + $dividen;
                 $balHis->create([
                     'transaction_id' => $id,
                     'balance_name' => $investment->penerima_dividen,
-                    'saldo_before' => $investment->saldo,
+                    'saldo_before' => $destAcct->saldo,
                     'saldo_after' => $newBalance,
                     'description' => 'Dividen' . $investment->nama . now(),
                     'created_at' => now(),
                 ]);
 
-                $investment->update([
+                $destAcct->update([
                     'saldo' => $newBalance,
                 ]);
             }
