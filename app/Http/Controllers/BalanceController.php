@@ -79,11 +79,12 @@ class BalanceController extends Controller
             'saldo' => 'required',
             'tipe' => 'required',
             'dividen' => 'nullable',
+            'penerima_dividen' => 'nullable',
             'created_at' => 'nullable',
             'updated_at' => 'nullable',
         ]);
         $inputData['updated_at'] = Date::now();
-
+// 'penerima_dividen' => $input['penerima_dividen'],
         Balance::create($inputData);
 
         return redirect('/dashboard/balances/index')->with('success', 'New balance has been added');
@@ -125,6 +126,7 @@ class BalanceController extends Controller
         $newBal->update([
             "saldo" => $input['saldo'],
             "dividen" => $input['dividen'],
+            'penerima_dividen' => $input['penerima_dividen'],
         ]);
         BalanceHis::create($balancehis);
 

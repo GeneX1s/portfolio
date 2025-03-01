@@ -53,7 +53,7 @@
 
     <div class="mb-3">
       <label for="dividen" class="form-label">Bunga/Dividen(%)</label>
-      <input type="number" class="form-control @error('dividen') is-invalid @enderror" id="dividen" name="dividen" required
+      <input type="number" step="0.01" class="form-control @error('dividen') is-invalid @enderror" id="dividen" name="dividen" required
         autofocus value="{{old('dividen')}}">
       @error('dividen')
       <div class="invalid-feedback">
