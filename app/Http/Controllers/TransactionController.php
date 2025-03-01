@@ -483,7 +483,7 @@ class TransactionController extends Controller
                     'kategori' => 'Pendapatan',
                     'sub_kategori' => 'Investment',
                     'balance' => $investment->penerima_dividen,
-                    'deskripsi' => 'Dividen' . $investment->nama . now()->format('Y-m-d'),
+                    'deskripsi' => 'Dividen ' . $investment->nama .' '. now()->format('Y-m-d'),
                     'created_at' => now(),
                     'status' => 'Active',
                     'profile' => 'super-admin',
