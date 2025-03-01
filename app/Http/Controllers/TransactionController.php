@@ -483,7 +483,7 @@ class TransactionController extends Controller
                     'kategori' => 'Pendapatan',
                     'sub_kategori' => 'Investment',
                     'balance' => $investment->penerima_dividen,
-                    'deskripsi' => 'Dividen' . $investment->nama . now(),
+                    'deskripsi' => 'Dividen' . $investment->nama . now()->format('Y-m-d'),
                     'created_at' => now(),
                     'status' => 'Active',
                     'profile' => 'super-admin',
@@ -494,10 +494,10 @@ class TransactionController extends Controller
                 $newBalance = $destAcct->saldo + $dividen;
                 $balHis->create([
                     'transaction_id' => $id,
-                    'balance_name' => $investment->penerima_dividen,
+                    'balance_name' => $destAcct->nama,
                     'saldo_before' => $destAcct->saldo,
                     'saldo_after' => $newBalance,
-                    'description' => 'Dividen' . $investment->nama . now(),
+                    'description' => 'Dividen ' . $investment->nama .' '. now()->format('Y-m-d'),
                     'created_at' => now(),
                 ]);
 
