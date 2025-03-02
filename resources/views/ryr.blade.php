@@ -770,8 +770,8 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a convallis nulla. Ut </p>
               <ul>
                 <li><i class="zmdi zmdi-email"></i> username@gmail.com</li>
-                <li><i class="zmdi zmdi-phone"></i> (+660 256 24857)</li>
-                <li><i class="zmdi zmdi-home"></i> Your Address Here</li>
+                <li><i class="zmdi zmdi-phone"></i> (+62 812 8090 0988)</li>
+                <li><i class="zmdi zmdi-home"></i> Jl. Krekot Bunder 3 No.47 | Sawah Besar | Ps.Baru | Jakarta Pusat</li>
               </ul>
             </div>
           </div>
@@ -836,37 +836,37 @@
       </div>
     </div>
   </footer>
-  <!-- Footer Area End -->
+    <!-- Footer Area End -->
 
-  <!-- All js here -->
-  {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/jquery-migrate-3.3.2.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/meanmenu@2.0.8/dist/jquery.meanmenu.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-ajaxchimp@1.3.0/jquery.ajaxchimp.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@4.5.4/dist/isotope.pkgd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- All js here -->
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.3.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meanmenu@2.0.8/dist/jquery.meanmenu.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajaxchimp@1.3.0/jquery.ajaxchimp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/isotope-layout@4.5.4/dist/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 
-  <script src="js/ajax-mail.js"></script> <!-- No CDN available, keep local -->
-  <script src="js/plugins.js"></script> <!-- No CDN available, keep local -->
-  <script src="js/main.js"></script> <!-- No CDN available, keep local --> --}}
+    <script src="js/ajax-mail.js"></script> <!-- No CDN available, keep local -->
+    <script src="js/plugins.js"></script> <!-- No CDN available, keep local -->
+    <script src="js/main.js"></script> <!-- No CDN available, keep local --> --}}
 
-  <script src="portfolio2/js/vendor/jquery-3.6.0.min.js"></script>
-  <script src="portfolio2/js/vendor/jquery-migrate-3.3.2.min.js"></script>
-  <script src="portfolio2/js/bootstrap.bundle.min.js"></script>
-  <script src="portfolio2/js/owl.carousel.min.js"></script>
-  <script src="portfolio2/js/jquery.meanmenu.js"></script>
-  <script src="portfolio2/js/ajax-mail.js"></script>
-  <script src="portfolio2/js/jquery.ajaxchimp.min.js"></script>
-  <script src="portfolio2/js/slick.min.js"></script>
-  <script src="portfolio2/js/imagesloaded.pkgd.min.js"></script>
-  <script src="portfolio2/js/isotope.pkgd.min.js"></script>
-  <script src="portfolio2/js/jquery.magnific-popup.js"></script>
-  <script src="portfolio2/js/plugins.js"></script>
-  <script src="portfolio2/js/main.js"></script>
+    <script src="portfolio2/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="portfolio2/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="portfolio2/js/bootstrap.bundle.min.js"></script>
+    <script src="portfolio2/js/owl.carousel.min.js"></script>
+    <script src="portfolio2/js/jquery.meanmenu.js"></script>
+    <script src="portfolio2/js/ajax-mail.js"></script>
+    <script src="portfolio2/js/jquery.ajaxchimp.min.js"></script>
+    <script src="portfolio2/js/slick.min.js"></script>
+    <script src="portfolio2/js/imagesloaded.pkgd.min.js"></script>
+    <script src="portfolio2/js/isotope.pkgd.min.js"></script>
+    <script src="portfolio2/js/jquery.magnific-popup.js"></script>
+    <script src="portfolio2/js/plugins.js"></script>
+    <script src="portfolio2/js/main.js"></script>
 </body>
 
 

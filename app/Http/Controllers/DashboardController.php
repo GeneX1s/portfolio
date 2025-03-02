@@ -37,7 +37,7 @@ class DashboardController extends Controller
         $start_month = $date->copy()->startOfMonth()->format('Y-m-d H:i:s');
         $end_month = $date->copy()->endOfMonth()->format('Y-m-d H:i:s');
 
-// dd($start_month);
+        // dd($start_month);
         $userId = Auth::id();
         $userRole = User::where('id', $userId)->first()->role;
 
@@ -74,10 +74,10 @@ class DashboardController extends Controller
             ->pluck('nominal')->all();
 
         $investments = Balance::where('tipe', 'Investment')
-            ->whereYear('created_at',$yearFilter)
+            ->whereYear('updated_at', $yearFilter)
             ->pluck('saldo')->all();
-            // dd($yearFilter);
-// dd($investments);
+        // dd($yearFilter);
+        // dd($investments);
         $pengeluaran = 0;
         $pengeluaran_tahunan = 0;
         $pendapatan_tahunan = 0;
