@@ -83,6 +83,7 @@ class BalanceController extends Controller
             'created_at' => 'nullable',
             'updated_at' => 'nullable',
         ]);
+        $inputData['created_at'] = Date::now();
         $inputData['updated_at'] = Date::now();
 // 'penerima_dividen' => $input['penerima_dividen'],
         Balance::create($inputData);
