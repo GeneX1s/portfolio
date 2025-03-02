@@ -225,14 +225,15 @@ class TransactionController extends Controller
     }
 
 
-    public function template($id = null, Request $request = null)
+    public function template(Request $request, ?int $id = null)
     {
         if ($id) {
             $id_transact = Template::where('id', $id)->first()->id_transact;
         } else {
-            $id_transact = Template::where('id', $request->input('template'))->first()->id_transact;
+            $id_transact = Template::where('id', $request->template)->first()->id_transact;
         }
 
+        // dd($id);
         $transaction = Transaction::where('id', $id_transact)->first();
 
         if (!$transaction) {
@@ -469,7 +470,7 @@ class TransactionController extends Controller
             ->get();
 
         foreach ($monthlies as $monthly) {
-            $this->template($monthly->id);
+            $this->template(new Request(), $monthly->id);
             // dd('hi');
         }
 
