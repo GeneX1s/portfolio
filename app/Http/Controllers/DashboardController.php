@@ -73,7 +73,7 @@ class DashboardController extends Controller
             ->pluck('nominal')->all();
 
         $investments = Balance::where('tipe', 'Investment')
-            // ->whereYear('created_at',$yearFilter)
+            ->whereYear('created_at',$yearFilter)
             ->pluck('saldo')->all();
 
         $pengeluaran = 0;
@@ -180,6 +180,7 @@ class DashboardController extends Controller
             ])]);
         }
         // dd($messages);
+        $target = SetValue::first()->outcome;
         return view('/dashboard.index', [
             'spendable' => $spendable,
             'messages' => $messages,
@@ -198,6 +199,7 @@ class DashboardController extends Controller
             'years' => $years,
             'transactions' => $transactions,
             'tahun' => $request->year,
+            'target' => $target,
         ]);
     }
 

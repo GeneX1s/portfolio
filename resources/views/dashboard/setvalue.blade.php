@@ -21,7 +21,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="outcome" class="form-label">Outcome</label>
+      <label for="outcome" class="form-label">Investment Target</label>
       <input type="number" class="form-control @error('outcome') is-invalid @enderror" id="outcome" name="outcome"
         required autofocus value="{{ $setvalue->outcome }}">
       @error('outcome')

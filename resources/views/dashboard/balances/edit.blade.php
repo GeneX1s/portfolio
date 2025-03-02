@@ -38,6 +38,7 @@
       <div class="mb-3">
         <label for="penerima_dividen" class="form-label">Penerima Dividen</label>
         <select class="form-control" name="penerima_dividen">
+            <option selected value=""></option>
             @foreach ($balances as $balance)
             <option value="{{$balance->id}}"> {{$balance->nama}}</option>
             @endforeach
