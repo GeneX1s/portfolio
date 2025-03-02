@@ -21,9 +21,10 @@ class DashboardController extends Controller
 
         $date = Carbon::now();
         $salary = SetValue::first()->salary;
-        $yearFilter = $request->year;
+        $yearFilter = Carbon::now()->format('Y');
 
         if ($request->year) {
+            $yearFilter = $request->year;
             $date = $date->year($yearFilter);
         }
 
@@ -75,7 +76,8 @@ class DashboardController extends Controller
         $investments = Balance::where('tipe', 'Investment')
             ->whereYear('created_at',$yearFilter)
             ->pluck('saldo')->all();
-
+            // dd($yearFilter);
+// dd($investments);
         $pengeluaran = 0;
         $pengeluaran_tahunan = 0;
         $pendapatan_tahunan = 0;
