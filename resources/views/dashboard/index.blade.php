@@ -316,7 +316,7 @@
                                                     Year Investment Target Remaining
                                                 </div>
                                                 @php
-                                                $target = $target
+                                                $target = $target;
                                                 $anggaran = $target - $investment_tahunan;
                                                 @endphp
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
