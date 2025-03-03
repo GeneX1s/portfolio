@@ -541,7 +541,7 @@
 
                   <!-- Portfolio Item 1 -->
                   <figure class="item" data-groups='["all", "media"]'>
-                    <a href="portfolio2">
+                    <a href="ryr">
                       <img src="images/portfolio/2.jpg" alt="">
                       <div>
                         <h5 class="name">Roemah Yoga Rian</h5>

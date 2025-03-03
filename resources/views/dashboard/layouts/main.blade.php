@@ -21,84 +21,85 @@
   <!-- Custom styles for this template-->
   <link href="../../../../dasbor/css/sb-admin-2.min.css" rel="stylesheet">
 
-  <style>
-/* Base styling */
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Ensure full height for body */
-}
 
-.wrapper {
-  display: flex; /* Use flexbox for layout */
-}
+<style>
+    /* Base styling */
+    body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full height for body */
+    }
 
-/* Sidebar styling */
-.sidebar {
-  /* width: 270px !important; Fixed width for the sidebar */
-  width: 300px; /* Fixed width for the sidebar */
-  height: 100vh; /* Full height for the sidebar */
-  top: 0; /* Align to the top */
-  left: 0; /* Align to the left */
-overflow-y: auto; /* Enable scrolling if content overflows */
-  overflow: visible;
-  background-color: #f8f9fa; /* Background color */
-  transition: width 0.3s; /* Smooth transition for resizing */
-  position: fixed; /* Center vertically */
+    .wrapper {
+    display: flex; /* Use flexbox for layout */
+    }
 
-}
-
-
-/* Content styling */
-.content {
-  margin-left: 300px; Leave space for sidebar
-  padding: 20px; /* Padding for content */
-  flex-grow: 1; /* Allow content to fill available space */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .sidebar {
-    position: fixed; /* Change to relative on mobile */
-    height: auto; /* Allow height to adjust */
-    width: 100%; /* Full width on mobile */
-    display: block !important; /* Ensure sidebar is shown */;
-    z-index: 1000; /* Ensures sidebar is on top */
-    align-content: center;
-
+    /* Sidebar styling */
+    .sidebar {
+    /* width: 270px !important; Fixed width for the sidebar */
+    width: 300px; /* Fixed width for the sidebar */
+    height: 100vh; /* Full height for the sidebar */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
     overflow-y: auto; /* Enable scrolling if content overflows */
-  overflow: visible;
-  background-color: #f8f9fa; /* Background color */
-  transition: width 0.3s; /* Smooth transition for resizing */
+    overflow: visible;
+    background-color: #f8f9fa; /* Background color */
+    transition: width 0.3s; /* Smooth transition for resizing */
+    position: fixed; /* Center vertically */
 
-  }
+    }
 
-  .topbar {
-    z-index: 1001;          /* Ensures it stays on top of other content */
-    position: fixed;        /* Makes the topbar stay fixed when scrolling */
-    top: 0;                 /* Position it at the top of the page */
-    left: 0;                /* Align it to the left of the page */
-    width: 100%;            /* Make it span the full width of the page */
-    margin-bottom: 10%
-}
 
-  /* Ensure the sidebar doesn't collapse immediately on small screens */
-.sidebar.toggled {
-    display: none !important;
-}
-  .wrapper {
-    flex-direction: column; /* Stack items on top of each other */
-  }
+    /* Content styling */
+    .content {
+    margin-left: 300px; Leave space for sidebar
+    padding: 20px; /* Padding for content */
+    flex-grow: 1; /* Allow content to fill available space */
+    }
 
-  .content {
-    margin-left: 400px; /* Remove left margin */
-    padding: 10px; /* Reduce padding on mobile */
-  }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+    .sidebar {
+        position: fixed; /* Change to relative on mobile */
+        height: auto; /* Allow height to adjust */
+        width: 100%; /* Full width on mobile */
+        display: block !important; /* Ensure sidebar is shown */;
+        z-index: 1000; /* Ensures sidebar is on top */
+        align-content: center;
 
-  .sidebar.active {
-    display: block; /* Show sidebar when active */
-  }
-}
+        overflow-y: auto; /* Enable scrolling if content overflows */
+    overflow: visible;
+    background-color: #f8f9fa; /* Background color */
+    transition: width 0.3s; /* Smooth transition for resizing */
+
+    }
+
+    .topbar {
+        z-index: 1001;          /* Ensures it stays on top of other content */
+        position: fixed;        /* Makes the topbar stay fixed when scrolling */
+        top: 0;                 /* Position it at the top of the page */
+        left: 0;                /* Align it to the left of the page */
+        width: 100%;            /* Make it span the full width of the page */
+        margin-bottom: 10%
+    }
+
+    /* Ensure the sidebar doesn't collapse immediately on small screens */
+    .sidebar.toggled {
+        display: none !important;
+    }
+    .wrapper {
+        flex-direction: column; /* Stack items on top of each other */
+    }
+
+    .content {
+        margin-left: 400px; /* Remove left margin */
+        padding: 10px; /* Reduce padding on mobile */
+    }
+
+    .sidebar.active {
+        display: block; /* Show sidebar when active */
+    }
+    }
 
   </style>
 
@@ -118,6 +119,11 @@ overflow-y: auto; /* Enable scrolling if content overflows */
     <div class="content">
       <div class="container-fluid">
         @yield('container')
+        <style>
+            .container, .container-md, .container-sm {
+                max-width: unset !important;
+            }
+            </style>
       </div>
     </div>
   </div>

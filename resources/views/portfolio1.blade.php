@@ -1025,7 +1025,7 @@
               <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
           </div>
-        </div>
+        </div>  
 
         <div class="col-lg-2 col-md-6 footer-links">
           <h4>Useful Links</h4>
