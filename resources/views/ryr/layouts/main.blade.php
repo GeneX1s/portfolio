@@ -7,7 +7,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Roemah Yoga Rian</title>
-    <meta name="description" content="The template is built for Sport Clubs, Health Clubs, Gyms, Fitness Centers, Personal Trainers and other sport">
+    <meta name="description"
+        content="The template is built for Sport Clubs, Health Clubs, Gyms, Fitness Centers, Personal Trainers and other sport">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon Icon -->
@@ -17,22 +18,28 @@
         .top {
             max-width: unset !important;
         }
+
         .slider-area {
             max-width: unset !important;
         }
 
         .container {
             max-width: unset !important;
-            display: none ;
+            display: none;
         }
     </style>
     <!-- Preload CSS for faster rendering -->
-    <link rel="preload" href="/../../portfolio2/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="/../../portfolio2/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="/../../portfolio2/css/shortcode/shortcodes.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="/../../portfolio2/css/slick.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/../../portfolio2/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/../../portfolio2/css/font-awesome.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/../../portfolio2/css/shortcode/shortcodes.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/../../portfolio2/css/slick.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="/../../portfolio2/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="/../../portfolio2/css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/../../portfolio2/css/responsive.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- Fallback for browsers without JS -->
     <noscript>
@@ -49,9 +56,13 @@
         .container {
             display: block !important;
         }
+
+        #loadOverlay {
+            display: none;
+        }
     </style>
     <!-- Modernizr for feature detection -->
-    <script src="/../../portfolio2/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="/../../portfolio2/js/vendor/modernizr-3.11.2.min.js" defer></script>
 
     <!-- Inline style to fix width constraints -->
 
@@ -64,7 +75,11 @@
     </header>
 
     <main>
+        <div id="loadOverlay"
+            style="background-color:#333; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
+        </div>
         @yield('container')
+
     </main>
 
     <footer>
@@ -92,4 +107,5 @@
         });
     </script>
 </body>
+
 </html>

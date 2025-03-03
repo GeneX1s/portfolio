@@ -8,7 +8,7 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a convallis nulla. Ut
                         </p>
                         <ul>
-                            <li><i class="zmdi zmdi-email"></i> username@gmail.com</li>
+                            <li><i class="zmdi zmdi-email"></i> apriyanti_lesmana@gmail.com</li>
                             <li><i class="zmdi zmdi-phone"></i> (+62 812 8090 0988)</li>
                             <li><i class="zmdi zmdi-home"></i> Jl. Krekot Bunder 3 No.47 | Sawah Besar | Ps.Baru |
                                 Jakarta Pusat</li>

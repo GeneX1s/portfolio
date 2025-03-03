@@ -41,10 +41,9 @@
                                 <div class="text-content-wrapper">
                                     <div class="text-content text-start">
                                         <h5>Welcome to Roemah Yoga Rian</h5>
-                                        <h1>Keep <span>Refresh & Strong</span> Your Body</h1>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer auctor
-                                            pharetra iss neque.
-                                            Nullam cursus elit sit amet justo interdum facilisis id at tortor. </p>
+                                        <h1>Keep Your Body <span>Strengthened & Refreshed</span></h1>
+                                        <p>Discover the power of yoga to transform your mind, body, and spirit in a
+                                            welcoming and peaceful environment.</p>
                                         <a class="banner-btn" href="gallery.html" data-text="read more"><span>read
                                                 more</span></a>
                                     </div>

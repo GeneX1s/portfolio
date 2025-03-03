@@ -122,12 +122,15 @@ class BalanceController extends Controller
             'created_at' => now(),
         ];
 
+        if($balance->saldo != $input['saldo'])
+        BalanceHis::create($balancehis);
+
         $newBal->update([
             "saldo" => $input['saldo'],
             "dividen" => $input['dividen'],
             'penerima_dividen' => $input['penerima_dividen'],
         ]);
-        BalanceHis::create($balancehis);
+
 
 
         return redirect('/dashboard/balances/index')->with('success', 'Balance has been updated');
