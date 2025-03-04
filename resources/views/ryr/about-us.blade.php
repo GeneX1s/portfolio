@@ -1,8 +1,9 @@
+@extends('ryr.layouts.main')
+@section('container')
 <!doctype html>
 <html class="no-js" lang="en">
 
-<!-- Mirrored from htmldemo.net/handstand/handstand/about-us.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 01:57:36 GMT -->
-<head>
+{{-- <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>About Us || Handstand</title>
@@ -18,7 +19,8 @@
         <link rel="stylesheet" href="../../portfolio2/style.css">
         <link rel="stylesheet" href="../../portfolio2/css/responsive.css">
         <script src="../../portfolio2/js/vendor/modernizr-3.11.2.min.js"></script>
-    </head>
+</head> --}}
+
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -26,7 +28,7 @@
 
 
 		<!-- Header Area Start -->
-		<header class="top">
+		{{-- <header class="top">
 			<div class="header-area ptb-18 header-sticky">
 				<div class="container">
 					<div class="row">
@@ -62,7 +64,7 @@
 					</div>
 				</div>
 			</div>
-		</header>
+		</header> --}}
 		<!-- Header Area End -->
 		<!-- Banner Area Start -->
 		<section class="banner-area text-start">
@@ -74,7 +76,7 @@
                                 <h2>About Us</h2>
                                 <div class="banner-breadcrumb">
                                     <ul>
-                                        <li><a href="index.html">home </a> <i class="zmdi zmdi-chevron-right"></i></li>
+                                        <li><a href="/ryr">home </a> <i class="zmdi zmdi-chevron-right"></i></li>
                                         <li>about us</li>
                                     </ul>
                                 </div>
@@ -91,7 +93,7 @@
                <div class="row">
                    <div class="col-lg-6">
                        <div class="about-content">
-                            <h2>about our handstand</h2>
+                            <h2>about roemah yoga rian</h2>
                             <p class="m-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, lorem ipsum is.</p>
                             <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and is more recently with desktop publishing software like Aldus PageMaker including versions. </p>
                             <a class="banner-btn" href="#" data-text="read more"><span>read more</span></a>
@@ -240,7 +242,7 @@
         </section>
         <!-- Newsletter Area End -->
         <!-- Footer Area Start -->
-        <footer class="footer-area bg-gray">
+        {{-- <footer class="footer-area bg-gray">
             <div class="footer-widget-area bg-3 pt-98 pb-90 fix">
                 <div class="container">
                     <div class="row">
@@ -312,11 +314,11 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> --}}
         <!-- Footer Area End -->
 
 		<!-- All js here -->
-        <script src="js/vendor/jquery-3.6.0.min.js"></script>
+        {{-- <script src="js/vendor/jquery-3.6.0.min.js"></script>
         <script src="js/vendor/jquery-migrate-3.3.2.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/owl.carousel.min.js"></script>
@@ -328,8 +330,9 @@
         <script src="js/isotope.pkgd.min.js"></script>
         <script src="js/jquery.magnific-popup.js"></script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/main.js"></script> --}}
     </body>
 
 <!-- Mirrored from htmldemo.net/handstand/handstand/about-us.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 01:57:36 GMT -->
 </html>
+@endsection

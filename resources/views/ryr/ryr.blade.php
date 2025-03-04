@@ -1,9 +1,33 @@
 @extends('ryr.layouts.main')
 
-@section('container')
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Roemah Yoga Rian</title>
+    <meta name="description" content="Official website for Roemah Yoga Rian, which is a yoga studio situated in Central jakarta | Jakarta Pusat. Has Hatha, Power, and Ashtanga Yoga classes.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="portfolio2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="portfolio2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="portfolio2/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="portfolio2/css/slick.css">
+    <link rel="stylesheet" href="portfolio2/style.css">
+    <link rel="stylesheet" href="portfolio2/css/responsive.css">
+
+
+
+
+    <script src="portfolio2/js/vendor/modernizr-3.11.2.min.js" defer></script>
+
+
+</head>
 <body>
 
 
@@ -41,7 +65,7 @@
                                 <div class="text-content-wrapper">
                                     <div class="text-content text-start">
                                         <h5>Welcome to Roemah Yoga Rian</h5>
-                                        <h1>Keep Your Body <span>Strengthened & Refreshed</span></h1>
+                                        <h1>Keep Your Body <span>Refreshed & Strengthened</span></h1>
                                         <p>Discover the power of yoga to transform your mind, body, and spirit in a
                                             welcoming and peaceful environment.</p>
                                         <a class="banner-btn" href="gallery.html" data-text="read more"><span>read
@@ -693,7 +717,7 @@
             <!--  Map Section -->
             <div id="contacts" class="map-area">
                 <iframe class="contact-map-size"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1613802584124!5m2!1sen!2sbd"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.6973113638185!2d106.83132382844991!3d-6.158974866248367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5c305a28127%3A0x87393457227b08c!2sRoemah%20Yoga%20Rian!5e0!3m2!1sen!2sid!4v1741074554055!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
@@ -734,37 +758,36 @@
     <!-- Footer Area End -->
 
     <!-- All js here -->
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/jquery-migrate-3.3.2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/meanmenu@2.0.8/dist/jquery.meanmenu.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-ajaxchimp@1.3.0/jquery.ajaxchimp.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/isotope-layout@4.5.4/dist/isotope.pkgd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.3.2.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/meanmenu@2.0.8/dist/jquery.meanmenu.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajaxchimp@1.3.0/jquery.ajaxchimp.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/isotope-layout@4.5.4/dist/isotope.pkgd.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer></script>
 
-    <script src="js/ajax-mail.js"></script> <!-- No CDN available, keep local -->
-    <script src="js/plugins.js"></script> <!-- No CDN available, keep local -->
-    <script src="js/main.js"></script> <!-- No CDN available, keep local --> --}}
+    <script src="js/ajax-mail.js" defer></script> <!-- No CDN available, keep local -->
+    <script src="js/plugins.js" defer></script> <!-- No CDN available, keep local -->
+    <script src="js/main.js" defer></script> <!-- No CDN available, keep local --> --}}
 
-    {{-- <script src="portfolio2/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="portfolio2/js/vendor/jquery-migrate-3.3.2.min.js"></script>
-    <script src="portfolio2/js/bootstrap.bundle.min.js"></script>
-    <script src="portfolio2/js/owl.carousel.min.js"></script>
-    <script src="portfolio2/js/jquery.meanmenu.js"></script>
-    <script src="portfolio2/js/ajax-mail.js"></script>
-    <script src="portfolio2/js/jquery.ajaxchimp.min.js"></script>
-    <script src="portfolio2/js/slick.min.js"></script>
-    <script src="portfolio2/js/imagesloaded.pkgd.min.js"></script>
-    <script src="portfolio2/js/isotope.pkgd.min.js"></script>
-    <script src="portfolio2/js/jquery.magnific-popup.js"></script>
-    <script src="portfolio2/js/plugins.js"></script>
-    <script src="portfolio2/js/main.js"></script> --}}
+    <script src="portfolio2/js/vendor/jquery-3.6.0.min.js" defer></script>
+    <script src="portfolio2/js/vendor/jquery-migrate-3.3.2.min.js" defer></script>
+    <script src="portfolio2/js/bootstrap.bundle.min.js" defer></script>
+    <script src="portfolio2/js/owl.carousel.min.js" defer></script>
+    <script src="portfolio2/js/jquery.meanmenu.js" defer></script>
+    <script src="portfolio2/js/ajax-mail.js" defer></script>
+    <script src="portfolio2/js/jquery.ajaxchimp.min.js" defer></script>
+    <script src="portfolio2/js/slick.min.js" defer></script>
+    <script src="portfolio2/js/imagesloaded.pkgd.min.js" defer></script>
+    <script src="portfolio2/js/isotope.pkgd.min.js" defer></script>
+    <script src="portfolio2/js/jquery.magnific-popup.js" defer></script>
+    <script src="portfolio2/js/plugins.js" defer></script>
+    <script src="portfolio2/js/main.js" defer></script>
 </body>
 
 
 </html>
 
-@endsection

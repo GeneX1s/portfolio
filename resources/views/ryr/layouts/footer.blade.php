@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="single-footer-widget">
-                        <a href="index.html"><img src="img/logo/logo.webp" alt="handstand"></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a convallis nulla. Ut
+                        <a href="/"><img src="portfolio2/img/logo/logo.webp" alt="handstand"></a>
+                        <p>Contact us here, for further inquiries or questions.
                         </p>
                         <ul>
                             <li><i class="zmdi zmdi-email"></i> apriyanti_lesmana@gmail.com</li>
@@ -17,29 +17,13 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-footer-widget">
-                        <h3>Recent Tweets</h3>
-                        <div class="single-twitt mb-10">
-                            <div class="twitt-icon">
-                                <i class="zmdi zmdi-twitter"></i>
-                            </div>
-                            <div class="twitt-content">
-                                <p>@envato good News for today!! We got 2 psd templete weekly top selling quality
-                                    template in
-                                    technology category !!!</p>
-                                <a href="https://twitter.com/login/">https://twitter.com/login</a>
-                            </div>
-                        </div>
-                        <div class="single-twitt">
-                            <div class="twitt-icon">
-                                <i class="zmdi zmdi-twitter"></i>
-                            </div>
-                            <div class="twitt-content">
-                                <p>@envato good News for today!! We got 2 psd templete weekly top selling quality
-                                    template in
-                                    technology category !!!</p>
-                                <a href="https://twitter.com/login/">https://twitter.com/login</a>
-                            </div>
-                        </div>
+                        <h3>Our Social Media</h3>
+                        <ul class="social-icons">
+                            <li><a href="https://www.facebook.com/yourprofile"><i class="zmdi zmdi-facebook"></i>Facebook</a></li>
+                            <li><a href="https://www.twitter.com/yourprofile"><i class="zmdi zmdi-twitter"></i>Twitter</a></li>
+                            <li><a href="https://www.instagram.com/yourprofile"><i class="zmdi zmdi-instagram"></i>Instagram</a></li>
+                            <li><a href="https://www.linkedin.com/in/yourprofile"><i class="zmdi zmdi-linkedin"></i>LinkedIn</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">

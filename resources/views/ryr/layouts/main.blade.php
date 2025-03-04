@@ -15,10 +15,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
     <style>
-        .top {
-            max-width: unset !important;
-        }
-
         .slider-area {
             max-width: unset !important;
         }
@@ -57,9 +53,6 @@
             display: block !important;
         }
 
-        #loadOverlay {
-            display: none;
-        }
     </style>
     <!-- Modernizr for feature detection -->
     <script src="/../../portfolio2/js/vendor/modernizr-3.11.2.min.js" defer></script>
@@ -75,11 +68,7 @@
     </header>
 
     <main>
-        <div id="loadOverlay"
-            style="background-color:#333; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
-        </div>
         @yield('container')
-
     </main>
 
     <footer>
