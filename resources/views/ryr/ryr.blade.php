@@ -48,7 +48,7 @@
                                         <h1>Keep Your Body <span>Strengthened & Refreshed</span></h1>
                                         <p>Discover the power of yoga to transform your mind, body, and spirit in a
                                             welcoming and peaceful environment.</p>
-                                        <a class="banner-btn" href="gallery.html" data-text="read more"><span>read
+                                        <a class="banner-btn" href="/ryr/gallery" data-text="read more"><span>read
                                                 more</span></a>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                         <h1>Keep Your Body <span>Refreshed & Strengthened</span></h1>
                                         <p>Discover the power of yoga to transform your mind, body, and spirit in a
                                             welcoming and peaceful environment.</p>
-                                        <a class="banner-btn" href="gallery.html" data-text="read more"><span>read
+                                        <a class="banner-btn" href="/ryr/gallery" data-text="read more"><span>read
                                                 more</span></a>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
                             At Roemah Yoga Rian, we aim to create a community where individuals can cultivate
                             mindfulness, reduce stress, and enhance overall well-being. Take your first step towards a
                             healthier lifestyle today!</p>
-                        <a class="banner-btn" href="about-us.html" data-text="read more"><span>read more</span></a>
+                        <a class="banner-btn" href="about-/ryr/us" data-text="read more"><span>read more</span></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -140,7 +140,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-class">
                         <div class="single-img">
-                            <a href="class.html"><img src="img/class/1.webp" alt="class"></a>
+                            <a href="/ryr/class"><img src="img/class/1.webp" alt="class"></a>
                             <div class="gallery-icon">
                                 <a class="image-popup" href="img/class/1.webp">
                                     <i class="zmdi zmdi-zoom-in"></i>
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                         <div class="single-content">
-                            <h3><a href="class.html">yoga for climbers</a></h3>
+                            <h3><a href="/ryr/class">yoga for climbers</a></h3>
                             <ul>
                                 <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
                                 <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
@@ -159,7 +159,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-class">
                         <div class="single-img">
-                            <a href="class.html"><img src="img/class/2.webp" alt="class"></a>
+                            <a href="/ryr/class"><img src="img/class/2.webp" alt="class"></a>
                             <div class="gallery-icon">
                                 <a class="image-popup" href="img/class/2.webp">
                                     <i class="zmdi zmdi-zoom-in"></i>
@@ -167,7 +167,7 @@
                             </div>
                         </div>
                         <div class="single-content">
-                            <h3><a href="class.html">yoga for climbers</a></h3>
+                            <h3><a href="/ryr/class">yoga for climbers</a></h3>
                             <ul>
                                 <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
                                 <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
@@ -178,7 +178,7 @@
                 <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
                     <div class="single-class">
                         <div class="single-img">
-                            <a href="class.html"><img src="img/class/3.webp" alt="class"></a>
+                            <a href="/ryr/class"><img src="img/class/3.webp" alt="class"></a>
                             <div class="gallery-icon">
                                 <a class="image-popup" href="img/class/3.webp">
                                     <i class="zmdi zmdi-zoom-in"></i>
@@ -186,7 +186,7 @@
                             </div>
                         </div>
                         <div class="single-content">
-                            <h3><a href="class.html">yoga for climbers</a></h3>
+                            <h3><a href="/ryr/class">yoga for climbers</a></h3>
                             <ul>
                                 <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
                                 <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
@@ -197,7 +197,7 @@
             </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <a class="banner-btn mt-55" href="class.html" data-text="view all classes"><span>view all
+                    <a class="banner-btn mt-55" href="/ryr/class" data-text="view all classes"><span>view all
                             classes</span></a>
                 </div>
             </div>
@@ -518,18 +518,18 @@
                         <div class="blog-pic single-img">
                             <img src="img/blog/blog1.webp" alt="blog">
                             <div class="gallery-icon">
-                                <a href="blog.html">
+                                <a href="/ryr/blog">
                                     <i class="zmdi zmdi-link"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="blog.html">Curabitur ante justo, vitae.</a></h3>
+                            <h3><a href="/ryr/blog">Curabitur ante justo, vitae.</a></h3>
                             <h6>25 March 2021</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut nisl non justo aliquam
                                 euismod ut ac
                                 orci.</p>
-                            <a href="blog.html">read more</a>
+                            <a href="/ryr/blog">read more</a>
                         </div>
                     </div>
                 </div>
@@ -538,18 +538,18 @@
                         <div class="blog-pic single-img">
                             <img src="img/blog/blog2.webp" alt="blog">
                             <div class="gallery-icon">
-                                <a href="blog.html">
+                                <a href="/ryr/blog">
                                     <i class="zmdi zmdi-link"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="blog.html">Curabitur ante justo, vitae.</a></h3>
+                            <h3><a href="/ryr/blog">Curabitur ante justo, vitae.</a></h3>
                             <h6>25 March 2021</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut nisl non justo aliquam
                                 euismod ut ac
                                 orci.</p>
-                            <a href="blog.html">read more</a>
+                            <a href="/ryr/blog">read more</a>
                         </div>
                     </div>
                 </div>
