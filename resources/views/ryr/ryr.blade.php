@@ -8,7 +8,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Roemah Yoga Rian</title>
-    <meta name="description" content="Official website for Roemah Yoga Rian, which is a yoga studio situated in Central jakarta | Jakarta Pusat. Has Hatha, Power, and Ashtanga Yoga classes.">
+    <meta name="description"
+        content="Official website for Roemah Yoga Rian, which is a yoga studio situated in Central jakarta | Jakarta Pusat. Has Hatha, Power, and Ashtanga Yoga classes.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon Icon -->
@@ -28,6 +29,7 @@
 
 
 </head>
+
 <body>
 
 
@@ -73,7 +75,7 @@
     <!-- Background Area Start -->
     <div class="slider-area">
         <div class="slider-wrapper">
-            <div class="single-slide" style="background-image: url('img/slider/slider1.webp');">
+            <div class="single-slide" style="background-image: url('portfolio2/img/slider/slider1.webp');">
                 <div class="slider-content">
                     <div class="container">
                         <div class="row">
@@ -93,7 +95,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single-slide" style="background-image: url('img/slider/slider2.webp');">
+            <div class="single-slide" style="background-image: url('portfolio2/img/slider/slider2.webp');">
                 <div class="slider-content">
                     <div class="container">
                         <div class="row">
@@ -101,9 +103,10 @@
                                 <div class="text-content-wrapper">
                                     <div class="text-content text-start">
                                         <h5>Welcome to Roemah Yoga Rian</h5>
-                                        <h1>Keep Your Body <span>Refreshed & Strengthened</span></h1>
-                                        <p>Discover the power of yoga to transform your mind, body, and spirit in a
-                                            welcoming and peaceful environment.</p>
+                                        <h1><span>Revitalize</span> Your Body & Build <span>Resilience</span></h1>
+                                        <p>Uncover the benefits of yoga to nurture your body, calm your mind, and
+                                            rejuvenate your spirit in a supportive and serene space.</p>
+
                                         <a class="banner-btn" href="/ryr/gallery" data-text="read more"><span>read
                                                 more</span></a>
                                     </div>
@@ -138,7 +141,7 @@
                             At Roemah Yoga Rian, we aim to create a community where individuals can cultivate
                             mindfulness, reduce stress, and enhance overall well-being. Take your first step towards a
                             healthier lifestyle today!</p>
-                        <a class="banner-btn" href="about-/ryr/us" data-text="read more"><span>read more</span></a>
+                        <a class="banner-btn" href="ryr/about-us" data-text="read more"><span>read more</span></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -147,7 +150,9 @@
                             <a href="#"><img src="portfolio2/img/about/about.webp" alt="about"></a>
                         </div>
                         <div class="video-icon video-hover">
-                            <a class="video-popup" href="https://www.youtube.com/watch?v=A47zwWsjXgs">
+                            {{-- <a class="video-popup" href="https://www.youtube.com/watch?v=A47zwWsjXgs"> --}}
+                                {{-- format nya : https://www.youtube.com/watch?v={link video} --}}
+                            <a class="video-popup" href="https://www.youtube.com/watch?v=zh7_MuszLhE">
                                 <i class="zmdi zmdi-play"></i>
                             </a>
                         </div>
@@ -174,6 +179,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
+                     {{-- @foreach ($classes as $class) --}}
+
                     <div class="single-class">
                         <div class="single-img">
                             <a href="/ryr/class"><img src="portfolio2/img/class/1.webp" alt="class"></a>
@@ -184,13 +191,16 @@
                             </div>
                         </div>
                         <div class="single-content">
-                            <h3><a href="/ryr/class">yoga for climbers</a></h3>
+                            <h3><a href="/ryr/class">Ashtanga Yoga</a></h3>
                             <ul>
-                                <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                                <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
+                                <li><i class="zmdi zmdi-face"></i>Okta</li>
+                                {{-- <li><i class="zmdi zmdi-alarm"></i>18.30Pm-20.00Pm</li> --}}
+                                <li><i class="zmdi zmdi-alarm"></i>Thursday Evening</li>
                             </ul>
                         </div>
                     </div>
+
+                    {{-- @endforeach --}}
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-class">
@@ -203,10 +213,11 @@
                             </div>
                         </div>
                         <div class="single-content">
-                            <h3><a href="/ryr/class">yoga for climbers</a></h3>
+                            <h3><a href="/ryr/class">Power Yoga</a></h3>
                             <ul>
-                                <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                                <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
+                                <li><i class="zmdi zmdi-face"></i>Aan</li>
+                                {{-- <li><i class="zmdi zmdi-alarm"></i>07.00Am-09:00Am</li> --}}
+                                <li><i class="zmdi zmdi-alarm"></i>Tuesday Morning</li>
                             </ul>
                         </div>
                     </div>
@@ -222,10 +233,10 @@
                             </div>
                         </div>
                         <div class="single-content">
-                            <h3><a href="/ryr/class">yoga for climbers</a></h3>
+                            <h3><a href="/ryr/class">Wallrope Yoga</a></h3>
                             <ul>
-                                <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                                <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
+                                <li><i class="zmdi zmdi-face"></i>Rian</li>
+                                <li><i class="zmdi zmdi-alarm"></i>Mon, Tue, Thu, Fri</li>
                             </ul>
                         </div>
                     </div>
@@ -272,7 +283,7 @@
                             <tbody class="pt-30">
                                 <tr>
                                     <td class="time">
-                                        <p>8:00 AM</p>
+                                        <p>7:00 AM</p>
                                     </td>
                                     <td class="purple">
                                         <h4>yoga for climbers</h4>
@@ -296,7 +307,7 @@
                                 </tr>
                                 <tr>
                                     <td class="time">
-                                        <p>12:00 AM</p>
+                                        <p>8:00 AM</p>
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -340,7 +351,7 @@
                                 </tr>
                                 <tr>
                                     <td class="time">
-                                        <p>6:00 PM</p>
+                                        <p>5:30 PM</p>
                                     </td>
                                     <td class="pink">
                                         <h4>yoga for climbers</h4>
@@ -360,6 +371,32 @@
                                         <p>Sathi Bhuiyan</p>
                                         <p>8.00 Am-10.00Am</p>
                                     </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="time">
+                                        <p>6:30 PM</p>
+                                    </td>
+                                    <td class="teal">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="teal">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                    <td class="teal">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    {{-- bg colors --}}
+                                    {{-- {background:#b2a1c7}td.olive{background:#c2d69b}td.blue{background:#9cf}td.pink{background:#ff91b8}td.red{background:#ff6666}td.yellow{background:#ffeb3b}td.orange{background:#ff9800}td.green{background:#4caf50}td.teal{background:#009688}td.cyan{background:#00bcd4}td.indigo{background:#3f51b5}td.brown{background:#795548}. --}}
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -509,25 +546,21 @@
         </div>
     </section>
     <!-- Gallery Area End -->
-    <!-- Event Area Strat -->
+    <!-- Event Area Start -->
     <section class="event-area pt-95 pb-100 bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
-                        <h2>awesome event</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the
-                            industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
+                        <h2>awesome events</h2>
+                        <p>Join us for our exciting events that celebrate the spirit of yoga and community. From workshops to special classes, there's always something happening at Roemah Yoga Rian. Stay tuned for our upcoming events and be a part of our vibrant community.</p>
                     </div>
                     <div class="event-wrapper">
                         <div class="event-content text-center">
-                            <h3>Yoga celebration in RYR</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the
-                                industry'ssurvived </p>
-                            <h4>25 March 2021</h4>
-                            <h5>10AM - 12AM</h5>
+                            <h3>Christmas in RYR</h3>
+                            <p>Join us for a festive Potluck Christmas event! Bring your favorite dish to share and enjoy a joyful celebration with our yoga community.</p>
+                            <h4>25 December 2023</h4>
+                            <h5>08PM - 09PM</h5>
                         </div>
                     </div>
                 </div>
@@ -542,10 +575,7 @@
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
                         <h2>our blog</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the
-                            industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
-                    </div>
+                        <p>Stay updated with our latest blog posts and insights on yoga, wellness, and healthy living. Our blog is a great resource for tips, inspiration, and information to support your yoga journey.</p>
                 </div>
             </div>
             <div class="row">
@@ -560,11 +590,9 @@
                             </div>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="/ryr/blog">Curabitur ante justo, vitae.</a></h3>
-                            <h6>25 March 2021</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut nisl non justo aliquam
-                                euismod ut ac
-                                orci.</p>
+                            <h3><a href="/ryr/blog">The Importance of Consistent Yoga Practice</a></h3>
+                            <h6>15 September 2023</h6>
+                            <p>Learn how maintaining a regular yoga practice can enhance your physical health, mental clarity, and overall well-being. Discover tips for staying consistent and motivated in your yoga journey.</p>
                             <a href="/ryr/blog">read more</a>
                         </div>
                     </div>
@@ -580,11 +608,9 @@
                             </div>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="/ryr/blog">Curabitur ante justo, vitae.</a></h3>
-                            <h6>25 March 2021</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut nisl non justo aliquam
-                                euismod ut ac
-                                orci.</p>
+                            <h3><a href="/ryr/blog">The Benefits of Yoga for Mental Health</a></h3>
+                            <h6>10 October 2023</h6>
+                            <p>Explore how yoga can help reduce stress, improve mood, and enhance overall mental well-being. Join us as we delve into the mental health benefits of a regular yoga practice.</p>
                             <a href="/ryr/blog">read more</a>
                         </div>
                     </div>
@@ -594,7 +620,7 @@
     </section>
     <!-- Event Area End -->
     <!-- Pricing Area Start -->
-    <div class="pricing-area pt-95 pb-120 bg-gray">
+    {{-- <div class="pricing-area pt-95 pb-120 bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
@@ -660,7 +686,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Pricing Area End -->
     <!-- Client Area Strat -->
     <section class="client-area pt-95 pb-50">
@@ -669,9 +695,7 @@
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
                         <h2>Our Client Say</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the
-                            industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
+                        <p>They love the peaceful and welcoming environment at Roemah Yoga Rian. They appreciate the personalized attention from our experienced instructors and the variety of classes that cater to all levels. Join our community and experience the transformative power of yoga.</p>
                     </div>
                 </div>
             </div>
@@ -682,13 +706,10 @@
                             <div class="col-12">
                                 <div class="single-testimonial">
                                     <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel
-                                        odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu
-                                        lacinia congue.
-                                        Vestibulum sodales, sapien aliquam </p>
-                                    <img src="portfolio2/img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
+                                    <p>Roemah Yoga Rian is life changing. The instructors are incredibly knowledgeable and supportive, and the classes are both challenging and rejuvenating. I highly recommend this studio to anyone looking to deepen their yoga practice.</p>
+                                    <h4 style="font-family: 'Great Vibes', cursive;">Owen</h4>
+                                    {{-- <img src="portfolio2/img/icon/signature.webp" alt="signature"> --}}
+                                    <h6>Co-Founder</h6>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -753,7 +774,9 @@
             <!--  Map Section -->
             <div id="contacts" class="map-area">
                 <iframe class="contact-map-size"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.6973113638185!2d106.83132382844991!3d-6.158974866248367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5c305a28127%3A0x87393457227b08c!2sRoemah%20Yoga%20Rian!5e0!3m2!1sen!2sid!4v1741074554055!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.6973113638185!2d106.83132382844991!3d-6.158974866248367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5c305a28127%3A0x87393457227b08c!2sRoemah%20Yoga%20Rian!5e0!3m2!1sen!2sid!4v1741074554055!5m2!1sen!2sid"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
                     allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
@@ -811,7 +834,8 @@
                         <div class="single-footer-widget">
                             <h3>Our Social Media</h3>
                             <ul class="social-icons">
-                                <li><a href="https://www.facebook.com/people/Roemah-Yoga-Rian/pfbid021qFFWSgGsUgBWdks587Zr6U5yZqQmTXw4MzCW4j6HS8DsbpH4n6AzDA1qkx8S6tVl/"><i
+                                <li><a
+                                        href="https://www.facebook.com/people/Roemah-Yoga-Rian/pfbid021qFFWSgGsUgBWdks587Zr6U5yZqQmTXw4MzCW4j6HS8DsbpH4n6AzDA1qkx8S6tVl/"><i
                                             class="zmdi zmdi-facebook"></i>Facebook</a></li>
                                 <li><a href="https://www.instagram.com/roemahyogarian47/"><i
                                             class="zmdi zmdi-instagram"></i>Instagram</a></li>
@@ -830,7 +854,8 @@
                                         <input type="text" placeholder="Email" name="con_email">
                                     </div>
                                     <div class="col-sm-12">
-                                        <textarea cols="30" rows="7" name="con_message" placeholder="subject"></textarea>
+                                        <textarea cols="30" rows="7" name="con_message"
+                                            placeholder="subject"></textarea>
                                         <button type="submit">submit</button>
                                         <p class="subscribe-message"></p>
                                     </div>
@@ -867,7 +892,8 @@
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/isotope-layout@4.5.4/dist/isotope.pkgd.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer>
+    </script>
 
     <script src="js/ajax-mail.js" defer></script> <!-- No CDN available, keep local -->
     <script src="js/plugins.js" defer></script> <!-- No CDN available, keep local -->
@@ -890,4 +916,3 @@
 
 
 </html>
-

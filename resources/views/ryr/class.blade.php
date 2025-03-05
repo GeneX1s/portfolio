@@ -1,7 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="en">
 
-<!-- Mirrored from htmldemo.net/handstand/handstand/class.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 01:57:36 GMT -->
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,13 +9,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
-        <link rel="stylesheet" href="portfolio2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="portfolio2/css/font-awesome.min.css">
-        <link rel="stylesheet" href="portfolio2/css/shortcode/shortcodes.css">
-        <link rel="stylesheet" href="portfolio2/css/slick.css">
-        <link rel="stylesheet" href="portfolio2/style.css">
-        <link rel="stylesheet" href="portfolio2/css/responsive.css">
-        <script src="portfolio2/js/vendor/modernizr-3.11.2.min.js"></script>
+        <link rel="stylesheet" href="/../portfolio2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/../portfolio2/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/../portfolio2/css/shortcode/shortcodes.css">
+        <link rel="stylesheet" href="/../portfolio2/css/slick.css">
+        <link rel="stylesheet" href="/../portfolio2/style.css">
+        <link rel="stylesheet" href="/../portfolio2/css/responsive.css">
+        <script src="/../portfolio2/js/vendor/modernizr-3.11.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -538,19 +537,19 @@
         <!-- Footer Area End -->
 
 		<!-- All js here -->
-        <script src="js/vendor/jquery-3.6.0.min.js"></script>
-        <script src="js/vendor/jquery-migrate-3.3.2.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.meanmenu.js"></script>
-        <script src="js/ajax-mail.js"></script>
-        <script src="js/jquery.ajaxchimp.min.js"></script>
-        <script src="js/slick.min.js"></script>
-        <script src="js/imagesloaded.pkgd.min.js"></script>
-        <script src="js/isotope.pkgd.min.js"></script>
-        <script src="js/jquery.magnific-popup.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="/../portfolio2/js/vendor/jquery-3.6.0.min.js"></script>
+        <script src="/../portfolio2/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+        <script src="/../portfolio2/js/bootstrap.bundle.min.js"></script>
+        <script src="/../portfolio2/js/owl.carousel.min.js"></script>
+        <script src="/../portfolio2/js/jquery.meanmenu.js"></script>
+        <script src="/../portfolio2/js/ajax-mail.js"></script>
+        <script src="/../portfolio2/js/jquery.ajaxchimp.min.js"></script>
+        <script src="/../portfolio2/js/slick.min.js"></script>
+        <script src="/../portfolio2/js/imagesloaded.pkgd.min.js"></script>
+        <script src="/../portfolio2/js/isotope.pkgd.min.js"></script>
+        <script src="/../portfolio2/js/jquery.magnific-popup.js"></script>
+        <script src="/../portfolio2/js/plugins.js"></script>
+        <script src="/../portfolio2/js/main.js"></script>
     </body>
 
 <!-- Mirrored from htmldemo.net/handstand/handstand/class.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 01:57:36 GMT -->
