@@ -1,4 +1,4 @@
-@extends('ryr.layouts.main')
+{{-- @extends('ryr.layouts.main') --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,43 @@
 
 
     <!-- Header Area Start -->
-
+    <header class="top">
+        <div class="header-area ptb-18 header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="logo">
+                            <a href="/"><img src="portfolio2//img/logo/logo.webp" alt="COFFEE" /></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="content-wrapper">
+                            <!-- Main Menu Start -->
+                            <div class="main-menu text-center">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="ryr/about-us">About us</a></li>
+                                        <li><a href="ryr/class">classes</a></li>
+                                        <li><a href="ryr/gallery">gallery</a></li>
+                                        <li><a href="ryr/blog">blog</a></li>
+                                        <li><a href="ryr/contact">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="mobile-menu d-block d-lg-none"></div>
+                            <!-- Main Menu End -->
+                        </div>
+                    </div>
+                    <div class="col-lg-2 d-none d-lg-block">
+                        <div class="header-contact text-end">
+                            <a class="banner-btn" data-text="login" href="dashboard"><span>login</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <!-- Header Area End -->
     <!-- Background Area Start -->
     <div class="slider-area">
@@ -108,7 +144,7 @@
                 <div class="col-lg-6">
                     <div class="about-video active">
                         <div class="game">
-                            <a href="#"><img src="img/about/about.webp" alt="about"></a>
+                            <a href="#"><img src="portfolio2/img/about/about.webp" alt="about"></a>
                         </div>
                         <div class="video-icon video-hover">
                             <a class="video-popup" href="https://www.youtube.com/watch?v=A47zwWsjXgs">
@@ -140,7 +176,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-class">
                         <div class="single-img">
-                            <a href="/ryr/class"><img src="img/class/1.webp" alt="class"></a>
+                            <a href="/ryr/class"><img src="portfolio2/img/class/1.webp" alt="class"></a>
                             <div class="gallery-icon">
                                 <a class="image-popup" href="img/class/1.webp">
                                     <i class="zmdi zmdi-zoom-in"></i>
@@ -159,7 +195,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-class">
                         <div class="single-img">
-                            <a href="/ryr/class"><img src="img/class/2.webp" alt="class"></a>
+                            <a href="/ryr/class"><img src="portfolio2/img/class/2.webp" alt="class"></a>
                             <div class="gallery-icon">
                                 <a class="image-popup" href="img/class/2.webp">
                                     <i class="zmdi zmdi-zoom-in"></i>
@@ -178,7 +214,7 @@
                 <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
                     <div class="single-class">
                         <div class="single-img">
-                            <a href="/ryr/class"><img src="img/class/3.webp" alt="class"></a>
+                            <a href="/ryr/class"><img src="portfolio2/img/class/3.webp" alt="class"></a>
                             <div class="gallery-icon">
                                 <a class="image-popup" href="img/class/3.webp">
                                     <i class="zmdi zmdi-zoom-in"></i>
@@ -349,7 +385,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-trainer text-center">
-                        <img src="img/trainer/trainer1.webp" alt="trainer">
+                        <img src="portfolio2/img/trainer/trainer1.webp" alt="trainer">
                         <div class="trainer-hover">
                             <h3>John laisa do</h3>
                             <ul>
@@ -363,7 +399,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-trainer text-center">
-                        <img src="img/trainer/trainer2.webp" alt="trainer">
+                        <img src="portfolio2/img/trainer/trainer2.webp" alt="trainer">
                         <div class="trainer-hover">
                             <h3>John laisa do</h3>
                             <ul>
@@ -377,7 +413,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
                     <div class="single-trainer text-center">
-                        <img src="img/trainer/trainer3.webp" alt="trainer">
+                        <img src="portfolio2/img/trainer/trainer3.webp" alt="trainer">
                         <div class="trainer-hover">
                             <h3>John laisa do</h3>
                             <ul>
@@ -411,7 +447,7 @@
             <div class="grid row" style="position: relative; height: 390px;">
                 <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 0%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal.webp" alt="project">
+                        <img src="portfolio2/img/portfolio/gal.webp" alt="project">
                         <div class="gallery-icon">
                             <a class="image-popup" href="img/portfolio/gal.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
@@ -421,7 +457,7 @@
                 </div>
                 <div class="col-md-4 grid-item cat2 cat4" style="position: absolute; left: 25%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal2.webp" alt="project">
+                        <img src="portfolio2/img/portfolio/gal2.webp" alt="project">
                         <div class="gallery-icon">
                             <a class="image-popup" href="img/portfolio/gal2.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
@@ -431,7 +467,7 @@
                 </div>
                 <div class="col-md-4 grid-item cat1 cat4" style="position: absolute; left: 50%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal3.webp" alt="project">
+                        <img src="portfolio2/img/portfolio/gal3.webp" alt="project">
                         <div class="gallery-icon">
                             <a class="image-popup" href="img/portfolio/gal3.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
@@ -441,7 +477,7 @@
                 </div>
                 <div class="col-md-4 grid-item cat2" style="position: absolute; left: 75%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal4.webp" alt="project">
+                        <img src="portfolio2/img/portfolio/gal4.webp" alt="project">
                         <div class="gallery-icon">
                             <a class="image-popup" href="img/portfolio/gal4.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
@@ -451,7 +487,7 @@
                 </div>
                 <div class="col-md-4 grid-item cat2 cat3" style="position: absolute; left: 25%; top: 210px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal5.webp" alt="project">
+                        <img src="portfolio2/img/portfolio/gal5.webp" alt="project">
                         <div class="gallery-icon">
                             <a class="image-popup" href="img/portfolio/gal5.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
@@ -461,7 +497,7 @@
                 </div>
                 <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal6.webp" alt="project">
+                        <img src="portfolio2/img/portfolio/gal6.webp" alt="project">
                         <div class="gallery-icon">
                             <a class="image-popup" href="img/portfolio/gal6.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
@@ -516,7 +552,7 @@
                 <div class="col-lg-6">
                     <div class="single-blog">
                         <div class="blog-pic single-img">
-                            <img src="img/blog/blog1.webp" alt="blog">
+                            <img src="portfolio2/img/blog/blog1.webp" alt="blog">
                             <div class="gallery-icon">
                                 <a href="/ryr/blog">
                                     <i class="zmdi zmdi-link"></i>
@@ -536,7 +572,7 @@
                 <div class="col-lg-6 mt-4 mt-lg-0">
                     <div class="single-blog">
                         <div class="blog-pic single-img">
-                            <img src="img/blog/blog2.webp" alt="blog">
+                            <img src="portfolio2/img/blog/blog2.webp" alt="blog">
                             <div class="gallery-icon">
                                 <a href="/ryr/blog">
                                     <i class="zmdi zmdi-link"></i>
@@ -651,7 +687,7 @@
                                         odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu
                                         lacinia congue.
                                         Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
+                                    <img src="portfolio2/img/icon/signature.webp" alt="signature">
                                     <h6>Co-Founder Of Company</h6>
                                 </div>
                             </div>
@@ -663,7 +699,7 @@
                                         odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu
                                         lacinia congue.
                                         Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
+                                    <img src="portfolio2/img/icon/signature.webp" alt="signature">
                                     <h6>Co-Founder Of Company</h6>
                                 </div>
                             </div>
@@ -675,7 +711,7 @@
                                         odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu
                                         lacinia congue.
                                         Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
+                                    <img src="portfolio2/img/icon/signature.webp" alt="signature">
                                     <h6>Co-Founder Of Company</h6>
                                 </div>
                             </div>
@@ -687,7 +723,7 @@
                                         odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu
                                         lacinia congue.
                                         Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
+                                    <img src="portfolio2/img/icon/signature.webp" alt="signature">
                                     <h6>Co-Founder Of Company</h6>
                                 </div>
                             </div>
@@ -699,7 +735,7 @@
                                         odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu
                                         lacinia congue.
                                         Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
+                                    <img src="portfolio2/img/icon/signature.webp" alt="signature">
                                     <h6>Co-Founder Of Company</h6>
                                 </div>
                             </div>
@@ -754,6 +790,70 @@
     </section>
     <!-- Newsletter Area End -->
     <!-- Footer Area Start -->
+    <footer class="footer-area bg-gray">
+        <div class="footer-widget-area bg-3 pt-98 pb-90 fix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <a href="/portfolio"><img src="portfolio2//img/logo/logo.webp" alt="handstand"></a>
+                            <p>Contact us here, for further inquiries or questions.
+                            </p>
+                            <ul>
+                                <li><i class="zmdi zmdi-email"></i> apriyanti_lesmana@gmail.com</li>
+                                <li><i class="zmdi zmdi-phone"></i> (+62 812 8090 0988)</li>
+                                <li><i class="zmdi zmdi-home"></i> Jl. Krekot Bunder 3 No.47 | Sawah Besar | Ps.Baru |
+                                    Jakarta Pusat</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h3>Our Social Media</h3>
+                            <ul class="social-icons">
+                                <li><a href="https://www.facebook.com/people/Roemah-Yoga-Rian/pfbid021qFFWSgGsUgBWdks587Zr6U5yZqQmTXw4MzCW4j6HS8DsbpH4n6AzDA1qkx8S6tVl/"><i
+                                            class="zmdi zmdi-facebook"></i>Facebook</a></li>
+                                <li><a href="https://www.instagram.com/roemahyogarian47/"><i
+                                            class="zmdi zmdi-instagram"></i>Instagram</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h3>get in touch</h3>
+                            <form id="subscribe-form" action="https://whizthemes.com/mail-php/other/mail.php">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" placeholder="Name" name="con_name">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" placeholder="Email" name="con_email">
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <textarea cols="30" rows="7" name="con_message" placeholder="subject"></textarea>
+                                        <button type="submit">submit</button>
+                                        <p class="subscribe-message"></p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-text-area fix bg-coffee ptb-18">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-text text-center">
+                            <span>Copyright &copy; <a href="/portfolio">Check out my other works!</a>
+                                2022. All Rights Reserved.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Footer Area End -->
 

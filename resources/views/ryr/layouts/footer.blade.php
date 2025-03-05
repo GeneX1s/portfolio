@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="single-footer-widget">
-                        <a href="/"><img src="portfolio2/img/logo/logo.webp" alt="handstand"></a>
+                        <a href="/portfolio"><img src="portfolio2/img/logo/logo.webp" alt="handstand"></a>
                         <p>Contact us here, for further inquiries or questions.
                         </p>
                         <ul>
@@ -19,10 +19,10 @@
                     <div class="single-footer-widget">
                         <h3>Our Social Media</h3>
                         <ul class="social-icons">
-                            <li><a href="https://www.facebook.com/yourprofile"><i class="zmdi zmdi-facebook"></i>Facebook</a></li>
-                            <li><a href="https://www.twitter.com/yourprofile"><i class="zmdi zmdi-twitter"></i>Twitter</a></li>
-                            <li><a href="https://www.instagram.com/yourprofile"><i class="zmdi zmdi-instagram"></i>Instagram</a></li>
-                            <li><a href="https://www.linkedin.com/in/yourprofile"><i class="zmdi zmdi-linkedin"></i>LinkedIn</a></li>
+                            <li><a href="https://www.facebook.com/people/Roemah-Yoga-Rian/pfbid021qFFWSgGsUgBWdks587Zr6U5yZqQmTXw4MzCW4j6HS8DsbpH4n6AzDA1qkx8S6tVl/"><i
+                                        class="zmdi zmdi-facebook"></i>Facebook</a></li>
+                            <li><a href="https://www.instagram.com/roemahyogarian47/"><i
+                                        class="zmdi zmdi-instagram"></i>Instagram</a></li>
                         </ul>
                     </div>
                 </div>
@@ -38,8 +38,7 @@
                                     <input type="text" placeholder="Email" name="con_email">
                                 </div>
                                 <div class="col-sm-12">
-                                    <textarea cols="30" rows="7" name="con_message"
-                                        placeholder="subject"></textarea>
+                                    <textarea cols="30" rows="7" name="con_message" placeholder="subject"></textarea>
                                     <button type="submit">submit</button>
                                     <p class="subscribe-message"></p>
                                 </div>
@@ -55,7 +54,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="footer-text text-center">
-                        <span>Copyright &copy; <a href="/">Check out my other works!</a>
+                        <span>Copyright &copy; <a href="/portfolio">Check out my other works!</a>
                             2022. All Rights Reserved.</span>
                     </div>
                 </div>

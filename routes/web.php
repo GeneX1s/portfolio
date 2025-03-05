@@ -33,14 +33,14 @@ use App\Http\Controllers\RYR\ScheduleController;
 
 Route::middleware('log-user-activity')->group(function () { //audit trail(LogUserActivity.php,Kernel.php)
 
-    Route::get('/', [IndexController::class, 'index']);
+    Route::get('/portfolio', [IndexController::class, 'index']);
 
 
     Route::get('/portfolio1', function () {
         return view('portfolio1');
     })->name('portfolio1');
 
-    Route::get('/ryr', function () {
+    Route::get('/', function () {
         return view('ryr/ryr');
     })->name('ryr');
     Route::get('/ryr/about-us', function () {

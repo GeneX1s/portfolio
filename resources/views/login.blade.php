@@ -21,7 +21,9 @@
 <link rel="shortcut icon" href="images/favicon.ico">
 
 <link href="/dasbor/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
 
 <link href="/dasbor/css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -70,7 +72,7 @@
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <input type="email" id="email" class="form-control form-control-lg"
-                            placeholder="Enter a valid email address" name="email"/>
+                            placeholder="Enter a valid email address" name="email" />
                         @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -82,7 +84,7 @@
                     <!-- Password input -->
                     <div class="form-outline mb-3">
                         <input type="password" id="password" class="form-control form-control-lg"
-                            placeholder="Enter password" name="password"/>
+                            placeholder="Enter password" name="password" />
                         <label class="form-label" for="password">Password</label>
                     </div>
 
@@ -118,7 +120,7 @@
 
         <!-- Right -->
         <div>
-            <a href="/" class="text-white me-4">
+            <a href="/portfolio" class="text-white me-4">
                 <i class="fas fa-sign-out-alt"></i>
             </a>
             {{-- <a href="#!" class="text-white me-4">
