@@ -55,6 +55,9 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::get('/ryr/contact', function () {
         return view('ryr/contact');
     })->name('ryr/contact');
+    Route::get('/ryr/gallery', function () {
+        return view('ryr/gallery');
+    })->name('ryr/gallery');
     Route::get('/ryr', function () {
         return view('ryr/ryr');
     })->name('ryr');

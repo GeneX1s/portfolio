@@ -192,7 +192,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="portfolio2">
+        <a class="nav-link" href="/">
             <i class="fas fa-fw fa-person"></i>
             <span>RYR</span></a>
     </li>

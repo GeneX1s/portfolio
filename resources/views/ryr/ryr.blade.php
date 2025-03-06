@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="login" href="dashboard"><span>login</span></a>
+                            <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
                         </div>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                         <div class="single-img">
                             <a href="/ryr/class"><img src="portfolio2/img/class/1.webp" alt="class"></a>
                             <div class="gallery-icon">
-                                <a class="image-popup" href="img/class/1.webp">
+                                <a class="image-popup" href="portfolio2/img/class/1.webp">
                                     <i class="zmdi zmdi-zoom-in"></i>
                                 </a>
                             </div>
@@ -207,7 +207,7 @@
                         <div class="single-img">
                             <a href="/ryr/class"><img src="portfolio2/img/class/2.webp" alt="class"></a>
                             <div class="gallery-icon">
-                                <a class="image-popup" href="img/class/2.webp">
+                                <a class="image-popup" href="portfolio2/img/class/2.webp">
                                     <i class="zmdi zmdi-zoom-in"></i>
                                 </a>
                             </div>
@@ -227,7 +227,7 @@
                         <div class="single-img">
                             <a href="/ryr/class"><img src="portfolio2/img/class/3.webp" alt="class"></a>
                             <div class="gallery-icon">
-                                <a class="image-popup" href="img/class/3.webp">
+                                <a class="image-popup" href="portfolio2/img/class/3.webp">
                                     <i class="zmdi zmdi-zoom-in"></i>
                                 </a>
                             </div>
@@ -424,7 +424,7 @@
                     <div class="single-trainer text-center">
                         <img src="portfolio2/img/trainer/trainer1.webp" alt="trainer">
                         <div class="trainer-hover">
-                            <h3>John laisa do</h3>
+                            <h3>Okta</h3>
                             <ul>
                                 <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
@@ -438,7 +438,7 @@
                     <div class="single-trainer text-center">
                         <img src="portfolio2/img/trainer/trainer2.webp" alt="trainer">
                         <div class="trainer-hover">
-                            <h3>John laisa do</h3>
+                            <h3>Agung</h3>
                             <ul>
                                 <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
@@ -452,7 +452,7 @@
                     <div class="single-trainer text-center">
                         <img src="portfolio2/img/trainer/trainer3.webp" alt="trainer">
                         <div class="trainer-hover">
-                            <h3>John laisa do</h3>
+                            <h3>Rian</h3>
                             <ul>
                                 <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
@@ -486,7 +486,7 @@
                     <div class="portfolio-img single-img">
                         <img src="portfolio2/img/portfolio/gal.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal.webp">
+                            <a class="image-popup" href="portfolio2/img/portfolio/gal.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -496,7 +496,7 @@
                     <div class="portfolio-img single-img">
                         <img src="portfolio2/img/portfolio/gal2.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal2.webp">
+                            <a class="image-popup" href="portfolio2/img/portfolio/gal2.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -506,7 +506,7 @@
                     <div class="portfolio-img single-img">
                         <img src="portfolio2/img/portfolio/gal3.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal3.webp">
+                            <a class="image-popup" href="portfolio2/img/portfolio/gal3.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -516,7 +516,7 @@
                     <div class="portfolio-img single-img">
                         <img src="portfolio2/img/portfolio/gal4.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal4.webp">
+                            <a class="image-popup" href="portfolio2/img/portfolio/gal4.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -526,7 +526,7 @@
                     <div class="portfolio-img single-img">
                         <img src="portfolio2/img/portfolio/gal5.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal5.webp">
+                            <a class="image-popup" href="portfolio2/img/portfolio/gal5.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -536,7 +536,7 @@
                     <div class="portfolio-img single-img">
                         <img src="portfolio2/img/portfolio/gal6.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal6.webp">
+                            <a class="image-popup" href="portfolio2/img/portfolio/gal6.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
