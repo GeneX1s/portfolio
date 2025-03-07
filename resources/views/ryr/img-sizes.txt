@@ -1,0 +1,9 @@
+image sizes:'
+
+Slider = 1920 x 850 px 72 dpi
+Classes = 370 x 207 px
+Teachers = 370 x 345 px
+Gallery/portfolio = 370 x 320 px
+Blog = 168,75 x 243,75 px
+
+Handstand logo =  98 x 64 px

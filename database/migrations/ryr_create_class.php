@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_kelas');
             $table->string('tipe'); //public, private
             $table->string('teacher');
+            $table->string('day');
             $table->string('schedule');
             $table->integer('biaya');
             $table->text('description');

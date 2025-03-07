@@ -278,6 +278,9 @@
                                     <th>friday</th>
                                 </tr>
                             </thead>
+                            @foreach ($collection as $item)
+
+                            @endforeach
                             <tbody class="pt-30">
                                 <tr>
                                     <td class="time">

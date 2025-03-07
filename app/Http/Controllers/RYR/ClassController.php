@@ -56,6 +56,7 @@ class ClassController extends Controller
         $input = $request->validate([
             'nama_kelas' => 'required',
             'teacher' => 'required',
+            'day' => 'required',
             'schedule' => 'required',
             'biaya' => 'required',
             'tipe' => 'required',
@@ -95,6 +96,7 @@ class ClassController extends Controller
         $input = $request->validate([
             'nama_kelas' => 'required',
             'teacher' => 'required',
+            'day' => 'required',
             'schedule' => 'required',
             'biaya' => 'required',
             'tipe' => 'required',

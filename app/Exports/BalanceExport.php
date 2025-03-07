@@ -31,6 +31,7 @@ class BalanceExport implements FromCollection, WithHeadings, WithMapping, WithTi
             'Saldo',
             'Tipe',
             'Dividen',
+            'Penerima Dividen',
             'Updated At',
         ];
     }
@@ -49,6 +50,7 @@ class BalanceExport implements FromCollection, WithHeadings, WithMapping, WithTi
             $balance->saldo,
             $balance->tipe,
             $balance->dividen,
+            $balance->penerima_dividen,
             $balance->updated_at,
         ];
     }

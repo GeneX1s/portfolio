@@ -59,15 +59,28 @@
         </div>
 
         <div class="mb-3">
-            <label for="schedule" class="form-label">Schedule</label>
-            <input type="text" class="form-control @error('schedule') is-invalid @enderror" id="schedule"
-                name="schedule" required autofocus value="Sabtu Pagi">
-            @error('schedule')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
+            <label for="day" class="form-label">Day</label>
+            <select class="form-control" name="day">
+                <option value="Senin"> Senin</option>
+                <option value="Selasa"> Selasa</option>
+                <option value="Rabu"> Rabu</option>
+                <option value="Kamis"> Kamis</option>
+                <option value="Jumat"> Jumat</option>
+                <option value="Sabtu"> Sabtu</option>
+                <option value="Minggu"> Minggu</option>
+            </select>
         </div>
+        <div class="mb-3">
+            <label for="schedule" class="form-label">Schedule Jam</label>
+            <select class="form-control" name="schedule">
+                <option value="7AM"> 7.00-8.30</option>
+                <option value="8AM"> 8.00-9.30</option>
+                <option value="3PM"> 15.00-16.30</option>
+                <option value="5PM"> 17.00-18.30</option>
+                <option value="6PM"> 18.30-20.00</option>
+            </select>
+        </div>
+
 
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>

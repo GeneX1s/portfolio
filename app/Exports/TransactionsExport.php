@@ -49,7 +49,7 @@ class TransactionsExport implements FromCollection, WithHeadings, WithMapping, W
         ->get();  // Finally, get the filtered results
 
     return $transactions;
-    
+
         // return Transaction::all();
     }
 

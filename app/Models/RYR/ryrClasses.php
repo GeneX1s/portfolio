@@ -40,6 +40,7 @@ class ryrClasses extends Model
     'nama_kelas',
     'tipe', //public, private
     'teacher',
+    'day',
     'schedule',
     'biaya',
     'description',
