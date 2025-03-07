@@ -152,9 +152,9 @@
                         <div class="video-icon video-hover">
                             {{-- <a class="video-popup" href="https://www.youtube.com/watch?v=A47zwWsjXgs"> --}}
                                 {{-- format nya : https://www.youtube.com/watch?v={link video} --}}
-                            <a class="video-popup" href="https://www.youtube.com/watch?v=zh7_MuszLhE">
-                                <i class="zmdi zmdi-play"></i>
-                            </a>
+                                <a class="video-popup" href="https://www.youtube.com/watch?v=zh7_MuszLhE">
+                                    <i class="zmdi zmdi-play"></i>
+                                </a>
                         </div>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                     {{-- @foreach ($classes as $class) --}}
+                    {{-- @foreach ($classes as $class) --}}
 
                     <div class="single-class">
                         <div class="single-img">
@@ -258,7 +258,8 @@
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title">
                         <h2>class schedule</h2>
-                        <p>Check out our weekly class schedule to find the perfect time for your yoga practice. We offer a variety of classes throughout the week to fit your busy lifestyle.</p>
+                        <p>Check out our weekly class schedule to find the perfect time for your yoga practice. We offer
+                            a variety of classes throughout the week to fit your busy lifestyle.</p>
                     </div>
                 </div>
             </div>
@@ -278,9 +279,43 @@
                                     <th>friday</th>
                                 </tr>
                             </thead>
-                            @foreach ($collection as $item)
 
+                            @foreach ($classes as $class)
+                            @php
+
+                            $time = $class->schedule;
+                            $day = $class->day;
+                            @endphp
                             @endforeach
+                            @foreach ($specials as $special)
+                            @php
+                            $time = $special->jam;
+                            $day = \Carbon\Carbon::parse($special->tanggal)->format('l');
+                            // $day = ;
+                            @endphp
+                            @endforeach
+
+                            {{-- loop hari dalam seminggu --}}
+                            @while ($count<5)
+                            @if ($time == '7AM')
+                            <tr>
+                            <td class="time">
+                                <p>7:00 AM</p>
+                            </td>
+                            <td class="purple">
+                                <h4>yoga for climbers</h4>
+                                <p>Sathi Bhuiyan</p>
+                                <p>8.00 Am-10.00Am</p>
+                            </td>
+                            @else
+                            <td></td>
+                            @endif
+
+                            @php
+                                $count++;
+                                @endphp
+                            @endwhile
+                        </tr>
                             <tbody class="pt-30">
                                 <tr>
                                     <td class="time">
@@ -397,7 +432,9 @@
                                         <p>8.00 Am-10.00Am</p>
                                     </td>
                                     {{-- bg colors --}}
-                                    {{-- {background:#b2a1c7}td.olive{background:#c2d69b}td.blue{background:#9cf}td.pink{background:#ff91b8}td.red{background:#ff6666}td.yellow{background:#ffeb3b}td.orange{background:#ff9800}td.green{background:#4caf50}td.teal{background:#009688}td.cyan{background:#00bcd4}td.indigo{background:#3f51b5}td.brown{background:#795548}. --}}
+                                    {{--
+                                    {background:#b2a1c7}td.olive{background:#c2d69b}td.blue{background:#9cf}td.pink{background:#ff91b8}td.red{background:#ff6666}td.yellow{background:#ffeb3b}td.orange{background:#ff9800}td.green{background:#4caf50}td.teal{background:#009688}td.cyan{background:#00bcd4}td.indigo{background:#3f51b5}td.brown{background:#795548}.
+                                    --}}
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -475,7 +512,9 @@
                     <div class="test-content">
                         <div class="section-title text-center">
                             <h2>gallery</h2>
-                            <p>Explore our gallery to see the vibrant moments captured at Roemah Yoga Rian. From serene yoga sessions to community events, our gallery showcases the essence of our studio and the joy of our members.</p>
+                            <p>Explore our gallery to see the vibrant moments captured at Roemah Yoga Rian. From serene
+                                yoga sessions to community events, our gallery showcases the essence of our studio and
+                                the joy of our members.</p>
                         </div>
                     </div>
                 </div>
@@ -552,12 +591,15 @@
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
                         <h2>awesome events</h2>
-                        <p>Join us for our exciting events that celebrate the spirit of yoga and community. From workshops to special classes, there's always something happening at Roemah Yoga Rian. Stay tuned for our upcoming events and be a part of our vibrant community.</p>
+                        <p>Join us for our exciting events that celebrate the spirit of yoga and community. From
+                            workshops to special classes, there's always something happening at Roemah Yoga Rian. Stay
+                            tuned for our upcoming events and be a part of our vibrant community.</p>
                     </div>
                     <div class="event-wrapper">
                         <div class="event-content text-center">
                             <h3>Christmas in RYR</h3>
-                            <p>Join us for a festive Potluck Christmas event! Bring your favorite dish to share and enjoy a joyful celebration with our yoga community.</p>
+                            <p>Join us for a festive Potluck Christmas event! Bring your favorite dish to share and
+                                enjoy a joyful celebration with our yoga community.</p>
                             <h4>25 December 2023</h4>
                             <h5>08PM - 09PM</h5>
                         </div>
@@ -574,48 +616,54 @@
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
                         <h2>our blog</h2>
-                        <p>Stay updated with our latest blog posts and insights on yoga, wellness, and healthy living. Our blog is a great resource for tips, inspiration, and information to support your yoga journey.</p>
+                        <p>Stay updated with our latest blog posts and insights on yoga, wellness, and healthy living.
+                            Our blog is a great resource for tips, inspiration, and information to support your yoga
+                            journey.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="single-blog">
-                        <div class="blog-pic single-img">
-                            <img src="portfolio2/img/blog/blog1.webp" alt="blog">
-                            <div class="gallery-icon">
-                                <a href="/ryr/blog">
-                                    <i class="zmdi zmdi-link"></i>
-                                </a>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="single-blog">
+                            <div class="blog-pic single-img">
+                                <img src="portfolio2/img/blog/blog1.webp" alt="blog">
+                                <div class="gallery-icon">
+                                    <a href="/ryr/blog">
+                                        <i class="zmdi zmdi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <h3><a href="/ryr/blog">The Importance of Consistent Yoga Practice</a></h3>
+                                <h6>15 September 2023</h6>
+                                <p>Learn how maintaining a regular yoga practice can enhance your physical health,
+                                    mental clarity, and overall well-being. Discover tips for staying consistent and
+                                    motivated in your yoga journey.</p>
+                                <a href="/ryr/blog">read more</a>
                             </div>
                         </div>
-                        <div class="blog-content">
-                            <h3><a href="/ryr/blog">The Importance of Consistent Yoga Practice</a></h3>
-                            <h6>15 September 2023</h6>
-                            <p>Learn how maintaining a regular yoga practice can enhance your physical health, mental clarity, and overall well-being. Discover tips for staying consistent and motivated in your yoga journey.</p>
-                            <a href="/ryr/blog">read more</a>
+                    </div>
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <div class="single-blog">
+                            <div class="blog-pic single-img">
+                                <img src="portfolio2/img/blog/blog2.webp" alt="blog">
+                                <div class="gallery-icon">
+                                    <a href="/ryr/blog">
+                                        <i class="zmdi zmdi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <h3><a href="/ryr/blog">The Benefits of Yoga for Mental Health</a></h3>
+                                <h6>10 October 2023</h6>
+                                <p>Explore how yoga can help reduce stress, improve mood, and enhance overall mental
+                                    well-being. Join us as we delve into the mental health benefits of a regular yoga
+                                    practice.</p>
+                                <a href="/ryr/blog">read more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-4 mt-lg-0">
-                    <div class="single-blog">
-                        <div class="blog-pic single-img">
-                            <img src="portfolio2/img/blog/blog2.webp" alt="blog">
-                            <div class="gallery-icon">
-                                <a href="/ryr/blog">
-                                    <i class="zmdi zmdi-link"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <h3><a href="/ryr/blog">The Benefits of Yoga for Mental Health</a></h3>
-                            <h6>10 October 2023</h6>
-                            <p>Explore how yoga can help reduce stress, improve mood, and enhance overall mental well-being. Join us as we delve into the mental health benefits of a regular yoga practice.</p>
-                            <a href="/ryr/blog">read more</a>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
     </section>
     <!-- Event Area End -->
     <!-- Pricing Area Start -->
@@ -694,7 +742,9 @@
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
                         <h2>Our Client Say</h2>
-                        <p>They love the peaceful and welcoming environment at Roemah Yoga Rian. They appreciate the personalized attention from our experienced instructors and the variety of classes that cater to all levels. Join our community and experience the transformative power of yoga.</p>
+                        <p>They love the peaceful and welcoming environment at Roemah Yoga Rian. They appreciate the
+                            personalized attention from our experienced instructors and the variety of classes that
+                            cater to all levels. Join our community and experience the transformative power of yoga.</p>
                     </div>
                 </div>
             </div>
@@ -705,7 +755,10 @@
                             <div class="col-12">
                                 <div class="single-testimonial">
                                     <i class="zmdi zmdi-quote"></i>
-                                    <p>Roemah Yoga Rian is a place where we believe in the power of yoga to transform lives. Our dedicated instructors and welcoming community make it a special place to practice and grow. Join us and experience the benefits of yoga for yourself.</p>
+                                    <p>Roemah Yoga Rian is a place where we believe in the power of yoga to transform
+                                        lives. Our dedicated instructors and welcoming community make it a special place
+                                        to practice and grow. Join us and experience the benefits of yoga for yourself.
+                                    </p>
                                     <h4 style="font-family: 'Great Vibes', cursive;">Rian</h4>
                                     {{-- <img src="portfolio2/img/icon/signature.webp" alt="signature"> --}}
                                     <h6>Founder</h6>
@@ -713,7 +766,9 @@
                             </div>
                             <div class="col-12">
                                 <div class="single-testimonial">
-                                    <p>Roemah Yoga Rian is life changing. The instructors are incredibly knowledgeable and supportive, and the classes are both challenging and rejuvenating. I highly recommend this studio to anyone looking to deepen their yoga practice.</p>
+                                    <p>Roemah Yoga Rian is life changing. The instructors are incredibly knowledgeable
+                                        and supportive, and the classes are both challenging and rejuvenating. I highly
+                                        recommend this studio to anyone looking to deepen their yoga practice.</p>
                                     <h4 style="font-family: 'Great Vibes', cursive;">Owen</h4>
                                     {{-- <img src="portfolio2/img/icon/signature.webp" alt="signature"> --}}
                                     <h6>Co-Founder</h6>
@@ -722,7 +777,9 @@
                             <div class="col-12">
                                 <div class="single-testimonial">
                                     <i class="zmdi zmdi-quote"></i>
-                                    <p>Roemah Yoga Rian is life changing. The instructors are incredibly knowledgeable and supportive, and the classes are both challenging and rejuvenating. I highly recommend this studio to anyone looking to deepen their yoga practice.</p>
+                                    <p>Roemah Yoga Rian is life changing. The instructors are incredibly knowledgeable
+                                        and supportive, and the classes are both challenging and rejuvenating. I highly
+                                        recommend this studio to anyone looking to deepen their yoga practice.</p>
                                     <h4 style="font-family: 'Great Vibes', cursive;">Owen</h4>
                                     {{-- <img src="portfolio2/img/icon/signature.webp" alt="signature"> --}}
                                     <h6>Co-Founder</h6>

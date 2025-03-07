@@ -19,6 +19,7 @@ use App\Http\Controllers\RYR\TeacherController;
 use App\Http\Controllers\RYR\AttendanceController;
 use App\Http\Controllers\RYR\ParticipantController;
 use App\Http\Controllers\RYR\ScheduleController;
+use App\Http\Controllers\RYR\RYRController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +41,11 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
         return view('portfolio1');
     })->name('portfolio1');
 
-    Route::get('/', function () {
-        return view('ryr/ryr');
-    })->name('ryr');
+    // Route::get('/', function () {
+    //     return view('ryr/ryr');
+    // })->name('ryr');
+
+    Route::get('/', [RYRController::class, 'index'])->name('ryr');
     Route::get('/ryr/about-us', function () {
         return view('ryr/about-us');
     })->name('ryr/about-us');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\RYR;
 
 use App\Models\ContactUS;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ use DateTime;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Audit;
+use App\Http\Controllers\Controller;
 use App\Models\RYR\ryrAttendances;
 use App\Models\RYR\ryrClasses;
 use App\Models\RYR\ryrParticipants;
@@ -22,14 +22,20 @@ class RYRController extends Controller
     public function index(Request $request)
     {
 
+        // $specials = 0;
+        // $classes = 0;
+        // $teachers = 0;
+        // $participants = 0;
+
         $user = auth()->user();
-        $classes = ryrClasses::where('status', 'Active')->get();
+        $classes = ryrClasses::get();
+        $countTime = $classes->unique('schedule')->count();
         $teachers = ryrTeachers::where('status', 'Active')->get();
-        $participants = ryrParticipants::where('status', 'Active')->get();
-        $specials = ryrSchedules::where('status', 'Active')->tipe('Special')->get();
+        $participants = ryrParticipants::get();
+        $specials = ryrSchedules::where('status', 'Active')->where('tipe','Special')->get();
 
 
-        return view('/ryr/ryr', [
+        return view('ryr/ryr', [
             'classes' => $classes,
             'teachers' => $teachers,
             'participants' => $participants,
