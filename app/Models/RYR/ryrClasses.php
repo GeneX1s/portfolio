@@ -43,6 +43,7 @@ class ryrClasses extends Model
     'day',
     'schedule',
     'biaya',
+    'foto',
     'description',
 
   ];

@@ -26,7 +26,7 @@ class RYRController extends Controller
         $classes = ryrClasses::where('status', 'Active')->get();
         $teachers = ryrTeachers::where('status', 'Active')->get();
         $participants = ryrParticipants::where('status', 'Active')->get();
-        $specials = ryrSchedules::where('status', 'Active')->get();
+        $specials = ryrSchedules::where('status', 'Active')->tipe('Special')->get();
 
 
         return view('/ryr/ryr', [
@@ -35,7 +35,7 @@ class RYRController extends Controller
             'participants' => $participants,
             'specials' => $specials,
             'user' => $user,
-            
+
         ]);
     }
 

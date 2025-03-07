@@ -32,8 +32,8 @@
         <div class="mb-3">
             <label for="tipe" class="form-label">Tipe</label>
             <select class="form-control" name="tipe">
-                <option value="Public"> Public</option>
-                <option value="Private"> Private</option>
+                <option value="public"> Public</option>
+                <option value="private"> Private</option>
             </select>
         </div>
 

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('schedule');
             $table->integer('biaya');
             $table->text('description');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

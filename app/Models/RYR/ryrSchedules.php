@@ -23,6 +23,7 @@ class ryrSchedules extends Model
         'teacher_name',
         'status',
         'tanggal',
+        'jam',
         'tipe',
         'harga',
         'profit',

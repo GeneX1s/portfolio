@@ -79,13 +79,24 @@ class DatabaseSeeder extends Seeder
             'status' => 'Active',
         ]);
 
+        ryrTeachers::create([
+            'nama' => 'Rian',
+            'salary' => '0',
+            'join_date' => now(),
+            'dob' => '1976-04-22',
+            'jenis_kelamin' => 'Female',
+            'deskripsi' => 'A dedicated teacher with 10 years of experience.',
+            'status' => 'Active',
+        ]);
+
         ryrClasses::create([
             'id' => 'OKTA_060225',
-            'nama_kelas' => 'Yoga for Beginners',
+            'nama_kelas' => 'Ashtanga Yoga',
             'tipe' => 'public', // public, private
             'teacher' => 'Okta',
-            'schedule' => 'Monday and Wednesday 6-7 PM',
+            'schedule' => '6PM',
             'biaya' => 200000,
+            'day' => 'Kamis',
             'description' => 'A beginner level yoga class focusing on basic postures and breathing techniques.',
         ]);
 
@@ -94,8 +105,9 @@ class DatabaseSeeder extends Seeder
             'nama_kelas' => 'Yoga for Intermediate',
             'tipe' => 'public', // public, private
             'teacher' => 'Okta',
-            'schedule' => 'Tuesday and Thursday 6-7 PM',
+            'schedule' => '6PM',
             'biaya' => 200000,
+            'day' => 'Jumat',
             'description' => 'An intermediate level yoga class focusing on more advanced postures and breathing techniques.',
         ]);
 
