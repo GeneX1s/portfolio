@@ -258,9 +258,7 @@
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title">
                         <h2>class schedule</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the
-                            industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
+                        <p>Check out our weekly class schedule to find the perfect time for your yoga practice. We offer a variety of classes throughout the week to fit your busy lifestyle.</p>
                     </div>
                 </div>
             </div>
@@ -424,7 +422,7 @@
                     <div class="single-trainer text-center">
                         <img src="portfolio2/img/trainer/trainer1.webp" alt="trainer">
                         <div class="trainer-hover">
-                            <h3>John laisa do</h3>
+                            <h3>Okta</h3>
                             <ul>
                                 <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
@@ -474,9 +472,7 @@
                     <div class="test-content">
                         <div class="section-title text-center">
                             <h2>gallery</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                issss has been
-                                the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
+                            <p>Explore our gallery to see the vibrant moments captured at Roemah Yoga Rian. From serene yoga sessions to community events, our gallery showcases the essence of our studio and the joy of our members.</p>
                         </div>
                     </div>
                 </div>
@@ -706,6 +702,14 @@
                             <div class="col-12">
                                 <div class="single-testimonial">
                                     <i class="zmdi zmdi-quote"></i>
+                                    <p>Roemah Yoga Rian is a place where we believe in the power of yoga to transform lives. Our dedicated instructors and welcoming community make it a special place to practice and grow. Join us and experience the benefits of yoga for yourself.</p>
+                                    <h4 style="font-family: 'Great Vibes', cursive;">Rian</h4>
+                                    {{-- <img src="portfolio2/img/icon/signature.webp" alt="signature"> --}}
+                                    <h6>Founder</h6>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="single-testimonial">
                                     <p>Roemah Yoga Rian is life changing. The instructors are incredibly knowledgeable and supportive, and the classes are both challenging and rejuvenating. I highly recommend this studio to anyone looking to deepen their yoga practice.</p>
                                     <h4 style="font-family: 'Great Vibes', cursive;">Owen</h4>
                                     {{-- <img src="portfolio2/img/icon/signature.webp" alt="signature"> --}}
@@ -715,25 +719,10 @@
                             <div class="col-12">
                                 <div class="single-testimonial">
                                     <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel
-                                        odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu
-                                        lacinia congue.
-                                        Vestibulum sodales, sapien aliquam </p>
-                                    <img src="portfolio2/img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel
-                                        odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu
-                                        lacinia congue.
-                                        Vestibulum sodales, sapien aliquam </p>
-                                    <img src="portfolio2/img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
+                                    <p>Roemah Yoga Rian is life changing. The instructors are incredibly knowledgeable and supportive, and the classes are both challenging and rejuvenating. I highly recommend this studio to anyone looking to deepen their yoga practice.</p>
+                                    <h4 style="font-family: 'Great Vibes', cursive;">Owen</h4>
+                                    {{-- <img src="portfolio2/img/icon/signature.webp" alt="signature"> --}}
+                                    <h6>Co-Founder</h6>
                                 </div>
                             </div>
                             <div class="col-12">
