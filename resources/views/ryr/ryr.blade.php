@@ -297,27 +297,22 @@
                             @foreach ($sortedSchedules as $schedule){{-- 7AM, 8AM, 3PM, 5:30PM, 6:30PM --}}
                                 @foreach ($days as $day)
                                 <tr>
-                                @php
-                                // dd($sortedSchedules);
-                                foreach ($classes as $key => $class) {
-                                    # code...
-                                    $jadwal = $class->where('schedule',$schedule)->where('day',$day)->first();
-                                    dd($class);
+                                    @php
+                                    foreach ($classes as $key => $class) {
+                                    // $jadwal = $class->where('schedule',$schedule)->where('day',$day)->first();
                                 }
-                                // dd($classes);
-                                dd($jadwal);
-                                @endphp
 
-                                @if ($jadwal && $jadwal->isNotEmpty())
-                                @php
-                                    // dd('hi');
                                 @endphp
+                                    @if($class['schedule'] = $schedule && $class['day'] = $day)
+
+
+                                {{-- @if ($jadwal && $jadwal->isNotEmpty()) --}}
                                 <td class="time">
                                     <p>{{ $schedule }}</p>
                                 </td>
                                 <td class="purple">
-                                    <h4>{{ $jadwal->nama_kelas }}</h4>
-                                    <p>{{$jadwal->teacher}}</p>
+                                    <h4>{{ $class['nama_kelas'] }}</h4>
+                                    <p>{{$class['teacher']}}</p>
                                     <p>7.00 Am-8.30Am</p>
                                 </td>
                                 @else
