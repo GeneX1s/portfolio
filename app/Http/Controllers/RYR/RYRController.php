@@ -29,7 +29,7 @@ class RYRController extends Controller
 
         $user = auth()->user();
         $classes = ryrClasses::get();
-        $countTime = $classes->unique('schedule')->count();
+        $schedules = $classes->unique('schedule')->pluck('schedule');
         $teachers = ryrTeachers::where('status', 'Active')->get();
         $participants = ryrParticipants::get();
         $specials = ryrSchedules::where('status', 'Active')->where('tipe','Special')->get();
@@ -37,6 +37,7 @@ class RYRController extends Controller
 
         return view('ryr/ryr', [
             'classes' => $classes,
+            'schedules' => $schedules,
             'teachers' => $teachers,
             'participants' => $participants,
             'specials' => $specials,

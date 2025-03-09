@@ -130,8 +130,9 @@
         <th scope="col">Tipe</th>
         <th scope="col">Teacher</th>
         <th scope="col">Schedule</th>
+        <th scope="col">Hari</th>
         <th scope="col">Biaya</th>
-        <th scope="col">Deskripsi</th>
+        <th scope="col">Description</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -144,6 +145,7 @@
         <td>{{$class->tipe}}</td>
         <td>{{$class->teacher}}</td>
         <td>{{$class->schedule}}</td>
+        <td>{{$class->day}}</td>
         <td>Rp.{{ number_format($class->biaya, '2', ',', '.') }}</td>
         <td>{{$class->description}}</td>
 

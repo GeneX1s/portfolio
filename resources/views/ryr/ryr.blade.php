@@ -279,165 +279,179 @@
                                     <th>friday</th>
                                 </tr>
                             </thead>
-
-                            @foreach ($classes as $class)
                             @php
-
-                            $time = $class->schedule;
-                            $day = $class->day;
+                            $count = 0;
+                            $calendar = [];
+                            $days = ['Sabtu', 'Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
+                            // dd($schedules);
                             @endphp
-                            @endforeach
-                            @foreach ($specials as $special)
-                            @php
-                            $time = $special->jam;
-                            $day = \Carbon\Carbon::parse($special->tanggal)->format('l');
-                            // $day = ;
-                            @endphp
-                            @endforeach
 
                             {{-- loop hari dalam seminggu --}}
-                            @while ($count<5)
-                            @if ($time == '7AM')
-                            <tr>
-                            <td class="time">
-                                <p>7:00 AM</p>
-                            </td>
-                            <td class="purple">
-                                <h4>yoga for climbers</h4>
-                                <p>Sathi Bhuiyan</p>
-                                <p>8.00 Am-10.00Am</p>
-                            </td>
-                            @else
-                            <td></td>
-                            @endif
-
-                            @php
-                                $count++;
-                                @endphp
-                            @endwhile
-                        </tr>
+                            {{-- @while ($count<7) --}}
                             <tbody class="pt-30">
+                            @php
+                                $sortedSchedules = $schedules->sortBy(function($schedule) {
+                                    return strtotime($schedule);
+                                });
+                            @endphp
+                            @foreach ($sortedSchedules as $schedule){{-- 7AM, 8AM, 3PM, 5:30PM, 6:30PM --}}
+                                @foreach ($days as $day)
                                 <tr>
-                                    <td class="time">
-                                        <p>7:00 AM</p>
-                                    </td>
-                                    <td class="purple">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="purple">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="purple">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
+                                @php
+                                // dd($sortedSchedules);
+                                foreach ($classes as $key => $class) {
+                                    # code...
+                                    $jadwal = $class->where('schedule',$schedule)->where('day',$day)->first();
+                                    dd($class);
+                                }
+                                // dd($classes);
+                                dd($jadwal);
+                                @endphp
+
+                                @if ($jadwal && $jadwal->isNotEmpty())
+                                @php
+                                    // dd('hi');
+                                @endphp
+                                <td class="time">
+                                    <p>{{ $schedule }}</p>
+                                </td>
+                                <td class="purple">
+                                    <h4>{{ $jadwal->nama_kelas }}</h4>
+                                    <p>{{$jadwal->teacher}}</p>
+                                    <p>7.00 Am-8.30Am</p>
+                                </td>
+                                @else
+                                <td></td>
+                                @endif
+                                {{-- @endwhile --}}
                                 </tr>
-                                <tr>
-                                    <td class="time">
-                                        <p>8:00 AM</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="olive">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="olive">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="time">
-                                        <p>3:00 PM</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="blue">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="blue">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="blue">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="time">
-                                        <p>5:30 PM</p>
-                                    </td>
-                                    <td class="pink">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="pink">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="pink">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="time">
-                                        <p>6:30 PM</p>
-                                    </td>
-                                    <td class="teal">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="teal">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="teal">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    {{-- bg colors --}}
-                                    {{--
-                                    {background:#b2a1c7}td.olive{background:#c2d69b}td.blue{background:#9cf}td.pink{background:#ff91b8}td.red{background:#ff6666}td.yellow{background:#ffeb3b}td.orange{background:#ff9800}td.green{background:#4caf50}td.teal{background:#009688}td.cyan{background:#00bcd4}td.indigo{background:#3f51b5}td.brown{background:#795548}.
-                                    --}}
-                                    <td></td>
-                                </tr>
+                                @endforeach
+                                @endforeach
                             </tbody>
+{{--
+                                <tbody class="pt-30">
+                                    <tr>
+                                        <td class="time">
+                                            <p>7:00 AM</p>
+                                        </td>
+                                        <td class="purple">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="purple">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                        <td class="purple">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time">
+                                            <p>8:00 AM</p>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="olive">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                        <td class="olive">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time">
+                                            <p>3:00 PM</p>
+                                        </td>
+                                        <td></td>
+                                        <td class="blue">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="blue">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                        <td class="blue">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time">
+                                            <p>5:30 PM</p>
+                                        </td>
+                                        <td class="pink">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="pink">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                        <td class="pink">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time">
+                                            <p>6:30 PM</p>
+                                        </td>
+                                        <td class="teal">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="teal">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+                                        <td></td>
+                                        <td class="teal">
+                                            <h4>yoga for climbers</h4>
+                                            <p>Sathi Bhuiyan</p>
+                                            <p>8.00 Am-10.00Am</p>
+                                        </td>
+
+                                        <td></td>
+                                    </tr>
+                                </tbody> --}}
+                                {{-- bg colors --}}
+                                        {{--
+                                        {background:#b2a1c7}td.olive{background:#c2d69b}td.blue{background:#9cf}td.pink{background:#ff91b8}td.red{background:#ff6666}td.yellow{background:#ffeb3b}td.orange{background:#ff9800}td.green{background:#4caf50}td.teal{background:#009688}td.cyan{background:#00bcd4}td.indigo{background:#3f51b5}td.brown{background:#795548}.
+                                        --}}
                         </table>
                     </div>
                 </div>
