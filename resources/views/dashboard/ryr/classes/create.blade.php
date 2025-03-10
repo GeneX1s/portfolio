@@ -81,9 +81,19 @@
             </select>
         </div>
 
+        <div class="mb-3">
+            <label for="foto" class="form-label">Foto Kelas <small class="text-muted">(370 x 207 px)</small></label>
+            <img class="img-preview img-fluid mb-3 col-sm-5">
+            <input class="form-control @error('foto') is-invalid @enderror" type="file" id="foto" name="foto"
+              onchange="previewImage()">
+            @error('foto')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+            @enderror
 
         <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
+            <label for="description" class="form-label">Description <small class="text-muted">(optional)</small></label>
             <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
                 name="description"  autofocus value="Ini adalah kelas...">
             @error('description')

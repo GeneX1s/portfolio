@@ -51,7 +51,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="dob" class="form-label">Tanggal Lahir(optional)</label>
+                <label for="dob" class="form-label">Tanggal Lahir(optional)<small class="text-muted">(optional)</small></label>
                 <input type="date" class="form-control @error('dob') is-invalid @enderror" id="dob" name="dob" autofocus
                     value="{{today()}}">
                 @error('dob')
@@ -62,7 +62,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="deskripsi" class="form-label">Deskripsi(optional)</label>
+                <label for="deskripsi" class="form-label">Deskripsi <small class="text-muted">(optional)</small></label>
                 <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
                     name="deskripsi" autofocus value="{{$member->deskripsi}}">
                 @error('deskripsi')

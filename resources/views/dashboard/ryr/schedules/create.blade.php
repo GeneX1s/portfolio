@@ -63,7 +63,7 @@
     </div> --}}
 
     <div class="mb-3">
-        <label for="description" class="form-label">Deskripsi(optional)</label>
+        <label for="description" class="form-label">Deskripsi<small class="text-muted">(optional)</small></label>
         <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
             name="description" autofocus value="{{old('description')}}">
         @error('description')
@@ -134,7 +134,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="description" class="form-label">Deskripsi(optional)</label>
+        <label for="description" class="form-label">Description <small class="text-muted">(optional)</small></label>
         <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
             name="description" autofocus value="{{old('description')}}">
         @error('description')
