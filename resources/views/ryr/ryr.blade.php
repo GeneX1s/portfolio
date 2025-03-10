@@ -178,8 +178,8 @@
                 </div>
             </div>
             <div class="row">
+                @foreach ($classes as $class)
                 <div class="col-lg-4 col-md-6">
-                    {{-- @foreach ($classes as $class) --}}
 
                     <div class="single-class">
                         <div class="single-img">
@@ -191,18 +191,18 @@
                             </div>
                         </div>
                         <div class="single-content">
-                            <h3><a href="/ryr/class">Ashtanga Yoga</a></h3>
+                            <h3><a href="/ryr/class">{{ $class->nama_kelas }}</a></h3>
                             <ul>
-                                <li><i class="zmdi zmdi-face"></i>Okta</li>
-                                {{-- <li><i class="zmdi zmdi-alarm"></i>18.30Pm-20.00Pm</li> --}}
-                                <li><i class="zmdi zmdi-alarm"></i>Thursday Evening</li>
+                                <li><i class="zmdi zmdi-face"></i>{{ $class->teacher }}</li>
+                                <li><i class="zmdi zmdi-alarm"></i>{{ $class->schedule }}</li>
+                                <li><i class="zmdi zmdi-calendar"></i>{{ $class->day }}</li>
                             </ul>
                         </div>
                     </div>
 
-                    {{-- @endforeach --}}
                 </div>
-                <div class="col-lg-4 col-md-6">
+                @endforeach
+                {{-- <div class="col-lg-4 col-md-6">
                     <div class="single-class">
                         <div class="single-img">
                             <a href="/ryr/class"><img src="portfolio2/img/class/2.webp" alt="class"></a>
@@ -216,7 +216,6 @@
                             <h3><a href="/ryr/class">Power Yoga</a></h3>
                             <ul>
                                 <li><i class="zmdi zmdi-face"></i>Aan</li>
-                                {{-- <li><i class="zmdi zmdi-alarm"></i>07.00Am-09:00Am</li> --}}
                                 <li><i class="zmdi zmdi-alarm"></i>Tuesday Morning</li>
                             </ul>
                         </div>
@@ -240,7 +239,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="row">
                 <div class="col-12 text-center">
@@ -280,173 +279,44 @@
                                 </tr>
                             </thead>
                             @php
-                            $count = 0;
-                            $calendar = [];
                             $days = ['Sabtu', 'Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
-                            // dd($schedules);
+                            $colors = ['purple', 'olive', 'blue', 'pink', 'red', 'green', 'teal', 'cyan', 'indigo',
+                            'brown','yellow', 'orange',];
                             @endphp
 
-                            {{-- loop hari dalam seminggu --}}
-                            {{-- @while ($count<7) --}}
                             <tbody class="pt-30">
-                            @php
+                                @php
                                 $sortedSchedules = $schedules->sortBy(function($schedule) {
-                                    return strtotime($schedule);
+                                return strtotime($schedule);
                                 });
-                            @endphp
-                            @foreach ($sortedSchedules as $schedule){{-- 7AM, 8AM, 3PM, 5:30PM, 6:30PM --}}
-                                @foreach ($days as $day)
-                                <tr>
-                                    @php
-                                    foreach ($classes as $key => $class) {
-                                    // $jadwal = $class->where('schedule',$schedule)->where('day',$day)->first();
-                                }
-
                                 @endphp
-                                    @if($class['schedule'] = $schedule && $class['day'] = $day)
-
-
-                                {{-- @if ($jadwal && $jadwal->isNotEmpty()) --}}
-                                <td class="time">
-                                    <p>{{ $schedule }}</p>
-                                </td>
-                                <td class="purple">
-                                    <h4>{{ $class['nama_kelas'] }}</h4>
-                                    <p>{{$class['teacher']}}</p>
-                                    <p>7.00 Am-8.30Am</p>
-                                </td>
-                                @else
-                                <td></td>
-                                @endif
-                                {{-- @endwhile --}}
+                                @foreach ($sortedSchedules as $schedule)
+                                <tr>
+                                    <td class="time">
+                                        <p>{{ $schedule }}</p>
+                                    </td>
+                                    @foreach ($days as $key => $day)
+                                    @php
+                                    $class = $classes->firstWhere('schedule', $schedule)->firstWhere('day', $day);
+                                    @endphp
+                                    @if($class)
+                                    <td class="{{ $colors[$key] }}">
+                                        <h4>{{ $class['nama_kelas'] }}</h4>
+                                        <p>{{$class['teacher']}}</p>
+                                        <p>Details..</p>
+                                    </td>
+                                    @else
+                                    <td></td>
+                                    @endif
+                                    @endforeach
                                 </tr>
                                 @endforeach
-                                @endforeach
                             </tbody>
-{{--
-                                <tbody class="pt-30">
-                                    <tr>
-                                        <td class="time">
-                                            <p>7:00 AM</p>
-                                        </td>
-                                        <td class="purple">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="purple">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                        <td class="purple">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time">
-                                            <p>8:00 AM</p>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="olive">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                        <td class="olive">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time">
-                                            <p>3:00 PM</p>
-                                        </td>
-                                        <td></td>
-                                        <td class="blue">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="blue">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                        <td class="blue">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time">
-                                            <p>5:30 PM</p>
-                                        </td>
-                                        <td class="pink">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="pink">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                        <td class="pink">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time">
-                                            <p>6:30 PM</p>
-                                        </td>
-                                        <td class="teal">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="teal">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
-                                        <td></td>
-                                        <td class="teal">
-                                            <h4>yoga for climbers</h4>
-                                            <p>Sathi Bhuiyan</p>
-                                            <p>8.00 Am-10.00Am</p>
-                                        </td>
 
-                                        <td></td>
-                                    </tr>
-                                </tbody> --}}
-                                {{-- bg colors --}}
-                                        {{--
-                                        {background:#b2a1c7}td.olive{background:#c2d69b}td.blue{background:#9cf}td.pink{background:#ff91b8}td.red{background:#ff6666}td.yellow{background:#ffeb3b}td.orange{background:#ff9800}td.green{background:#4caf50}td.teal{background:#009688}td.cyan{background:#00bcd4}td.indigo{background:#3f51b5}td.brown{background:#795548}.
-                                        --}}
+                            {{-- bg colors --}}
+                            {{--
+                            {background:#b2a1c7}td.olive{background:#c2d69b}td.blue{background:#9cf}td.pink{background:#ff91b8}td.red{background:#ff6666}td.yellow{background:#ffeb3b}td.orange{background:#ff9800}td.green{background:#4caf50}td.teal{background:#009688}td.cyan{background:#00bcd4}td.indigo{background:#3f51b5}td.brown{background:#795548}.
+                            --}}
                         </table>
                     </div>
                 </div>
@@ -467,7 +337,26 @@
                         </p>
                     </div>
                 </div>
+
+                @foreach ($teachers as $index => $teacher)
+                    @if ($index < 3)
                 <div class="col-lg-4 col-md-6">
+                    <div class="single-trainer text-center">
+                        <img src="portfolio2/img/trainer/trainer1.webp" alt="trainer">
+                        <div class="trainer-hover">
+                            <h3>{{ $teacher->nama }}</h3>
+                            <ul>
+                                <li><a href="{{ $teacher->fb }}"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="{{ $teacher->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="{{ $teacher->insta }}"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @endforeach
+
+                {{-- <div class="col-lg-4 col-md-6">
                     <div class="single-trainer text-center">
                         <img src="portfolio2/img/trainer/trainer1.webp" alt="trainer">
                         <div class="trainer-hover">
@@ -508,7 +397,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -834,8 +723,7 @@
                 <iframe class="contact-map-size"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.6973113638185!2d106.83132382844991!3d-6.158974866248367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5c305a28127%3A0x87393457227b08c!2sRoemah%20Yoga%20Rian!5e0!3m2!1sen!2sid!4v1741074554055!5m2!1sen!2sid"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                    allowfullscreen="" loading="lazy">
+                    referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
         </div>
@@ -903,22 +791,38 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
                             <h3>get in touch</h3>
-                            <form id="subscribe-form" action="https://whizthemes.com/mail-php/other/mail.php">
+
+                            @php
+                            $submitCount = session('submit_count', 0);
+                            @endphp
+
+                            @if ($submitCount < 2)
+                            <form method="post" action="/dashboard/contactus">
+                                @php
+                                session(['submit_count' => $submitCount + 1]);
+                                @endphp
+                                @else
+                                <p>You have reached the submission limit for this session.</p>
+                                @endif
+
+                                @csrf
+
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input type="text" placeholder="Name" name="con_name">
+                                        <input type="text" placeholder="Name" name="name" required="required">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" placeholder="Email" name="con_email">
+                                        <input type="email" placeholder="Email" name="email" required="required">
                                     </div>
                                     <div class="col-sm-12">
-                                        <textarea cols="30" rows="7" name="con_message"
-                                            placeholder="subject"></textarea>
-                                        <button type="submit">submit</button>
+                                        <textarea cols="30" rows="7" name="message" placeholder="subject"></textarea>
+
+                                        <button type="submit" class="button btn-send"
+                                            onsubmit="return ('Thanks for reaching out!')">Submit </button>
                                         <p class="subscribe-message"></p>
                                     </div>
                                 </div>
-                            </form>
+                                </form>
                         </div>
                     </div>
                 </div>
