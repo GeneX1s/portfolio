@@ -91,6 +91,7 @@
               {{ $message }}
             </div>
             @enderror
+        </div>
 
         <div class="mb-3">
             <label for="description" class="form-label">Description <small class="text-muted">(optional)</small></label>

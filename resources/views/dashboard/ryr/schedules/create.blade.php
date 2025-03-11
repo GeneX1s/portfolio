@@ -134,7 +134,18 @@
     </div>
 
     <div class="mb-3">
-        <label for="description" class="form-label">Description <small class="text-muted">(optional)</small></label>
+        <label for="jam" class="form-label">Schedule Jam</label>
+        <select class="form-control" name="jam">
+            <option value="7AM"> 7.00-8.30</option>
+            <option value="8AM"> 8.00-9.30</option>
+            <option value="3PM"> 15.00-16.30</option>
+            <option value="5PM"> 17.00-18.30</option>
+            <option value="6PM"> 18.30-20.00</option>
+        </select>
+    </div>
+    
+    <div class="mb-3">
+        <label for="description" class="form-label">Deskripsi <small class="text-muted">(optional)</small></label>
         <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
             name="description" autofocus value="{{old('description')}}">
         @error('description')
