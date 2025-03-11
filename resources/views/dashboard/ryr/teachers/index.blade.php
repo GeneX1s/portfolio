@@ -2,47 +2,48 @@
 
 @section('container')
 <style>
-   .btn-custom {
-    width: 70%; /* Make all buttons the same width */
-    padding: 8px; /* Consistent padding */
-    border-radius: 5px; /* Consistent border radius */
-    text-align: center; /* Center text */
-  }
-  table {
-    width: 100%; /* Ensure the table takes full width */
-  }
-    th, td {
-    text-align: left; /* Align text to the left */
-  }
-  .content {
-    display: flex;
-    flex-direction: column; /* Stack items vertically on mobile */
-    align-items: center; /* Center items horizontally */
-    justify-content: flex-start; /* Align items to the top */
-    height: auto; /* Allow height to adjust */
-    padding: 20px; /* Add some padding */
-        }
-
-        @media (min-width: 768px) {
-    .content {
-      flex-direction: row; /* Stack items side by side on larger screens */
-      align-items: flex-start; /* Align items to the start */
-      justify-content: space-between; /* Space out items */
-      padding: 40px; /* More padding on larger screens */
+    .btn-custom {
+        width: 70%; /* Make all buttons the same width */
+        padding: 8px; /* Consistent padding */
+        border-radius: 5px; /* Consistent border radius */
+        text-align: center; /* Center text */
     }
-  }
-.row {
-    margin-top: 1%;
+    table {
+        width: 100%; /* Ensure the table takes full width */
+    }
+        th, td {
+        text-align: left; /* Align text to the left */
+    }
+    .content {
+        display: flex;
+        flex-direction: column; /* Stack items vertically on mobile */
+        align-items: center; /* Center items horizontally */
+        justify-content: flex-start; /* Align items to the top */
+        height: auto; /* Allow height to adjust */
+        padding: 20px; /* Add some padding */
+            }
 
-  }
+            @media (min-width: 768px) {
+        .content {
+        flex-direction: row; /* Stack items side by side on larger screens */
+        align-items: flex-start; /* Align items to the start */
+        justify-content: space-between; /* Space out items */
+        padding: 40px; /* More padding on larger screens */
+        }
+    }
+    .row {
+        margin-top: 1%;
 
-  .mb-3 {
-    margin-bottom: 1rem; /* Adjust as needed */
-  }
+    }
+
+    .mb-3 {
+        margin-bottom: 1rem; /* Adjust as needed */
+    }
 
 
 
 </style>
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
   <a class="h2" href="/dashboard">Teachers</a>
 </div>
@@ -135,7 +136,13 @@
         {{-- <td>{{$teacher->jenis_kelamin}}</td> --}}
         <td>{{$teacher->status}}</td>
         <td>{{$teacher->deskripsi}}</td>
-        <td>{{$teacher->foto}}</td>
+        <td>
+            @if($teacher->foto)
+                <img src="{{ asset('storage/' . $teacher->foto) }}" alt="{{ $teacher->nama_kelas }}" class="img-thumbnail" style="max-width: 100px;">
+            @else
+                <small>No Image</small>
+            @endif
+        </td>
 
         <td>
           <form action="/dashboard/ryr/teachers/{{$teacher->id}}" method="post" class="d-inline">
@@ -177,4 +184,19 @@
 
 </div>
 
+<script>
+    function previewImage() {
+        const image = document.querySelector('#foto');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        };
+    }
+</script>
 @endsection

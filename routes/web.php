@@ -175,6 +175,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     //Classes
     Route::get('/dashboard/ryr/classes/index', [ClassController::class, 'index'])->middleware('auth')->name('dashboard.classes.index');
     Route::get('/dashboard/ryr/classes/create', [ClassController::class, 'create'])->middleware('auth')->name('dashboard.classes.create');
+    // Route::post('/dashboard/ryr/classes/uploadFoto', [ClassController::class, 'uploadFoto'])->middleware('auth');
     Route::resource('/dashboard/ryr/classes', ClassController::class)->middleware('auth');
 
     //members

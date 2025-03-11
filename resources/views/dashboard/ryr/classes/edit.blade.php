@@ -74,6 +74,7 @@
           @enderror
         </div>
 
+
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
         <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
@@ -93,4 +94,20 @@
     </form>
 
   </div>
+
+  <script>
+    function previewImage() {
+        const image = document.querySelector('#foto');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        };
+    }
+</script>
   @endsection

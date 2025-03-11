@@ -8,6 +8,7 @@ use App\Models\RYR\ryrClasses;
 use App\Http\Controllers\Controller;
 use App\Models\RYR\ryrParticipants;
 use App\Models\RYR\ryrTeachers;
+use Illuminate\Support\Facades\Storage;
 
 class ClassController extends Controller
 {
@@ -61,12 +62,18 @@ class ClassController extends Controller
             'biaya' => 'required',
             'tipe' => 'required',
             'description' => 'nullable',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
         // dd($input);
         $code = Str::random(5);
         $input['id'] = $input['teacher'] . '-' . $code;
         $input['created_at'] = now();
         $input['updated_at'] = now();
+
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+            $this->uploadFoto($request);
+            $input['foto'] = 'portfolio2/img/class/' . $request->file('foto')->hashName();
+        }
 
         ryrClasses::create($input);
 
@@ -101,12 +108,22 @@ class ClassController extends Controller
             'biaya' => 'required',
             'tipe' => 'required',
             'description' => 'nullable',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
         $input['updated_at'] = now();
         $input = $request->all();
 
         $class = ryrClasses::findOrFail($id);
+
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+            if($class->foto){
+                $this->deleteFoto($class->foto);
+            }
+            $this->uploadFoto($request);
+            $input['foto'] = $request->file('foto')->hashName();
+        }
+
         $class->update($input);
 
         return redirect()->route('dashboard.ryr.classes.index');
@@ -118,5 +135,39 @@ class ClassController extends Controller
         $class->delete();
 
         return redirect()->route('dashboard.ryr.classes.index');
+    }
+
+
+    public function uploadFoto(Request $request)
+    {
+
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+
+            $file = $request->file('foto');
+
+
+            $path = $file->store('portfolio2/img/class', 'public');
+
+            return response()->json(['path' => $path, 'message' => 'File uploaded successfully!']);
+        }
+
+        return response()->json(['message' => 'No valid image file found'], 400);
+    }
+
+    public function deleteFoto($filename)
+    {
+        // Define the file path relative to the public storage
+        $filePath = 'portfolio2/img/class' . $filename;
+        // $filePath = $filename;
+
+        // Check if the file exists
+        if (Storage::disk('public')->exists($filePath)) {
+            // Delete the file
+            Storage::disk('public')->delete($filePath);
+
+            return response()->json(['message' => 'File deleted successfully']);
+        }
+
+        return response()->json(['message' => 'File not found'], 404);
     }
 }
