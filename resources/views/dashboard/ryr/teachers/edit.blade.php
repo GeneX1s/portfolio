@@ -75,14 +75,16 @@
 
     <div class="mb-3">
         <label for="foto" class="form-label">Foto Teacher <small class="text-muted">(370 x 207 px)</small></label>
-        <img class="img-preview img-fluid mb-3 col-sm-5">
+        <br>
+        <img src="{{ asset('storage/' . $teacher->foto) }}" class="img-preview img-fluid mb-3 col-sm-5" alt="Teacher's photo">
         <input class="form-control @error('foto') is-invalid @enderror" type="file" id="foto" name="foto"
           onchange="previewImage()">
         @error('foto')
         <div class="invalid-feedback">
           {{ $message }}
-          @enderror
         </div>
+        @enderror
+    </div>
 
 
     <div class="mb-3">

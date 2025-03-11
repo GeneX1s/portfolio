@@ -183,9 +183,9 @@
 
                     <div class="single-class">
                         <div class="single-img">
-                            <a href="/ryr/class"><img src="portfolio2/img/class/1.webp" alt="class"></a>
+                            <a href="/ryr/class"><img src="{{ asset('storage/' . $class->foto) }}" alt="class" style="width: 370px; height: 207px;"></a>
                             <div class="gallery-icon">
-                                <a class="image-popup" href="portfolio2/img/class/1.webp">
+                                <a class="image-popup" href="{{ asset('storage/' . $class->foto) }}" style="width: 370px; height: 207px;">
                                     <i class="zmdi zmdi-zoom-in"></i>
                                 </a>
                             </div>
@@ -342,7 +342,7 @@
                     @if ($index < 3)
                 <div class="col-lg-4 col-md-6">
                     <div class="single-trainer text-center">
-                        <img src="portfolio2/img/trainer/trainer1.webp" alt="trainer">
+                        <img src="{{ asset('storage/' . $teacher->foto) }}" alt="trainer" style="width: 370px; height: 345px;">
                         <div class="trainer-hover">
                             <h3>{{ $teacher->nama }}</h3>
                             <ul>
