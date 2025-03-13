@@ -346,10 +346,17 @@
                 </div>
 
                 @foreach ($teachers as $index => $teacher)
+                @php
+                    if($teacher->foto){
+                        $foto = 'storage/' . $teacher->foto;
+                    } else {
+                        $foto = 'portfolio2/img/logo/logo1.webp';
+                    }
+                @endphp
                     @if ($index < 3)
                 <div class="col-lg-4 col-md-6">
                     <div class="single-trainer text-center">
-                        <img src="{{ asset('storage/' . $teacher->foto) }}" alt="trainer" style="width: 370px; height: 345px;">
+                        <img src="{{ $foto }}" alt="trainer" style="width: 370px; height: 345px;">
                         <div class="trainer-hover">
                             <h3>{{ $teacher->nama }}</h3>
                             <ul>
