@@ -179,13 +179,20 @@
             </div>
             <div class="row">
                 @foreach ($classes as $class)
+                @php
+                    if($class->foto){
+                        $foto = 'storage/' . $class->foto;
+                    } else {
+                        $foto = 'portfolio2/img/class/2.webp';
+                    }
+                @endphp
                 <div class="col-lg-4 col-md-6">
 
                     <div class="single-class">
                         <div class="single-img">
-                            <a href="/ryr/class"><img src="{{ asset('storage/' . $class->foto) }}" alt="class" style="width: 370px; height: 207px;"></a>
+                            <a href="/ryr/class"><img src="{{ $foto }}" alt="class" style="width: 370px; height: 207px;"></a>
                             <div class="gallery-icon">
-                                <a class="image-popup" href="{{ asset('storage/' . $class->foto) }}" style="width: 370px; height: 207px;">
+                                <a class="image-popup" href="{{ $foto }}" style="width: 370px; height: 207px;">
                                     <i class="zmdi zmdi-zoom-in"></i>
                                 </a>
                             </div>
