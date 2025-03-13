@@ -180,17 +180,18 @@
             <div class="row">
                 @foreach ($classes as $class)
                 @php
-                    if($class->foto){
-                        $foto = 'storage/' . $class->foto;
-                    } else {
-                        $foto = 'portfolio2/img/class/2.webp';
-                    }
+                if($class->foto){
+                $foto = 'storage/' . $class->foto;
+                } else {
+                $foto = 'portfolio2/img/class/2.webp';
+                }
                 @endphp
                 <div class="col-lg-4 col-md-6">
 
                     <div class="single-class">
                         <div class="single-img">
-                            <a href="/ryr/class"><img src="{{ $foto }}" alt="class" style="width: 370px; height: 207px;"></a>
+                            <a href="/ryr/class"><img src="{{ $foto }}" alt="class"
+                                    style="width: 370px; height: 207px;"></a>
                             <div class="gallery-icon">
                                 <a class="image-popup" href="{{ $foto }}" style="width: 370px; height: 207px;">
                                     <i class="zmdi zmdi-zoom-in"></i>
@@ -347,14 +348,13 @@
 
                 @foreach ($teachers as $index => $teacher)
                 @php
-                    if($teacher->foto){
-                        $foto = 'storage/' . $teacher->foto;
-                    } else {
-                        $foto = 'portfolio2/img/logo/logo1.webp';
-                    }
+                if($teacher->foto){
+                $foto = 'storage/' . $teacher->foto;
+                } else {
+                $foto = 'portfolio2/img/logo/logo1.webp';
+                }
                 @endphp
-                    @if ($index < 3)
-                <div class="col-lg-4 col-md-6">
+                @if ($index < 3) <div class="col-lg-4 col-md-6">
                     <div class="single-trainer text-center">
                         <img src="{{ $foto }}" alt="trainer" style="width: 370px; height: 345px;">
                         <div class="trainer-hover">
@@ -366,54 +366,54 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                @endif
-                @endforeach
-
-                {{-- <div class="col-lg-4 col-md-6">
-                    <div class="single-trainer text-center">
-                        <img src="portfolio2/img/trainer/trainer1.webp" alt="trainer">
-                        <div class="trainer-hover">
-                            <h3>Okta</h3>
-                            <ul>
-                                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-trainer text-center">
-                        <img src="portfolio2/img/trainer/trainer2.webp" alt="trainer">
-                        <div class="trainer-hover">
-                            <h3>Agung</h3>
-                            <ul>
-                                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-                    <div class="single-trainer text-center">
-                        <img src="portfolio2/img/trainer/trainer3.webp" alt="trainer">
-                        <div class="trainer-hover">
-                            <h3>Rian</h3>
-                            <ul>
-                                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
+            @endif
+            @endforeach
+
+            {{-- <div class="col-lg-4 col-md-6">
+                <div class="single-trainer text-center">
+                    <img src="portfolio2/img/trainer/trainer1.webp" alt="trainer">
+                    <div class="trainer-hover">
+                        <h3>Okta</h3>
+                        <ul>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-trainer text-center">
+                    <img src="portfolio2/img/trainer/trainer2.webp" alt="trainer">
+                    <div class="trainer-hover">
+                        <h3>Agung</h3>
+                        <ul>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+                <div class="single-trainer text-center">
+                    <img src="portfolio2/img/trainer/trainer3.webp" alt="trainer">
+                    <div class="trainer-hover">
+                        <h3>Rian</h3>
+                        <ul>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div> --}}
         </div>
+    </div>
     </div>
     <!-- Trainer Area End -->
     <!-- Gallery Area Start -->
@@ -776,8 +776,7 @@
                             $submitCount = session('submit_count', 0);
                             @endphp
 
-                            @if ($submitCount < 2)
-                            <form method="post" action="/dashboard/contactus">
+                            @if ($submitCount < 2) <form method="post" action="/dashboard/contactus">
                                 @php
                                 session(['submit_count' => $submitCount + 1]);
                                 @endphp
