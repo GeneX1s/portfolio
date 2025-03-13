@@ -498,7 +498,7 @@
                             <h3>Christmas in RYR</h3>
                             <p>Join us for a festive Potluck Christmas event! Bring your favorite dish to share and
                                 enjoy a joyful celebration with our yoga community.</p>
-                            <h4>25 December 2023</h4>
+                            <h4>25 December 2024</h4>
                             <h5>08PM - 09PM</h5>
                         </div>
                     </div>
@@ -672,41 +672,7 @@
                                     <h6>Co-Founder</h6>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Roemah Yoga Rian is life changing. The instructors are incredibly knowledgeable
-                                        and supportive, and the classes are both challenging and rejuvenating. I highly
-                                        recommend this studio to anyone looking to deepen their yoga practice.</p>
-                                    <h4 style="font-family: 'Great Vibes', cursive;">Owen</h4>
-                                    {{-- <img src="portfolio2/img/icon/signature.webp" alt="signature"> --}}
-                                    <h6>Co-Founder</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel
-                                        odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu
-                                        lacinia congue.
-                                        Vestibulum sodales, sapien aliquam </p>
-                                    <img src="portfolio2/img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel
-                                        odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu
-                                        lacinia congue.
-                                        Vestibulum sodales, sapien aliquam </p>
-                                    <img src="portfolio2/img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
