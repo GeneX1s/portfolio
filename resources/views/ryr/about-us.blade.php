@@ -1,19 +1,19 @@
-@extends('ryr.layouts.main')
-@section('container')
+{{-- @extends('ryr.layouts.main')
+@section('container') --}}
 <!doctype html>
 <html class="no-js" lang="en">
 
-{{--
+
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>About Us || Handstand</title>
+    <title>About Us || Roemah Yoga Rian</title>
     <meta name="description"
         content="The template is built for Sport Clubs, Health Clubs, Gyms, Fitness Centers, Personal Trainers and other sport">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
 
     <link rel="stylesheet" href="../../portfolio2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../portfolio2/css/font-awesome.min.css">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../../portfolio2/style.css">
     <link rel="stylesheet" href="../../portfolio2/css/responsive.css">
     <script src="../../portfolio2/js/vendor/modernizr-3.11.2.min.js"></script>
-</head> --}}
+</head>
 
 <body>
     <!--[if lt IE 8]>
@@ -31,13 +31,13 @@
 
 
     <!-- Header Area Start -->
-    {{-- <header class="top">
+    <header class="top">
         <div class="header-area ptb-18 header-sticky">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="index.html"><img src="img/logo/logo.webp" alt="COFFEE" /></a>
+                            <a href="/"><img src="/../../portfolio2/img/logo/logo.webp" alt="COFFEE" /></a>
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -46,12 +46,12 @@
                             <div class="main-menu text-center">
                                 <nav>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about-us.html">About us</a></li>
-                                        <li><a href="class.html">classes</a></li>
-                                        <li><a href="gallery.html">gallery</a></li>
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="ryr/about-us">About us</a></li>
+                                        <li><a href="ryr/class">classes</a></li>
+                                        <li><a href="ryr/gallery">gallery</a></li>
+                                        <li><a href="ryr/blog">blog</a></li>
+                                        <li><a href="ryr/contact">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -61,13 +61,13 @@
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="contact" href="contact.html"><span>contact</span></a>
+                            <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header> --}}
+    </header>
     <!-- Header Area End -->
     <!-- Banner Area Start -->
     <section class="banner-area text-start">
@@ -96,25 +96,32 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="about-content">
-                        <h2>about roemah yoga rian</h2>
-                        <p class="m-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                            Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an
-                            unknown lorem printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, lorem ipsum is.</p>
-                        <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and is more recently with desktop publishing software like Aldus PageMaker
-                            including versions. </p>
-                        <a class="banner-btn" href="#" data-text="read more"><span>read more</span></a>
+                        <h2>about Roemah Yoga Rian</h2>
+                        <p class="m-0">Welcome to Roemah Yoga Rian, your serene space to explore the transformative
+                            power of yoga. Our studio offers a variety of yoga styles designed to promote physical
+                            strength, mental clarity, and emotional balance. Whether you're a beginner or an advanced
+                            practitioner, our experienced instructors guide you through each session with personalized
+                            attention, ensuring you deepen your practice at your own pace.</p>
+                        <p>
+                            We believe that yoga is not just a workout, but a holistic approach to wellness that
+                            nurtures the mind, body, and spirit. Join us for our calming and invigorating classes,
+                            including Vinyasa, Hatha, Yin, and Restorative Yoga, all set in a peaceful and welcoming
+                            environment.
+                        </p>
+                        <p>
+                            At Roemah Yoga Rian, we aim to create a community where individuals can cultivate
+                            mindfulness, reduce stress, and enhance overall well-being. Take your first step towards a
+                            healthier lifestyle today!</p>
+                        <a class="banner-btn" href="ryr/about-us" data-text="read more"><span>read more</span></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="about-video active">
                         <div class="game">
-                            <a href="#"><img src="img/about/about.webp" alt="about"></a>
+                            <a href="#"><img src="/../../portfolio2/img/about/about.webp" alt="about"></a>
                         </div>
                         <div class="video-icon video-hover">
-                            <a class="video-popup" href="https://www.youtube.com/watch?v=A47zwWsjXgs">
+                            <a class="video-popup" href="https://www.youtube.com/watch?v=zh7_MuszLhE">
                                 <i class="zmdi zmdi-play"></i>
                             </a>
                         </div>
@@ -124,102 +131,58 @@
         </div>
     </section>
     <!-- About End -->
-    <!-- Event Area Strat -->
-    <section class="event-area pt-95 pb-100 bg-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-xl-2 offset-lg-2">
-                    <div class="section-title text-center">
-                        <h2>awesome event</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
-                    </div>
-                    <div class="event-wrapper">
-                        <div class="event-content text-center">
-                            <h3>Yoga celebration in Handstand</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry'ssurvived </p>
-                            <h4>25 March 2021</h4>
-                            <h5>10AM - 12AM</h5>
-                        </div>
-                    </div>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-12">
+                <div class="text-center">
+                    <h1 class="display-4">Our Journey</h1>
+                    <p class="lead text-muted">From humble beginnings to a thriving community of yoga enthusiasts.</p>
                 </div>
+
+                <section class="my-5">
+                    <h2>Our Story</h2>
+                    <p>
+                        Our yoga journey began in [Year], when our founder, [Founder Name], envisioned a space where individuals could connect not only with their inner selves but also with a supportive community. It all started with a single class in a small, cozy studio, where the focus was solely on mindfulness and personal growth.
+                    </p>
+                    <p>
+                        What started as a small group of passionate practitioners soon blossomed into a growing community. We realized that yoga is not just about physical flexibility; it's about mental clarity, self-discovery, and fostering connection in a world that often feels disconnected.
+                    </p>
+                </section>
+
+                <section class="my-5">
+                    <h2>Our Evolution</h2>
+                    <p>
+                        Over the years, we've expanded beyond the original studio, offering online courses and a variety of workshops designed to meet the diverse needs of our students. Our classes range from gentle flow to advanced vinyasa, guided by certified instructors who truly care about the well-being of each participant.
+                    </p>
+                    <p>
+                        We launched our online platform in [Year] to make yoga more accessible to people all over the world. This move allowed us to reach individuals who were unable to join in-person classes due to location, time constraints, or personal preferences.
+                    </p>
+                    <p>
+                        We’ve also created a space for wellness and mindfulness beyond the mat, offering meditation workshops, nutrition advice, and community events that promote holistic health and well-being.
+                    </p>
+                </section>
+
+                <section class="my-5">
+                    <h2>Our Mission Today</h2>
+                    <p>
+                        Today, we continue to offer a welcoming and nurturing environment for practitioners of all levels. Whether you're stepping onto the mat for the first time or are a seasoned yogi, our goal remains the same: to support your growth, help you find balance, and provide a sanctuary for peace and mindfulness in your busy life.
+                    </p>
+                    <p>
+                        Our mission is not only to teach yoga, but to help foster a community where each person can thrive. Through our online and in-person offerings, we aim to build a community that values kindness, mindfulness, and the power of the present moment.
+                    </p>
+                </section>
+
+                <section class="my-5">
+                    <h2>Join Us</h2>
+                    <p>
+                        We invite you to join us on this journey. Whether you’re new to yoga or a seasoned practitioner, there’s a place for you here. Let us help you on your path to inner peace and balance. Together, we will continue to grow and evolve, both individually and as a community.
+                    </p>
+
+                </section>
             </div>
         </div>
-    </section>
-    <!-- Event Area End -->
-    <!-- Client Area Strat -->
-    <section class="client-area pt-95 pb-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-xl-2 offset-lg-2">
-                    <div class="section-title text-center">
-                        <h2>Our Client Say</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 offset-xl-1 offset-lg-1">
-                    <div class="row">
-                        <div class="testimonial-owl">
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
     <!-- Client Area End -->
     <!-- Start of Map Area -->
     <div class="map-area">
@@ -228,8 +191,9 @@
             <!--  Map Section -->
             <div id="contacts" class="map-area">
                 <iframe class="contact-map-size"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1613802584124!5m2!1sen!2sbd"
-                    allowfullscreen="" loading="lazy">
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.6973113638185!2d106.83132382844991!3d-6.158974866248367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5c305a28127%3A0x87393457227b08c!2sRoemah%20Yoga%20Rian!5e0!3m2!1sen!2sid!4v1741074554055!5m2!1sen!2sid"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
         </div>
@@ -265,66 +229,69 @@
     </section>
     <!-- Newsletter Area End -->
     <!-- Footer Area Start -->
-    {{-- <footer class="footer-area bg-gray">
+    <footer class="footer-area bg-gray">
         <div class="footer-widget-area bg-3 pt-98 pb-90 fix">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <a href="index.html"><img src="img/logo/logo.webp" alt="handstand"></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a convallis nulla. Ut
+                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
+                            <p>Contact us here, for further inquiries or questions.
                             </p>
                             <ul>
-                                <li><i class="zmdi zmdi-email"></i> username@gmail.com</li>
-                                <li><i class="zmdi zmdi-phone"></i> (+660 256 24857)</li>
-                                <li><i class="zmdi zmdi-home"></i> Your Address Here</li>
+                                <li><i class="zmdi zmdi-email"></i> apriyanti_lesmana@gmail.com</li>
+                                <li><i class="zmdi zmdi-phone"></i> (+62 812 8090 0988)</li>
+                                <li><i class="zmdi zmdi-home"></i> Jl. Krekot Bunder 3 No.47 | Sawah Besar | Ps.Baru |
+                                    Jakarta Pusat</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <h3>Recent Tweets</h3>
-                            <div class="single-twitt mb-10">
-                                <div class="twitt-icon">
-                                    <i class="zmdi zmdi-twitter"></i>
-                                </div>
-                                <div class="twitt-content">
-                                    <p>@envato good News for today!! We got 2 psd templete weekly top selling quality
-                                        template in technology category !!!</p>
-                                    <a href="https://twitter.com/login/">https://twitter.com/login</a>
-                                </div>
-                            </div>
-                            <div class="single-twitt">
-                                <div class="twitt-icon">
-                                    <i class="zmdi zmdi-twitter"></i>
-                                </div>
-                                <div class="twitt-content">
-                                    <p>@envato good News for today!! We got 2 psd templete weekly top selling quality
-                                        template in technology category !!!</p>
-                                    <a href="https://twitter.com/login/">https://twitter.com/login</a>
-                                </div>
-                            </div>
+                            <h3>Our Social Media</h3>
+                            <ul class="social-icons">
+                                <li><a
+                                        href="https://www.facebook.com/people/Roemah-Yoga-Rian/pfbid021qFFWSgGsUgBWdks587Zr6U5yZqQmTXw4MzCW4j6HS8DsbpH4n6AzDA1qkx8S6tVl/"><i
+                                            class="zmdi zmdi-facebook"></i>Facebook</a></li>
+                                <li><a href="https://www.instagram.com/roemahyogarian47/"><i
+                                            class="zmdi zmdi-instagram"></i>Instagram</a></li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
                             <h3>get in touch</h3>
-                            <form id="subscribe-form" action="https://whizthemes.com/mail-php/other/mail.php">
+
+                            @php
+                            $submitCount = session('submit_count', 0);
+                            @endphp
+
+                            @if ($submitCount < 2) <form method="post" action="/dashboard/contactus">
+                                @php
+                                session(['submit_count' => $submitCount + 1]);
+                                @endphp
+                                @else
+                                <p>You have reached the submission limit for this session.</p>
+                                @endif
+
+                                @csrf
+
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input type="text" placeholder="Name" name="con_name">
+                                        <input type="text" placeholder="Name" name="name" required="required">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" placeholder="Email" name="con_email">
+                                        <input type="email" placeholder="Email" name="email" required="required">
                                     </div>
                                     <div class="col-sm-12">
-                                        <textarea cols="30" rows="7" name="con_message"
-                                            placeholder="subject"></textarea>
-                                        <button type="submit">submit</button>
+                                        <textarea cols="30" rows="7" name="message" placeholder="subject"></textarea>
+
+                                        <button type="submit" class="button btn-send"
+                                            onsubmit="return ('Thanks for reaching out!')">Submit </button>
                                         <p class="subscribe-message"></p>
                                     </div>
                                 </div>
-                            </form>
+                                </form>
                         </div>
                     </div>
                 </div>
@@ -335,34 +302,31 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="footer-text text-center">
-                            <span>Copyright &copy; <a
-                                    href="https://themeforest.net/user/codecarnival/portfolio">CodeCarnival</a> 2022.
-                                All Rights Reserved.</span>
+                            <span>Copyright &copy; <a href="/portfolio">Check out my other works!</a>
+                                2022. All Rights Reserved.</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </footer> --}}
+    </footer>
+
     <!-- Footer Area End -->
 
-    <!-- All js here -->
-    {{-- <script src="js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="js/vendor/jquery-migrate-3.3.2.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.meanmenu.js"></script>
-    <script src="js/ajax-mail.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/jquery.magnific-popup.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script> --}}
+    <script src="/../../portfolio2/js/vendor/jquery-3.6.0.min.js" defer></script>
+    <script src="/../../portfolio2/js/vendor/jquery-migrate-3.3.2.min.js" defer></script>
+    <script src="/../../portfolio2/js/bootstrap.bundle.min.js" defer></script>
+    <script src="/../../portfolio2/js/owl.carousel.min.js" defer></script>
+    <script src="/../../portfolio2/js/jquery.meanmenu.js" defer></script>
+    <script src="/../../portfolio2/js/ajax-mail.js" defer></script>
+    <script src="/../../portfolio2/js/jquery.ajaxchimp.min.js" defer></script>
+    <script src="/../../portfolio2/js/slick.min.js" defer></script>
+    <script src="/../../portfolio2/js/imagesloaded.pkgd.min.js" defer></script>
+    <script src="/../../portfolio2/js/isotope.pkgd.min.js" defer></script>
+    <script src="/../../portfolio2/js/jquery.magnific-popup.js" defer></script>
+    <script src="/../../portfolio2/js/plugins.js" defer></script>
+    <script src="/../../portfolio2/js/main.js" defer></script>
 </body>
 
-<!-- Mirrored from htmldemo.net/handstand/handstand/about-us.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 01:57:36 GMT -->
-
 </html>
-@endsection
+{{-- @endsection --}}

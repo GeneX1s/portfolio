@@ -433,7 +433,7 @@
             </div>
             <div class="grid row" style="position: relative; height: 390px;">
                 @php
-                    $galleries = [];
+                $galleries = [];
                 @endphp
                 @foreach ($galleries as $gallery)
 
@@ -541,7 +541,7 @@
                 </div>
                 <div class="row">
                     @php
-                        $blogs = [];
+                    $blogs = [];
                     @endphp
                     @foreach ($blogs as $blog)
 
@@ -757,7 +757,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <a href="/portfolio"><img src="portfolio2//img/logo/logo.webp" alt="handstand"></a>
+                            <a href="/portfolio"><img src="portfolio2//img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
                             <p>Contact us here, for further inquiries or questions.
                             </p>
                             <ul>

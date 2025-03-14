@@ -6,4 +6,4 @@ Teachers = 370 x 345 px
 Gallery/portfolio = 370 x 320 px
 Blog = 168,75 x 243,75 px
 
-Handstand logo =  98 x 64 px
+Roemah Yoga Rian logo =  98 x 64 px
