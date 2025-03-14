@@ -11,16 +11,15 @@
         content="The template is built for Sport Clubs, Health Clubs, Gyms, Fitness Centers, Personal Trainers and other sport">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Favicon Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
 
-    <link rel="stylesheet" href="portfolio2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="portfolio2/css/font-awesome.min.css">
-    <link rel="stylesheet" href="portfolio2/css/shortcode/shortcodes.css">
-    <link rel="stylesheet" href="portfolio2/css/slick.css">
-    <link rel="stylesheet" href="portfolio2/style.css">
-    <link rel="stylesheet" href="portfolio2/css/responsive.css">
-    <script src="portfolio2/js/vendor/modernizr-3.11.2.min.js"></script>
+    <link rel="stylesheet" href="../../portfolio2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../portfolio2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../portfolio2/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="../../portfolio2/css/slick.css">
+    <link rel="stylesheet" href="../../portfolio2/style.css">
+    <link rel="stylesheet" href="../../portfolio2/css/responsive.css">
+    <script src="../../portfolio2/js/vendor/modernizr-3.11.2.min.js"></script>
 </head>
 
 <body>
@@ -36,7 +35,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="index.html"><img src="img/logo/logo.webp" alt="COFFEE" /></a>
+                            <a href="/"><img src="/../../portfolio2/img/logo/logo.webp" alt="COFFEE" /></a>
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -45,12 +44,12 @@
                             <div class="main-menu text-center">
                                 <nav>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about-us.html">About us</a></li>
-                                        <li><a href="class.html">classes</a></li>
-                                        <li><a href="gallery.html">gallery</a></li>
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="/">Home</a></li>
+                                        {{-- <li><a href="/ryr/about-us">About us</a></li> --}}
+                                        <li><a href="/ryr/class">classes</a></li>
+                                        <li><a href="/ryr/gallery">gallery</a></li>
+                                        <li><a href="/ryr/blog">blog</a></li>
+                                        {{-- <li><a href="/ryr/contact">Contact</a></li> --}}
                                     </ul>
                                 </nav>
                             </div>
@@ -60,7 +59,7 @@
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="contact" href="contact.html"><span>contact</span></a>
+                            <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
                         </div>
                     </div>
                 </div>
@@ -78,7 +77,7 @@
                             <h2>gallery</h2>
                             <div class="banner-breadcrumb">
                                 <ul>
-                                    <li><a href="index.html">home </a> <i class="zmdi zmdi-chevron-right"></i></li>
+                                    <li><a href="/">home </a> <i class="zmdi zmdi-chevron-right"></i></li>
                                     <li>gallery</li>
                                 </ul>
                             </div>
@@ -199,79 +198,6 @@
         </div>
     </section>
     <!-- Gallery Area End -->
-    <!-- Client Area Strat -->
-    <section class="client-area pt-95 pb-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-xl-2 offset-lg-2">
-                    <div class="section-title text-center">
-                        <h2>Our Client Say</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 offset-xl-1 offset-lg-1">
-                    <div class="row">
-                        <div class="testimonial-owl">
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Client Area End -->
     <!-- Start of Map Area -->
     <div class="map-area">
         <!-- google-map-area start -->
@@ -279,8 +205,9 @@
             <!--  Map Section -->
             <div id="contacts" class="map-area">
                 <iframe class="contact-map-size"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1613802584124!5m2!1sen!2sbd"
-                    allowfullscreen="" loading="lazy">
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.6973113638185!2d106.83132382844991!3d-6.158974866248367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5c305a28127%3A0x87393457227b08c!2sRoemah%20Yoga%20Rian!5e0!3m2!1sen!2sid!4v1741074554055!5m2!1sen!2sid"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
         </div>
@@ -322,60 +249,63 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <a href="index.html"><img src="img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a convallis nulla. Ut
+                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
+                            <p>Contact us here, for further inquiries or questions.
                             </p>
                             <ul>
-                                <li><i class="zmdi zmdi-email"></i> username@gmail.com</li>
-                                <li><i class="zmdi zmdi-phone"></i> (+660 256 24857)</li>
-                                <li><i class="zmdi zmdi-home"></i> Your Address Here</li>
+                                <li><i class="zmdi zmdi-email"></i> apriyanti_lesmana@gmail.com</li>
+                                <li><i class="zmdi zmdi-phone"></i> (+62 812 8090 0988)</li>
+                                <li><i class="zmdi zmdi-home"></i> Jl. Krekot Bunder 3 No.47 | Sawah Besar | Ps.Baru |
+                                    Jakarta Pusat</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <h3>Recent Tweets</h3>
-                            <div class="single-twitt mb-10">
-                                <div class="twitt-icon">
-                                    <i class="zmdi zmdi-twitter"></i>
-                                </div>
-                                <div class="twitt-content">
-                                    <p>@envato good News for today!! We got 2 psd templete weekly top selling quality
-                                        template in technology category !!!</p>
-                                    <a href="https://twitter.com/login/">https://twitter.com/login</a>
-                                </div>
-                            </div>
-                            <div class="single-twitt">
-                                <div class="twitt-icon">
-                                    <i class="zmdi zmdi-twitter"></i>
-                                </div>
-                                <div class="twitt-content">
-                                    <p>@envato good News for today!! We got 2 psd templete weekly top selling quality
-                                        template in technology category !!!</p>
-                                    <a href="https://twitter.com/login/">https://twitter.com/login</a>
-                                </div>
-                            </div>
+                            <h3>Our Social Media</h3>
+                            <ul class="social-icons">
+                                <li><a
+                                        href="https://www.facebook.com/people/Roemah-Yoga-Rian/pfbid021qFFWSgGsUgBWdks587Zr6U5yZqQmTXw4MzCW4j6HS8DsbpH4n6AzDA1qkx8S6tVl/"><i
+                                            class="zmdi zmdi-facebook"></i>Facebook</a></li>
+                                <li><a href="https://www.instagram.com/roemahyogarian47/"><i
+                                            class="zmdi zmdi-instagram"></i>Instagram</a></li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
                             <h3>get in touch</h3>
-                            <form id="subscribe-form" action="https://whizthemes.com/mail-php/other/mail.php">
+
+                            @php
+                            $submitCount = session('submit_count', 0);
+                            @endphp
+
+                            @if ($submitCount < 2) <form method="post" action="/dashboard/contactus">
+                                @php
+                                session(['submit_count' => $submitCount + 1]);
+                                @endphp
+                                @else
+                                <p>You have reached the submission limit for this session.</p>
+                                @endif
+
+                                @csrf
+
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input type="text" placeholder="Name" name="con_name">
+                                        <input type="text" placeholder="Name" name="name" required="required">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" placeholder="Email" name="con_email">
+                                        <input type="email" placeholder="Email" name="email" required="required">
                                     </div>
                                     <div class="col-sm-12">
-                                        <textarea cols="30" rows="7" name="con_message"
-                                            placeholder="subject"></textarea>
-                                        <button type="submit">submit</button>
+                                        <textarea cols="30" rows="7" name="message" placeholder="subject"></textarea>
+
+                                        <button type="submit" class="button btn-send"
+                                            onsubmit="return ('Thanks for reaching out!')">Submit </button>
                                         <p class="subscribe-message"></p>
                                     </div>
                                 </div>
-                            </form>
+                                </form>
                         </div>
                     </div>
                 </div>
@@ -386,9 +316,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="footer-text text-center">
-                            <span>Copyright &copy; <a
-                                    href="https://themeforest.net/user/codecarnival/portfolio">CodeCarnival</a> 2022.
-                                All Rights Reserved.</span>
+                            <span>Copyright &copy; <a href="/portfolio">Check out my other works!</a>
+                                2022. All Rights Reserved.</span>
                         </div>
                     </div>
                 </div>
@@ -398,21 +327,19 @@
     <!-- Footer Area End -->
 
     <!-- All js here -->
-    <script src="js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="js/vendor/jquery-migrate-3.3.2.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.meanmenu.js"></script>
-    <script src="js/ajax-mail.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/jquery.magnific-popup.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/../../portfolio2/js/vendor/jquery-3.6.0.min.js" defer></script>
+    <script src="/../../portfolio2/js/vendor/jquery-migrate-3.3.2.min.js" defer></script>
+    <script src="/../../portfolio2/js/bootstrap.bundle.min.js" defer></script>
+    <script src="/../../portfolio2/js/owl.carousel.min.js" defer></script>
+    <script src="/../../portfolio2/js/jquery.meanmenu.js" defer></script>
+    <script src="/../../portfolio2/js/ajax-mail.js" defer></script>
+    <script src="/../../portfolio2/js/jquery.ajaxchimp.min.js" defer></script>
+    <script src="/../../portfolio2/js/slick.min.js" defer></script>
+    <script src="/../../portfolio2/js/imagesloaded.pkgd.min.js" defer></script>
+    <script src="/../../portfolio2/js/isotope.pkgd.min.js" defer></script>
+    <script src="/../../portfolio2/js/jquery.magnific-popup.js" defer></script>
+    <script src="/../../portfolio2/js/plugins.js" defer></script>
+    <script src="/../../portfolio2/js/main.js" defer></script>
 </body>
-
-<!-- Mirrored from htmldemo.net/Roemah Yoga Rian/Roemah Yoga Rian/gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 01:57:36 GMT -->
 
 </html>

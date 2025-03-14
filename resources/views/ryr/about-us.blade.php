@@ -47,11 +47,11 @@
                                 <nav>
                                     <ul>
                                         <li><a href="/">Home</a></li>
-                                        <li><a href="ryr/about-us">About us</a></li>
-                                        <li><a href="ryr/class">classes</a></li>
-                                        <li><a href="ryr/gallery">gallery</a></li>
-                                        <li><a href="ryr/blog">blog</a></li>
-                                        <li><a href="ryr/contact">Contact</a></li>
+                                        {{-- <li><a href="/ryr/about-us">About us</a></li> --}}
+                                        <li><a href="/ryr/class">classes</a></li>
+                                        <li><a href="/ryr/gallery">gallery</a></li>
+                                        <li><a href="/ryr/blog">blog</a></li>
+                                        {{-- <li><a href="/ryr/contact">Contact</a></li> --}}
                                     </ul>
                                 </nav>
                             </div>
@@ -132,7 +132,7 @@
     </section>
     <!-- About End -->
 
-    <div class="container py-5">
+    <section class="about-area pt-95 pb-100">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 col-12">
                 <div class="text-center">
@@ -143,7 +143,7 @@
                 <section class="my-5">
                     <h2>Our Story</h2>
                     <p>
-                        Our yoga journey began in [Year], when our founder, [Founder Name], envisioned a space where individuals could connect not only with their inner selves but also with a supportive community. It all started with a single class in a small, cozy studio, where the focus was solely on mindfulness and personal growth.
+                        Our yoga journey began in 2013, when our founder, Rian, envisioned a space where individuals could connect not only with their inner selves but also with a supportive community. It all started with a single class in a small, cozy studio, where the focus was solely on mindfulness and personal growth.
                     </p>
                     <p>
                         What started as a small group of passionate practitioners soon blossomed into a growing community. We realized that yoga is not just about physical flexibility; it's about mental clarity, self-discovery, and fostering connection in a world that often feels disconnected.
@@ -156,7 +156,7 @@
                         Over the years, we've expanded beyond the original studio, offering online courses and a variety of workshops designed to meet the diverse needs of our students. Our classes range from gentle flow to advanced vinyasa, guided by certified instructors who truly care about the well-being of each participant.
                     </p>
                     <p>
-                        We launched our online platform in [Year] to make yoga more accessible to people all over the world. This move allowed us to reach individuals who were unable to join in-person classes due to location, time constraints, or personal preferences.
+                        We launched our online platform in 2025 to make yoga more accessible to people all over the world. This move allowed us to reach individuals who were unable to join in-person classes due to location, time constraints, or personal preferences.
                     </p>
                     <p>
                         We’ve also created a space for wellness and mindfulness beyond the mat, offering meditation workshops, nutrition advice, and community events that promote holistic health and well-being.
@@ -182,7 +182,7 @@
                 </section>
             </div>
         </div>
-    </div>
+    </section>
     <!-- Client Area End -->
     <!-- Start of Map Area -->
     <div class="map-area">
