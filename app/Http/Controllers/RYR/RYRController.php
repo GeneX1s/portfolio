@@ -33,7 +33,9 @@ class RYRController extends Controller
         $schedules = $classes->unique('schedule')->pluck('schedule');
         $teachers = ryrTeachers::where('status', 'Active')->get();
         $participants = ryrParticipants::get();
-        $specials = ryrSchedules::where('status', 'Active')->where('tipe','Special')->get();
+        $specials = ryrSchedules::where('status', 'Active')->where('tipe', 'Special')->get();
+        $blogs = ryrBlogs::where('status', 'Active')->get();
+        $galleries = ryrGalleries::get();
 
 
         return view('ryr/ryr', [
@@ -43,7 +45,8 @@ class RYRController extends Controller
             'participants' => $participants,
             'specials' => $specials,
             'user' => $user,
-
+            'blogs' => $blogs,
+            'galleries' => $galleries,
         ]);
     }
 
@@ -69,6 +72,14 @@ class RYRController extends Controller
         $blogs = ryrBlogs::where('status', 'Active')->get();
         return view('ryr/blogs', [
             'blogs' => $blogs,
+        ]);
+    }
+
+    public function blogDetail(Request $request, $id)
+    {
+        $blog = ryrBlogs::where('id', $id)->first();
+        return view('ryr/blog-detail', [
+            'blog' => $blog,
         ]);
     }
 

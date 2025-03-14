@@ -834,24 +834,6 @@
     </footer>
 
     <!-- Footer Area End -->
-
-    <!-- All js here -->
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-    <script src="https://code.jquery.com/jquery-migrate-3.3.2.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/meanmenu@2.0.8/dist/jquery.meanmenu.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-ajaxchimp@1.3.0/jquery.ajaxchimp.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/isotope-layout@4.5.4/dist/isotope.pkgd.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer>
-    </script>
-
-    <script src="js/ajax-mail.js" defer></script> <!-- No CDN available, keep local -->
-    <script src="js/plugins.js" defer></script> <!-- No CDN available, keep local -->
-    <script src="js/main.js" defer></script> <!-- No CDN available, keep local --> --}}
-
     <script src="portfolio2/js/vendor/jquery-3.6.0.min.js" defer></script>
     <script src="portfolio2/js/vendor/jquery-migrate-3.3.2.min.js" defer></script>
     <script src="portfolio2/js/bootstrap.bundle.min.js" defer></script>
