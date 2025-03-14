@@ -305,9 +305,9 @@
                                     </td>
                                     @foreach ($days as $key => $day)
                                     @php
-                                    $class = $classes->firstWhere('schedule', $schedule)->firstWhere('day', $day);
+                                    $class = $classes->firstWhere('schedule', $schedule)->where('day', $day)->first();
                                     @endphp
-                                    @if($class)
+                                    @if($class && $class['schedule'] == $schedule)
                                     <td class="{{ $colors[$key] }}">
                                         <h4>{{ $class['nama_kelas'] }}</h4>
                                         <p>{{$class['teacher']}}</p>
@@ -432,6 +432,12 @@
                 </div>
             </div>
             <div class="grid row" style="position: relative; height: 390px;">
+                @php
+                    $galleries = [];
+                @endphp
+                @foreach ($galleries as $gallery)
+
+                @endforeach
                 <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 0%; top: 0px;">
                     <div class="portfolio-img single-img">
                         <img src="portfolio2/img/portfolio/gal.webp" alt="project">
@@ -534,6 +540,12 @@
                     </div>
                 </div>
                 <div class="row">
+                    @php
+                        $blogs = [];
+                    @endphp
+                    @foreach ($blogs as $blog)
+
+                    @endforeach
                     <div class="col-lg-6">
                         <div class="single-blog">
                             <div class="blog-pic single-img">
