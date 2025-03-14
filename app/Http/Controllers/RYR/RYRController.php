@@ -10,8 +10,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
-use App\Models\RYR\ryrAttendances;
+use App\Models\RYR\ryrBlogs;
 use App\Models\RYR\ryrClasses;
+use App\Models\RYR\ryrGalleries;
 use App\Models\RYR\ryrParticipants;
 use App\Models\RYR\ryrTeachers;
 use App\Models\RYR\ryrMembers;
@@ -63,4 +64,19 @@ class RYRController extends Controller
         return redirect('/RYR/posts/employees')->with('success', 'New user has been added');
     }
 
+    public function blogs(Request $request)
+    {
+        $blogs = ryrBlogs::where('status', 'Active')->get();
+        return view('ryr/blogs', [
+            'blogs' => $blogs,
+        ]);
+    }
+
+    public function galleries(Request $request)
+    {
+        $galleries = ryrGalleries::get();
+        return view('ryr/galleries', [
+            'galleries' => $galleries,
+        ]);
+    }
 }
