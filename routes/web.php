@@ -50,6 +50,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::get('/ryr/about-us', function () {
         return view('ryr/about-us');
     })->name('ryr/about-us');
+    Route::get('/ryr/gallery', [GalleryController::class, 'index'])->name('ryr.gallery');
     // Route::get('/ryr/blog', function () {
         //     return view('ryr/blog');
     // })->name('ryr/blog');
@@ -77,7 +78,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::post('/register', [RegisterController::class, 'store']); //untuk simpen data yg diregister
 
 
-    Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
     Route::get('/dashboard/features/index', function () {
         return view('/dashboard/features/index');
     })->name('features');

@@ -14,10 +14,10 @@
     @endif
 
 <div class="col-lg-8">
-  <form method="post" action="/dashboard/balances/transfer" class="mb-5" enctype="multipart/form-data">
+  <form method="post" action="/dashboard/balances/transfer" class="mb-5" enctype="multipart/form-data" autocomplete="off">
     <!-- multipart form data harus supaya bisa upload file(img dll) -->
     @csrf
-    
+
     <div class="mb-3">
       <label for="source" class="form-label">Source balance</label>
       <select class="form-control" name="source">
@@ -46,7 +46,7 @@
       </div>
       @enderror
     </div>
-    
+
 
 
       <div class="mb-1">

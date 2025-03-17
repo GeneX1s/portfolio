@@ -26,7 +26,7 @@ class GalleryController extends Controller
             ->get();
 
 
-        return view('ryr/gallery', [
+        return view('/ryr/gallery', [
 
             'galleries' => $galleries,
         ]);
@@ -35,7 +35,7 @@ class GalleryController extends Controller
     public function create()
     {
 
-        return view('ryr.galleries.create', [
+        return view('/ryr/gallery-create', [
         ]);
     }
 
@@ -66,7 +66,7 @@ class GalleryController extends Controller
     {
         $gallery = ryrGalleries::findOrFail($id);
 
-        return view('ryr.galleries.edit', [
+        return view('/ryr/gallery-edit', [
             'gallery' => $gallery,
         ]);
     }

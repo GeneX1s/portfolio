@@ -75,7 +75,7 @@
                         </div>
                         @else
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="dashboard" href="/dashboard"><span>login</span></a>
+                            <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
                         </div>
 
                         @endif
