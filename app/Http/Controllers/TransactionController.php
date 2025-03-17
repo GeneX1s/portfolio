@@ -64,7 +64,9 @@ class TransactionController extends Controller
                     ->whereDate('created_at', '<=', $end_date);
             })
             // ->where('status', 'Deleted')
-            ->get()->sortByDesc('created_at');
+            ->get()->sortByDesc('created_at')->sortBy(function ($transaction) {
+                return $transaction->status == 'Pending' ? 0 : 1;
+            });
 
         $total = 0;
         $pendapatan = 0;
