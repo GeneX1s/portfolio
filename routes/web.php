@@ -17,6 +17,7 @@ use App\Http\Controllers\RYR\ClassController;
 use App\Http\Controllers\RYR\MemberController;
 use App\Http\Controllers\RYR\TeacherController;
 use App\Http\Controllers\RYR\AttendanceController;
+use App\Http\Controllers\RYR\GalleryController;
 use App\Http\Controllers\RYR\ParticipantController;
 use App\Http\Controllers\RYR\ScheduleController;
 use App\Http\Controllers\RYR\RYRController;
@@ -49,21 +50,19 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::get('/ryr/about-us', function () {
         return view('ryr/about-us');
     })->name('ryr/about-us');
-    Route::get('/ryr/blog', function () {
-        return view('ryr/blog');
-    })->name('ryr/blog');
+    // Route::get('/ryr/blog', function () {
+        //     return view('ryr/blog');
+    // })->name('ryr/blog');
     Route::get('/ryr/class', function () {
         return view('ryr/class');
     })->name('ryr/class');
     Route::get('/ryr/contact', function () {
         return view('ryr/contact');
     })->name('ryr/contact');
-    Route::get('/ryr/gallery', function () {
-        return view('ryr/gallery');
-    })->name('ryr/gallery');
-    Route::get('/ryr', function () {
-        return view('ryr/ryr');
-    })->name('ryr');
+    // Route::get('/ryr/gallery', function () {
+    //     return view('ryr/gallery');
+    // })->name('ryr/gallery');
+
 
     Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
     Route::get('/dashboard/users/manage', [LoginController::class, 'manage'])->name('manage')->middleware('auth');
@@ -217,7 +216,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
         Route::delete('/dashboard/ryr/participants/{id}/delete', [ParticipantController::class, 'deleteGroup'])->middleware('auth');
 
 
-        Route::resource('/dashboard/ryr/gallery', RYRController::class)->middleware('auth');
-        Route::resource('/dashboard/ryr/blog', RYRController::class)->middleware('auth');
+        Route::resource('/gallery', RYRController::class)->middleware('auth');
+        Route::resource('/blog', RYRController::class)->middleware('auth');
 
 /////////////ENDRYR/////////////

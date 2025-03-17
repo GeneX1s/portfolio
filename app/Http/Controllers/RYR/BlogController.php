@@ -5,7 +5,6 @@ namespace App\Http\Controllers\RYR;
 use Illuminate\Http\Request;
 use App\Models\RYR\ryrBlogs;
 use App\Http\Controllers\Controller;
-use App\Models\RYR\ryrTeachers;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
@@ -41,9 +40,7 @@ class BlogController extends Controller
     public function create()
     {
 
-        $teachers = ryrTeachers::where('status', 'Active')->get();
         return view('ryr.blogs.create', [
-            'teachers' => $teachers,
         ]);
     }
 
@@ -81,12 +78,8 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog = ryrBlogs::findOrFail($id);
-
-        $teachers = ryrTeachers::where('status', 'Active')->get();
-
         return view('ryr.blogs.edit', [
             'blog' => $blog,
-            'teachers' => $teachers,
         ]);
     }
 

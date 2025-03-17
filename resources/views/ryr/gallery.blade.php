@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="/"><img src="/../../portfolio2/img/logo/logo.webp" alt="COFFEE" /></a>
+                            <a href="/"><img src="/../../portfolio2/img/logo/logo.webp" alt="tytyd" /></a>
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -46,9 +46,9 @@
                                     <ul>
                                         <li><a href="/">Home</a></li>
                                         {{-- <li><a href="/ryr/about-us">About us</a></li> --}}
-                                        <li><a href="/ryr/class">classes</a></li>
-                                        <li><a href="/ryr/gallery">gallery</a></li>
-                                        <li><a href="/ryr/blog">blog</a></li>
+                                        <li><a href="ryr/class">classes</a></li>
+                                        <li><a href="ryr/gallery">tytyd</a></li>
+                                        <li><a href="ryr/blog">blog</a></li>
                                         {{-- <li><a href="/ryr/contact">Contact</a></li> --}}
                                     </ul>
                                 </nav>
@@ -88,6 +88,13 @@
         </div>
     </section>
     <!-- Banner Area End -->
+    @if (auth()->check())
+    <div class="text-center">
+        <a href="{{ route('gallery.create') }}" class="default-btn" style="background-color: #5fc7ae; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+            Add New Item
+        </a>
+    </div>
+    @endif
     <!-- Gallery Area Start -->
     <section class="gallery-area pt-95">
         <div class="container">
@@ -103,12 +110,45 @@
                     </div>
                 </div>
             </div>
+            @foreach ($galleries as $gallery)
+
+            <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 0%; top: 0px;">
+                <div class="portfolio-img single-img">
+                    <img src="{{ $gallery->foto }}" alt="project">
+                    <div class="gallery-icon">
+                        <a class="image-popup" href="{{ $gallery->foto }}">
+                            <i class="zmdi zmdi-zoom-in"></i>
+                        </a>
+                    </div>
+                    <div class="gallery-options" style="position: absolute; top: 10px; right: 10px;">
+                        <button class="options-button" style="background: transparent; border: none; color: rgba(255, 255, 255, 0.7);">
+                            ...
+                        </button>
+                        <div class="options-menu" style="display: none; position: absolute; top: 20px; right: 0; background: white; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+                            <a href="{{ route('gallery.edit', $gallery->id) }}" style="display: block; padding: 5px 10px;">Edit</a>
+                            <a href="{{ route('gallery.delete', $gallery->id) }}" style="display: block; padding: 5px 10px;">Delete</a>
+                            <a href="{{ route('gallery.setAs', $gallery->id) }}" style="display: block; padding: 5px 10px;">Set as</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            <script>
+                document.querySelectorAll('.options-button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const menu = button.nextElementSibling;
+                        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                    });
+                });
+            </script>
             <div class="grid row" style="position: relative; height: 390px;">
                 <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 0%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal.webp" alt="project">
+                        <img src="/portfolio2/img/portfolio/gal.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal.webp">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -116,9 +156,9 @@
                 </div>
                 <div class="col-md-4 grid-item cat2 cat4" style="position: absolute; left: 25%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal2.webp" alt="project">
+                        <img src="/portfolio2/img/portfolio/gal2.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal2.webp">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal2.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -126,9 +166,9 @@
                 </div>
                 <div class="col-md-4 grid-item cat1 cat4" style="position: absolute; left: 50%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal3.webp" alt="project">
+                        <img src="/portfolio2/img/portfolio/gal3.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal3.webp">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal3.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -136,9 +176,9 @@
                 </div>
                 <div class="col-md-4 grid-item cat2" style="position: absolute; left: 75%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal4.webp" alt="project">
+                        <img src="/portfolio2/img/portfolio/gal4.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal4.webp">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal4.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -146,9 +186,9 @@
                 </div>
                 <div class="col-md-4 grid-item cat2 cat3" style="position: absolute; left: 25%; top: 210px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal5.webp" alt="project">
+                        <img src="/portfolio2/img/portfolio/gal5.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal5.webp">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal5.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -156,9 +196,9 @@
                 </div>
                 <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal6.webp" alt="project">
+                        <img src="/portfolio2/img/portfolio/gal6.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal6.webp">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal6.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -166,9 +206,9 @@
                 </div>
                 <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal7.webp" alt="project">
+                        <img src="/portfolio2/img/portfolio/gal7.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal7.webp">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal7.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -176,9 +216,9 @@
                 </div>
                 <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal8.webp" alt="project">
+                        <img src="/portfolio2/img/portfolio/gal8.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal8.webp">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal8.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
@@ -186,9 +226,9 @@
                 </div>
                 <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
                     <div class="portfolio-img single-img">
-                        <img src="img/portfolio/gal9.webp" alt="project">
+                        <img src="/portfolio2/img/portfolio/gal9.webp" alt="project">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="img/portfolio/gal9.webp">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal9.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>

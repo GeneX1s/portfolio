@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\RYR\ryrGalleries;
 use App\Http\Controllers\Controller;
-use App\Models\RYR\ryrParticipants;
-use App\Models\RYR\ryrTeachers;
 use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
@@ -28,7 +26,7 @@ class GalleryController extends Controller
             ->get();
 
 
-        return view('ryr.galleries.index', [
+        return view('ryr/gallery', [
 
             'galleries' => $galleries,
         ]);
