@@ -21,7 +21,8 @@ class ryrGalleries extends Model
     'id',
     'nama',
     'kategori',
-    'foto'
+    'foto',
+    'deskripsi',
   ];
 
   /**

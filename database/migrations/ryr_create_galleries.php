@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('kategori')->default('RYR');
             $table->string('foto')->required();
+            $table->string('deskripsi')->nullable();
             $table->timestamps();
         });
     }

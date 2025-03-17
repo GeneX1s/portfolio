@@ -159,7 +159,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     Route::get('/dashboard/features/index', [FeatureController::class, 'index'])->middleware('auth')->name('dashboard.features.index');
     Route::get('/dashboard/features/create', [FeatureController::class, 'create'])->middleware('auth')->name('dashboard.features.create');
     Route::resource('/dashboard/features', FeatureController::class)->middleware('auth');
-
+    /////////////////////////////////////
 
 
     ///////////Contact Us///////////
@@ -172,46 +172,52 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
 });
 
 //////////////RYR///////////////
-    //Classes
-    Route::get('/dashboard/ryr/classes/index', [ClassController::class, 'index'])->middleware('auth')->name('dashboard.classes.index');
-    Route::get('/dashboard/ryr/classes/create', [ClassController::class, 'create'])->middleware('auth')->name('dashboard.classes.create');
-    // Route::post('/dashboard/ryr/classes/uploadFoto', [ClassController::class, 'uploadFoto'])->middleware('auth');
-    Route::resource('/dashboard/ryr/classes', ClassController::class)->middleware('auth');
+        //Classes
+        Route::get('/dashboard/ryr/classes/index', [ClassController::class, 'index'])->middleware('auth')->name('dashboard.classes.index');
+        Route::get('/dashboard/ryr/classes/create', [ClassController::class, 'create'])->middleware('auth')->name('dashboard.classes.create');
+        // Route::post('/dashboard/ryr/classes/uploadFoto', [ClassController::class, 'uploadFoto'])->middleware('auth');
+        Route::resource('/dashboard/ryr/classes', ClassController::class)->middleware('auth');
 
-    //members
-    Route::get('/dashboard/ryr/members/index', [MemberController::class, 'index'])->middleware('auth')->name('dashboard.members.index');
-    Route::get('/dashboard/ryr/members/create', [MemberController::class, 'create'])->middleware('auth')->name('dashboard.members.create');
-    Route::resource('/dashboard/ryr/members', MemberController::class)->middleware('auth');
+        //members
+        Route::get('/dashboard/ryr/members/index', [MemberController::class, 'index'])->middleware('auth')->name('dashboard.members.index');
+        Route::get('/dashboard/ryr/members/create', [MemberController::class, 'create'])->middleware('auth')->name('dashboard.members.create');
+        Route::resource('/dashboard/ryr/members', MemberController::class)->middleware('auth');
 
-    //teachers
-    Route::get('/dashboard/ryr/teachers/index', [TeacherController::class, 'index'])->middleware('auth')->name('dashboard.teachers.index');
-    Route::get('/dashboard/ryr/teachers/create', [TeacherController::class, 'create'])->middleware('auth')->name('dashboard.teachers.create');
-    Route::resource('/dashboard/ryr/teachers', TeacherController::class)->middleware('auth');
+        //teachers
+        Route::get('/dashboard/ryr/teachers/index', [TeacherController::class, 'index'])->middleware('auth')->name('dashboard.teachers.index');
+        Route::get('/dashboard/ryr/teachers/create', [TeacherController::class, 'create'])->middleware('auth')->name('dashboard.teachers.create');
+        Route::resource('/dashboard/ryr/teachers', TeacherController::class)->middleware('auth');
 
-    //attendances
-    Route::get('/dashboard/ryr/attendances/index', [AttendanceController::class, 'index'])->middleware('auth')->name('dashboard.attendances.index');
-    Route::get('/dashboard/ryr/attendances/create', [AttendanceController::class, 'create'])->middleware('auth')->name('dashboard.attendances.create');
-    Route::resource('/dashboard/ryr/attendances', AttendanceController::class)->middleware('auth');
+        //attendances
+        Route::get('/dashboard/ryr/attendances/index', [AttendanceController::class, 'index'])->middleware('auth')->name('dashboard.attendances.index');
+        Route::get('/dashboard/ryr/attendances/create', [AttendanceController::class, 'create'])->middleware('auth')->name('dashboard.attendances.create');
+        Route::resource('/dashboard/ryr/attendances', AttendanceController::class)->middleware('auth');
 
-    //schedules
-    Route::get('/dashboard/ryr/schedules/index', [ScheduleController::class, 'index'])->middleware('auth')->name('dashboard.schedules.index');
-    Route::get('/dashboard/ryr/schedules/create', [ScheduleController::class, 'create'])->middleware('auth')->name('dashboard.schedules.create');
-    Route::get('/dashboard/ryr/schedules/{id}/detail', [ScheduleController::class, 'indexGroup'])->middleware('auth')->name('dashboard.schedules.detail');
-    Route::get('/dashboard/ryr/schedules/{id}', [ScheduleController::class, 'detailGroup'])->middleware('auth');
-    Route::get('/dashboard/ryr/schedules/{id}/editparticipant', [ScheduleController::class, 'editParticipant'])->middleware('auth')->name('dashboard.ryr.edit');
-    Route::put('/dashboard/ryr/schedules/{id}/update', [ScheduleController::class, 'update'])->middleware('auth');
-    Route::put('/dashboard/ryr/schedules/{id}/updateParticipant', [ScheduleController::class, 'updateParticipant'])->middleware('auth');
-    Route::post('/dashboard/ryr/schedules/{id}/participant', [ScheduleController::class, 'editGroup'])->middleware('auth');
-    Route::post('/dashboard/ryr/schedules/{id}/finalize', [ScheduleController::class, 'finalize'])->middleware('auth')->name('dashboard.ryr.finalize');
-    Route::post('/dashboard/clear/schedules', [ScheduleController::class, 'clear'])->middleware('auth');
-    Route::post('/dashboard/ryr/schedules/{id}/pay', [ScheduleController::class, 'pay'])->middleware('auth');
-    Route::delete('/dashboard/ryr/schedules/{id}/delete', [ScheduleController::class, 'deleteGroup'])->middleware('auth');
-    Route::resource('/dashboard/ryr/schedules', ScheduleController::class)->middleware('auth');
+        //schedules
+        Route::get('/dashboard/ryr/schedules/index', [ScheduleController::class, 'index'])->middleware('auth')->name('dashboard.schedules.index');
+        Route::get('/dashboard/ryr/schedules/create', [ScheduleController::class, 'create'])->middleware('auth')->name('dashboard.schedules.create');
+        Route::get('/dashboard/ryr/schedules/{id}/detail', [ScheduleController::class, 'indexGroup'])->middleware('auth')->name('dashboard.schedules.detail');
+        Route::get('/dashboard/ryr/schedules/{id}', [ScheduleController::class, 'detailGroup'])->middleware('auth');
+        Route::get('/dashboard/ryr/schedules/{id}/editparticipant', [ScheduleController::class, 'editParticipant'])->middleware('auth')->name('dashboard.ryr.edit');
+        Route::put('/dashboard/ryr/schedules/{id}/update', [ScheduleController::class, 'update'])->middleware('auth');
+        Route::put('/dashboard/ryr/schedules/{id}/updateParticipant', [ScheduleController::class, 'updateParticipant'])->middleware('auth');
+        Route::post('/dashboard/ryr/schedules/{id}/participant', [ScheduleController::class, 'editGroup'])->middleware('auth');
+        Route::post('/dashboard/ryr/schedules/{id}/finalize', [ScheduleController::class, 'finalize'])->middleware('auth')->name('dashboard.ryr.finalize');
+        Route::post('/dashboard/clear/schedules', [ScheduleController::class, 'clear'])->middleware('auth');
+        Route::post('/dashboard/ryr/schedules/{id}/pay', [ScheduleController::class, 'pay'])->middleware('auth');
+        Route::delete('/dashboard/ryr/schedules/{id}/delete', [ScheduleController::class, 'deleteGroup'])->middleware('auth');
+        Route::resource('/dashboard/ryr/schedules', ScheduleController::class)->middleware('auth');
 
 
-    //participants
-    Route::get('/dashboard/ryr/participants/{id}/index', [ParticipantController::class, 'indexGroup'])->middleware('auth');
-    Route::get('/dashboard/ryr/participants/{id}/edit', [ParticipantController::class, 'edit'])->middleware('auth')->name('dashboard.participants.create');
-    Route::resource('/dashboard/ryr/participants', ParticipantController::class)->middleware('auth');
-    Route::post('/dashboard/ryr/participants/{id}', [ParticipantController::class, 'participantsGroup'])->middleware('auth');
-    Route::delete('/dashboard/ryr/participants/{id}/delete', [ParticipantController::class, 'deleteGroup'])->middleware('auth');
+        //participants
+        Route::get('/dashboard/ryr/participants/{id}/index', [ParticipantController::class, 'indexGroup'])->middleware('auth');
+        Route::get('/dashboard/ryr/participants/{id}/edit', [ParticipantController::class, 'edit'])->middleware('auth')->name('dashboard.participants.create');
+        Route::resource('/dashboard/ryr/participants', ParticipantController::class)->middleware('auth');
+        Route::post('/dashboard/ryr/participants/{id}', [ParticipantController::class, 'participantsGroup'])->middleware('auth');
+        Route::delete('/dashboard/ryr/participants/{id}/delete', [ParticipantController::class, 'deleteGroup'])->middleware('auth');
+
+
+        Route::resource('/dashboard/ryr/gallery', RYRController::class)->middleware('auth');
+        Route::resource('/dashboard/ryr/blog', RYRController::class)->middleware('auth');
+
+/////////////ENDRYR/////////////
