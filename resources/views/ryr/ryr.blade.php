@@ -63,9 +63,22 @@
                         </div>
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
+                        @if (auth()->check())
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <a class="banner-btn" data-text="sign out" href="/logout"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <span>logout</span>
+                            </a>
                         </div>
+                        @else
+                        <div class="header-contact text-end">
+                            <a class="banner-btn" data-text="dashboard" href="/dashboard"><span>login</span></a>
+                        </div>
+
+                        @endif
                     </div>
                 </div>
             </div>
