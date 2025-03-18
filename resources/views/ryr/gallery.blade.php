@@ -114,9 +114,9 @@
 
             <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 0%; top: 0px;">
                 <div class="portfolio-img single-img">
-                    <img src="{{ $gallery->foto }}" alt="project">
+                    <img src="{{ $gallery->foto }}" alt="project" style="width: 370px; height: 207px;">
                     <div class="gallery-icon">
-                        <a class="image-popup" href="{{ $gallery->foto }}">
+                        <a class="image-popup" href="{{ $gallery->foto }}" style="width: 370px; height: 207px;">
                             <i class="zmdi zmdi-zoom-in"></i>
                         </a>
                     </div>
@@ -125,9 +125,23 @@
                             ...
                         </button>
                         <div class="options-menu" style="display: none; position: absolute; top: 20px; right: 0; background: white; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
-                            <a href="{{ route('gallery.edit', $gallery->id) }}" style="display: block; padding: 5px 10px;">Edit</a>
-                            <a href="{{ route('gallery.delete', $gallery->id) }}" style="display: block; padding: 5px 10px;">Delete</a>
-                            <a href="{{ route('gallery.setAs', $gallery->id) }}" style="display: block; padding: 5px 10px;">Set as</a>
+
+                            <form action="/gallery/{{ $gallery->id }}/edit" class="d-inline">
+                                @csrf
+                                @method('POST')
+                                <a type="submit" style="display: block; padding: 5px 10px;">Edit</a>
+
+                              </form>
+                            <form action="/gallery/{{$gallery->id}}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <a type="submit" style="display: block; padding: 5px 10px;">Delete</a>
+
+                                {{-- <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
+                                  <i class="fas fa-regular fa-trash"></i>
+                                </button> --}}
+                              </form>
+                            <a style="display: block; padding: 5px 10px;">Set as</a>
                         </div>
                     </div>
                 </div>

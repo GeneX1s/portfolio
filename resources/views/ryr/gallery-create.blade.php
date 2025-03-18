@@ -13,23 +13,26 @@
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
-    <link rel="stylesheet" href="portfolio2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="portfolio2/css/font-awesome.min.css">
-    <link rel="stylesheet" href="portfolio2/css/shortcode/shortcodes.css">
-    <link rel="stylesheet" href="portfolio2/css/slick.css">
-    <link rel="stylesheet" href="portfolio2/style.css">
-    <link rel="stylesheet" href="portfolio2/css/responsive.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/slick.css">
+    <link rel="stylesheet" href="/../../portfolio2/style.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/responsive.css">
 
 
 
 
-    <script src="portfolio2/js/vendor/modernizr-3.11.2.min.js" defer></script>
+    <script src="/../../portfolio2/js/vendor/modernizr-3.11.2.min.js" defer></script>
 
 
 </head>
 
+<body style="margin-left: 50px;">
+
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Add New Balance</h1>
+  <h1 class="h2">Add New Photo</h1>
 </div>
 
 
@@ -41,7 +44,7 @@
 @endif
 
 <div class="col-lg-8">
-  <form method="post" autocomplete="off" action="/dashboard/balances" class="mb-5" enctype="multipart/form-data">
+  <form method="post" autocomplete="off" action="/gallery" class="mb-5" enctype="multipart/form-data">
     <!-- multipart form data harus supaya bisa upload file(img dll) -->
     @csrf
 
@@ -126,3 +129,5 @@
     <script src="portfolio2/js/jquery.magnific-popup.js" defer></script>
     <script src="portfolio2/js/plugins.js" defer></script>
     <script src="portfolio2/js/main.js" defer></script>
+
+</body>

@@ -17,6 +17,7 @@ use App\Http\Controllers\RYR\ClassController;
 use App\Http\Controllers\RYR\MemberController;
 use App\Http\Controllers\RYR\TeacherController;
 use App\Http\Controllers\RYR\AttendanceController;
+use App\Http\Controllers\RYR\BlogController;
 use App\Http\Controllers\RYR\GalleryController;
 use App\Http\Controllers\RYR\ParticipantController;
 use App\Http\Controllers\RYR\ScheduleController;
@@ -217,7 +218,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
         Route::delete('/dashboard/ryr/participants/{id}/delete', [ParticipantController::class, 'deleteGroup'])->middleware('auth');
 
 
-        Route::resource('/gallery', RYRController::class)->middleware('auth');
-        Route::resource('/blog', RYRController::class)->middleware('auth');
+        Route::resource('/gallery', GalleryController::class)->middleware('auth');
+        Route::resource('/blog', BlogController::class)->middleware('auth');
 
 /////////////ENDRYR/////////////
