@@ -196,8 +196,12 @@
         </div>
     </section>
     <!-- Class Area End -->
+
+    <section class="class-area fix bg-white pb-100 pt-95">
+<h1>Special Classes</h1>
+    </section>
     <!-- Schedule Area Strat -->
-    <section class="schedule-area pt-85 pb-90 text-center">
+    <section class="schedule-area pt-85 pb-90 bg-gray text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
@@ -326,7 +330,7 @@
     </section>
     <!-- Schedule Area End -->
     <!-- Pricing Area Start -->
-    <div class="pricing-area pt-95 pb-120 bg-gray">
+    <div class="pricing-area pt-95 pb-120 bg-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
@@ -342,14 +346,13 @@
                     <div class="single-table text-center">
                         <div class="table-head">
                             <h2>silver package</h2>
-                            <h1>$30<span>/month</span></h1>
+                            <h1>Rp.800.000,00<span>/month</span></h1>
                         </div>
                         <div class="table-body">
                             <ul>
-                                <li>Free T-Shirt & swags</li>
-                                <li>Free of all message treatments</li>
-                                <li>Access Clup Facilites</li>
-                                <li>Out Door activites</li>
+                                <li>Hatha Classes</li>
+                                <li>Wallrope Classes</li>
+                                <li>Morning & Evening Class</li>
                             </ul>
                             <a href="#">get started</a>
                         </div>
@@ -359,14 +362,12 @@
                     <div class="single-table text-center">
                         <div class="table-head">
                             <h2>gold package</h2>
-                            <h1>$50<span>/month</span></h1>
+                            <h1>Rp.400.000,00<span>/month</span></h1>
                         </div>
                         <div class="table-body">
                             <ul>
-                                <li>Free T-Shirt & swags</li>
-                                <li>Free of all message treatments</li>
-                                <li>Access Clup Facilites</li>
-                                <li>Out Door activites</li>
+                                <li>Hatha and Ashtanga Class</li>
+                                <li>Every Wed and Thu Evening</li>
                             </ul>
                             <a href="#">get started</a>
                         </div>
@@ -393,79 +394,6 @@
         </div>
     </div>
     <!-- Pricing Area End -->
-    <!-- Client Area Strat -->
-    <section class="client-area pt-95 pb-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-xl-2 offset-lg-2">
-                    <div class="section-title text-center">
-                        <h2>Our Client Say</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 offset-xl-1 offset-lg-1">
-                    <div class="row">
-                        <div class="testimonial-owl">
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="single-testimonial">
-                                    <i class="zmdi zmdi-quote"></i>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just.
-                                        Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas.
-                                        In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam </p>
-                                    <img src="img/icon/signature.webp" alt="signature">
-                                    <h6>Co-Founder Of Company</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Client Area End -->
     <!-- Start of Map Area -->
     <div class="map-area">
         <!-- google-map-area start -->

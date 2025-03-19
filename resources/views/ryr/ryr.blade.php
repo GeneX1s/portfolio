@@ -450,7 +450,7 @@
                 $count = 0;
                 @endphp
                 @foreach ($galleries as $gallery)
-                @if ($count < 9)
+                @if ($count < 6)
 
 
 
