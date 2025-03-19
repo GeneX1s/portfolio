@@ -447,9 +447,17 @@
             <div class="grid row" style="position: relative; height: 390px;">
                 @php
                 $galleries = [];
+                $count = 0;
                 @endphp
                 @foreach ($galleries as $gallery)
+                @if ($count < 9)
 
+
+
+                @php
+                $count++;
+                @endphp
+                @endif
                 @endforeach
                 <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 0%; top: 0px;">
                     <div class="portfolio-img single-img">
