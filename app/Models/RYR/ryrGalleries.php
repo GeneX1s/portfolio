@@ -23,6 +23,8 @@ class ryrGalleries extends Model
     'kategori',
     'foto',
     'deskripsi',
+    'created_at',
+    'updated_at',
   ];
 
   /**

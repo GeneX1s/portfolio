@@ -47,7 +47,7 @@ class GalleryController extends Controller
             'foto' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
             'deskripsi' => 'nullable|string',
         ]);
-        // dd($input);]
+        // dd($input);
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
@@ -55,7 +55,7 @@ class GalleryController extends Controller
             $this->uploadFoto($request);
             $input['foto'] = 'portfolio2/img/gallery/' . $request->file('foto')->hashName();
         }
-
+// dd($input);
         ryrGalleries::create($input);
 
         return redirect('/ryr/gallery')->with('success', 'New photo has been added');
