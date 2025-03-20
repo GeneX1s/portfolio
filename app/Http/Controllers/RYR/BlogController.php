@@ -31,7 +31,7 @@ class BlogController extends Controller
             })
             ->get();
 
-        return view('ryr.blogs.index', [
+        return view('/ryr/blog', [
 
             'blogs' => $blogs,
         ]);
@@ -40,7 +40,7 @@ class BlogController extends Controller
     public function create()
     {
 
-        return view('ryr.blogs.create', [
+        return view('/ryr/blog-create', [
         ]);
     }
 
@@ -51,11 +51,11 @@ class BlogController extends Controller
             'body' => 'required|string',
             'author' => 'required|string',
             'kategori' => 'required|string|default:RYR',
-            'status' => 'required|string|default:Active',
             'foto' => 'nullable|image',
         ]);
         // dd($input);
 
+        $input['status'] = 'Active';
         $input['created_at'] = now();
         $input['updated_at'] = now();
 
@@ -66,19 +66,19 @@ class BlogController extends Controller
 
         ryrBlogs::create($input);
 
-        return redirect('/ryr/blogs')->with('success', 'New blog has been added');
+        return redirect('/ryr/blog')->with('success', 'New article has been added');
     }
 
     public function show($id)
     {
         $blog = ryrBlogs::findOrFail($id);
-        return view('ryr.blogs.show');
+        return view('/ryr/blog-show');
     }
 
     public function edit($id)
     {
         $blog = ryrBlogs::findOrFail($id);
-        return view('ryr.blogs.edit', [
+        return view('/ryr/blog-detail', [
             'blog' => $blog,
         ]);
     }
@@ -90,7 +90,6 @@ class BlogController extends Controller
             'body' => 'required|string',
             'author' => 'required|string',
             'kategori' => 'required|string|default:RYR',
-            'status' => 'required|string|default:Active',
             'foto' => 'nullable|image',
         ]);
 
@@ -109,7 +108,7 @@ class BlogController extends Controller
 
         $blog->update($input);
 
-        return redirect()->route('ryr.blogs.index');
+        return redirect()->route('/ryr/blog');
     }
 
     public function destroy($id)
@@ -117,7 +116,7 @@ class BlogController extends Controller
         $blog = ryrBlogs::findOrFail($id);
         $blog->delete();
 
-        return redirect()->route('ryr.blogs.index');
+        return redirect()->route('/ryr/blog');
     }
 
 

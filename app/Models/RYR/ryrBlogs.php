@@ -24,7 +24,9 @@ class ryrBlogs extends Model
     'author',
     'kategori',
     'status',
-    'foto'
+    'foto',
+    'created_at',
+    'updated_at',
   ];
 
   /**

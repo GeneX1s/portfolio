@@ -476,9 +476,19 @@ class TransactionController extends Controller
             // dd('hi');
         }
 
-        foreach($investments as $investment){
-            if($investment->dividen > 0){
-                $dividen = (($investment->dividen * $investment->saldo) / 100)/12;
+        $getMonth = now()->format('m');
+        foreach ($investments as $investment) {
+            if ($investment->dividen > 0) {
+                if (str_contains($investment->nama, 'FR') && ($getMonth != 2 && $getMonth != 8)) {
+                    // Skip processing for '%FR%' investment in months other than February and August
+                    continue;
+                }
+                $dividen = (($investment->dividen * $investment->saldo) / 100) / 12;
+
+                if (str_contains($investment->nama, 'FR')) {
+                    $dividen = (($investment->dividen * $investment->saldo) / 100) / 2;
+                }
+                
                 $id = 'DIV|' . md5(Str::random(10)) . now();
                 Transaction::create([
                     'nama' => $id,
@@ -486,7 +496,7 @@ class TransactionController extends Controller
                     'kategori' => 'Pendapatan',
                     'sub_kategori' => 'Investment',
                     'balance' => $investment->penerima_dividen,
-                    'deskripsi' => 'Dividen ' . $investment->nama .' '. now()->format('Y-m-d'),
+                    'deskripsi' => 'Dividen ' . $investment->nama . ' ' . now()->format('Y-m-d'),
                     'created_at' => now(),
                     'status' => 'Active',
                     'profile' => 'super-admin',
@@ -500,7 +510,7 @@ class TransactionController extends Controller
                     'balance_name' => $destAcct->nama,
                     'saldo_before' => $destAcct->saldo,
                     'saldo_after' => $newBalance,
-                    'description' => 'Dividen ' . $investment->nama .' '. now()->format('Y-m-d'),
+                    'description' => 'Dividen ' . $investment->nama . ' ' . now()->format('Y-m-d'),
                     'created_at' => now(),
                 ]);
 
@@ -518,7 +528,7 @@ class TransactionController extends Controller
         $template = Template::where('id', $id)->first();
         // dd('hi');
         $input = [];
-        if($template->flag == 'Monthly')
+        if ($template->flag == 'Monthly')
             $input['flag'] = '';
         else
             $input['flag'] = 'Monthly';
