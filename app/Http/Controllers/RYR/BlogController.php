@@ -78,7 +78,7 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog = ryrBlogs::findOrFail($id);
-        return view('/ryr/blog-detail', [
+        return view('/ryr/blog-edit', [
             'blog' => $blog,
         ]);
     }

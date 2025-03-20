@@ -128,5 +128,4 @@
         <script src="js/scripts.js"></script>
     </body>
 
-<!-- Mirrored from startbootstrap.github.io/startbootstrap-clean-blog/post.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Mar 2025 07:53:55 GMT -->
 </html>
