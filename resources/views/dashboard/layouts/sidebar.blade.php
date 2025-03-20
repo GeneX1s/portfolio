@@ -77,7 +77,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
             aria-controls="collapsePages">
-            <i class="fas fa-fw fa-person"></i>
+            <i class="fas fa-fw fa-key"></i>
             <span>Users</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -98,13 +98,13 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/assets/index">
-            <i class="fas fa-fw fa-barcode"></i>
+            <i class="fas fa-fw fa-box"></i>
             <span>Aset</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/portfolios/index">
-            <i class="fas fa-fw fa-barcode"></i>
+            <i class="fas fa-fw fa-briefcase"></i>
             <span>Portfolio</span></a>
     </li>
 
@@ -116,26 +116,27 @@
 
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/setvalue">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-fw fa-cogs"></i>
             <span>Set Value</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/transactions">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-exchange-alt"></i>
             <span>Transactions</span></a>
     </li>
 
 
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/report/index">
-            <i class="fas fa-fw fa-file"></i>
+            <i class="fas fa-fw fa-chart-area"></i>
             <span>Reports</span></a>
     </li>
 
     @endcan
 
-    @can('ryr')
+    @if (auth()->user()->role == 'ryr')
+
 
     <div class="sidebar-heading">
         RYR
@@ -144,7 +145,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
             aria-expanded="true" aria-controls="collapseUtilities2">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-chalkboard"></i>
             <span>Classes</span>
         </a>
         <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities"
@@ -159,13 +160,13 @@
 
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/transactions">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-exchange-alt"></i>
             <span>Transactions</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/ryr/teachers">
-            <i class="fas fa-fw fa-person"></i>
+            <i class="fas fa-fw fa-chalkboard-teacher"></i>
             <span>Teachers</span></a>
     </li>
 
@@ -175,9 +176,14 @@
             <span>Members</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="/dashboard/users/manage">
+            <i class="fas fa-fw fa-key"></i>
+            <span>Change Password</span></a>
+    </li>
 
 
-    @endcan
+    @endif
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
