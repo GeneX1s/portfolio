@@ -52,6 +52,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
         return view('ryr/about-us');
     })->name('ryr/about-us');
     Route::get('/ryr/gallery', [GalleryController::class, 'index'])->name('ryr.gallery');
+    Route::get('/ryr/blog', [BlogController::class, 'index'])->name('ryr.blog');
     // Route::get('/ryr/blog', function () {
         //     return view('ryr/blog');
     // })->name('ryr/blog');

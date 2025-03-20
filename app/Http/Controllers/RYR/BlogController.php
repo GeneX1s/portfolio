@@ -50,7 +50,7 @@ class BlogController extends Controller
             'title' => 'required|string',
             'body' => 'required|string',
             'author' => 'required|string',
-            'kategori' => 'required|string|default:RYR',
+            'kategori' => 'required|string',
             'foto' => 'nullable|image',
         ]);
         // dd($input);
@@ -72,7 +72,7 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = ryrBlogs::findOrFail($id);
-        return view('/ryr/blog-show');
+        return view('/ryr/blog-detail');
     }
 
     public function edit($id)

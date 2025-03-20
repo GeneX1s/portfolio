@@ -38,7 +38,7 @@
 
     <div class="mb-3">
       <label for="nominal" class="form-label">Saldo</label>
-      <input type="integer" class="form-control @error('nominal') is-invalid @enderror" id="nominal" name="nominal" required
+      <input type="number" class="form-control @error('nominal') is-invalid @enderror" id="nominal" name="nominal" required
         autofocus value="{{old('nominal')}}">
       @error('nominal')
       <div class="invalid-feedback">

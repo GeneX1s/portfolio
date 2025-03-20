@@ -1,6 +1,35 @@
-@extends('dashboard.layouts.main')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('container')
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Roemah Yoga Rian</title>
+    <meta name="description"
+        content="Official website for Roemah Yoga Rian, which is a yoga studio situated in Central jakarta | Jakarta Pusat. Has Hatha, Power, and Ashtanga Yoga classes.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="/../../portfolio2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/slick.css">
+    <link rel="stylesheet" href="/../../portfolio2/style.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/responsive.css">
+
+
+
+
+    <script src="/../../portfolio2/js/vendor/modernizr-3.11.2.min.js" defer></script>
+
+
+</head>
+
+<body style="margin-left: 50px;">
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Add New blog</h1>
 </div>
@@ -31,8 +60,9 @@
 
         <div class="mb-3">
             <label for="body" class="form-label">Body</label>
-            <textarea class="form-control @error('body') is-invalid @enderror" id="body" name="body" rows="5" required
+            <textarea class="form-control @error('body') is-invalid @enderror" id="body" name="body" rows="5" maxlength="500" required
             autofocus>{{ old('body') }}</textarea>
+            <small class="text-muted">Maximum 500 characters.</small>
             @error('body')
             <div class="invalid-feedback">
             {{ $message }}
@@ -96,4 +126,19 @@
         };
     }
 </script>
-@endsection
+
+<script src="portfolio2/js/vendor/jquery-3.6.0.min.js" defer></script>
+    <script src="portfolio2/js/vendor/jquery-migrate-3.3.2.min.js" defer></script>
+    <script src="portfolio2/js/bootstrap.bundle.min.js" defer></script>
+    <script src="portfolio2/js/owl.carousel.min.js" defer></script>
+    <script src="portfolio2/js/jquery.meanmenu.js" defer></script>
+    <script src="portfolio2/js/ajax-mail.js" defer></script>
+    <script src="portfolio2/js/jquery.ajaxchimp.min.js" defer></script>
+    <script src="portfolio2/js/slick.min.js" defer></script>
+    <script src="portfolio2/js/imagesloaded.pkgd.min.js" defer></script>
+    <script src="portfolio2/js/isotope.pkgd.min.js" defer></script>
+    <script src="portfolio2/js/jquery.magnific-popup.js" defer></script>
+    <script src="portfolio2/js/plugins.js" defer></script>
+    <script src="portfolio2/js/main.js" defer></script>
+
+</body>

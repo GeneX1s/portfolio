@@ -78,6 +78,16 @@
         </div>
     </section>
     <!-- Banner Area End -->
+    @if (auth()->check())
+    {{-- <div class="text-center"> --}}
+        <div class="text-end" style="margin-right: 500px;">
+        <a href="{{ route('blog.create') }}" class="default-btn"
+            style="background-color: #5fc7ae; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+            Add New Item
+        </a>
+    </div>
+    @endif
+
     <!-- Blog Area Start -->
     <section class="blog-area pt-95 pb-100">
         <div class="container">
@@ -85,28 +95,50 @@
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
                         <h2>our blog</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
+                        <p>Stay updated with our latest blog posts and insights on yoga, wellness, and healthy living.
+                            Our blog is a great resource for tips, inspiration, and information to support your yoga
+                            journey.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
+                @foreach ($blogs as $blog)
                 <div class="col-lg-6">
                     <div class="single-blog">
                         <div class="blog-pic single-img">
-                            <img src="img/blog/blog1.webp" alt="blog">
+                            <img src="{{ $blog->foto }}" alt="goblog">
                             <div class="gallery-icon">
-                                <a href="blog.html">
+                                <a href="/ryr/blog-detail/{{ $blog->id }}">
                                     <i class="zmdi zmdi-link"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="blog.html">Curabitur ante justo, vitae.</a></h3>
+                            <h3><a href="/ryr/blog-detail/{{ $blog->id }}">{{ $blog->title }}</a></h3>
+                            <h6>{{ $blog->updated_at }}</h6>
+                            <p>{{$blog->body}}</p>
+                            <a href="/ryr/blog-detail/{{ $blog->id }}">read more</a>
+                        </div>
+                    </div>
+                </div>
+
+                @endforeach
+                {{-- <div class="col-lg-6">
+                    <div class="single-blog">
+                        <div class="blog-pic single-img">
+                            <img src="img/blog/blog1.webp" alt="blog">
+                            <div class="gallery-icon">
+                                <a href="/ryr/blog-detail">
+                                    <i class="zmdi zmdi-link"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <h3><a href="/ryr/blog-detail">Curabitur ante justo, vitae.</a></h3>
                             <h6>25 March 2021</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut nisl non justo aliquam
                                 euismod ut ac orci.</p>
-                            <a href="blog.html">read more</a>
+                            <a href="/ryr/blog-detail">read more</a>
                         </div>
                     </div>
                 </div>
@@ -115,24 +147,24 @@
                         <div class="blog-pic single-img">
                             <img src="img/blog/blog2.webp" alt="blog">
                             <div class="gallery-icon">
-                                <a href="blog.html">
+                                <a href="/ryr/blog-detail">
                                     <i class="zmdi zmdi-link"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="blog.html">Curabitur ante justo, vitae.</a></h3>
+                            <h3><a href="/ryr/blog-detail">Curabitur ante justo, vitae.</a></h3>
                             <h6>25 March 2021</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut nisl non justo aliquam
                                 euismod ut ac orci.</p>
-                            <a href="blog.html">read more</a>
+                            <a href="/ryr/blog-detail">read more</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
-    <!-- Event Area End -->
+    <!-- Blog Area End -->
     <!-- Start of Map Area -->
     <div class="map-area">
         <!-- google-map-area start -->
@@ -277,6 +309,6 @@
     <script src="/../../portfolio2/js/main.js" defer></script>
 </body>
 
-<!-- Mirrored from htmldemo.net/Roemah Yoga Rian/Roemah Yoga Rian/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 01:57:36 GMT -->
+<!-- Mirrored from htmldemo.net/Roemah Yoga Rian/Roemah Yoga Rian//ryr/blog-detail by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 01:57:36 GMT -->
 
 </html>
