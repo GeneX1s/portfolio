@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-lg-2 d-none d-lg-block">
                     <div class="header-contact text-end">
-                        <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
+                        <a class="banner-btn" data-text="dashboard" href="/dashboard"><span>login</span></a>
                     </div>
                 </div>
             </div>
@@ -108,16 +108,16 @@
                         <div class="blog-pic single-img">
                             <img src="{{ $blog->foto }}" alt="goblog">
                             <div class="gallery-icon">
-                                <a href="/ryr/blog-detail/{{ $blog->id }}">
+                                <a href="/blog/{{ $blog->id }}">
                                     <i class="zmdi zmdi-link"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="/ryr/blog-detail/{{ $blog->id }}">{{ $blog->title }}</a></h3>
+                            <h3><a href="/blog/{{ $blog->id }}">{{ $blog->title }}</a></h3>
                             <h6>{{ $blog->updated_at }}</h6>
                             <p>{{$blog->body}}</p>
-                            <a href="/ryr/blog-detail/{{ $blog->id }}">read more</a>
+                            <a href="/blog/{{ $blog->id }}">read more</a>
                         </div>
                     </div>
                 </div>
@@ -128,17 +128,17 @@
                         <div class="blog-pic single-img">
                             <img src="img/blog/blog1.webp" alt="blog">
                             <div class="gallery-icon">
-                                <a href="/ryr/blog-detail">
+                                <a href="blog">
                                     <i class="zmdi zmdi-link"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="/ryr/blog-detail">Curabitur ante justo, vitae.</a></h3>
+                            <h3><a href="blog">Curabitur ante justo, vitae.</a></h3>
                             <h6>25 March 2021</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut nisl non justo aliquam
                                 euismod ut ac orci.</p>
-                            <a href="/ryr/blog-detail">read more</a>
+                            <a href="blog">read more</a>
                         </div>
                     </div>
                 </div>
@@ -147,17 +147,17 @@
                         <div class="blog-pic single-img">
                             <img src="img/blog/blog2.webp" alt="blog">
                             <div class="gallery-icon">
-                                <a href="/ryr/blog-detail">
+                                <a href="blog">
                                     <i class="zmdi zmdi-link"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="/ryr/blog-detail">Curabitur ante justo, vitae.</a></h3>
+                            <h3><a href="blog">Curabitur ante justo, vitae.</a></h3>
                             <h6>25 March 2021</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut nisl non justo aliquam
                                 euismod ut ac orci.</p>
-                            <a href="/ryr/blog-detail">read more</a>
+                            <a href="blog">read more</a>
                         </div>
                     </div>
                 </div> --}}
@@ -309,6 +309,6 @@
     <script src="/../../portfolio2/js/main.js" defer></script>
 </body>
 
-<!-- Mirrored from htmldemo.net/Roemah Yoga Rian/Roemah Yoga Rian//ryr/blog-detail by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 01:57:36 GMT -->
+<!-- Mirrored from htmldemo.net/Roemah Yoga Rian/Roemah Yoga Rian/blog by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 01:57:36 GMT -->
 
 </html>
