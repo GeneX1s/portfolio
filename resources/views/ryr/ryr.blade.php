@@ -54,7 +54,24 @@
                                         <li><a href="ryr/class">classes</a></li>
                                         <li><a href="ryr/gallery">gallery</a></li>
                                         <li><a href="ryr/blog">blog</a></li>
-                                        {{-- <li><a href="ryr/contact">Contact</a></li> --}}
+                                        @if (auth()->check())
+                                        
+                                        <li>
+                                            <a href="#">Account</a>
+                                            <ul class="dropdown">
+                                                <li><a href="/dashboard">Dashboard</a></li>
+                                                <li>
+                                                    <a href="/logout" 
+                                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                       Logout
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        @else
+                                        <li><a href="/dashboard">Login</a></li>
+                                        @endif
                                     </ul>
                                 </nav>
                             </div>

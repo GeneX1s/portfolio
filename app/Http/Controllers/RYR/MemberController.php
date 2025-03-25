@@ -105,6 +105,6 @@ class MemberController extends Controller
         $member = ryrMembers::findOrFail($id);
         $member->delete();
 
-        return redirect()->route('dashboard.ryr.members.index');
+        return redirect()->route('members.index');
     }
 }

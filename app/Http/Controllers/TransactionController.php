@@ -488,7 +488,7 @@ class TransactionController extends Controller
                 if (str_contains($investment->nama, 'FR')) {
                     $dividen = (($investment->dividen * $investment->saldo) / 100) / 2;
                 }
-                
+
                 $id = 'DIV|' . md5(Str::random(10)) . now();
                 Transaction::create([
                     'nama' => $id,
@@ -501,6 +501,18 @@ class TransactionController extends Controller
                     'status' => 'Active',
                     'profile' => 'super-admin',
                 ]);
+
+                Transaction::create([
+                    'nama' => 'Cron Flag',
+                    'nominal' => 0,
+                    'kategori' => 'Cron',
+                    'sub_kategori' => 'Cron',
+                    'balance' => '-',
+                    'deskripsi' => 'Cron job tanggal '. ' ' . now()->format('Y-m-d'),
+                    'created_at' => now(),
+                    'status' => 'Deleted',
+                    'profile' => 'super-admin',
+                ]);// Create a marker transaction for cron job
 
                 $balHis = new BalanceHis();
                 $destAcct = Balance::where('id', $investment->penerima_dividen)->first();

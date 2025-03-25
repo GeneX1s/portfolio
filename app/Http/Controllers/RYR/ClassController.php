@@ -82,6 +82,7 @@ class ClassController extends Controller
 
     public function show($id)
     {
+        // dd('us');
         $class = ryrClasses::findOrFail($id);
         return view('dashboard.ryr.classes.show');
     }
@@ -91,7 +92,7 @@ class ClassController extends Controller
         $class = ryrClasses::findOrFail($id);
 
         $teachers = ryrTeachers::where('status', 'Active')->get();
-
+// dd('ci');
         return view('dashboard.ryr.classes.edit', [
             'class' => $class,
             'teachers' => $teachers,
@@ -111,6 +112,7 @@ class ClassController extends Controller
             'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
+        dd('hi');
         $input['updated_at'] = now();
         $input = $request->all();
 
@@ -126,7 +128,7 @@ class ClassController extends Controller
 
         $class->update($input);
 
-        return redirect()->route('dashboard.ryr.classes.index');
+        return redirect()->route('classes.index');
     }
 
     public function destroy($id)
@@ -134,7 +136,7 @@ class ClassController extends Controller
         $class = ryrClasses::findOrFail($id);
         $class->delete();
 
-        return redirect()->route('dashboard.ryr.classes.index');
+        return redirect()->route('classes.index');
     }
 
 
