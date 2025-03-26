@@ -120,6 +120,9 @@ class TeacherController extends Controller
     public function destroy($id)
     {
         $teacher = ryrTeachers::findOrFail($id);
+        if($teacher->foto){
+            $this->deleteFoto($teacher->foto);
+        }
         $teacher->delete();
 
         return redirect()->route('dashboard.ryr.teachers.index');

@@ -89,10 +89,11 @@ class ClassController extends Controller
 
     public function edit($id)
     {
+        // dd('cibay');
         $class = ryrClasses::findOrFail($id);
 
         $teachers = ryrTeachers::where('status', 'Active')->get();
-// dd('ci');
+// dd($request);
         return view('dashboard.ryr.classes.edit', [
             'class' => $class,
             'teachers' => $teachers,
@@ -101,23 +102,12 @@ class ClassController extends Controller
 
     public function update(Request $request, $id)
     {
-        $input = $request->validate([
-            'nama_kelas' => 'required',
-            'teacher' => 'required',
-            'day' => 'required',
-            'schedule' => 'required',
-            'biaya' => 'required',
-            'tipe' => 'required',
-            'description' => 'nullable',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
-        ]);
 
-        dd('hi');
         $input['updated_at'] = now();
         $input = $request->all();
-
         $class = ryrClasses::findOrFail($id);
-
+// dd($input);
+        $input['id'] = $class->id;
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
             if($class->foto){
                 $this->deleteFoto($class->foto);
@@ -126,6 +116,8 @@ class ClassController extends Controller
             $input['foto'] = $request->file('foto')->hashName();
         }
 
+
+// dd($input);
         $class->update($input);
 
         return redirect()->route('classes.index');
@@ -134,6 +126,10 @@ class ClassController extends Controller
     public function destroy($id)
     {
         $class = ryrClasses::findOrFail($id);
+        $deletefoto = $class->foto;
+        if($deletefoto){
+            $this->deleteFoto($deletefoto);
+        }
         $class->delete();
 
         return redirect()->route('classes.index');

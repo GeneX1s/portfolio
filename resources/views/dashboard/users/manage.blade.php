@@ -1,6 +1,13 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
+
+@if(session()->has('success'))
+<div class="alert alert-success col-lg-8" role="alert">
+  {{ session('success') }}
+</div>
+@endif
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">Update User</h1>
 </div>
@@ -30,7 +37,7 @@
       @enderror
     </div>
 
-    
+
     <div class="col-12 col-md-6 col-lg-4">
       <div class="mb-1">
     <button type="submit" class="btn btn-primary">Update User</button>

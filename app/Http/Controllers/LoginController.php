@@ -150,7 +150,7 @@ class LoginController extends Controller
     ]);
 
     // Redirect or respond as needed
-    return redirect()->back()->with('success', 'Value updated successfully.');
+    return redirect()->back()->with('success', 'Password updated.');
   }
 
   public function list(Request $request)

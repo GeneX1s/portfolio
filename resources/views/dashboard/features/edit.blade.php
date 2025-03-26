@@ -8,8 +8,8 @@
   <div class="col-lg-8">
     <form method="post" action="/dashboard/features/{{$feature->id}}" class="mb-5" enctype="multipart/form-data">
       <!-- multipart form data harus supaya bisa upload file(img dll) -->
-      @method('put')
       @csrf
+      @method('put')
 
 
       <div class="mb-3">
