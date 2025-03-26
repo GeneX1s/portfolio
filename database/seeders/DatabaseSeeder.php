@@ -45,11 +45,11 @@ class DatabaseSeeder extends Seeder
             'salary' => 1000000,
         ]);
 
-        Balance::create([
-            'nama' => 'Cash',
-            'saldo' => 1000000,
-            'tipe' => 'Cash',
-        ]);
+        // Balance::create([
+        //     'nama' => 'Cash',
+        //     'saldo' => 1000000,
+        //     'tipe' => 'Cash',
+        // ]);
 
         Balance::create([
             'nama' => 'BCA',
@@ -58,16 +58,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Balance::create([
-            'nama' => 'Misc',
-            'saldo' => 0,
-            'tipe' => 'Lainnya',
+            'nama' => 'Investasi1',
+            'saldo' => 1000000,
+            'tipe' => 'Investment',
+            'dividen' => 0.1,
+            'penerima_dividen' => 1,
+            'tipe' => 'Investment',
         ]);
 
-        Balance::create([
-            'nama' => 'RYR',
-            'saldo' => 0,
-            'tipe' => 'Lainnya',
-        ]);
+        // Balance::create([
+        //     'nama' => 'RYR',
+        //     'saldo' => 0,
+        //     'tipe' => 'Lainnya',
+        // ]);
 
         ryrTeachers::create([
             'nama' => 'Okta',

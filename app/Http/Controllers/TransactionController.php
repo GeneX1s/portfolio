@@ -64,6 +64,7 @@ class TransactionController extends Controller
                     ->whereDate('created_at', '<=', $end_date);
             })
             // ->where('status', 'Deleted')
+            ->whereNot('kategori', 'Cron')
             ->get()->sortByDesc('created_at')->sortBy(function ($transaction) {
                 return $transaction->status == 'Pending' ? 0 : 1;
             });
@@ -466,6 +467,14 @@ class TransactionController extends Controller
 
     public function monthlyCron()
     {
+
+        $month = now()->format('m');
+        $cekCron = Transaction::where('kategori', 'Cron')->whereMonth('created_at', $month)->first();
+
+        if ($cekCron) {
+            return back()->with('error', 'Monthly transactions already generated');
+        }
+        
         $monthlies = Template::where('flag', 'Monthly')->get();
         $investments = Balance::where('tipe', 'Investment')
             ->whereNotNull('penerima_dividen')
@@ -489,13 +498,15 @@ class TransactionController extends Controller
                     $dividen = (($investment->dividen * $investment->saldo) / 100) / 2;
                 }
 
+                $penerima = Balance::where('id', $investment->penerima_dividen)->first()->nama;
+
                 $id = 'DIV|' . md5(Str::random(10)) . now();
                 Transaction::create([
                     'nama' => $id,
                     'nominal' => $dividen,
                     'kategori' => 'Pendapatan',
                     'sub_kategori' => 'Investment',
-                    'balance' => $investment->penerima_dividen,
+                    'balance' => $penerima,
                     'deskripsi' => 'Dividen ' . $investment->nama . ' ' . now()->format('Y-m-d'),
                     'created_at' => now(),
                     'status' => 'Active',
