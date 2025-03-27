@@ -47,40 +47,92 @@
     </head>
 
     <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Page Header-->
-        <header class="masthead" style="background-image: url('{{ asset('portfolio2/img/assets/img/post-bg.jpg') }}')">
-            <div class="container position-relative px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="post-heading">
-                            <h1>Man must explore, and this is exploration at its greatest</h1>
-                            <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
-                            <span class="meta">
-                                Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on August 24, 2023
-                            </span>
+    <!-- Header Area Start -->
+    <header class="top">
+        <div class="header-area ptb-18 header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="logo">
+                            <a href="/"><img src="portfolio2//img/logo/logo.webp" alt="COFFEE" /></a>
                         </div>
                     </div>
+                    <div class="col-lg-8">
+                        <div class="content-wrapper">
+                            <!-- Main Menu Start -->
+                            <div class="main-menu text-center">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        {{-- <li><a href="ryr/about-us">About us</a></li> --}}
+                                        <li><a href="ryr/class">classes</a></li>
+                                        <li><a href="ryr/gallery">gallery</a></li>
+                                        <li><a href="ryr/blog">blog</a></li>
+                                        @if (auth()->check())
+
+                                        <li>
+                                            <a href="#">Account</a>
+                                            <ul class="dropdown">
+                                                <li><a href="/dashboard">Dashboard</a></li>
+                                                <li>
+                                                    <a href="/logout"
+                                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                       Logout
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        @else
+                                        <li><a href="/dashboard">Login</a></li>
+                                        @endif
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="mobile-menu d-block d-lg-none"></div>
+                            <!-- Main Menu End -->
+                        </div>
+                    </div>
+                    <div class="col-lg-2 d-none d-lg-block">
+                        @if (auth()->check())
+                        <div class="header-contact text-end">
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <a class="banner-btn" data-text="sign out" href="/logout"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <span>logout</span>
+                            </a>
+                        </div>
+                        @else
+                        <div class="header-contact text-end">
+                            <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
+                        </div>
+
+                        @endif
+                    </div>
                 </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{ asset('portfolio2/img/assets/img/post-bg.jpg') }}'); background-size: cover; background-position: center; height: 400px;">
+            <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>{{ $blog->title }}</h1>
+                    <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+                    <span class="meta">
+                    Posted by
+                    <a href="#!">{{ $blog->author }}</a>
+                    on {{ $blog->created_at }}
+                    </span>
+                </div>
+                </div>
+            </div>
             </div>
         </header>
         <!-- Post Content-->
@@ -88,7 +140,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+                        <p>{{ $blog->body }}</p>
                         <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
                         <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.</p>
                         <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.</p>
@@ -114,50 +166,6 @@
                 </div>
             </div>
         </article>
-            <!-- Start of Map Area -->
-    <div class="map-area">
-        <!-- google-map-area start -->
-        <div class="google-map-area">
-            <!--  Map Section -->
-            <div id="contacts" class="map-area">
-                <iframe class="contact-map-size"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.6973113638185!2d106.83132382844991!3d-6.158974866248367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5c305a28127%3A0x87393457227b08c!2sRoemah%20Yoga%20Rian!5e0!3m2!1sen!2sid!4v1741074554055!5m2!1sen!2sid"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy">
-                </iframe>
-            </div>
-        </div>
-    </div>
-    <!-- End of Map Area -->
-    <!-- Newsletter Area Start -->
-    <section class="newsletter-area bg-gray">
-        <div class="container">
-            <div class="row">
-                <div class="newsletter-wrapper fix">
-                    <div class="col-lg-10 offset-lg-1">
-                        <div class="newsletter-content section-title text-center">
-                            <h2>subscribe now for latest update!</h2>
-                            <div class="newsletter-form">
-                                <form action="#" id="mc-form" class="mc-form fix">
-                                    <input id="mc-email" type="email" name="email" placeholder="Enter Your E-mail ID">
-                                    <button id="mc-submit" type="submit" class="default-btn"
-                                        data-text="submit"><span>submit</span></button>
-                                </form>
-                                <!-- mailchimp-alerts Start -->
-                                <div class="mailchimp-alerts">
-                                    <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                    <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                    <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                                </div>
-                                <!-- mailchimp-alerts end -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Newsletter Area End -->
     <!-- Footer Area Start -->
     <footer class="footer-area bg-gray">
         <div class="footer-widget-area bg-3 pt-98 pb-90 fix">
