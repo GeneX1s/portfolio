@@ -1,4 +1,4 @@
-<!doctype html>
+    <!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -19,119 +19,6 @@
     <link rel="stylesheet" href="../../portfolio2/css/responsive.css">
     <script src="../../portfolio2/js/vendor/modernizr-3.11.2.min.js"></script>
 </head>
-
-<script src='../portfolio2/js/calendar/index.global.js'></script>
-<script>
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-      initialDate: '2023-01-12',
-      navLinks: true, // can click day/week names to navigate views
-      selectable: true,
-      selectMirror: true,
-      select: function(arg) {
-        var title = prompt('Event Title:');
-        if (title) {
-          calendar.addEvent({
-            title: title,
-            start: arg.start,
-            end: arg.end,
-            allDay: arg.allDay
-          })
-        }
-        calendar.unselect()
-      },
-      eventClick: function(arg) {
-        if (confirm('Are you sure you want to delete this event?')) {
-          arg.event.remove()
-        }
-      },
-      editable: true,
-      dayMaxEvents: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2023-01-01'
-        },
-        {
-          title: 'Long Event',
-          start: '2023-01-07',
-          end: '2023-01-10'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2023-01-09T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2023-01-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2023-01-11',
-          end: '2023-01-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2023-01-12T10:30:00',
-          end: '2023-01-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2023-01-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2023-01-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2023-01-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2023-01-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2023-01-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2023-01-28'
-        }
-      ]
-    });
-
-    calendar.render();
-  });
-
-</script>
-<style>
-
-  body {
-    margin: 40px 10px;
-    padding: 0;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    font-size: 14px;
-  }
-
-  #calendar {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-</style>
 
 <body>
 
@@ -311,18 +198,135 @@
     <!-- Class Area End -->
 
     <section class="class-area fix bg-white pb-100 pt-95">
-        <div class="section-title text-center">
-            <h2>Special Classes/ Schedules</h2>
-
-        </div>
+<h1>Special Classes</h1>
     </section>
     <!-- Schedule Area Strat -->
     <section class="schedule-area pt-85 pb-90 bg-gray text-center">
-        <body>
-
-            <div id='calendar'></div>
-
-          </body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-xl-2 offset-lg-2">
+                    <div class="section-title">
+                        <h2>class schedule</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
+                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="scehedule-table table-content table-responsive text-center">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>saturday</th>
+                                    <th>sunday</th>
+                                    <th>monday</th>
+                                    <th>tuesday</th>
+                                    <th>wednesday</th>
+                                    <th>thursday</th>
+                                    <th>friday</th>
+                                </tr>
+                            </thead>
+                            <tbody class="pt-30">
+                                <tr>
+                                    <td class="time">
+                                        <p>8:00 AM</p>
+                                    </td>
+                                    <td class="purple">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="purple">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                    <td class="purple">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="time">
+                                        <p>12:00 AM</p>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="olive">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                    <td class="olive">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="time">
+                                        <p>3:00 PM</p>
+                                    </td>
+                                    <td></td>
+                                    <td class="blue">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="blue">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                    <td class="blue">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="time">
+                                        <p>6:00 PM</p>
+                                    </td>
+                                    <td class="pink">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="pink">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                    <td class="pink">
+                                        <h4>yoga for climbers</h4>
+                                        <p>Sathi Bhuiyan</p>
+                                        <p>8.00 Am-10.00Am</p>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- Schedule Area End -->
     <!-- Pricing Area Start -->
