@@ -222,4 +222,13 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
         Route::resource('/gallery', GalleryController::class)->middleware('auth');
         Route::resource('/blog', BlogController::class)->middleware('auth');
 
+
+
+// Class calendar
+Route::get('/events', [ScheduleController::class, 'index']);
+Route::post('/events', [ScheduleController::class, 'store']);
+Route::put('/events/{id}', [ScheduleController::class, 'update']);
+Route::delete('/events/{id}', [ScheduleController::class, 'destroy']);
+
+
 /////////////ENDRYR/////////////

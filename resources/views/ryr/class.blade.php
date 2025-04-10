@@ -8,6 +8,7 @@
     <meta name="description"
         content="The template is built for Sport Clubs, Health Clubs, Gyms, Fitness Centers, Personal Trainers and other sport">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
 
@@ -23,98 +24,142 @@
 <script src='../portfolio2/js/calendar/index.global.js'></script>
 <script>
 
-  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      headerToolbar: {
+        headerToolbar: {
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-      initialDate: '2023-01-12',
-      navLinks: true, // can click day/week names to navigate views
-      selectable: true,
-      selectMirror: true,
-      select: function(arg) {
+        },
+        initialDate: '2023-01-12',
+        navLinks: true,
+        selectable: true,
+        selectMirror: true,
+
+        // Event selection handler
+        select: function(arg) {
         var title = prompt('Event Title:');
         if (title) {
-          calendar.addEvent({
+            var newEvent = {
             title: title,
             start: arg.start,
             end: arg.end,
             allDay: arg.allDay
-          })
+            };
+            calendar.addEvent(newEvent);
+
+            // Send the new event to the server
+            sendEventToServer(newEvent);
         }
-        calendar.unselect()
-      },
-      eventClick: function(arg) {
+        calendar.unselect();
+        },
+
+        // Event click handler for deletion
+        eventClick: function(arg) {
         if (confirm('Are you sure you want to delete this event?')) {
-          arg.event.remove()
+            var eventToDelete = arg.event;
+
+            // Remove the event from the calendar
+            eventToDelete.remove();
+
+            // Send a request to delete the event from the server
+            deleteEventFromServer(eventToDelete.id);
         }
-      },
-      editable: true,
-      dayMaxEvents: true, // allow "more" link when too many events
-      events: [
+        },
+
+        // Event edit handler (for updating events)
+        eventChange: function(arg) {
+        var updatedEvent = arg.event;
+
+        // Send the updated event data to the server
+        updateEventInServer(updatedEvent);
+        },
+
+        editable: true,
+        dayMaxEvents: true,
+        // events: '/api/events'
+
+        events: [
         {
-          title: 'All Day Event',
-          start: '2023-01-01'
+            id: 1,
+            title: 'All Day Event',
+            start: '2023-01-01'
         },
         {
-          title: 'Long Event',
-          start: '2023-01-07',
-          end: '2023-01-10'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2023-01-09T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2023-01-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2023-01-11',
-          end: '2023-01-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2023-01-12T10:30:00',
-          end: '2023-01-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2023-01-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2023-01-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2023-01-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2023-01-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2023-01-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2023-01-28'
+            id: 2,
+            title: 'Meeting',
+            start: '2023-01-12T10:30:00',
+            end: '2023-01-12T12:30:00'
         }
-      ]
+        ]
     });
 
     calendar.render();
-  });
+
+    // Function to send the new event to your server
+    function sendEventToServer(eventData) {
+        fetch('/api/events', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token
+        },
+        body: JSON.stringify(eventData)
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log('Event created on server:', data);
+        })
+        .catch((error) => {
+        console.error('Error creating event:', error);
+        });
+    }
+
+    // Function to send the updated event to your server
+    function updateEventInServer(eventData) {
+        fetch(`/api/events/${eventData.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token
+        },
+        body: JSON.stringify({
+            title: eventData.title,
+            start: eventData.start,
+            end: eventData.end,
+            allDay: eventData.allDay
+        })
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log('Event updated on server:', data);
+        })
+        .catch((error) => {
+        console.error('Error updating event:', error);
+        });
+    }
+
+    // Function to delete the event on the server
+    function deleteEventFromServer(eventId) {
+        fetch(`/api/events/${eventId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token
+        },
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log('Event deleted from server:', data);
+        })
+        .catch((error) => {
+        console.error('Error deleting event:', error);
+        });
+    }
+
+    });
 
 </script>
 <style>
@@ -326,7 +371,7 @@
     </section>
     <!-- Schedule Area End -->
     <!-- Pricing Area Start -->
-    <div class="pricing-area pt-95 pb-120 bg-white">
+    {{-- <div class="pricing-area pt-95 pb-120 bg-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
@@ -388,7 +433,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Pricing Area End -->
     <!-- Start of Map Area -->
     <div class="map-area">

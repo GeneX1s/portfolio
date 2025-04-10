@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\RYR\ryrClasses;
 use App\Http\Controllers\Controller;
 use App\Models\RYR\ryrParticipants;
+use App\Models\RYR\ryrSchedules;
 use App\Models\RYR\ryrTeachers;
 use Illuminate\Support\Facades\Storage;
 
@@ -36,10 +37,14 @@ class ClassController extends Controller
 
 
         $teachers = ryrTeachers::where('status', 'Active')->get();
+
+        $calendars = ryrSchedules::get();
+        
         return view('dashboard.ryr.classes.index', [
 
             'classes' => $classes,
             'teachers' => $teachers,
+            'calendars' => $calendars,
         ]);
     }
 
