@@ -39,7 +39,7 @@ class ClassController extends Controller
         $teachers = ryrTeachers::where('status', 'Active')->get();
 
         $calendars = ryrSchedules::get();
-        
+
         return view('dashboard.ryr.classes.index', [
 
             'classes' => $classes,
@@ -89,7 +89,9 @@ class ClassController extends Controller
     {
         // dd('us');
         $class = ryrClasses::findOrFail($id);
-        return view('dashboard.ryr.classes.show');
+        return view('ryr.classDetail', [
+            'class' => $class,
+        ]);
     }
 
     public function edit($id)
@@ -98,7 +100,7 @@ class ClassController extends Controller
         $class = ryrClasses::findOrFail($id);
 
         $teachers = ryrTeachers::where('status', 'Active')->get();
-// dd($request);
+        // dd($request);
         return view('dashboard.ryr.classes.edit', [
             'class' => $class,
             'teachers' => $teachers,
@@ -111,10 +113,10 @@ class ClassController extends Controller
         $input['updated_at'] = now();
         $input = $request->all();
         $class = ryrClasses::findOrFail($id);
-// dd($input);
+        // dd($input);
         $input['id'] = $class->id;
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            if($class->foto){
+            if ($class->foto) {
                 $this->deleteFoto($class->foto);
             }
             $this->uploadFoto($request);
@@ -122,7 +124,7 @@ class ClassController extends Controller
         }
 
 
-// dd($input);
+        // dd($input);
         $class->update($input);
 
         return redirect()->route('classes.index');
@@ -132,7 +134,7 @@ class ClassController extends Controller
     {
         $class = ryrClasses::findOrFail($id);
         $deletefoto = $class->foto;
-        if($deletefoto){
+        if ($deletefoto) {
             $this->deleteFoto($deletefoto);
         }
         $class->delete();
@@ -172,5 +174,22 @@ class ClassController extends Controller
         }
 
         return response()->json(['message' => 'File not found'], 404);
+    }
+
+    public function classPage()
+    {
+        $classes = ryrClasses::get();
+
+        $teachers = ryrTeachers::where('status', 'Active')->get();
+
+        $calendars = ryrSchedules::get();
+
+        // dd($calendars);
+        return view('ryr.class', [
+
+            'classes' => $classes,
+            'teachers' => $teachers,
+            'calendars' => $calendars,
+        ]);
     }
 }
