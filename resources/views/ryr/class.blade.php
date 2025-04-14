@@ -111,24 +111,44 @@ document.getElementById('eventForm').addEventListener('submit', function(e) {
     calendar.addEvent(newEvent);
 
     // Send to server
-    fetch('/api/events', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        },
-        body: JSON.stringify({
-            title: newEvent.title,
-            start: newEvent.start,
-            end: newEvent.end,
-            class_name: className,
-            teacher_name: teacherName
-        })
+    // fetch('/api/events', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    //     },
+    //     body: JSON.stringify({
+    //         title: newEvent.title,
+    //         start: newEvent.start,
+    //         end: newEvent.end,
+    //         class_name: className,
+    //         teacher_name: teacherName
+    //     })
+    // })
+    // .then(res => res.json())
+    // .then(data => {
+    //     console.log('Saved:', data);
+    // });
+
+    fetch('/dashboard/ryr/schedules', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    },
+    body: JSON.stringify({
+        title: `${className} - ${teacherName}`,
+        start: start,
+        end: end,
+        class_name: className,
+        teacher_name: teacherName
     })
-    .then(res => res.json())
-    .then(data => {
-        console.log('Saved:', data);
-    });
+})
+.then(res => res.json())
+.then(data => {
+    console.log('Saved:', data);
+});
+
 
     // Close the modal
     bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
@@ -408,27 +428,26 @@ document.getElementById('eventForm').addEventListener('submit', function(e) {
     <!-- Create Event Modal -->
     <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form id="eventForm" class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="eventModalLabel">Create New Event</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+            <form id="eventForm" class="modal-content" action="{{ url('/dashboard/ryr/schedules') }}" method="POST">
+                @csrf
+                <input type="hidden" name="start" id="event-start">
+                <input type="hidden" name="end" id="event-end">
+
                 <div class="modal-body">
-                    <input type="hidden" id="event-start">
-                    <input type="hidden" id="event-end">
                     <div class="mb-3">
                         <label for="class_name" class="form-label">Class Name</label>
-                        <input type="text" class="form-control" id="class_name" required>
+                        <input type="text" class="form-control" id="class_name" name="class_name" required>
                     </div>
                     <div class="mb-3">
                         <label for="teacher_name" class="form-label">Teacher Name</label>
-                        <input type="text" class="form-control" id="teacher_name" required>
+                        <input type="text" class="form-control" id="teacher_name" name="teacher_name" required>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Save Event</button>
                 </div>
             </form>
+
         </div>
     </div>
 
