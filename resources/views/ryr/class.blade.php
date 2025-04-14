@@ -23,7 +23,6 @@
 
 <script src='../portfolio2/js/calendar/index.global.js'></script>
 <script>
-
     document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
@@ -40,21 +39,15 @@
 
         // Event selection handler
         select: function(arg) {
-        var title = prompt('Event Title:');
-        if (title) {
-            var newEvent = {
-            title: title,
-            start: arg.start,
-            end: arg.end,
-            allDay: arg.allDay
-            };
-            calendar.addEvent(newEvent);
+    // Save selected dates to hidden inputs
+    document.getElementById('event-start').value = arg.startStr;
+    document.getElementById('event-end').value = arg.endStr;
 
-            // Send the new event to the server
-            sendEventToServer(newEvent);
-        }
-        calendar.unselect();
-        },
+    // Show the modal
+    var eventModal = new bootstrap.Modal(document.getElementById('eventModal'));
+    eventModal.show();
+},
+
 
         // Event click handler for deletion
         eventClick: function(arg) {
@@ -98,6 +91,50 @@
 
     calendar.render();
 
+    // Handle modal form submission
+document.getElementById('eventForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let className = document.getElementById('class_name').value;
+    let teacherName = document.getElementById('teacher_name').value;
+    let start = document.getElementById('event-start').value;
+    let end = document.getElementById('event-end').value;
+
+    let newEvent = {
+        title: `${className} - ${teacherName}`,
+        start: start,
+        end: end,
+        allDay: false
+    };
+
+    // Add to calendar view
+    calendar.addEvent(newEvent);
+
+    // Send to server
+    fetch('/api/events', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+            title: newEvent.title,
+            start: newEvent.start,
+            end: newEvent.end,
+            class_name: className,
+            teacher_name: teacherName
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log('Saved:', data);
+    });
+
+    // Close the modal
+    bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+});
+
+
     // Function to send the new event to your server
     function sendEventToServer(eventData) {
         fetch('/api/events', {
@@ -112,9 +149,10 @@
         .then(data => {
         console.log('Event created on server:', data);
         })
-        .catch((error) => {
-        console.error('Error creating event:', error);
-        });
+        .then(data => {
+    console.log('Event created on server:', data);
+    calendar.getEventById(data.id)?.setProp('id', data.id); // optional if needed
+});
     }
 
     // Function to send the updated event to your server
@@ -163,19 +201,17 @@
 
 </script>
 <style>
+    body {
+        margin: 40px 10px;
+        padding: 0;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        font-size: 14px;
+    }
 
-  body {
-    margin: 40px 10px;
-    padding: 0;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    font-size: 14px;
-  }
-
-  #calendar {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
+    #calendar {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
 </style>
 
 <body>
@@ -315,7 +351,8 @@
 
             <div class="row">
                 <div class="col-12 text-center">
-                    <a class="banner-btn mt-55" href="javascript:void(0);" data-text="view all classes" id="view-all-classes-btn"><span>view all classes</span></a>
+                    <a class="banner-btn mt-55" href="javascript:void(0);" data-text="view all classes"
+                        id="view-all-classes-btn"><span>view all classes</span></a>
                     <div id="hidden-classes" style="display: none;">
                         <!-- Add your hidden content here -->
                         <div class="single-class">
@@ -335,7 +372,8 @@
                                 </ul>
                             </div>
                         </div>
-                        <a class="banner-btn mt-55" href="javascript:void(0);" data-text="hide classes" id="hide-classes-btn"><span>hide classes</span></a>
+                        <a class="banner-btn mt-55" href="javascript:void(0);" data-text="hide classes"
+                            id="hide-classes-btn"><span>hide classes</span></a>
                     </div>
 
                     <script>
@@ -363,12 +401,37 @@
     </section>
     <!-- Schedule Area Strat -->
     <section class="schedule-area pt-85 pb-90 bg-gray text-center">
-        <body>
-
-            <div id='calendar'></div>
-
-          </body>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <div id='calendar'></div>
     </section>
+
+    <!-- Create Event Modal -->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="eventForm" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eventModalLabel">Create New Event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="event-start">
+                    <input type="hidden" id="event-end">
+                    <div class="mb-3">
+                        <label for="class_name" class="form-label">Class Name</label>
+                        <input type="text" class="form-control" id="class_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="teacher_name" class="form-label">Teacher Name</label>
+                        <input type="text" class="form-control" id="teacher_name" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Schedule Area End -->
     <!-- Pricing Area Start -->
     {{-- <div class="pricing-area pt-95 pb-120 bg-white">
@@ -486,7 +549,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
+                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp"
+                                    alt="Roemah Yoga Rian"></a>
                             <p>Contact us here, for further inquiries or questions.
                             </p>
                             <ul>
