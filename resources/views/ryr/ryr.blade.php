@@ -220,7 +220,7 @@
 
                     <div class="single-class">
                         <div class="single-img">
-                            <a href="/ryr/class"><img src="{{ $foto }}" alt="class"
+                            <a href="dashboard/ryr/classes/{{ $class->id }}"><img src="{{ $foto }}" alt="class"
                                     style="width: 370px; height: 207px;"></a>
                             <div class="gallery-icon">
                                 <a class="image-popup" href="{{ $foto }}" style="width: 370px; height: 207px;">
@@ -229,7 +229,7 @@
                             </div>
                         </div>
                         <div class="single-content">
-                            <h3><a href="/ryr/class">{{ $class->nama_kelas }}</a></h3>
+                            <h3><a href="/ryr/classes/{{ $class->id }}">{{ $class->nama_kelas }}</a></h3>
                             <ul>
                                 <li><i class="zmdi zmdi-face"></i>{{ $class->teacher }}</li>
                                 <li><i class="zmdi zmdi-alarm"></i>{{ $class->schedule }}</li>

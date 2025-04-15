@@ -192,4 +192,21 @@ class ClassController extends Controller
             'calendars' => $calendars,
         ]);
     }
+
+    public function classDetail($id)
+    {
+        $classes = ryrClasses::findOrFail($id);
+
+        $teachers = ryrTeachers::where('status', 'Active')->get();
+
+        $calendars = ryrSchedules::get();
+
+        // dd($calendars);
+        return view('ryr.classDetail', [
+
+            'classes' => $classes,
+            'teachers' => $teachers,
+            'calendars' => $calendars,
+        ]);
+    }
 }

@@ -334,7 +334,7 @@ document.getElementById('eventForm').addEventListener('submit', function(e) {
                             </div>
                         </div>
                         <div class="single-content">
-                            <h3><a href="/ryr/class">{{ $class->nama_kelas }}</a></h3>
+                            <h3><a href="/ryr/classes/{{ $class->id }}">{{ $class->nama_kelas }}</a></h3>
                             <ul>
                                 <li><i class="zmdi zmdi-face"></i>{{ $class->teacher }}</li>
                                 <li><i class="zmdi zmdi-alarm"></i>{{ $class->schedule }}</li>

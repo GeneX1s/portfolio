@@ -58,7 +58,7 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
     // })->name('ryr/blog');
     Route::get('/ryr/class', function () {
         return view('ryr/class');
-    })->name('ryr/class');
+    })->name('ryr.class');
     Route::get('/ryr/contact', function () {
         return view('ryr/contact');
     })->name('ryr/contact');
@@ -223,6 +223,8 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
         Route::resource('/blog', BlogController::class)->middleware('auth');
 
 
+        // Route::get('/ryr/classes/{id}', [ClassController::class, 'classPage']);
+        Route::get('/ryr/classes/{id}', [ClassController::class, 'classDetail']);
 
 // Class calendar
 Route::get('/events', [ScheduleController::class, 'index']);
