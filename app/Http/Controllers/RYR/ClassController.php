@@ -195,17 +195,17 @@ class ClassController extends Controller
 
     public function classDetail($id)
     {
-        $classes = ryrClasses::findOrFail($id);
+        $class = ryrClasses::findOrFail($id);
 
-        $teachers = ryrTeachers::where('status', 'Active')->get();
+        $teacher = ryrTeachers::where('id', $class->teacher)->first();
 
         $calendars = ryrSchedules::get();
 
         // dd($calendars);
         return view('ryr.classDetail', [
 
-            'classes' => $classes,
-            'teachers' => $teachers,
+            'class' => $class,
+            'teacher' => $teacher,
             'calendars' => $calendars,
         ]);
     }
