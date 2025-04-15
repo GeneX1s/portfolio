@@ -1,4 +1,4 @@
-    <!doctype html>
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
+                            <a class="banner-btn" data-text="dashboard" href="/dashboard"><span>login</span></a>
                         </div>
                     </div>
                 </div>
@@ -88,208 +88,18 @@
         <div class="container">
             <h1>About Class</h1>
 
-            <p>Ashtanga yoga adalah Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus praesentium recusandae quidem et provident cupiditate cum, a eveniet fugiat adipisci, tenetur nisi atque maxime quae nemo laboriosam explicabo, temporibus quasi deleniti. Eius aliquam impedit, alias, repellat accusantium voluptas esse amet delectus, numquam nesciunt animi sed! Magni consequuntur architecto, excepturi in dolorem facilis minima similique amet accusantium exercitationem, a reprehenderit dolore enim ea fugiat debitis nesciunt temporibus. Tenetur, ipsam esse explicabo natus totam dolores et omnis voluptatum sit quis, dicta, illo inventore consequatur corrupti voluptas. Nemo totam officia suscipit nesciunt esse, distinctio quae hic porro nobis! Perferendis modi voluptates doloribus animi.</p>
+            <p>Ashtanga yoga adalah Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus praesentium
+                recusandae quidem et provident cupiditate cum, a eveniet fugiat adipisci, tenetur nisi atque maxime quae
+                nemo laboriosam explicabo, temporibus quasi deleniti. Eius aliquam impedit, alias, repellat accusantium
+                voluptas esse amet delectus, numquam nesciunt animi sed! Magni consequuntur architecto, excepturi in
+                dolorem facilis minima similique amet accusantium exercitationem, a reprehenderit dolore enim ea fugiat
+                debitis nesciunt temporibus. Tenetur, ipsam esse explicabo natus totam dolores et omnis voluptatum sit
+                quis, dicta, illo inventore consequatur corrupti voluptas. Nemo totam officia suscipit nesciunt esse,
+                distinctio quae hic porro nobis! Perferendis modi voluptates doloribus animi.</p>
         </div>
     </section>
     <!-- Class Area End -->
 
-    <section class="class-area fix bg-white pb-100 pt-95">
-<h1>Special Classes</h1>
-    </section>
-    <!-- Schedule Area Strat -->
-    <section class="schedule-area pt-85 pb-90 bg-gray text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-xl-2 offset-lg-2">
-                    <div class="section-title">
-                        <h2>class schedule</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="scehedule-table table-content table-responsive text-center">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Time</th>
-                                    <th>saturday</th>
-                                    <th>sunday</th>
-                                    <th>monday</th>
-                                    <th>tuesday</th>
-                                    <th>wednesday</th>
-                                    <th>thursday</th>
-                                    <th>friday</th>
-                                </tr>
-                            </thead>
-                            <tbody class="pt-30">
-                                <tr>
-                                    <td class="time">
-                                        <p>8:00 AM</p>
-                                    </td>
-                                    <td class="purple">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="purple">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="purple">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="time">
-                                        <p>12:00 AM</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="olive">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="olive">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="time">
-                                        <p>3:00 PM</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="blue">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="blue">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="blue">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="time">
-                                        <p>6:00 PM</p>
-                                    </td>
-                                    <td class="pink">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="pink">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="pink">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Schedule Area End -->
-    <!-- Pricing Area Start -->
-    <div class="pricing-area pt-95 pb-120 bg-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-xl-2 offset-lg-2">
-                    <div class="section-title text-center">
-                        <h2>pricing table</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-table text-center">
-                        <div class="table-head">
-                            <h2>silver package</h2>
-                            <h1>Rp.800.000,00<span>/month</span></h1>
-                        </div>
-                        <div class="table-body">
-                            <ul>
-                                <li>Hatha Classes</li>
-                                <li>Wallrope Classes</li>
-                                <li>Morning & Evening Class</li>
-                            </ul>
-                            <a href="#">get started</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-table text-center">
-                        <div class="table-head">
-                            <h2>gold package</h2>
-                            <h1>Rp.400.000,00<span>/month</span></h1>
-                        </div>
-                        <div class="table-body">
-                            <ul>
-                                <li>Hatha and Ashtanga Class</li>
-                                <li>Every Wed and Thu Evening</li>
-                            </ul>
-                            <a href="#">get started</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mt-5 mt-lg-0">
-                    <div class="single-table text-center">
-                        <div class="table-head">
-                            <h2>platinum package</h2>
-                            <h1>$70<span>/month</span></h1>
-                        </div>
-                        <div class="table-body">
-                            <ul>
-                                <li>Free T-Shirt & swags</li>
-                                <li>Free of all message treatments</li>
-                                <li>Access Clup Facilites</li>
-                                <li>Out Door activites</li>
-                            </ul>
-                            <a href="#">get started</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Pricing Area End -->
     <!-- Start of Map Area -->
     <div class="map-area">
         <!-- google-map-area start -->
@@ -341,7 +151,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
+                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp"
+                                    alt="Roemah Yoga Rian"></a>
                             <p>Contact us here, for further inquiries or questions.
                             </p>
                             <ul>

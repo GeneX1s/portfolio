@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
+                            <a class="banner-btn" data-text="dashboard" href="/dashboard"><span>login</span></a>
                         </div>
                     </div>
                 </div>
@@ -143,40 +143,58 @@
                 <section class="my-5">
                     <h2>Our Story</h2>
                     <p>
-                        Our yoga journey began in 2013, when our founder, Rian, envisioned a space where individuals could connect not only with their inner selves but also with a supportive community. It all started with a single class in a small, cozy studio, where the focus was solely on mindfulness and personal growth.
+                        Our yoga journey began in 2013, when our founder, Rian, envisioned a space where individuals
+                        could connect not only with their inner selves but also with a supportive community. It all
+                        started with a single class in a small, cozy studio, where the focus was solely on mindfulness
+                        and personal growth.
                     </p>
                     <p>
-                        What started as a small group of passionate practitioners soon blossomed into a growing community. We realized that yoga is not just about physical flexibility; it's about mental clarity, self-discovery, and fostering connection in a world that often feels disconnected.
+                        What started as a small group of passionate practitioners soon blossomed into a growing
+                        community. We realized that yoga is not just about physical flexibility; it's about mental
+                        clarity, self-discovery, and fostering connection in a world that often feels disconnected.
                     </p>
                 </section>
 
                 <section class="my-5">
                     <h2>Our Evolution</h2>
                     <p>
-                        Over the years, we've expanded beyond the original studio, offering online courses and a variety of workshops designed to meet the diverse needs of our students. Our classes range from gentle flow to advanced vinyasa, guided by certified instructors who truly care about the well-being of each participant.
+                        Over the years, we've expanded beyond the original studio, offering online courses and a variety
+                        of workshops designed to meet the diverse needs of our students. Our classes range from gentle
+                        flow to advanced vinyasa, guided by certified instructors who truly care about the well-being of
+                        each participant.
                     </p>
                     <p>
-                        We launched our online platform in 2025 to make yoga more accessible to people all over the world. This move allowed us to reach individuals who were unable to join in-person classes due to location, time constraints, or personal preferences.
+                        We launched our online platform in 2025 to make yoga more accessible to people all over the
+                        world. This move allowed us to reach individuals who were unable to join in-person classes due
+                        to location, time constraints, or personal preferences.
                     </p>
                     <p>
-                        We’ve also created a space for wellness and mindfulness beyond the mat, offering meditation workshops, nutrition advice, and community events that promote holistic health and well-being.
+                        We’ve also created a space for wellness and mindfulness beyond the mat, offering meditation
+                        workshops, nutrition advice, and community events that promote holistic health and well-being.
                     </p>
                 </section>
 
                 <section class="my-5">
                     <h2>Our Mission Today</h2>
                     <p>
-                        Today, we continue to offer a welcoming and nurturing environment for practitioners of all levels. Whether you're stepping onto the mat for the first time or are a seasoned yogi, our goal remains the same: to support your growth, help you find balance, and provide a sanctuary for peace and mindfulness in your busy life.
+                        Today, we continue to offer a welcoming and nurturing environment for practitioners of all
+                        levels. Whether you're stepping onto the mat for the first time or are a seasoned yogi, our goal
+                        remains the same: to support your growth, help you find balance, and provide a sanctuary for
+                        peace and mindfulness in your busy life.
                     </p>
                     <p>
-                        Our mission is not only to teach yoga, but to help foster a community where each person can thrive. Through our online and in-person offerings, we aim to build a community that values kindness, mindfulness, and the power of the present moment.
+                        Our mission is not only to teach yoga, but to help foster a community where each person can
+                        thrive. Through our online and in-person offerings, we aim to build a community that values
+                        kindness, mindfulness, and the power of the present moment.
                     </p>
                 </section>
 
                 <section class="my-5">
                     <h2>Join Us</h2>
                     <p>
-                        We invite you to join us on this journey. Whether you’re new to yoga or a seasoned practitioner, there’s a place for you here. Let us help you on your path to inner peace and balance. Together, we will continue to grow and evolve, both individually and as a community.
+                        We invite you to join us on this journey. Whether you’re new to yoga or a seasoned practitioner,
+                        there’s a place for you here. Let us help you on your path to inner peace and balance. Together,
+                        we will continue to grow and evolve, both individually and as a community.
                     </p>
 
                 </section>
@@ -235,7 +253,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
+                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp"
+                                    alt="Roemah Yoga Rian"></a>
                             <p>Contact us here, for further inquiries or questions.
                             </p>
                             <ul>

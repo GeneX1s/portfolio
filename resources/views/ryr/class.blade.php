@@ -268,7 +268,7 @@ document.getElementById('eventForm').addEventListener('submit', function(e) {
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
+                            <a class="banner-btn" data-text="dashboard" href="/dashboard"><span>login</span></a>
                         </div>
                     </div>
                 </div>
@@ -304,109 +304,52 @@ document.getElementById('eventForm').addEventListener('submit', function(e) {
                 <div class="col-lg-8 offset-lg-2">
                     <div class="section-title text-center">
                         <h2>our classes</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
+                        {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                            issss has been the
+                            industry's standard dummy text ever since the 1500s, when an unknown lorem </p> --}}
+                        <p>Here are a list of our variety of classes in Roemah Yoga Rian. Feel free to try out all our
+                            classes!</p>
                     </div>
                 </div>
             </div>
             <div class="row">
+                @foreach ($classes as $class)
+                @php
+                if($class->foto){
+                $foto = 'storage/' . $class->foto;
+                } else {
+                $foto = '/portfolio2/img/class/2.webp';
+                }
+                @endphp
                 <div class="col-lg-4 col-md-6">
-                    <div class="single-class">
-                        <div class="single-img">
-                            <a href="class.html"><img src="img/class/1.webp" alt="class"></a>
-                            <div class="gallery-icon">
-                                <a class="image-popup" href="img/class/1.webp">
-                                    <i class="zmdi zmdi-zoom-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="single-content">
-                            <h3><a href="class.html">yoga for climbers</a></h3>
-                            <ul>
-                                <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                                <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-class">
-                        <div class="single-img">
-                            <a href="class.html"><img src="img/class/2.webp" alt="class"></a>
-                            <div class="gallery-icon">
-                                <a class="image-popup" href="img/class/2.webp">
-                                    <i class="zmdi zmdi-zoom-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="single-content">
-                            <h3><a href="class.html">yoga for climbers</a></h3>
-                            <ul>
-                                <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                                <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-                    <div class="single-class">
-                        <div class="single-img">
-                            <a href="class.html"><img src="img/class/3.webp" alt="class"></a>
-                            <div class="gallery-icon">
-                                <a class="image-popup" href="img/class/3.webp">
-                                    <i class="zmdi zmdi-zoom-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="single-content">
-                            <h3><a href="class.html">yoga for climbers</a></h3>
-                            <ul>
-                                <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                                <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
+                    <div class="single-class">
+                        <div class="single-img">
+                            <a href="/ryr/class"><img src="{{ $foto }}" alt="class"
+                                    style="width: 370px; height: 207px;"></a>
+                            <div class="gallery-icon">
+                                <a class="image-popup" href="{{ $foto }}" style="width: 370px; height: 207px;">
+                                    <i class="zmdi zmdi-zoom-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="single-content">
+                            <h3><a href="/ryr/class">{{ $class->nama_kelas }}</a></h3>
+                            <ul>
+                                <li><i class="zmdi zmdi-face"></i>{{ $class->teacher }}</li>
+                                <li><i class="zmdi zmdi-alarm"></i>{{ $class->schedule }}</li>
+                                <li><i class="zmdi zmdi-calendar"></i>{{ $class->day }}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                @endforeach
+            </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <a class="banner-btn mt-55" href="javascript:void(0);" data-text="view all classes"
-                        id="view-all-classes-btn"><span>view all classes</span></a>
-                    <div id="hidden-classes" style="display: none;">
-                        <!-- Add your hidden content here -->
-                        <div class="single-class">
-                            <div class="single-img">
-                                <a href="class.html"><img src="img/class/4.webp" alt="class"></a>
-                                <div class="gallery-icon">
-                                    <a class="image-popup" href="img/class/4.webp">
-                                        <i class="zmdi zmdi-zoom-in"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="single-content">
-                                <h3><a href="class.html">advanced yoga</a></h3>
-                                <ul>
-                                    <li><i class="zmdi zmdi-face"></i>John Doe</li>
-                                    <li><i class="zmdi zmdi-alarm"></i>11.00Am-01:00Pm</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <a class="banner-btn mt-55" href="javascript:void(0);" data-text="hide classes"
-                            id="hide-classes-btn"><span>hide classes</span></a>
-                    </div>
-
-                    <script>
-                        document.getElementById('view-all-classes-btn').addEventListener('click', function() {
-                            document.getElementById('hidden-classes').style.display = 'block';
-                            this.style.display = 'none';
-                        });
-
-                        document.getElementById('hide-classes-btn').addEventListener('click', function() {
-                            document.getElementById('hidden-classes').style.display = 'none';
-                            document.getElementById('view-all-classes-btn').style.display = 'inline-block';
-                        });
-                    </script>
+                    <a class="banner-btn mt-55" href="/ryr/class" data-text="view all classes"><span>view all
+                            classes</span></a>
                 </div>
             </div>
         </div>
