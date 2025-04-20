@@ -112,6 +112,22 @@ class ScheduleController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->wantsJson()) {
+            $schedule = ryrSchedules::create([
+                'class_id' => 1,
+                'class_name' => $request->class_name,
+                'teacher_name' => $request->teacher_name,
+                'status' => 'Active',
+                'tanggal' => date('Y-m-d', strtotime($request->start)),
+                'jam' => date('H:i:s', strtotime($request->start)),
+                'tipe' => 'Event',
+                'harga' => 0,
+                'profit' => 0,
+            ]);
+
+            return response()->json($schedule);
+        }
+
         $input = $request->validate([
             'tanggal' => 'required|date',
         ]);

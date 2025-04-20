@@ -1,4 +1,4 @@
-    <!doctype html>
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -8,6 +8,7 @@
     <meta name="description"
         content="The template is built for Sport Clubs, Health Clubs, Gyms, Fitness Centers, Personal Trainers and other sport">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
 
@@ -19,6 +20,219 @@
     <link rel="stylesheet" href="../../portfolio2/css/responsive.css">
     <script src="../../portfolio2/js/vendor/modernizr-3.11.2.min.js"></script>
 </head>
+
+<script src='../portfolio2/js/calendar/index.global.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        initialDate: '2023-01-12',
+        navLinks: true,
+        selectable: true,
+        selectMirror: true,
+
+        // Event selection handler
+        select: function(arg) {
+    // Save selected dates to hidden inputs
+    document.getElementById('event-start').value = arg.startStr;
+    document.getElementById('event-end').value = arg.endStr;
+
+    // Show the modal
+    var eventModal = new bootstrap.Modal(document.getElementById('eventModal'));
+    eventModal.show();
+},
+
+
+        // Event click handler for deletion
+        eventClick: function(arg) {
+        if (confirm('Are you sure you want to delete this event?')) {
+            var eventToDelete = arg.event;
+
+            // Remove the event from the calendar
+            eventToDelete.remove();
+
+            // Send a request to delete the event from the server
+            deleteEventFromServer(eventToDelete.id);
+        }
+        },
+
+        // Event edit handler (for updating events)
+        eventChange: function(arg) {
+        var updatedEvent = arg.event;
+
+        // Send the updated event data to the server
+        updateEventInServer(updatedEvent);
+        },
+
+        editable: true,
+        dayMaxEvents: true,
+        // events: '/api/events'
+
+        events: [
+        {
+            id: 1,
+            title: 'All Day Event',
+            start: '2023-01-01'
+        },
+        {
+            id: 2,
+            title: 'Meeting',
+            start: '2023-01-12T10:30:00',
+            end: '2023-01-12T12:30:00'
+        }
+        ]
+    });
+
+    calendar.render();
+
+    // Handle modal form submission
+document.getElementById('eventForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let className = document.getElementById('class_name').value;
+    let teacherName = document.getElementById('teacher_name').value;
+    let start = document.getElementById('event-start').value;
+    let end = document.getElementById('event-end').value;
+
+    let newEvent = {
+        title: `${className} - ${teacherName}`,
+        start: start,
+        end: end,
+        allDay: false
+    };
+
+    // Add to calendar view
+    calendar.addEvent(newEvent);
+
+    // Send to server
+    // fetch('/api/events', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    //     },
+    //     body: JSON.stringify({
+    //         title: newEvent.title,
+    //         start: newEvent.start,
+    //         end: newEvent.end,
+    //         class_name: className,
+    //         teacher_name: teacherName
+    //     })
+    // })
+    // .then(res => res.json())
+    // .then(data => {
+    //     console.log('Saved:', data);
+    // });
+
+    fetch('/dashboard/ryr/schedules', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    },
+    body: JSON.stringify({
+        title: `${className} - ${teacherName}`,
+        start: start,
+        end: end,
+        class_name: className,
+        teacher_name: teacherName
+    })
+})
+.then(res => res.json())
+.then(data => {
+    console.log('Saved:', data);
+});
+
+
+    // Close the modal
+    bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+});
+
+
+    // Function to send the new event to your server
+    function sendEventToServer(eventData) {
+        fetch('/api/events', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token
+        },
+        body: JSON.stringify(eventData)
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log('Event created on server:', data);
+        })
+        .then(data => {
+    console.log('Event created on server:', data);
+    calendar.getEventById(data.id)?.setProp('id', data.id); // optional if needed
+});
+    }
+
+    // Function to send the updated event to your server
+    function updateEventInServer(eventData) {
+        fetch(`/api/events/${eventData.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token
+        },
+        body: JSON.stringify({
+            title: eventData.title,
+            start: eventData.start,
+            end: eventData.end,
+            allDay: eventData.allDay
+        })
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log('Event updated on server:', data);
+        })
+        .catch((error) => {
+        console.error('Error updating event:', error);
+        });
+    }
+
+    // Function to delete the event on the server
+    function deleteEventFromServer(eventId) {
+        fetch(`/api/events/${eventId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token
+        },
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log('Event deleted from server:', data);
+        })
+        .catch((error) => {
+        console.error('Error deleting event:', error);
+        });
+    }
+
+    });
+
+</script>
+<style>
+    body {
+        margin: 40px 10px;
+        padding: 0;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        font-size: 14px;
+    }
+
+    #calendar {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+</style>
 
 <body>
 
@@ -54,7 +268,7 @@
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="dashboard" href="dashboard"><span>login</span></a>
+                            <a class="banner-btn" data-text="dashboard" href="/dashboard"><span>login</span></a>
                         </div>
                     </div>
                 </div>
@@ -90,107 +304,52 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="section-title text-center">
                         <h2>our classes</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
+                        {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                            issss has been the
+                            industry's standard dummy text ever since the 1500s, when an unknown lorem </p> --}}
+                        <p>Here are a list of our variety of classes in Roemah Yoga Rian. Feel free to try out all our
+                            classes!</p>
                     </div>
                 </div>
             </div>
             <div class="row">
+                @foreach ($classes as $class)
+                @php
+                if($class->foto){
+                $foto = 'storage/' . $class->foto;
+                } else {
+                $foto = '/portfolio2/img/class/2.webp';
+                }
+                @endphp
                 <div class="col-lg-4 col-md-6">
-                    <div class="single-class">
-                        <div class="single-img">
-                            <a href="class.html"><img src="img/class/1.webp" alt="class"></a>
-                            <div class="gallery-icon">
-                                <a class="image-popup" href="img/class/1.webp">
-                                    <i class="zmdi zmdi-zoom-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="single-content">
-                            <h3><a href="class.html">yoga for climbers</a></h3>
-                            <ul>
-                                <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                                <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-class">
-                        <div class="single-img">
-                            <a href="class.html"><img src="img/class/2.webp" alt="class"></a>
-                            <div class="gallery-icon">
-                                <a class="image-popup" href="img/class/2.webp">
-                                    <i class="zmdi zmdi-zoom-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="single-content">
-                            <h3><a href="class.html">yoga for climbers</a></h3>
-                            <ul>
-                                <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                                <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-                    <div class="single-class">
-                        <div class="single-img">
-                            <a href="class.html"><img src="img/class/3.webp" alt="class"></a>
-                            <div class="gallery-icon">
-                                <a class="image-popup" href="img/class/3.webp">
-                                    <i class="zmdi zmdi-zoom-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="single-content">
-                            <h3><a href="class.html">yoga for climbers</a></h3>
-                            <ul>
-                                <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                                <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
+                    <div class="single-class">
+                        <div class="single-img">
+                            <a href="/ryr/class"><img src="{{ $foto }}" alt="class"
+                                    style="width: 370px; height: 207px;"></a>
+                            <div class="gallery-icon">
+                                <a class="image-popup" href="{{ $foto }}" style="width: 370px; height: 207px;">
+                                    <i class="zmdi zmdi-zoom-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="single-content">
+                            <h3><a href="/ryr/classes/{{ $class->id }}">{{ $class->nama_kelas }}</a></h3>
+                            <ul>
+                                <li><i class="zmdi zmdi-face"></i>{{ $class->teacher }}</li>
+                                <li><i class="zmdi zmdi-alarm"></i>{{ $class->schedule }}</li>
+                                <li><i class="zmdi zmdi-calendar"></i>{{ $class->day }}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                @endforeach
+            </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <a class="banner-btn mt-55" href="javascript:void(0);" data-text="view all classes" id="view-all-classes-btn"><span>view all classes</span></a>
-                    <div id="hidden-classes" style="display: none;">
-                        <!-- Add your hidden content here -->
-                        <div class="single-class">
-                            <div class="single-img">
-                                <a href="class.html"><img src="img/class/4.webp" alt="class"></a>
-                                <div class="gallery-icon">
-                                    <a class="image-popup" href="img/class/4.webp">
-                                        <i class="zmdi zmdi-zoom-in"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="single-content">
-                                <h3><a href="class.html">advanced yoga</a></h3>
-                                <ul>
-                                    <li><i class="zmdi zmdi-face"></i>John Doe</li>
-                                    <li><i class="zmdi zmdi-alarm"></i>11.00Am-01:00Pm</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <a class="banner-btn mt-55" href="javascript:void(0);" data-text="hide classes" id="hide-classes-btn"><span>hide classes</span></a>
-                    </div>
-
-                    <script>
-                        document.getElementById('view-all-classes-btn').addEventListener('click', function() {
-                            document.getElementById('hidden-classes').style.display = 'block';
-                            this.style.display = 'none';
-                        });
-
-                        document.getElementById('hide-classes-btn').addEventListener('click', function() {
-                            document.getElementById('hidden-classes').style.display = 'none';
-                            document.getElementById('view-all-classes-btn').style.display = 'inline-block';
-                        });
-                    </script>
+                    <a class="banner-btn mt-55" href="/ryr/class" data-text="view all classes"><span>view all
+                            classes</span></a>
                 </div>
             </div>
         </div>
@@ -198,139 +357,46 @@
     <!-- Class Area End -->
 
     <section class="class-area fix bg-white pb-100 pt-95">
-<h1>Special Classes</h1>
+        <div class="section-title text-center">
+            <h2>Special Classes/ Schedules</h2>
+
+        </div>
     </section>
     <!-- Schedule Area Strat -->
     <section class="schedule-area pt-85 pb-90 bg-gray text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-xl-2 offset-lg-2">
-                    <div class="section-title">
-                        <h2>class schedule</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="scehedule-table table-content table-responsive text-center">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Time</th>
-                                    <th>saturday</th>
-                                    <th>sunday</th>
-                                    <th>monday</th>
-                                    <th>tuesday</th>
-                                    <th>wednesday</th>
-                                    <th>thursday</th>
-                                    <th>friday</th>
-                                </tr>
-                            </thead>
-                            <tbody class="pt-30">
-                                <tr>
-                                    <td class="time">
-                                        <p>8:00 AM</p>
-                                    </td>
-                                    <td class="purple">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="purple">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="purple">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="time">
-                                        <p>12:00 AM</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="olive">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="olive">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="time">
-                                        <p>3:00 PM</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="blue">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="blue">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="blue">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="time">
-                                        <p>6:00 PM</p>
-                                    </td>
-                                    <td class="pink">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="pink">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                    <td class="pink">
-                                        <h4>yoga for climbers</h4>
-                                        <p>Sathi Bhuiyan</p>
-                                        <p>8.00 Am-10.00Am</p>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <div id='calendar'></div>
     </section>
+
+    <!-- Create Event Modal -->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="eventForm" class="modal-content" action="{{ url('/dashboard/ryr/schedules') }}" method="POST">
+                @csrf
+                <input type="hidden" name="start" id="event-start">
+                <input type="hidden" name="end" id="event-end">
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="class_name" class="form-label">Class Name</label>
+                        <input type="text" class="form-control" id="class_name" name="class_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="teacher_name" class="form-label">Teacher Name</label>
+                        <input type="text" class="form-control" id="teacher_name" name="teacher_name" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Event</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
     <!-- Schedule Area End -->
     <!-- Pricing Area Start -->
-    <div class="pricing-area pt-95 pb-120 bg-white">
+    {{-- <div class="pricing-area pt-95 pb-120 bg-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
@@ -392,7 +458,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Pricing Area End -->
     <!-- Start of Map Area -->
     <div class="map-area">
@@ -445,7 +511,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
+                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp"
+                                    alt="Roemah Yoga Rian"></a>
                             <p>Contact us here, for further inquiries or questions.
                             </p>
                             <ul>
