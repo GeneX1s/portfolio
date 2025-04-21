@@ -283,11 +283,11 @@ document.getElementById('eventForm').addEventListener('submit', function(e) {
                 <div class="col-12">
                     <div class="banner-content-wrapper">
                         <div class="banner-content">
-                            <h2>class</h2>
+                            <h2>gallery</h2>
                             <div class="banner-breadcrumb">
                                 <ul>
                                     <li><a href="/">home </a> <i class="zmdi zmdi-chevron-right"></i></li>
-                                    <li>class</li>
+                                    <li>gallery</li>
                                 </ul>
                             </div>
                         </div>

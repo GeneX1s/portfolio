@@ -197,11 +197,11 @@ class ClassController extends Controller
     {
         $class = ryrClasses::findOrFail($id);
 
-        $teacher = ryrTeachers::where('id', $class->teacher)->first();
+        $teacher = ryrTeachers::where('nama', $class->teacher)->first();
 
         $calendars = ryrSchedules::get();
 
-        // dd($calendars);
+        // dd($teacher);
         return view('ryr.classDetail', [
 
             'class' => $class,

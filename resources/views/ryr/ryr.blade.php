@@ -718,16 +718,15 @@
                                     <h6>Founder</h6>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            {{-- <div class="col-12">
                                 <div class="single-testimonial">
                                     <p>Roemah Yoga Rian is life changing. The instructors are incredibly knowledgeable
                                         and supportive, and the classes are both challenging and rejuvenating. I highly
                                         recommend this studio to anyone looking to deepen their yoga practice.</p>
                                     <h4 style="font-family: 'Great Vibes', cursive;">Owen</h4>
-                                    {{-- <img src="portfolio2/img/icon/signature.webp" alt="signature"> --}}
                                     <h6>Co-Founder</h6>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>

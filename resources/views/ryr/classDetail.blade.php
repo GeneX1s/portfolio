@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../../portfolio2/css/slick.css">
     <link rel="stylesheet" href="../../portfolio2/style.css">
     <link rel="stylesheet" href="../../portfolio2/css/responsive.css">
+    <link href="../../portfolio2/css/blog.css" rel="stylesheet">
     <script src="../../portfolio2/js/vendor/modernizr-3.11.2.min.js"></script>
 </head>
 
@@ -84,18 +85,50 @@
     </section>
     <!-- Banner Area End -->
     <!-- Classes Start -->
+    <section class="class-area fix pb-100 pt-95">
+        <div class="section-title text-center">
+            <h2>About Class</h2>
+
+            <p>{{$class->description}}</p>
+        </div>
+    </section>
+
     <section class="class-area fix bg-gray pb-100 pt-95">
         <div class="container">
-            <h1>About Class</h1>
 
-            <p>Ashtanga yoga adalah Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus praesentium
-                recusandae quidem et provident cupiditate cum, a eveniet fugiat adipisci, tenetur nisi atque maxime quae
-                nemo laboriosam explicabo, temporibus quasi deleniti. Eius aliquam impedit, alias, repellat accusantium
-                voluptas esse amet delectus, numquam nesciunt animi sed! Magni consequuntur architecto, excepturi in
-                dolorem facilis minima similique amet accusantium exercitationem, a reprehenderit dolore enim ea fugiat
-                debitis nesciunt temporibus. Tenetur, ipsam esse explicabo natus totam dolores et omnis voluptatum sit
-                quis, dicta, illo inventore consequatur corrupti voluptas. Nemo totam officia suscipit nesciunt esse,
-                distinctio quae hic porro nobis! Perferendis modi voluptates doloribus animi.</p>
+            <div class="row mb-2 justify-content-center">
+                <div class="col-md-6">
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250 text-center">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <strong class="d-inline-block mb-2 text-success">Teacher</strong>
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">{{ $class->teacher }}</a>
+                            </h3>
+                            <div class="mb-1 text-muted">Nov 12</div>
+                            <p class="card-text mb-auto">Certified RYT - 200 teacher with 15 years of experience.</p>
+                            <a href="#">Continue reading</a>
+                        </div>
+                        @php
+                if($teacher->foto){
+                $foto = 'storage/' . $teacher->foto;
+                } else {
+                $foto = 'portfolio2/img/logo/logo1.webp';
+                // dd($foto);
+                }
+                @endphp
+                        <img class="card-img-right flex-auto d-none d-md-block" src="{{ asset($foto) }}"
+                            alt="Card image cap">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="class-area fix pb-100 pt-95">
+        <div class="container">
+            <h2 class="text-center">
+                Every Thursday at 18:30 - 20:00
+            </h2>
         </div>
     </section>
     <!-- Class Area End -->
