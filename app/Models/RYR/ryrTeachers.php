@@ -24,6 +24,7 @@ class ryrTeachers extends Model
     'join_date',
     'dob',
     'jenis_kelamin',
+    'instagram',
     'status',
     'foto',
     'deskripsi',

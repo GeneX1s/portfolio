@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('dob')->nullable();
             $table->string('jenis_kelamin');
             $table->text('deskripsi')->nullable();
+            $table->text('instagram')->nullable();
             $table->string('status')->default('Active');
             $table->string('foto')->nullable();
             $table->timestamps();

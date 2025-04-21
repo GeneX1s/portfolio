@@ -84,6 +84,17 @@
             </div>
 
             <div class="mb-3">
+                <label for="instagram" class="form-label">Instagram <small class="text-muted">(optional)</small></label>
+                <input type="text" class="form-control @error('instagram') is-invalid @enderror" id="instagram"
+                    name="instagram" autofocus value="{{old('instagram')}}">
+                @error('instagram')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi <small class="text-muted">(optional)</small></label>
                 <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
                     name="deskripsi" autofocus value="{{old('deskripsi')}}">

@@ -381,7 +381,7 @@
                 if($teacher->foto){
                 $foto = 'storage/' . $teacher->foto;
                 } else {
-                $foto = 'portfolio2/img/logo/logo1.webp';
+                $foto = 'portfolio2/img/trainer/trainer4.png';
                 }
                 @endphp
                 @if ($index < 3) <div class="col-lg-4 col-md-6">
