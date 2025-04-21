@@ -89,6 +89,7 @@ class DatabaseSeeder extends Seeder
             'join_date' => now(),
             'dob' => '1976-04-22',
             'jenis_kelamin' => 'Female',
+            'instagram' => 'https://www.instagram.com/rianyogini/',
             'deskripsi' => 'A dedicated teacher with 10 years of experience.',
             'status' => 'Active',
         ]);
