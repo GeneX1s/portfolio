@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('status');
             $table->string('harga');
             $table->date('tanggal');
-            $table->string('jam');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->integer('profit')->default(0);
             $table->timestamps();
         });
