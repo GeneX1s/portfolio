@@ -97,6 +97,10 @@
 
                         @endif
                     </div>
+                    <div class="language-switcher text-end">
+                        <a href="?lang=en" class="btn btn-light">🇬🇧 EN</a>
+                        <a href="?lang=id" class="btn btn-light">🇮🇩 ID</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -545,11 +549,10 @@
                     </div>
                     <div class="event-wrapper">
                         <div class="event-content text-center">
-                            <h3>Christmas in RYR</h3>
-                            <p>Join us for a festive Potluck Christmas event! Bring your favorite dish to share and
-                                enjoy a joyful celebration with our yoga community.</p>
-                            <h4>25 December 2024</h4>
-                            <h5>08PM - 09PM</h5>
+                            <h3>International Yoga Day</h3>
+                            <p>Join us to celebrate International Yoga Day with a special session focusing on mindfulness, relaxation, and community bonding. This event is open to all levels, from beginners to advanced practitioners. Don't miss this opportunity to connect and rejuvenate!</p>
+                            <h4>21 June 2024</h4>
+                            <h5>06:00 AM - 07:30 AM</h5>
                         </div>
                     </div>
                 </div>
