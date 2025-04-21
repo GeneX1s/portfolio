@@ -78,6 +78,7 @@ class DatabaseSeeder extends Seeder
             'join_date' => now(),
             'dob' => '1990-01-01',
             'jenis_kelamin' => 'Male',
+            'isntagram' => 'https://www.instagram.com/oktapa/',
             'deskripsi' => 'A dedicated teacher with 10 years of experience.',
             'status' => 'Active',
         ]);
