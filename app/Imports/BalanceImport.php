@@ -19,6 +19,7 @@ class BalanceImport implements ToModel, WithHeadingRow
             'tipe' => $row['tipe'],
             'dividen' => $row['dividen'],
             'updated_at' => $row['updated_at'],
+            'penerima_dividen' => $row['penerima_dividen'],
         ]);
     }
 }
