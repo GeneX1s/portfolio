@@ -112,6 +112,8 @@ class ScheduleController extends Controller
 
     public function store(Request $request)
     {
+        dd($request->all());
+
         if ($request->wantsJson()) {
             $schedule = ryrSchedules::create([
                 'class_id' => 1,
@@ -127,6 +129,15 @@ class ScheduleController extends Controller
             ]);
 
             return response()->json($schedule);
+
+            $schedule = ryrSchedules::create([
+                'class_name' => $request->class_name,
+                'teacher_name' => $request->teacher_name,
+                'tanggal' => explode('T', $request->start)[0],
+                'start_time' => explode('T', $request->start)[1],
+                'end_time' => explode('T', $request->end)[1],
+                // Add other fields as needed
+            ]);
         }
 
         $input = $request->validate([

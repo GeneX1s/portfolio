@@ -23,7 +23,7 @@
 
 <script src='../portfolio2/js/calendar/index.global.js'></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -32,7 +32,7 @@
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        initialDate: '2023-01-12',
+        initialDate: new Date().toISOString().split('T')[0],
         navLinks: true,
         selectable: true,
         selectMirror: true,
@@ -74,19 +74,20 @@
         dayMaxEvents: true,
         // events: '/api/events'
 
-        events: [
-        {
-            id: 1,
-            title: 'All Day Event',
-            start: '2023-01-01'
-        },
-        {
-            id: 2,
-            title: 'Meeting',
-            start: '2023-01-12T10:30:00',
-            end: '2023-01-12T12:30:00'
-        }
-        ]
+        events: @json($events)
+        // events: [
+        // {
+        //     id: 1,
+        //     title: 'All Day Event',
+        //     start: '2023-01-01'
+        // },
+        // {
+        //     id: 2,
+        //     title: 'Meeting',
+        //     start: '2023-01-12T10:30:00',
+        //     end: '2023-01-12T12:30:00'
+        // }
+        // ]
     });
 
     calendar.render();
@@ -143,79 +144,21 @@ document.getElementById('eventForm').addEventListener('submit', function(e) {
         class_name: className,
         teacher_name: teacherName
     })
-})
-.then(res => res.json())
-.then(data => {
-    console.log('Saved:', data);
-});
+}).then(data => {
+    calendar.addEvent({
+        id: data.id,
+        title: data.title,
+        start: data.start,
+        end: data.end
+    });
+
+    console.log('Event saved:', data);
+});;
 
 
     // Close the modal
     bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
 });
-
-
-    // Function to send the new event to your server
-    function sendEventToServer(eventData) {
-        fetch('/api/events', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token
-        },
-        body: JSON.stringify(eventData)
-        })
-        .then(response => response.json())
-        .then(data => {
-        console.log('Event created on server:', data);
-        })
-        .then(data => {
-    console.log('Event created on server:', data);
-    calendar.getEventById(data.id)?.setProp('id', data.id); // optional if needed
-});
-    }
-
-    // Function to send the updated event to your server
-    function updateEventInServer(eventData) {
-        fetch(`/api/events/${eventData.id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token
-        },
-        body: JSON.stringify({
-            title: eventData.title,
-            start: eventData.start,
-            end: eventData.end,
-            allDay: eventData.allDay
-        })
-        })
-        .then(response => response.json())
-        .then(data => {
-        console.log('Event updated on server:', data);
-        })
-        .catch((error) => {
-        console.error('Error updating event:', error);
-        });
-    }
-
-    // Function to delete the event on the server
-    function deleteEventFromServer(eventId) {
-        fetch(`/api/events/${eventId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token
-        },
-        })
-        .then(response => response.json())
-        .then(data => {
-        console.log('Event deleted from server:', data);
-        })
-        .catch((error) => {
-        console.error('Error deleting event:', error);
-        });
-    }
 
     });
 
@@ -369,27 +312,30 @@ document.getElementById('eventForm').addEventListener('submit', function(e) {
     </section>
 
     <!-- Create Event Modal -->
-    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <form id="eventForm" class="modal-content" action="{{ url('/dashboard/ryr/schedules') }}" method="POST">
-                @csrf
-                <input type="hidden" name="start" id="event-start">
-                <input type="hidden" name="end" id="event-end">
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="eventForm" class="modal-content" action="{{ url('/dashboard/ryr/schedules') }}" method="POST">
+            @csrf
+            <input type="hidden" name="start" id="event-start">
+            <input type="hidden" name="end" id="event-end">
 
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="class_name" class="form-label">Class Name</label>
-                        <input type="text" class="form-control" id="class_name" name="class_name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="teacher_name" class="form-label">Teacher Name</label>
-                        <input type="text" class="form-control" id="teacher_name" name="teacher_name" required>
-                    </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="class_name" class="form-label">Class Name</label>
+                    <input type="text" class="form-control" id="class_name" name="class_name" required>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save Event</button>
+                <div class="mb-3">
+                    <label for="teacher_name" class="form-label">Teacher Name</label>
+                    <input type="text" class="form-control" id="teacher_name" name="teacher_name" required>
                 </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save Event</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
         </div>
     </div>

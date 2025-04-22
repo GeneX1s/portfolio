@@ -184,12 +184,22 @@ class ClassController extends Controller
 
         $calendars = ryrSchedules::get();
 
+        foreach ($calendars as $calendar) {
+            $events[] = [
+                'id' => $calendar->id,
+                'title' => $calendar->class_name . ' - ' . $calendar->teacher_name,
+                'start' => $calendar->tanggal . 'T' . $calendar->start_time,
+                'end' => $calendar->tanggal . 'T' . $calendar->end_time,
+            ];
+        }
+
         // dd($calendars);
         return view('ryr.class', [
 
             'classes' => $classes,
             'teachers' => $teachers,
             'calendars' => $calendars,
+            'events' => $events,
         ]);
     }
 
@@ -201,7 +211,7 @@ class ClassController extends Controller
 
         $calendars = ryrSchedules::get();
 
-        // dd($teacher);
+        dd($calendars);
         return view('ryr.classDetail', [
 
             'class' => $class,

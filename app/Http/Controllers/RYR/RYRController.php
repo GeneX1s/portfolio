@@ -23,11 +23,6 @@ class RYRController extends Controller
     public function index(Request $request)
     {
 
-        // $specials = 0;
-        // $classes = 0;
-        // $teachers = 0;
-        // $participants = 0;
-
         $user = auth()->user();
         $classes = ryrClasses::get();
         $schedules = $classes->unique('start_time')->pluck('start_time');
@@ -37,14 +32,6 @@ class RYRController extends Controller
         $blogs = ryrBlogs::where('status', 'Active')->get();
         $galleries = ryrGalleries::get();
 
-// dd($schedules);
-// $sortedSchedules = $schedules->sortBy(function($schedule) {
-//     return $schedule;
-//     });
-//     foreach ($sortedSchedules as $schedule) {
-//      dd($schedule);
-//     }
-    // dd($sortedSchedules);
         return view('ryr/ryr', [
             'classes' => $classes,
             'schedules' => $schedules,
