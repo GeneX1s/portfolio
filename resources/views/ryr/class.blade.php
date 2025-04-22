@@ -93,72 +93,55 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
 
     // Handle modal form submission
-document.getElementById('eventForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    document.getElementById('eventForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent page reload
 
     let className = document.getElementById('class_name').value;
     let teacherName = document.getElementById('teacher_name').value;
     let start = document.getElementById('event-start').value;
     let end = document.getElementById('event-end').value;
 
-    let newEvent = {
-        title: `${className} - ${teacherName}`,
-        start: start,
-        end: end,
-        allDay: false
-    };
-
-    // Add to calendar view
-    calendar.addEvent(newEvent);
-
-    // Send to server
-    // fetch('/api/events', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    //     },
-    //     body: JSON.stringify({
-    //         title: newEvent.title,
-    //         start: newEvent.start,
-    //         end: newEvent.end,
-    //         class_name: className,
-    //         teacher_name: teacherName
-    //     })
-    // })
-    // .then(res => res.json())
-    // .then(data => {
-    //     console.log('Saved:', data);
-    // });
-
     fetch('/dashboard/ryr/schedules', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    },
-    body: JSON.stringify({
-        title: `${className} - ${teacherName}`,
-        start: start,
-        end: end,
-        class_name: className,
-        teacher_name: teacherName
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+            class_id: 'AUTO_' + Date.now(),
+            class_name: className,
+            teacher_name: teacherName,
+            status: 'Scheduled',
+            tanggal: start.split('T')[0],
+            start_time: start.split('T')[1],
+            end_time: end.split('T')[1],
+            tipe: 'Regular',
+            harga: 200000,
+            profit: 0
+        })
     })
-}).then(data => {
-    calendar.addEvent({
-        id: data.id,
-        title: data.title,
-        start: data.start,
-        end: data.end
+    .then(res => res.json())
+    .then(data => {
+        // Add the event to FullCalendar
+        calendar.addEvent({
+            id: data.id,
+            title: data.title,
+            start: data.start,
+            end: data.end
+        });
+
+        // Close modal
+        bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+
+        // Reset form
+        document.getElementById('eventForm').reset();
+    })
+    .catch(err => {
+        console.error('Error saving event:', err);
+        alert('Something went wrong while saving the event.');
     });
-
-    console.log('Event saved:', data);
-});;
-
-
-    // Close the modal
-    bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
 });
+
 
     });
 
