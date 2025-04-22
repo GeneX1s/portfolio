@@ -30,14 +30,21 @@ class RYRController extends Controller
 
         $user = auth()->user();
         $classes = ryrClasses::get();
-        $schedules = $classes->unique('schedule')->pluck('schedule');
+        $schedules = $classes->unique('start_time')->pluck('start_time');
         $teachers = ryrTeachers::where('status', 'Active')->get();
         $participants = ryrParticipants::get();
         $specials = ryrSchedules::where('status', 'Active')->where('tipe', 'Special')->get();
         $blogs = ryrBlogs::where('status', 'Active')->get();
         $galleries = ryrGalleries::get();
 
-
+// dd($schedules);
+// $sortedSchedules = $schedules->sortBy(function($schedule) {
+//     return $schedule;
+//     });
+//     foreach ($sortedSchedules as $schedule) {
+//      dd($schedule);
+//     }
+    // dd($sortedSchedules);
         return view('ryr/ryr', [
             'classes' => $classes,
             'schedules' => $schedules,

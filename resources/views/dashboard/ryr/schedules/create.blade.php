@@ -40,7 +40,7 @@
         @enderror
     </div>
 
-    <div class="mb-3">
+    {{-- <div class="mb-3">
         <label for="jam" class="form-label">Schedule Jam</label>
         <select class="form-control" name="jam">
             <option value="7AM"> 7.00-8.30</option>
@@ -49,7 +49,7 @@
             <option value="5PM"> 17.00-18.30</option>
             <option value="6PM"> 18.30-20.00</option>
         </select>
-    </div>
+    </div> --}}
 
     {{-- <div class="mb-3">
         <label for="jam" class="form-label">Jam</label>
@@ -133,7 +133,7 @@
         @enderror
     </div>
 
-    <div class="mb-3">
+    {{-- <div class="mb-3">
         <label for="jam" class="form-label">Schedule Jam</label>
         <select class="form-control" name="jam">
             <option value="7AM"> 7.00-8.30</option>
@@ -142,8 +142,28 @@
             <option value="5PM"> 17.00-18.30</option>
             <option value="6PM"> 18.30-20.00</option>
         </select>
+    </div> --}}
+
+    <div class="mb-3">
+        <label for="start_time" class="form-label">Start Time</label>
+        <input type="time" class="form-control @error('start_time') is-invalid @enderror" id="start_time" name="start_time" required value="{{ old('start_time') }}">
+        @error('start_time')
+        <div class="invalid-feedback">
+        {{ $message }}
+        </div>
+        @enderror
     </div>
-    
+
+    <div class="mb-3">
+        <label for="end_time" class="form-label">End Time</label>
+        <input type="time" class="form-control @error('end_time') is-invalid @enderror" id="end_time" name="end_time" required value="{{ old('end_time') }}">
+        @error('end_time')
+        <div class="invalid-feedback">
+        {{ $message }}
+        </div>
+        @enderror
+    </div>
+
     <div class="mb-3">
         <label for="description" class="form-label">Deskripsi <small class="text-muted">(optional)</small></label>
         <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"

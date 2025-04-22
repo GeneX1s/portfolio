@@ -329,7 +329,8 @@
                             <tbody class="pt-30">
                                 @php
                                 $sortedSchedules = $schedules->sortBy(function($schedule) {
-                                return strtotime($schedule);
+                                return $schedule;
+                                // return strtotime($schedule);
                                 });
                                 @endphp
                                 @foreach ($sortedSchedules as $schedule)
@@ -339,9 +340,9 @@
                                     </td>
                                     @foreach ($days as $key => $day)
                                     @php
-                                    $class = $classes->firstWhere('schedule', $schedule)->where('day', $day)->first();
+                                    $class = $classes->firstWhere('start_time', $schedule)->where('day', $day)->first();
                                     @endphp
-                                    @if($class && $class['schedule'] == $schedule)
+                                    @if($class && $class['start_time'] == $schedule)
                                     <td class="{{ $colors[$key] }}">
                                         <h4>{{ $class['nama_kelas'] }}</h4>
                                         <p>{{$class['teacher']}}</p>

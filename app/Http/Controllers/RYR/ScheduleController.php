@@ -144,6 +144,8 @@ class ScheduleController extends Controller
             $input['class_name'] = $class->nama_kelas;
             $input['teacher_name'] = $class->teacher;
             $input['harga'] = $class->biaya;
+            $input['start_time'] = $class->start_time;
+            $input['end_time'] = $class->end_time;
             // dd($class->nama_kelas);
             if (strpos($class->nama_kelas, 'Wallrope') !== false) {
                 // dd('tes');
