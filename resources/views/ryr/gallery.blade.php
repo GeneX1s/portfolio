@@ -98,16 +98,16 @@
     </div>
     @endif
     <!-- Gallery Area Start -->
-    <section class="gallery-area pt-95">
+    <section class="gallery-area pt-95 pb-100 mb-50">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="test-content">
                         <div class="section-title text-center">
                             <h2>our gallery</h2>
-                            <p>Explore our gallery to see the vibrant moments captured at Roemah Yoga Rian. From serene
+                            {{-- <p>Explore our gallery to see the vibrant moments captured at Roemah Yoga Rian. From serene
                                 yoga sessions to community events, our gallery showcases the essence of our studio and
-                                the joy of our members.</p>
+                                the joy of our members.</p> --}}
                         </div>
                     </div>
                 </div>
@@ -117,7 +117,6 @@
 
                 <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 0%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        {{-- {{ dd($gallery->foto); }} --}}
                         {{-- <img src="/storage/portfolio2/img/gallery/7vpCijbQg7PyondJ2YxXMUzwzthz8fraA3r3A7VO.png"
                             alt="shola" style="width: 370px; height: 207px;"> --}}
                         @php

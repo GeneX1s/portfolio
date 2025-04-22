@@ -394,9 +394,9 @@
                         <div class="trainer-hover">
                             <h3>{{ $teacher->nama }}</h3>
                             <ul>
-                                <li><a href="{{ $teacher->fb }}"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="{{ $teacher->twitter }}"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="{{ $teacher->insta }}"><i class="fa fa-instagram"></i></a></li>
+                                {{-- <li><a href="{{ $teacher->fb }}"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="{{ $teacher->twitter }}"><i class="fa fa-twitter"></i></a></li> --}}
+                                <li><a href="https://www.instagram.com/{{ $teacher->instagram }}"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -454,85 +454,174 @@
     <section class="gallery-area pt-90 pb-100">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 offset-xl-2 offset-lg-2">
+                <div class="col-lg-8 offset-lg-2">
                     <div class="test-content">
                         <div class="section-title text-center">
-                            <h2>gallery</h2>
-                            <p>Explore our gallery to see the vibrant moments captured at Roemah Yoga Rian. From serene
+                            <h2>our gallery</h2>
+                            {{-- <p>Explore our gallery to see the vibrant moments captured at Roemah Yoga Rian. From serene
                                 yoga sessions to community events, our gallery showcases the essence of our studio and
-                                the joy of our members.</p>
+                                the joy of our members.</p> --}}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="grid row" style="position: relative; height: 390px;">
-                @php
-                $galleries = [];
-                $count = 0;
-                @endphp
                 @foreach ($galleries as $gallery)
-                @if ($count < 6) @php $count++; @endphp @endif @endforeach <div class="col-md-4 grid-item cat1 cat3"
-                    style="position: absolute; left: 0%; top: 0px;">
+
+                <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 0%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        <img src="portfolio2/img/portfolio/gal.webp" alt="project">
+                        {{-- <img src="/storage/portfolio2/img/gallery/7vpCijbQg7PyondJ2YxXMUzwzthz8fraA3r3A7VO.png"
+                            alt="shola" style="width: 370px; height: 207px;"> --}}
+                        @php
+                        $url = "'/storage/'";
+                        @endphp
+                        <img src="{{'/' . 'storage/' . $gallery->foto }}" alt="shola"
+                            style="width: 432px; height: 370px;">
                         <div class="gallery-icon">
-                            <a class="image-popup" href="portfolio2/img/portfolio/gal.webp">
+                            <a class="image-popup" href="{{'/' . 'storage/' . $gallery->foto }}"
+                                style="width: 740px; height: 414px;">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
+                        <div class="gallery-options" style="position: absolute; top: 10px; right: 10px; z-index: 10;">
+                            <button class="options-button-lg"
+                                style="background: rgba(102, 162, 132, 0.7); border: none; color: white; cursor: pointer; font-size: 20px; padding: 10px 15px; border-radius: 50%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                                ...
+                            </button>
+                            <div class="options-menu"
+                                style="display: none; position: absolute; top: 20px; right: 0; background: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 20; width: 200px;">
+
+                                <a href="/gallery/{{ $gallery->id }}/edit"
+                                    style="display: block; padding: 15px; font-size: 16px; color: #333; text-decoration: none; border-bottom: 1px solid #eee; transition: background 0.3s;">
+                                    Edit
+                                </a>
+
+                                <form action="/gallery/{{$gallery->id}}" method="post" class="d-inline"
+                                    style="margin: 0;">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit"
+                                        style="display: block; width: 100%; padding: 15px; font-size: 16px; background: none; border: none; color: #333; text-align: left; cursor: pointer; border-bottom: 1px solid #eee; transition: background 0.3s;"
+                                        onclick="return confirm('Are you sure?')">Delete</button>
+                                </form>
+
+                                <a style="display: block; padding: 15px; font-size: 16px; color: #333; text-decoration: none; transition: background 0.3s;">
+                                    Set as
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @endforeach
+
+                <script>
+                    document.querySelectorAll('.options-button-lg').forEach(button => {
+                        button.addEventListener('click', (event) => {
+                            event.stopPropagation(); // Prevent click from propagating
+                            const menu = button.nextElementSibling;
+                            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                        });
+                    });
+
+                    document.addEventListener('click', () => {
+                        document.querySelectorAll('.options-menu').forEach(menu => {
+                            menu.style.display = 'none'; // Close all dropdowns on outside click
+                        });
+                    });
+                </script>
+
+                {{-- <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 0%; top: 0px;">
+                    <div class="portfolio-img single-img">
+                        <img src="/portfolio2/img/portfolio/gal.webp" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal.webp">
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
                     </div>
-            </div>
-            <div class="col-md-4 grid-item cat2 cat4" style="position: absolute; left: 25%; top: 0px;">
-                <div class="portfolio-img single-img">
-                    <img src="portfolio2/img/portfolio/gal2.webp" alt="project">
-                    <div class="gallery-icon">
-                        <a class="image-popup" href="portfolio2/img/portfolio/gal2.webp">
-                            <i class="zmdi zmdi-zoom-in"></i>
-                        </a>
+                </div>
+                <div class="col-md-4 grid-item cat2 cat4" style="position: absolute; left: 25%; top: 0px;">
+                    <div class="portfolio-img single-img">
+                        <img src="/portfolio2/img/portfolio/gal2.webp" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal2.webp">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 grid-item cat1 cat4" style="position: absolute; left: 50%; top: 0px;">
-                <div class="portfolio-img single-img">
-                    <img src="portfolio2/img/portfolio/gal3.webp" alt="project">
-                    <div class="gallery-icon">
-                        <a class="image-popup" href="portfolio2/img/portfolio/gal3.webp">
-                            <i class="zmdi zmdi-zoom-in"></i>
-                        </a>
+                <div class="col-md-4 grid-item cat1 cat4" style="position: absolute; left: 50%; top: 0px;">
+                    <div class="portfolio-img single-img">
+                        <img src="/portfolio2/img/portfolio/gal3.webp" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal3.webp">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 grid-item cat2" style="position: absolute; left: 75%; top: 0px;">
-                <div class="portfolio-img single-img">
-                    <img src="portfolio2/img/portfolio/gal4.webp" alt="project">
-                    <div class="gallery-icon">
-                        <a class="image-popup" href="portfolio2/img/portfolio/gal4.webp">
-                            <i class="zmdi zmdi-zoom-in"></i>
-                        </a>
+                <div class="col-md-4 grid-item cat2" style="position: absolute; left: 75%; top: 0px;">
+                    <div class="portfolio-img single-img">
+                        <img src="/portfolio2/img/portfolio/gal4.webp" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal4.webp">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 grid-item cat2 cat3" style="position: absolute; left: 25%; top: 210px;">
-                <div class="portfolio-img single-img">
-                    <img src="portfolio2/img/portfolio/gal5.webp" alt="project">
-                    <div class="gallery-icon">
-                        <a class="image-popup" href="portfolio2/img/portfolio/gal5.webp">
-                            <i class="zmdi zmdi-zoom-in"></i>
-                        </a>
+                <div class="col-md-4 grid-item cat2 cat3" style="position: absolute; left: 25%; top: 210px;">
+                    <div class="portfolio-img single-img">
+                        <img src="/portfolio2/img/portfolio/gal5.webp" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal5.webp">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
-                <div class="portfolio-img single-img">
-                    <img src="portfolio2/img/portfolio/gal6.webp" alt="project">
-                    <div class="gallery-icon">
-                        <a class="image-popup" href="portfolio2/img/portfolio/gal6.webp">
-                            <i class="zmdi zmdi-zoom-in"></i>
-                        </a>
+                <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
+                    <div class="portfolio-img single-img">
+                        <img src="/portfolio2/img/portfolio/gal6.webp" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal6.webp">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
+                    <div class="portfolio-img single-img">
+                        <img src="/portfolio2/img/portfolio/gal7.webp" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal7.webp">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
+                    <div class="portfolio-img single-img">
+                        <img src="/portfolio2/img/portfolio/gal8.webp" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal8.webp">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
+                    <div class="portfolio-img single-img">
+                        <img src="/portfolio2/img/portfolio/gal9.webp" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="/portfolio2/img/portfolio/gal9.webp">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div> --}}
             </div>
-        </div>
         </div>
     </section>
     <!-- Gallery Area End -->

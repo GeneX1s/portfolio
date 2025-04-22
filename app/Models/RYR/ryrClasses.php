@@ -42,6 +42,8 @@ class ryrClasses extends Model
     'teacher',
     'day',
     'schedule',
+    'start_time',
+    'end_time',
     'biaya',
     'foto',
     'description',

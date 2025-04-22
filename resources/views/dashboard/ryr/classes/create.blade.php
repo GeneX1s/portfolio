@@ -82,6 +82,26 @@
         </div>
 
         <div class="mb-3">
+            <label for="start_time" class="form-label">Start Time</label>
+            <input type="time" class="form-control @error('start_time') is-invalid @enderror" id="start_time" name="start_time" required value="{{ old('start_time') }}">
+            @error('start_time')
+            <div class="invalid-feedback">
+            {{ $message }}
+            </div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="end_time" class="form-label">End Time</label>
+            <input type="time" class="form-control @error('end_time') is-invalid @enderror" id="end_time" name="end_time" required value="{{ old('end_time') }}">
+            @error('end_time')
+            <div class="invalid-feedback">
+            {{ $message }}
+            </div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="foto" class="form-label">Foto Kelas <small class="text-muted">(370 x 207 px)</small></label>
             <img class="img-preview img-fluid mb-3 col-sm-5">
             <input class="form-control @error('foto') is-invalid @enderror" type="file" id="foto" name="foto"

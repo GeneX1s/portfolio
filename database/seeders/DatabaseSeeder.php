@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
             'join_date' => now(),
             'dob' => '1990-01-01',
             'jenis_kelamin' => 'Male',
-            'instagram' => 'https://www.instagram.com/oktapa/',
+            'instagram' => 'oktapa',
             'deskripsi' => 'A dedicated teacher with 10 years of experience.',
             'status' => 'Active',
         ]);
@@ -89,7 +89,8 @@ class DatabaseSeeder extends Seeder
             'join_date' => now(),
             'dob' => '1976-04-22',
             'jenis_kelamin' => 'Female',
-            'instagram' => 'https://www.instagram.com/rianyogini/',
+            'instagram' => 'rianyogini',
+            // 'instagram' => 'https://www.instagram.com/rianyogini/',
             'deskripsi' => 'A dedicated teacher with 10 years of experience.',
             'status' => 'Active',
         ]);
@@ -100,6 +101,8 @@ class DatabaseSeeder extends Seeder
             'tipe' => 'public', // public, private
             'teacher' => 'Okta',
             'schedule' => '6PM',
+            'start_time' => '18:30:00',
+            'end_time' => '20:00:00',
             'biaya' => 200000,
             'day' => 'Kamis',
             'description' => 'A beginner level yoga class focusing on basic postures and breathing techniques.',
@@ -111,6 +114,8 @@ class DatabaseSeeder extends Seeder
             'tipe' => 'public', // public, private
             'teacher' => 'Okta',
             'schedule' => '6PM',
+            'start_time' => '08:00:00',
+            'end_time' => '08:00:00',
             'biaya' => 200000,
             'day' => 'Jumat',
             'description' => 'An intermediate level yoga class focusing on more advanced postures and breathing techniques.',

@@ -102,7 +102,7 @@
                         <div class="card-body d-flex flex-column align-items-center">
                             <strong class="d-inline-block mb-2 text-success">Teacher</strong>
                             <h3 class="mb-0">
-                                <a class="text-dark" href="#">{{ $class->teacher }}</a>
+                                <a class="text-dark" href="https://www.instagram.com/{{ $teacher->instagram }}">{{ $class->teacher }}</a>
                             </h3>
                             <div class="mb-1 text-muted">Nov 12</div>
                             <p class="card-text mb-auto">Certified RYT - 200 teacher with 15 years of experience.</p>
@@ -127,7 +127,7 @@
     <section class="class-area fix pb-100 pt-95">
         <div class="container">
             <h2 class="text-center">
-                Every Thursday at 18:30 - 20:00
+                Setiap {{ $class->day }} jam {{ $class->start_time }} - {{ $class->end_time }}
             </h2>
         </div>
     </section>
