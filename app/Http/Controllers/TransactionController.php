@@ -474,7 +474,7 @@ class TransactionController extends Controller
         if ($cekCron) {
             return back()->with('error', 'Monthly transactions already generated');
         }
-        
+
         $monthlies = Template::where('flag', 'Monthly')->get();
         $investments = Balance::where('tipe', 'Investment')
             ->whereNotNull('penerima_dividen')
@@ -498,7 +498,7 @@ class TransactionController extends Controller
                     $dividen = (($investment->dividen * $investment->saldo) / 100) / 2;
                 }
 
-                $penerima = Balance::where('id', $investment->penerima_dividen)->first()->nama;
+                $penerima = Balance::where('nama', $investment->penerima_dividen)->first()->nama;
 
                 $id = 'DIV|' . md5(Str::random(10)) . now();
                 Transaction::create([
@@ -526,7 +526,7 @@ class TransactionController extends Controller
                 ]);// Create a marker transaction for cron job
 
                 $balHis = new BalanceHis();
-                $destAcct = Balance::where('id', $investment->penerima_dividen)->first();
+                $destAcct = Balance::where('nama', $investment->penerima_dividen)->first();
                 $newBalance = $destAcct->saldo + $dividen;
                 $balHis->create([
                     'transaction_id' => $id,

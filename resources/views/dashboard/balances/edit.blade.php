@@ -40,7 +40,7 @@
         <select class="form-control" name="penerima_dividen">
             <option selected value=""></option>
             @foreach ($balances as $balance)
-            <option value="{{$balance->id}}"> {{$balance->nama}}</option>
+            <option value="{{$balance->nama}}"> {{$balance->nama}}</option>
             @endforeach
         </select>
     </div>
