@@ -650,69 +650,83 @@
         </div>
     </section>
     <!-- Event Area End -->
-    <!-- Blog Area Start -->
-    <section class="blog-area pt-95 pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-xl-2 offset-lg-2">
-                    <div class="section-title text-center">
-                        <h2>our blog</h2>
-                        <p>Stay updated with our latest blog posts and insights on yoga, wellness, and healthy living.
-                            Our blog is a great resource for tips, inspiration, and information to support your yoga
-                            journey.</p>
+        <!-- Blog Area Start -->
+        <section class="blog-area pt-95 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-xl-2 offset-lg-2">
+                        <div class="section-title text-center">
+                            <h2>our blog</h2>
+                            <p>Stay updated with our latest blog posts and insights on yoga, wellness, and healthy living.
+                                Our blog is a great resource for tips, inspiration, and information to support your yoga
+                                journey.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    @php
-                    $blogs = [];
-                    @endphp
                     @foreach ($blogs as $blog)
-
-                    @endforeach
                     <div class="col-lg-6">
                         <div class="single-blog">
                             <div class="blog-pic single-img">
-                                <img src="portfolio2/img/blog/blog1.webp" alt="blog">
+                                <img src="{{ $blog->foto }}" alt="goblog">
                                 <div class="gallery-icon">
-                                    <a href="/ryr/blog">
+                                    <a href="/blog/{{ $blog->id }}">
                                         <i class="zmdi zmdi-link"></i>
                                     </a>
                                 </div>
                             </div>
                             <div class="blog-content">
-                                <h3><a href="/ryr/blog">The Importance of Consistent Yoga Practice</a></h3>
-                                <h6>15 September 2023</h6>
-                                <p>Learn how maintaining a regular yoga practice can enhance your physical health,
-                                    mental clarity, and overall well-being. Discover tips for staying consistent and
-                                    motivated in your yoga journey.</p>
-                                <a href="/ryr/blog">read more</a>
+                                <h3><a href="/blog/{{ $blog->id }}">{{ $blog->title }}</a></h3>
+                                <h6>{{ $blog->updated_at }}</h6>
+                                <p>{{$blog->body}}</p>
+                                <a href="/blog/{{ $blog->id }}">read more</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @endforeach
+                    {{-- <div class="col-lg-6">
+                        <div class="single-blog">
+                            <div class="blog-pic single-img">
+                                <img src="img/blog/blog1.webp" alt="blog">
+                                <div class="gallery-icon">
+                                    <a href="blog">
+                                        <i class="zmdi zmdi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <h3><a href="blog">Curabitur ante justo, vitae.</a></h3>
+                                <h6>25 March 2021</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut nisl non justo aliquam
+                                    euismod ut ac orci.</p>
+                                <a href="blog">read more</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 mt-4 mt-lg-0">
                         <div class="single-blog">
                             <div class="blog-pic single-img">
-                                <img src="portfolio2/img/blog/blog2.webp" alt="blog">
+                                <img src="img/blog/blog2.webp" alt="blog">
                                 <div class="gallery-icon">
-                                    <a href="/ryr/blog">
+                                    <a href="blog">
                                         <i class="zmdi zmdi-link"></i>
                                     </a>
                                 </div>
                             </div>
                             <div class="blog-content">
-                                <h3><a href="/ryr/blog">The Benefits of Yoga for Mental Health</a></h3>
-                                <h6>10 October 2023</h6>
-                                <p>Explore how yoga can help reduce stress, improve mood, and enhance overall mental
-                                    well-being. Join us as we delve into the mental health benefits of a regular yoga
-                                    practice.</p>
-                                <a href="/ryr/blog">read more</a>
+                                <h3><a href="blog">Curabitur ante justo, vitae.</a></h3>
+                                <h6>25 March 2021</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut nisl non justo aliquam
+                                    euismod ut ac orci.</p>
+                                <a href="blog">read more</a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
-    </section>
-    <!-- Event Area End -->
+        </section>
+        <!-- Blog Area End -->
     <!-- Pricing Area Start -->
     {{-- <div class="pricing-area pt-95 pb-120 bg-gray">
         <div class="container">
@@ -783,7 +797,7 @@
     </div> --}}
     <!-- Pricing Area End -->
     <!-- Client Area Strat -->
-    <section class="client-area pt-95 pb-50">
+    <section class="client-area bg-gray pt-95 pb-50">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
