@@ -453,6 +453,15 @@
     <!-- Trainer Area End -->
     <!-- Gallery Area Start -->
     <section class="gallery-area pt-90 pb-100">
+        @if (auth()->check())
+        {{-- <div class="text-center"> --}}
+            <div class="text-end" style="margin-right: 500px;">
+            <a href="{{ route('gallery.create') }}" class="default-btn"
+                style="background-color: #5fc7ae; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+                Add New Item
+            </a>
+        </div>
+        @endif
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">

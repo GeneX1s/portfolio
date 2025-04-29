@@ -293,14 +293,17 @@
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
 
+                        @can('super-admin')
+
                         <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
                             <h1 class="h3 mb-0 text-gray-800">Dashboard | {{ $tahun }}</h1>
                             <a href="/generate-active-page-pdf"
-                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                    class="fas fa-download fa-sm text-white-50"></i>
-                                Generate Report</a>
+                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                            class="fas fa-download fa-sm text-white-50"></i>
+                            Generate Report</a>
                         </div>
+                        @endcan
 
                         <!-- Content Row -->
                         @if (auth()->user()->role == 'super-admin')
@@ -632,16 +635,18 @@
                                         @endif
                                     </div>
 
+                                    @php
+
+                                    $pie = [];
+                                    @endphp
                                     @if (auth()->user()->role == 'super-admin')
                                     @php
-                                    $pie = [];
                                     $pie = $piedata;
                                     @endphp
 
                                     @elseif (auth()->user()->role == 'ryr')
 
                                     @php
-                                    $pie = [];
                                     $pie = $piedata_ryr;
                                     @endphp
                                     @endif <script>
@@ -712,13 +717,15 @@
                                     @php
 
                                     $transact = $transactions->filter(function($transaction) {
-                                        return $transaction->kategori == 'Pengeluaran';
+                                    return $transaction->kategori == 'Pengeluaran';
                                     });
+                                    //
                                     // Transaction::where('status','Active')->where('kategori','Pengeluaran')->where('profile',auth()->user()->role)->get();
 
                                     $transact2 = $transactions->filter(function($transaction) {
-                                        return $transaction->kategori == 'Pendapatan';
+                                    return $transaction->kategori == 'Pendapatan';
                                     });
+                                    //
                                     // Transaction::where('status','Active')->where('kategori','Pendapatan')->where('profile',auth()->user()->role)->get();
 
                                     if($transact){

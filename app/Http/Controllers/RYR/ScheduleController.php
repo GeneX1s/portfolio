@@ -30,7 +30,7 @@ class ScheduleController extends Controller
             $start_date = Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s');
         }
         if (!$end_date) {
-            $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
+            $end_date = Carbon::now()->lastOfMonth()->addDays(14)->format('Y-m-d H:i:s');
         }
 
         $schedule = ryrSchedules::query()

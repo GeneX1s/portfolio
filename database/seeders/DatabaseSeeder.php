@@ -41,15 +41,16 @@ class DatabaseSeeder extends Seeder
             'role' => 'ryr'
         ]);
 
+        User::create([
+            'username' => 'Finance01',
+            'email' => 'finance1@gmail.com',
+            'password' => bcrypt('Ryr54321!'),
+            'role' => 'finance'
+        ]);
+
         SetValue::create([
             'salary' => 1000000,
         ]);
-
-        // Balance::create([
-        //     'nama' => 'Cash',
-        //     'saldo' => 1000000,
-        //     'tipe' => 'Cash',
-        // ]);
 
         Balance::create([
             'nama' => 'BCA',
@@ -66,11 +67,11 @@ class DatabaseSeeder extends Seeder
             'tipe' => 'Investment',
         ]);
 
-        // Balance::create([
-        //     'nama' => 'RYR',
-        //     'saldo' => 0,
-        //     'tipe' => 'Lainnya',
-        // ]);
+        Balance::create([
+            'nama' => 'RYR',
+            'saldo' => 0,
+            'tipe' => 'Lainnya',
+        ]);
 
         ryrTeachers::create([
             'nama' => 'Okta',

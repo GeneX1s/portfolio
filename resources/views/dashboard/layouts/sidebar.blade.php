@@ -135,7 +135,7 @@
 
     @endcan
 
-    @if (auth()->user()->role == 'ryr')
+    @if (auth()->user()->role == 'ryr' || auth()->user()->role == 'finance')
 
 
     <div class="sidebar-heading">
@@ -152,38 +152,47 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Classes:</h6>
+                @if (auth()->user()->role == 'ryr')
                 <a class="collapse-item" href="/dashboard/ryr/classes">Jadwal</a>
+                @endif
                 <a class="collapse-item" href="/dashboard/ryr/schedules">Sesi</a>
             </div>
         </div>
     </li>
 
+    @if (auth()->user()->role == 'ryr')
+
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/transactions">
             <i class="fas fa-fw fa-exchange-alt"></i>
             <span>Transactions</span></a>
-    </li>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/dashboard/ryr/teachers">
-            <i class="fas fa-fw fa-chalkboard-teacher"></i>
-            <span>Teachers</span></a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/dashboard/ryr/teachers">
+                <i class="fas fa-fw fa-chalkboard-teacher"></i>
+                <span>Teachers</span></a>
+            </li>
 
+            @endif
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/ryr/members">
             <i class="fas fa-fw fa-person"></i>
             <span>Members</span></a>
     </li>
 
+    @if(auth()->user()->role == 'super-admin' || auth()->user()->role == 'ryr')
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/users/manage">
             <i class="fas fa-fw fa-key"></i>
             <span>Change Password</span></a>
     </li>
-
+    @endif
 
     @endif
+
+    @can('super-admin')
+
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
@@ -200,7 +209,7 @@
             </div>
         </div>
     </li>
-
+    @endcan
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
