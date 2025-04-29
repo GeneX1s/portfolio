@@ -46,7 +46,7 @@
       <div class="mb-3">
         <label for="role" class="form-label">Role</label>
         <select class="form-control" name="role">
-          <option value="finance" selected> Guest</option>
+          <option value="finance" selected> Finance</option>
           <option value="ryr"> RYR</option>
           <option value="admin"> Admin</option>
           <option value="super-admin"> Super Admin</option>

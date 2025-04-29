@@ -159,7 +159,7 @@ class LoginController extends Controller
         }
         $password = bcrypt($input['password']);
         $user->update([
-            'email' => $input['email'],
+            // 'email' => $input['email'],
             'password' => $password,
             'updated_at' => $input['updated_at'],
         ]);
@@ -167,7 +167,7 @@ class LoginController extends Controller
 
 
         // Redirect or respond as needed
-        return redirect()->back()->with('success', 'Password updated.');
+        return redirect('/dashboard/users/index')->with('success', 'Password updated.');
     }
 
     public function list(Request $request)
