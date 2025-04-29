@@ -98,21 +98,21 @@
         <td>{{$user->username}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->role}}</td>
-        
+
         <td>
-          @if ($user->role == 'guest' || $user->role == 'finance')
+          @if ($user->role != 'super-admin')
           <form action="/dashboard/users/{{$user->id}}" method="post" class="d-inline">
             @method('delete')
             @csrf
             @if ($user->status != "Deleted")
-            
+
             <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
               <i class="fas fa-regular fa-trash"></i>
             </button>
             @endif
           </form>
-          
-          
+
+
           <form action="/dashboard/users/{{ $user->id }}/edit" class="d-inline">
             @csrf
             @method('POST')
@@ -123,7 +123,7 @@
 
           @endif
         </td>
-        
+
       </tr>
       @endforeach
 
@@ -134,7 +134,7 @@
     <div class="col-12 col-md-6 col-lg-4">
         <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>
     </div>
-  
-  
+
+
 </div>
 @endsection

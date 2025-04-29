@@ -181,14 +181,14 @@
             <span>Members</span></a>
     </li>
 
-    @if(auth()->user()->role == 'super-admin' || auth()->user()->role == 'ryr')
+
+    @endif
+    @if(auth()->user()->updated_at != '2001-01-01 00:00:00')
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/users/manage">
             <i class="fas fa-fw fa-key"></i>
             <span>Change Password</span></a>
     </li>
-    @endif
-
     @endif
 
     @can('super-admin')

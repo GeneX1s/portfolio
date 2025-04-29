@@ -14,7 +14,7 @@
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input type="string" class="form-control @error('username') is-invalid @enderror" id="username" name="username"
-          required autofocus value="{{old('username')}}">
+          required autofocus value="{{$user->username}}">
         @error('username')
         <div class="invalid-feedback">
           {{ $message }}
@@ -25,7 +25,7 @@
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="string" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required
-          autofocus value="{{old('email')}}">
+          autofocus value="{{$user->email}}">
         @error('email')
         <div class="invalid-feedback">
           {{ $message }}
@@ -35,7 +35,7 @@
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
-          name="password" required autofocus value="{{old('password')}}">
+          name="password" required autofocus value="{{$user->password}}">
         @error('password')
         <div class="invalid-feedback">
           {{ $message }}
@@ -46,14 +46,16 @@
       <div class="mb-3">
         <label for="role" class="form-label">Role</label>
         <select class="form-control" name="role">
-          <option value="guest" selected> Guest</option>
+          <option value="finance" selected> Guest</option>
+          <option value="ryr"> RYR</option>
           <option value="admin"> Admin</option>
           <option value="super-admin"> Super Admin</option>
         </select>
       </div>
 
 
-      <button type="submit" class="btn btn-primary">Add User</button>
+      <button type="submit" class="btn btn-primary">Update</button>
+      <a class="btn btn-danger btn-custom" href="/dashboard/users/index">Cancel</a>
     </form>
 
   </div>
