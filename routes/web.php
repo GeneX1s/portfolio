@@ -224,11 +224,4 @@ Route::middleware('log-user-activity')->group(function () { //audit trail(LogUse
         // Route::get('/ryr/classes/{id}', [ClassController::class, 'classPage']);
         Route::get('/ryr/classes/{id}', [ClassController::class, 'classDetail']);
 
-// Class calendar
-Route::get('/events', [ScheduleController::class, 'index']);
-Route::post('/events', [ScheduleController::class, 'store']);
-Route::put('/events/{id}', [ScheduleController::class, 'update']);
-Route::delete('/events/{id}', [ScheduleController::class, 'destroy']);
-
-
 /////////////ENDRYR/////////////

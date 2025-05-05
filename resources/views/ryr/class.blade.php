@@ -28,123 +28,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
         headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         initialDate: new Date().toISOString().split('T')[0],
-        navLinks: true,
-        selectable: true,
-        selectMirror: true,
-
-        // Event selection handler
-        select: function(arg) {
-    // Save selected dates to hidden inputs
-    document.getElementById('event-start').value = arg.startStr;
-    document.getElementById('event-end').value = arg.endStr;
-
-    // Show the modal
-    var eventModal = new bootstrap.Modal(document.getElementById('eventModal'));
-    eventModal.show();
-},
-
-
-        // Event click handler for deletion
-        eventClick: function(arg) {
-        if (confirm('Are you sure you want to delete this event?')) {
-            var eventToDelete = arg.event;
-
-            // Remove the event from the calendar
-            eventToDelete.remove();
-
-            // Send a request to delete the event from the server
-            deleteEventFromServer(eventToDelete.id);
-        }
-        },
-
-        // Event edit handler (for updating events)
-        eventChange: function(arg) {
-        var updatedEvent = arg.event;
-
-        // Send the updated event data to the server
-        updateEventInServer(updatedEvent);
-        },
-
-        editable: true,
+        navLinks: false, // Disable navigation links
+        selectable: false, // Disable date selection
+        editable: false, // Disable event editing
         dayMaxEvents: true,
-        // events: '/api/events'
-
-        events: @json($events)
-        // events: [
-        // {
-        //     id: 1,
-        //     title: 'All Day Event',
-        //     start: '2023-01-01'
-        // },
-        // {
-        //     id: 2,
-        //     title: 'Meeting',
-        //     start: '2023-01-12T10:30:00',
-        //     end: '2023-01-12T12:30:00'
-        // }
-        // ]
+        events: @json($events) // Load events from the server
     });
 
     calendar.render();
-
-    // Handle modal form submission
-    document.getElementById('eventForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent page reload
-
-    let className = document.getElementById('class_name').value;
-    let teacherName = document.getElementById('teacher_name').value;
-    let start = document.getElementById('event-start').value;
-    let end = document.getElementById('event-end').value;
-
-    fetch('/dashboard/ryr/schedules', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        },
-        body: JSON.stringify({
-            class_id: 'AUTO_' + Date.now(),
-            class_name: className,
-            teacher_name: teacherName,
-            status: 'Scheduled',
-            tanggal: start.split('T')[0],
-            start_time: start.split('T')[1],
-            end_time: end.split('T')[1],
-            tipe: 'Regular',
-            harga: 200000,
-            profit: 0
-        })
-    })
-    .then(res => res.json())
-    .then(data => {
-        // Add the event to FullCalendar
-        calendar.addEvent({
-            id: data.id,
-            title: data.title,
-            start: data.start,
-            end: data.end
-        });
-
-        // Close modal
-        bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
-
-        // Reset form
-        document.getElementById('eventForm').reset();
-    })
-    .catch(err => {
-        console.error('Error saving event:', err);
-        alert('Something went wrong while saving the event.');
-    });
 });
-
-
-    });
-
 </script>
 <style>
     body {
