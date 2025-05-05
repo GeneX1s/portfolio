@@ -211,7 +211,7 @@ class ClassController extends Controller
 
         $calendars = ryrSchedules::get();
 
-        dd($calendars);
+        // dd($calendars);
         return view('ryr.classDetail', [
 
             'class' => $class,

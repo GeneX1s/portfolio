@@ -125,11 +125,14 @@
       <div class="col-12 col-md-6 col-lg-4">
         <a href="/dashboard/transactions/create" class="btn btn-primary btn-custom mb-3">Add New</a>
       </div>
+      @can('super-admin')
       <div class="col-12 col-md-6 col-lg-4">
         <a href="/dashboard/transactions/templates" class="btn btn-primary btn-custom mb-3">Manage Templates</a>
       </div>
+      @endcan
     </div>
   </form>
+@can('super-admin')
 
   <form action="{{ route('transactions.import') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -175,7 +178,7 @@
 </div>
 
 </div>
-
+@endcan
   <table class="table table-striped table-sm">
     <thead class="thead">
       <tr>
@@ -250,6 +253,7 @@
   </div>
 
   <div class="row">
+    @can('super-admin')
     <div class="col-12 col-md-6 col-lg-4">
       <div class="mb-1">
         <form action="{{ url('/dashboard/clear/transactions') }}" method="POST">
@@ -265,6 +269,7 @@
         <a class="btn btn-warning btn-custom" href="{{ url('/export-transactions') }}">Export All to Excel</a>
       </div>
     </div>
+    @endcan
     <div class="col-12 col-md-6 col-lg-4">
       <div class="mb-1">
         <a class="btn btn-danger btn-custom" href="/dashboard">Back</a>
