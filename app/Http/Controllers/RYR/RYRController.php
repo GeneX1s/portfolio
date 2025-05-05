@@ -31,6 +31,10 @@ class RYRController extends Controller
         $specials = ryrSchedules::where('status', 'Active')->where('tipe', 'Special')->get();
         $blogs = ryrBlogs::where('status', 'Active')->get();
         $galleries = ryrGalleries::get();
+        $language = 'id';
+        if($request->language){
+            $language = $request->language;
+        }
 
         return view('ryr/ryr', [
             'classes' => $classes,
@@ -41,6 +45,7 @@ class RYRController extends Controller
             'user' => $user,
             'blogs' => $blogs,
             'galleries' => $galleries,
+            'language' => $language,
         ]);
     }
 

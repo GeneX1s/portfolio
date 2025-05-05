@@ -98,8 +98,11 @@
                         @endif
                     </div>
                     <div class="language-switcher text-end">
-                        <a href="?lang=en" class="btn btn-light">🇬🇧 EN</a>
-                        <a href="?lang=id" class="btn btn-light">🇮🇩 ID</a>
+                        <form action="{{ route('set.language') }}" method="POST">
+                            @csrf
+                            <button type="submit" name="language" value="en" class="btn btn-light">🇬🇧 EN</button>
+                            <button type="submit" name="language" value="id" class="btn btn-light">🇮🇩 ID</button>
+                        </form>
                     </div>
                 </div>
             </div>
