@@ -162,4 +162,13 @@ class TeacherController extends Controller
         return response()->json(['message' => 'File not found'], 404);
     }
 
+    public function teacherDetail($teacherId){
+
+        $teacher = ryrTeachers::where('id', $teacherId)->first();
+
+        return view('ryr.teachers.detail', [
+            'teacher' => $teacher,
+        ]);
+
+    }
 }
