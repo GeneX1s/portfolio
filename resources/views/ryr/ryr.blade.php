@@ -92,13 +92,13 @@
                         </div>
                         @else
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="dashboard" href="/dashboard"><span>login</span></a>
+                            <a class="banner-btn" data-text="dashboard" href="/dashboard"><span>{{ __('messages.welcome') }}</span></a>
                         </div>
 
                         @endif
                     </div>
                     <div class="language-switcher text-end">
-                        <form action="{{ route('set.language') }}" method="POST">
+                        <form action="/setlanguage" method="POST">
                             @csrf
                             <button type="submit" name="language" value="en" class="btn btn-light">🇬🇧 EN</button>
                             <button type="submit" name="language" value="id" class="btn btn-light">🇮🇩 ID</button>

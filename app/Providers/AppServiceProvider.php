@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
@@ -46,5 +48,9 @@ class AppServiceProvider extends ServiceProvider
             return $user->role === 'ryr';
         });
 
+
+        $locale = Session::get('language', config('app.locale'));
+        // dd($locale);
+        App::setLocale($locale);
     }
 }
