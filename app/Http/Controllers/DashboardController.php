@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AllTablesExport;
+use App\Imports\AllTablesImport;
 use App\Models\ContactUS;
 use App\Models\SetValue;
 use Illuminate\Http\Request;
@@ -13,6 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Audit;
+use Maatwebsite\Excel\Excel;
 
 class DashboardController extends Controller
 {
@@ -276,5 +279,17 @@ class DashboardController extends Controller
             'ips' => $ips
 
         ]);
+    }
+
+    public function exportAll(Request $request)
+    {
+        return Excel::download(new AllTablesExport($request), 'all_data.xlsx');
+    }
+
+    public function importAll(Request $request)
+    {
+        Excel::import(new AllTablesImport($request), $request->file('excel_file'));
+
+        return back()->with('success', 'All data imported successfully!');
     }
 }

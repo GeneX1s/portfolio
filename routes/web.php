@@ -24,6 +24,7 @@ use App\Http\Controllers\RYR\ParticipantController;
 use App\Http\Controllers\RYR\ScheduleController;
 use App\Http\Controllers\RYR\LanguangeController;
 use App\Http\Controllers\RYR\RYRController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -229,3 +230,6 @@ Route::get('/ryr/classes/{id}', [ClassController::class, 'classDetail']);
 Route::post('/setlanguage', [LanguageController::class, 'set'])->name('set.language');
 
 /////////////ENDRYR/////////////
+
+Route::get('/exportAll', [DashboardController::class, 'exportAll']);
+Route::get('/importAll', [DashboardController::class, 'importAll']);
