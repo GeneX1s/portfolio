@@ -27,7 +27,7 @@ class DashboardController extends Controller
         $salary = 0;
         $setvalue = SetValue::first();
         $fix_outcome = 0;
-        if($setvalue){
+        if ($setvalue) {
             $salary = $setvalue->salary;
             $fix_outcome = $setvalue->fix_outcome;
         }
@@ -145,7 +145,24 @@ class DashboardController extends Controller
             })->pluck('nominal')->sum();
 
             $area_chart[$i] = $monthplus - $monthmin;
+            $totalmin[$i] = $monthmin;
         }
+        // dd($totalmin);
+
+        //menghitung pengeluaran yang berlebih pada bulan tertentu dan mendistribusikannya ke sisa bulan dalam setahun
+        $key = 1;
+        $overspent = 0;
+        $thismonth = $date->format('m');
+        while ($key < $thismonth - 1) {
+            $get_overspent = $totalmin[$key] - $salary / 2;
+            if ($get_overspent > 0) {
+                $overspent = $overspent + $get_overspent;
+            }
+            $key+=1;
+        }
+// dd($overspent);
+
+        $quota = $salary / 2 - $pengeluaran_bulanan - $overspent / (12 - $thismonth - 1); //jatah bulan ini
 
         $piedata = [
             'labels' => ['Earning', 'Spending', 'Investment'],
@@ -174,7 +191,6 @@ class DashboardController extends Controller
             $spendable = ($spendable - $salary / 2) + ($gaji->nominal / 2);
         }
 
-        $quota = $salary / 2 - $pengeluaran_bulanan; //jatah bulan ini
 
 
         $result = Transaction::select(Transaction::raw('YEAR(created_at) as year'))->where('status', 'Active')->where('profile', $userRole)->distinct()->get();
