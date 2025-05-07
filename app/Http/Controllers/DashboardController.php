@@ -162,7 +162,7 @@ class DashboardController extends Controller
         }
 // dd($overspent);
 
-        $quota = $salary / 2 - $pengeluaran_bulanan - $overspent / (12 - $thismonth - 1); //jatah bulan ini
+        $quota = $salary / 2 - $pengeluaran_bulanan - $overspent / (12 - $thismonth + 1); //jatah bulan ini
 
         $piedata = [
             'labels' => ['Earning', 'Spending', 'Investment'],
