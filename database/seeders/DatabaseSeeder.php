@@ -50,22 +50,23 @@ class DatabaseSeeder extends Seeder
 
         SetValue::create([
             'salary' => 1000000,
+            'outcome' => 45000000,
         ]);
 
-        Balance::create([
-            'nama' => 'BCA',
-            'saldo' => 1000000,
-            'tipe' => 'Bank',
-        ]);
+        // Balance::create([
+        //     'nama' => 'BCA',
+        //     'saldo' => 1000000,
+        //     'tipe' => 'Bank',
+        // ]);
 
-        Balance::create([
-            'nama' => 'Investasi1',
-            'saldo' => 1000000,
-            'tipe' => 'Investment',
-            'dividen' => 0.1,
-            'penerima_dividen' => 1,
-            'tipe' => 'Investment',
-        ]);
+        // Balance::create([
+        //     'nama' => 'Investasi1',
+        //     'saldo' => 1000000,
+        //     'tipe' => 'Investment',
+        //     'dividen' => 0.1,
+        //     'penerima_dividen' => 1,
+        //     'tipe' => 'Investment',
+        // ]);
 
         Balance::create([
             'nama' => 'RYR',
@@ -96,31 +97,31 @@ class DatabaseSeeder extends Seeder
             'status' => 'Active',
         ]);
 
-        ryrClasses::create([
-            'id' => 'OKTA_060225',
-            'nama_kelas' => 'Ashtanga Yoga',
-            'tipe' => 'public', // public, private
-            'teacher' => 'Okta',
-            'schedule' => '6PM',
-            'start_time' => '18:30:00',
-            'end_time' => '20:00:00',
-            'biaya' => 200000,
-            'day' => 'Kamis',
-            'description' => 'A beginner level yoga class focusing on basic postures and breathing techniques.',
-        ]);
+        // ryrClasses::create([
+        //     'id' => 'OKTA_060225',
+        //     'nama_kelas' => 'Ashtanga Yoga',
+        //     'tipe' => 'public', // public, private
+        //     'teacher' => 'Okta',
+        //     'schedule' => '6PM',
+        //     'start_time' => '18:30:00',
+        //     'end_time' => '20:00:00',
+        //     'biaya' => 200000,
+        //     'day' => 'Kamis',
+        //     'description' => 'A beginner level yoga class focusing on basic postures and breathing techniques.',
+        // ]);
 
-        ryrClasses::create([
-            'id' => 'OKTA_060226',
-            'nama_kelas' => 'Yoga for Intermediate',
-            'tipe' => 'public', // public, private
-            'teacher' => 'Okta',
-            'schedule' => '6PM',
-            'start_time' => '08:00:00',
-            'end_time' => '08:00:00',
-            'biaya' => 200000,
-            'day' => 'Jumat',
-            'description' => 'An intermediate level yoga class focusing on more advanced postures and breathing techniques.',
-        ]);
+        // ryrClasses::create([
+        //     'id' => 'OKTA_060226',
+        //     'nama_kelas' => 'Yoga for Intermediate',
+        //     'tipe' => 'public', // public, private
+        //     'teacher' => 'Okta',
+        //     'schedule' => '6PM',
+        //     'start_time' => '08:00:00',
+        //     'end_time' => '08:00:00',
+        //     'biaya' => 200000,
+        //     'day' => 'Jumat',
+        //     'description' => 'An intermediate level yoga class focusing on more advanced postures and breathing techniques.',
+        // ]);
 
         ryrMembers::create([
             'nama_murid' => 'Jane Doe',

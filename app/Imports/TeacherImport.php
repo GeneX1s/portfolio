@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Models\RYR\ryrTeachers;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class TeacherImport implements ToModel
+class TeacherImport implements ToModel,WithHeadingRow
 {
     /**
      * @param array $row
@@ -14,16 +15,22 @@ class TeacherImport implements ToModel
      */
     public function model(array $row)
     {
+        foreach ($row as $key => $value) {
+            if (is_null($value)) {
+                $row[$key] = 0;
+            }
+        }
+        // dd($row);
         return new ryrTeachers([
             'nama' => $row['nama'],
             'salary' => $row['salary'],
             'join_date' => $row['join_date'],
-            'dob' => $row['dob'],
-            'jenis_kelamin' => $row['jenis_kelamin'],
+            'dob' => $row['date_of_birth'],
+            'jenis_kelamin' => $row['gender'],
             'instagram' => $row['instagram'],
             'status' => $row['status'],
-            'foto' => $row['foto'],
-            'deskripsi' => $row['deskripsi'],
+            'foto' => $row['photo'],
+            'deskripsi' => $row['description'],
         ]);
     }
 }

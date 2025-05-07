@@ -70,7 +70,7 @@ class ClassExport implements FromCollection, WithHeadings, WithMapping, WithTitl
      */
     public function title(): string
     {
-        return 'Classs'; // You can customize the sheet title here.
+        return 'Class'; // You can customize the sheet title here.
     }
 
     /**

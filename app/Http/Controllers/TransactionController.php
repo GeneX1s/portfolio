@@ -354,13 +354,23 @@ class TransactionController extends Controller
     {
 
         $setvalue = Setvalue::where('id', 1)->first();
-
-        $request->validate([
-            'salary' => 'required',
-            'outcome' => 'required',
-        ]);
-
         $input = $request->all();
+
+        if(!$setvalue){
+
+            $setvalue = SetValue::create([
+                'id' => 1,
+                "status" => "Deleted",
+                'salary' => $input['salary'],
+                'outcome' => $input['outcome'],
+
+            ]);
+            
+            return redirect()->back()->with('success', 'Value updated successfully.');
+
+        }
+
+
 
 
         $setvalue->update([

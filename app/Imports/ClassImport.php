@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Models\RYR\ryrClasses;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ClassImport implements ToModel
+class ClassImport implements ToModel,WithHeadingRow
 {
     /**
      * @param array $row
@@ -14,17 +15,18 @@ class ClassImport implements ToModel
      */
     public function model(array $row)
     {
+        // dd($row);
         return new ryrClasses([
             'id' => $row['id'],
-            'nama_kelas' => $row['nama_kelas'],
-            'tipe' => $row['tipe'],
+            'nama_kelas' => $row['class_name'],
+            'tipe' => $row['type'],
             'teacher' => $row['teacher'],
             'day' => $row['day'],
             'schedule' => $row['schedule'],
             'start_time' => $row['start_time'],
             'end_time' => $row['end_time'],
-            'biaya' => $row['biaya'],
-            'foto' => $row['foto'],
+            'biaya' => $row['fee'],
+            'foto' => $row['photo'],
             'description' => $row['description'],
         ]);
     }

@@ -11,6 +11,15 @@ class BalanceImport implements ToModel, WithHeadingRow
 
     public function model(array $row)
     {
+
+        foreach ($row as $key => $value) {
+            if (is_null($value)) {
+                $row[$key] = 0;
+            }
+        }
+        if($row['updated_at'] == 0){
+            $row['updated_at'] = now();
+        }
         // dd($row);
         return new Balance([
 

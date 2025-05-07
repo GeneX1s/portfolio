@@ -232,4 +232,4 @@ Route::post('/setlanguage', [LanguageController::class, 'set'])->name('set.langu
 /////////////ENDRYR/////////////
 
 Route::get('/exportAll', [DashboardController::class, 'exportAll']);
-Route::get('/importAll', [DashboardController::class, 'importAll']);
+Route::post('/importAll', [DashboardController::class, 'importAll']);

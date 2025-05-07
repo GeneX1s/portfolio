@@ -15,7 +15,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Audit;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class DashboardController extends Controller
 {
@@ -23,7 +24,13 @@ class DashboardController extends Controller
     {
 
         $date = Carbon::now();
-        $salary = SetValue::first()->salary;
+        $salary = 0;
+        $setvalue = SetValue::first();
+        $fix_outcome = 0;
+        if($setvalue){
+            $salary = $setvalue->salary;
+            $fix_outcome = $setvalue->fix_outcome;
+        }
         $yearFilter = Carbon::now()->format('Y');
 
         if ($request->year) {
@@ -160,7 +167,7 @@ class DashboardController extends Controller
         ];
 
         $allgaji = Transaction::where('sub_kategori', 'Gaji')->whereNot('status', 'Deleted')->get();
-        $fix_outcome = SetValue::first()->fix_outcome;
+
         $spendable = (($salary * 12) / 2 - $pengeluaran_tahunan) + ($pendapatan_tahunan / 2); //jatah tahun ini
 
         foreach ($allgaji as $gaji) { //logic ini digunakan untuk mendapat nilai akurat gaji apabila ada pemotongan atau pembulatan lebih/kurang
@@ -185,7 +192,7 @@ class DashboardController extends Controller
             ])]);
         }
         // dd($messages);
-        $target = SetValue::first()->outcome;
+        $target = $fix_outcome;
         return view('/dashboard.index', [
             'spendable' => $spendable,
             'messages' => $messages,
