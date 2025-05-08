@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\RYR\ryrMembers;
 use App\Http\Controllers\Controller;
+use App\Models\RYR\ryrClasses;
+use App\Models\RYR\ryrParticipants;
 
 class MemberController extends Controller
 {
@@ -65,7 +67,9 @@ class MemberController extends Controller
     public function show($id)
     {
         $member = ryrMembers::findOrFail($id);
-        return view('dashboard.ryr.members.show');
+        return view('dashboard.ryr.members.editGroup', [
+            'member' => $member,
+        ]);
     }
 
     public function edit($id)
@@ -106,5 +110,44 @@ class MemberController extends Controller
         $member->delete();
 
         return redirect()->route('members.index');
+    }
+
+    public function getGroup($id)
+    {
+        $member = ryrMembers::findOrFail($id);
+        $classes = ryrClasses::all();
+        return view('dashboard.ryr.members.editGroup', [
+            'member' => $member,
+            'classes' => $classes,
+        ]);
+    }
+
+    public function editGroup(Request $request, $id)
+    {
+
+        foreach ($request->classes as $class) {
+
+
+            if (!ryrParticipants::where('id_kelas', $class)->exists()) {
+
+
+            $member = ryrMembers::where('id', $id)->first();
+
+            $get_class = ryrClasses::where('id', $class)->first();
+            ryrParticipants::create([
+                'id_member' => $member->id,
+                'nama_member' => $member->nama_murid,
+                'id_kelas' => $get_class->id,
+                'nama_kelas' => $get_class->nama_kelas,
+                'tipe' => $member->tipe,
+                'deskripsi' => $member->nama_murid . 'Adalah peserta dari ' . $get_class->nama_kelas,
+                'grup' => 'Template',
+                'payment_status' => '-',
+                'payment_type' => 'Cash',
+            ]);
+        }
+
+    }
+        return redirect()->route('dashboard.members.index');
     }
 }

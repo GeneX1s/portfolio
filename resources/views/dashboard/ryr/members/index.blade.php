@@ -155,7 +155,7 @@
             </button>
           </form>
 
-          <form action="/dashboard/ryr/members/{{ $member->id }}/history" class="d-inline">
+          <form action="/dashboard/ryr/members/{{ $member->id }}" class="d-inline">
             @csrf
             @method('POST')
             <!-- Not strictly necessary with `POST` method -->

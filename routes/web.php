@@ -184,6 +184,8 @@ Route::resource('/dashboard/ryr/classes', ClassController::class)->middleware('a
 //members
 Route::get('/dashboard/ryr/members/index', [MemberController::class, 'index'])->middleware('auth')->name('dashboard.members.index');
 Route::get('/dashboard/ryr/members/create', [MemberController::class, 'create'])->middleware('auth')->name('dashboard.members.create');
+Route::get('/dashboard/ryr/members/{id}', [MemberController::class, 'getGroup'])->middleware('auth')->name('dashboard.members.create');
+Route::post('/dashboard/ryr/members/{id}/groups', [MemberController::class, 'editGroup'])->middleware('auth');
 Route::resource('/dashboard/ryr/members', MemberController::class)->middleware('auth');
 
 //teachers

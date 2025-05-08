@@ -12,12 +12,13 @@ class ContactUSController extends Controller
     public function contactUS()
     {
         $messages = ContactUS::get();
-        return view('dashboard.contactus.index',[
+        return view('dashboard.contactus.index', [
             'messages' => $messages
         ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $input = $request->validate([
             'name' => 'required',
@@ -31,8 +32,5 @@ class ContactUSController extends Controller
         ContactUS::create($input);
 
         return redirect('/portfolio#contact')->with('success', 'Thanks for reaching out!');
-
-
-
     }
- }
+}
