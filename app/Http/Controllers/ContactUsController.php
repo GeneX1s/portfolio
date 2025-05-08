@@ -30,7 +30,7 @@ class ContactUSController extends Controller
 
         ContactUS::create($input);
 
-        return redirect('/#contact')->with('success', 'Thanks for reaching out!');
+        return redirect('/portfolio#contact')->with('success', 'Thanks for reaching out!');
 
 
 

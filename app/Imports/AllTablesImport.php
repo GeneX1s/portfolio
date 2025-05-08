@@ -23,6 +23,7 @@ class AllTablesImport implements WithMultipleSheets
             new TeacherImport($this->request),
             new ScheduleImport($this->request),
             new ClassImport($this->request),
+            new FeatureImport($this->request),
             // Add more Imports here
         ];
     }

@@ -15,7 +15,17 @@ class ClassImport implements ToModel,WithHeadingRow
      */
     public function model(array $row)
     {
+
+        if (ryrClasses::where('id', $row['id'])->exists()) {
+            return null; // Skip the row if duplicate is found
+        }
         // dd($row);
+        foreach ($row as $key => $value) {
+            if (is_null($value)) {
+            $row[$key] = 0;
+            }
+        }
+
         return new ryrClasses([
             'id' => $row['id'],
             'nama_kelas' => $row['class_name'],
@@ -31,3 +41,5 @@ class ClassImport implements ToModel,WithHeadingRow
         ]);
     }
 }
+
+

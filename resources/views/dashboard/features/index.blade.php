@@ -212,7 +212,9 @@ $value = Cache::get('key'); // This should return 'value' if it was set
                                                   @method('delete')
                                                   @csrf
 
-                                                  <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
+                                                  <button class="badge bg-danger border-0"
+                                                  {{-- onclick="return confirm('Are you sure?')" --}}
+                                                  >
                                                     <i class="fas fa-regular fa-trash"></i>
                                                   </button>
                                                 </form>

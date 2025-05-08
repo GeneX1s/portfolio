@@ -231,5 +231,5 @@ Route::post('/setlanguage', [LanguageController::class, 'set'])->name('set.langu
 
 /////////////ENDRYR/////////////
 
-Route::get('/exportAll', [DashboardController::class, 'exportAll']);
-Route::post('/importAll', [DashboardController::class, 'importAll']);
+Route::get('/exportAll', [DashboardController::class, 'exportAll'])->middleware('auth');
+Route::post('/importAll', [DashboardController::class, 'importAll'])->middleware('auth');

@@ -23,6 +23,7 @@ class AllTablesExport implements WithMultipleSheets
             new TeacherExport($this->request),
             new ScheduleExport($this->request),
             new ClassExport($this->request),
+            new FeatureExport($this->request),
             // Add more exports here
         ];
     }

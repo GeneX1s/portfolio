@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class TransactionImport implements ToModel, WithHeadingRow
 {
-    
+
     public function model(array $row)
     {
         // dd($row);
@@ -23,7 +23,7 @@ class TransactionImport implements ToModel, WithHeadingRow
             'balance' => $row['balance'],
             'balance_destination' => $row['balance_destination'],
             'created_at' => $row['created_at'],
-            
+
         ]);
     }
 }
