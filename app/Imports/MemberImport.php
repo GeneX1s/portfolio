@@ -15,6 +15,9 @@ class MemberImport implements ToModel,WithHeadingRow
      */
     public function model(array $row)
     {
+        if (ryrMembers::where('nama_murid', $row['nama_murid'])->where('join_date', $row['join_date'])->exists()) {
+            return null; // Skip the row if duplicate is found
+        }
 
         foreach ($row as $key => $value) {
             if (is_null($value)) {
