@@ -29,8 +29,10 @@ class MemberController extends Controller
             })
             ->get();
 
+            $participants = ryrParticipants::all();
         return view('dashboard.ryr.members.index', [
             'members' => $member,
+            'participants' => $participants,
         ]);
     }
 

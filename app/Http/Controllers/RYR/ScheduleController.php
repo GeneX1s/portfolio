@@ -304,12 +304,12 @@ class ScheduleController extends Controller
 
     public function detailGroup($id)
     {
-        $participant = ryrParticipants::where('id_kelas', $id)->get();
-
         $schedule = ryrSchedules::where('id', $id)->first();
+        $participant = ryrParticipants::where('id_kelas', $schedule->class_id)->get();
+
         $members = ryrMembers::get();
         // dd($members);
-        $class = ryrClasses::where('id', $id)->first();
+        $class = ryrClasses::where('id', $schedule->class_id)->first();
         $class_name = 0;
 
         // dd($participant);
@@ -317,15 +317,50 @@ class ScheduleController extends Controller
             $class = $participant[0]['id_kelas'];
             $class_name = $participant[0]['nama_kelas'];
         }
+
+
+        $preselectedParticipants = ryrParticipants::where('id_kelas', $schedule->class_id)->where('grup', 'Template')->get();
         // dd($id);
+
+        // dd($preselectedParticipants);
         return view('dashboard.ryr.schedules.editgroup', [
             'schedule' => $schedule,
             'members' => $members,
             'id_kelas' => $id,
             'class_name' => $class_name,
+            'preselectedParticipants' => $preselectedParticipants,
 
         ]);
     }
+
+    public function detailGroupWithTemplate($id)
+    {
+        $participant = ryrParticipants::where('id_kelas', $id)->get();
+
+        $schedule = ryrSchedules::where('id', $id)->first();
+        $members = ryrMembers::get();
+        // dd($members);
+        $class_name = 0;
+
+        if (!$participant->isEmpty()) {
+            $class = $participant[0]['id_kelas'];
+            $class_name = $participant[0]['nama_kelas'];
+        }
+
+        $preselectedParticipants = ryrParticipants::where('id_kelas', $id)->where('grup', 'Template')->get();
+        // dd($id);
+        // dd('hi');
+        return view('dashboard.ryr.schedules.editgroupwithtemplate', [
+            'schedule' => $schedule,
+            'members' => $members,
+            'id_kelas' => $id,
+            'class_name' => $class_name,
+            'class' => $class,
+            'preselectedParticipants' => $preselectedParticipants,
+        ]);
+    }
+
+
     public function deleteGroup(Request $request)
     {
 
