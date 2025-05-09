@@ -48,7 +48,7 @@ return [
     'teachers_description' => 'Instruktur yoga kami yang berpengalaman dan penuh semangat berdedikasi untuk membimbing Anda dalam perjalanan menuju kesejahteraan fisik dan mental. Dengan keahlian yang beragam dalam berbagai gaya yoga, mereka menciptakan lingkungan yang mendukung di mana setiap siswa dapat berkembang dan tumbuh dalam latihan mereka.',
 
     // Gallery Section
-    'gallery_title' => 'galeri kami',
+    'gallery_title' => 'galeri',
     'gallery_add_new' => 'Tambahkan Item Baru',
 
     // Gallery Options Menu
@@ -58,7 +58,7 @@ return [
     'confirm_delete' => 'Apakah Anda yakin?',
 
     // Events Section
-    'events_title' => 'acara menarik',
+    'events_title' => 'event',
     'events_description' => 'Bergabunglah dengan kami untuk acara menarik yang merayakan semangat yoga dan komunitas. Dari lokakarya hingga kelas khusus, selalu ada sesuatu yang terjadi di Roemah Yoga Rian. Tetap terhubung untuk acara mendatang kami dan jadilah bagian dari komunitas kami yang dinamis.',
     'event_name' => 'Hari Yoga Internasional',
     'event_details' => 'Bergabunglah dengan kami untuk merayakan Hari Yoga Internasional dengan sesi khusus yang berfokus pada kesadaran, relaksasi, dan ikatan komunitas. Acara ini terbuka untuk semua tingkat, dari pemula hingga praktisi tingkat lanjut. Jangan lewatkan kesempatan ini untuk terhubung dan menyegarkan diri!',
@@ -66,7 +66,7 @@ return [
     'event_time' => '06:00 - 07:30 WIB',
 
     // Blog Section
-    'blog_title' => 'blog kami',
+    'blog_title' => 'blog',
     'blog_description' => 'Tetap terupdate dengan postingan blog terbaru kami dan wawasan tentang yoga, kesehatan, dan gaya hidup sehat. Blog kami adalah sumber yang bagus untuk tips, inspirasi, dan informasi untuk mendukung perjalanan yoga Anda.',
     'read_more' => 'baca selengkapnya',
 
