@@ -16,6 +16,10 @@ class ScheduleImport implements ToModel,WithHeadingRow
     public function model(array $row)
     {
 
+        if (ryrSchedules::where('class_id', $row['class_id'])->where('tanggal', $row['tanggal'])->exists()) {
+            return null; // Skip the row if duplicate is found
+        }
+
         foreach ($row as $key => $value) {
             if (is_null($value)) {
                 $row[$key] = 0;
@@ -32,6 +36,7 @@ class ScheduleImport implements ToModel,WithHeadingRow
             'end_time' => $row['end_time'],
             'tipe' => $row['type'],
             'harga' => $row['price'],
+            'description' => $row['description'],
             'profit' => $row['profit'],
         ]);
     }

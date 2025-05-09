@@ -247,6 +247,8 @@ class ScheduleController extends Controller
                     'id_schedule' => $id,
                 ];
 
+                $input['id'] = $input['id_member'] .'-'.$input['id_kelas'].'-'.now()->format('Y-m-d');
+
                 $input['grup'] = 'Schedule';
                 $input['payment_status'] = 'Pending';
                 $input['deskripsi'] = 'Peserta baru';
@@ -291,6 +293,7 @@ class ScheduleController extends Controller
                     'id_schedule' => $id,
                     'deskripsi' => $member->deskripsi,
                 ];
+                $input['id'] = $input['id_member'] .'-'.$input['id_kelas'].'-'.now()->format('Y-m-d');
                 $input['grup'] = 'Schedule';
                 $input['payment_status'] = 'Pending';
                 $input['deskripsi'] = 'Peserta reguler';

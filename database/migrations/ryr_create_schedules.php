@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->time('start_time');
             $table->time('end_time');
+            $table->string('description')->nullable();
             $table->integer('profit')->default(0);
             $table->timestamps();
         });

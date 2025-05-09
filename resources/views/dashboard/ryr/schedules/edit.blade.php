@@ -68,9 +68,9 @@
     </div>
 
     <div class="mb-3">
-        <label for="description" class="form-label">Description <small class="text-muted">(optional)</small></label>
-        <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
-            name="description" autofocus value="{{old('description')}}">
+        <label for="description" class="form-label">Deskripsi <small class="text-muted">(optional)</small></label>
+        <textarea class="form-control @error('description') is-invalid @enderror" id="description"
+            name="description" rows="3" autofocus>{{ $schedule->description }}</textarea>
         @error('description')
         <div class="invalid-feedback">
             {{ $message }}

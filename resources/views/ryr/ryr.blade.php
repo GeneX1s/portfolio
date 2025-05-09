@@ -628,16 +628,19 @@
             <div class="row">
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
-                        <h2>awesome events</h2>
+                        <h2>special class</h2>
                         <p>{{ __('messages.events_description') }}</p>
                     </div>
-                    <div class="event-wrapper">
-                        <div class="event-content text-center">
-                            <h3>International Yoga Day</h3>
-                            <p>Join us to celebrate International Yoga Day with a special session focusing on mindfulness, relaxation, and community bonding. This event is open to all levels, from beginners to advanced practitioners. Don't miss this opportunity to connect and rejuvenate!</p>
-                            <h4>21 June 2024</h4>
-                            <h5>06:00 AM - 07:30 AM</h5>
+                    <div class="event-wrapper d-flex justify-content-center flex-wrap">
+                        @foreach ($specials as $special)
+                        <div class="event-content text-center m-3">
+                            <h3>{{ $special->class_name }}</h3>
+                            <p>Rp.{{ number_format($special->harga, '2', ',', '.') }}</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur corrupti quae repellendus, et nihil ducimus eius molestiae minima enim ipsum ratione </p>
+                            <h4>{{ $special->tanggal }}</h4>
+                            <h5>{{ $special->start_time }} - {{ $special->end_time }}</h5>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

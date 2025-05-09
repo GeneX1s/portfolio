@@ -63,9 +63,9 @@
     </div> --}}
 
     <div class="mb-3">
-        <label for="description" class="form-label">Deskripsi<small class="text-muted">(optional)</small></label>
-        <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
-            name="description" autofocus value="{{old('description')}}">
+        <label for="description" class="form-label">Deskripsi <small class="text-muted">(optional)</small></label>
+        <textarea class="form-control @error('description') is-invalid @enderror" id="description"
+            name="description" rows="3" autofocus>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur corrupti quae repellendus, et nihil ducimus eius molestiae minima enim ipsum ratione</textarea>
         @error('description')
         <div class="invalid-feedback">
             {{ $message }}
@@ -166,8 +166,8 @@
 
     <div class="mb-3">
         <label for="description" class="form-label">Deskripsi <small class="text-muted">(optional)</small></label>
-        <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
-            name="description" autofocus value="{{old('description')}}">
+        <textarea class="form-control @error('description') is-invalid @enderror" id="description"
+            name="description" rows="3" autofocus>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur corrupti quae repellendus, et nihil ducimus eius molestiae minima enim ipsum ratione</textarea>
         @error('description')
         <div class="invalid-feedback">
             {{ $message }}

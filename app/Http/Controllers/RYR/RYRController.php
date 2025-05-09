@@ -28,7 +28,7 @@ class RYRController extends Controller
         $schedules = $classes->unique('start_time')->pluck('start_time');
         $teachers = ryrTeachers::where('status', 'Active')->get();
         $participants = ryrParticipants::get();
-        $specials = ryrSchedules::where('status', 'Active')->where('tipe', 'Special')->get();
+        $specials = ryrSchedules::where('status', 'Ongoing')->where('tipe', 'Special')->where('tanggal','>=',Carbon::today())->get();
         $blogs = ryrBlogs::where('status', 'Active')->get();
         $galleries = ryrGalleries::get();
         $language = 'id';
@@ -36,6 +36,8 @@ class RYRController extends Controller
             $language = $request->language;
         }
 
+        // dd($specials);
+        // dd(Carbon::parse(now())->format('Y-m-d'));
         return view('ryr/ryr', [
             'classes' => $classes,
             'schedules' => $schedules,

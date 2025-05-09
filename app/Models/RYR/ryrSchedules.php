@@ -27,6 +27,7 @@ class ryrSchedules extends Model
         'end_time',
         'tipe',
         'harga',
+        'description',
         'profit',
     ];
 

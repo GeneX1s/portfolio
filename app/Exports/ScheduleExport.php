@@ -35,6 +35,7 @@ class ScheduleExport implements FromCollection, WithHeadings, WithMapping, WithT
             'End Time',
             'Type',
             'Price',
+            'Description',
             'Profit',
         ];
     }
@@ -57,6 +58,7 @@ class ScheduleExport implements FromCollection, WithHeadings, WithMapping, WithT
             $schedule->end_time,
             $schedule->tipe,
             $schedule->harga,
+            $schedule->description,
             $schedule->profit,
         ];
     }
