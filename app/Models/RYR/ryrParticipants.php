@@ -18,6 +18,7 @@ class ryrParticipants extends Model
   public $timestamps = false;
 
   protected $fillable = [
+    'id',
     'id_member',
     'nama_member',
     'id_kelas',

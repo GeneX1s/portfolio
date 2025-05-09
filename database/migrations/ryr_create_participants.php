@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ryrParticipants', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->primary();
             $table->string('id_member')->nullable(); //bisa aja murid baru atau temporary
             $table->string('nama_member')->nullable();
             $table->string('id_kelas')->required();

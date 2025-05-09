@@ -24,6 +24,7 @@ class AllTablesExport implements WithMultipleSheets
             new ScheduleExport($this->request),
             new ClassExport($this->request),
             new FeatureExport($this->request),
+            new ParticipantExport($this->request),
             // Add more exports here
         ];
     }

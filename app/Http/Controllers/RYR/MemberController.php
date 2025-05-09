@@ -142,7 +142,7 @@ class MemberController extends Controller
                 'id_kelas' => $get_class->id,
                 'nama_kelas' => $get_class->nama_kelas,
                 'tipe' => $member->tipe,
-                'deskripsi' => $member->nama_murid . 'Adalah peserta dari ' . $get_class->nama_kelas,
+                'deskripsi' => $member->nama_murid . ' adalah peserta dari ' . $get_class->nama_kelas,
                 'grup' => 'Template',
                 'payment_status' => '-',
                 'payment_type' => 'Cash',

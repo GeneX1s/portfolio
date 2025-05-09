@@ -24,6 +24,7 @@ class AllTablesImport implements WithMultipleSheets
             new ScheduleImport($this->request),
             new ClassImport($this->request),
             new FeatureImport($this->request),
+            new ParticipantImport($this->request),
             // Add more Imports here
         ];
     }

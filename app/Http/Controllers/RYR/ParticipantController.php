@@ -55,6 +55,7 @@ class ParticipantController extends Controller
             'deskripsi' => 'required',
         ]);
         // dd($input);
+        $input['id'] = $input['id_member'] .'-'.$input['id_kelas'].'-'.now()->format('Y-m-d');
         $input['grup'] = 'Template';
         $input['created_at'] = now();
         $input['updated_at'] = now();
