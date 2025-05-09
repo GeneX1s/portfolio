@@ -637,7 +637,7 @@
                             <h3>{{ $special->class_name }}</h3>
                             <p>Rp.{{ number_format($special->harga, '2', ',', '.') }}</p>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur corrupti quae repellendus, et nihil ducimus eius molestiae minima enim ipsum ratione </p>
-                            <h4>{{ $special->tanggal }}</h4>
+                            <h4>{{ \Carbon\Carbon::parse($special->tanggal)->format('l, d  M  Y') }}</h4>
                             <h5>{{ $special->start_time }} - {{ $special->end_time }}</h5>
                         </div>
                         @endforeach
