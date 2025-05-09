@@ -41,7 +41,7 @@ class ryrClasses extends Model
     'tipe', //public, private
     'teacher',
     'day',
-    'schedule',
+    // 'schedule',
     'start_time',
     'end_time',
     'biaya',

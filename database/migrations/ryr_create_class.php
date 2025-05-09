@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('tipe'); //public, private
             $table->string('teacher');
             $table->string('day');
-            $table->string('schedule');
+            // $table->string('schedule');
             $table->time('start_time')->default('08:00:00');
             $table->time('end_time')->default('17:00:00');
             $table->integer('biaya');

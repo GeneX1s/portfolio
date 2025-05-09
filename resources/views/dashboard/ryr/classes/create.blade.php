@@ -70,7 +70,8 @@
                 <option value="Minggu"> Minggu</option>
             </select>
         </div>
-        <div class="mb-3">
+        
+        {{-- <div class="mb-3">
             <label for="schedule" class="form-label">Schedule Jam</label>
             <select class="form-control" name="schedule">
                 <option value="7AM"> 7.00-8.30</option>
@@ -79,7 +80,7 @@
                 <option value="5PM"> 17.00-18.30</option>
                 <option value="6PM"> 18.30-20.00</option>
             </select>
-        </div>
+        </div> --}}
 
         <div class="mb-3">
             <label for="start_time" class="form-label">Start Time</label>

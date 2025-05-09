@@ -32,7 +32,7 @@ class ClassImport implements ToModel,WithHeadingRow
             'tipe' => $row['type'],
             'teacher' => $row['teacher'],
             'day' => $row['day'],
-            'schedule' => $row['schedule'],
+            // 'schedule' => $row['schedule'],
             'start_time' => $row['start_time'],
             'end_time' => $row['end_time'],
             'biaya' => $row['fee'],

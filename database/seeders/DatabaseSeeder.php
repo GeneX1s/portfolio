@@ -34,19 +34,19 @@ class DatabaseSeeder extends Seeder
             'role' => 'super-admin'
         ]);
 
-        // User::create([
-        //     'username' => 'RYR',
-        //     'email' => 'roemahyogarian@gmail.com',
-        //     'password' => bcrypt('12345'),
-        //     'role' => 'ryr'
-        // ]);
+        User::create([
+            'username' => 'RYR',
+            'email' => 'roemahyogarian@gmail.com',
+            'password' => bcrypt('12345'),
+            'role' => 'ryr'
+        ]);
 
-        // User::create([
-        //     'username' => 'Finance01',
-        //     'email' => 'finance1@gmail.com',
-        //     'password' => bcrypt('Ryr54321!'),
-        //     'role' => 'finance'
-        // ]);
+        User::create([
+            'username' => 'Finance01',
+            'email' => 'finance1@gmail.com',
+            'password' => bcrypt('Ryr54321!'),
+            'role' => 'finance'
+        ]);
 
         SetValue::create([
             'salary' => 1000000,
@@ -97,31 +97,29 @@ class DatabaseSeeder extends Seeder
             'status' => 'Active',
         ]);
 
-        // ryrClasses::create([
-        //     'id' => 'OKTA_060225',
-        //     'nama_kelas' => 'Ashtanga Yoga',
-        //     'tipe' => 'public', // public, private
-        //     'teacher' => 'Okta',
-        //     'schedule' => '6PM',
-        //     'start_time' => '18:30:00',
-        //     'end_time' => '20:00:00',
-        //     'biaya' => 200000,
-        //     'day' => 'Kamis',
-        //     'description' => 'A beginner level yoga class focusing on basic postures and breathing techniques.',
-        // ]);
+        ryrClasses::create([
+            'id' => 'OKTA_060225',
+            'nama_kelas' => 'Ashtanga Yoga',
+            'tipe' => 'public', // public, private
+            'teacher' => 'Okta',
+            'start_time' => '18:30:00',
+            'end_time' => '20:00:00',
+            'biaya' => 75000,
+            'day' => 'Kamis',
+            'description' => 'A beginner level yoga class focusing on basic postures and breathing techniques.',
+        ]);
 
-        // ryrClasses::create([
-        //     'id' => 'OKTA_060226',
-        //     'nama_kelas' => 'Yoga for Intermediate',
-        //     'tipe' => 'public', // public, private
-        //     'teacher' => 'Okta',
-        //     'schedule' => '6PM',
-        //     'start_time' => '08:00:00',
-        //     'end_time' => '08:00:00',
-        //     'biaya' => 200000,
-        //     'day' => 'Jumat',
-        //     'description' => 'An intermediate level yoga class focusing on more advanced postures and breathing techniques.',
-        // ]);
+        ryrClasses::create([
+            'id' => 'RIAN_048292',
+            'nama_kelas' => 'Wallrope Senin Pagi',
+            'tipe' => 'public',
+            'teacher' => 'Rian',
+            'start_time' => '07:00:00',
+            'end_time' => '08:30:00',
+            'biaya' => 100000,
+            'day' => 'Senin',
+            'description' => 'Yoga class focusing on fixing postures using various props.',
+        ]);
 
         ryrMembers::create([
             'nama_murid' => 'Jane Doe',

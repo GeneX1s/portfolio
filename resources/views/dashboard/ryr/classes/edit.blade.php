@@ -61,7 +61,7 @@
                 </select>
             </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="schedule" class="form-label">Schedule</label>
                 <input type="text" class="form-control @error('schedule') is-invalid @enderror" id="schedule"
                     name="schedule" required autofocus value="{{$class->schedule}}">
@@ -70,7 +70,7 @@
                     {{ $message }}
                 </div>
                 @enderror
-            </div>
+            </div> --}}
 
             <div class="mb-3">
                 <label for="start_time" class="form-label">Start Time</label>
