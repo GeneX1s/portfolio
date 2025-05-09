@@ -160,14 +160,14 @@
                 @php
 
                 $groups = ryrParticipants::where('id_member', $member->id)
-                    ->where('grup', 'Template')
-                    ->get();
+                ->where('grup', 'Template')
+                ->get();
                 @endphp
                 <td>
                     @foreach ($groups as $group)
                     {{$group->nama_kelas}},
-                @endforeach
-            </td>
+                    @endforeach
+                </td>
                 <td>
                     <form action="/dashboard/ryr/members/{{$member->id}}" method="post" class="d-inline">
                         @method('delete')
