@@ -71,7 +71,7 @@ return [
     'read_more' => 'baca selengkapnya',
 
     // Client/Testimonial Section
-    'client_section_title' => 'Kata Klien Kami',
+    'client_section_title' => 'Sepatah Kata',
     'client_section_description' => 'Mereka menyukai lingkungan yang damai dan ramah di Roemah Yoga Rian. Mereka menghargai perhatian pribadi dari instruktur berpengalaman kami dan berbagai kelas yang cocok untuk semua tingkat. Bergabunglah dengan komunitas kami dan rasakan kekuatan transformasi yoga.',
     'client_testimonial_1' => 'Roemah Yoga Rian adalah tempat di mana kami percaya pada kekuatan yoga untuk mengubah hidup. Instruktur kami yang berdedikasi dan komunitas yang ramah menjadikannya tempat istimewa untuk berlatih dan berkembang. Bergabunglah dengan kami dan rasakan manfaat yoga untuk diri Anda sendiri.',
     'client_name_1' => 'Rian',

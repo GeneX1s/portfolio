@@ -130,6 +130,7 @@
                                 <i class="zmdi zmdi-zoom-in"></i>
                             </a>
                         </div>
+                        @auth
                         <div class="gallery-options" style="position: absolute; top: 10px; right: 10px; z-index: 10;">
                             <button class="options-button-lg"
                                 style="background: rgba(102, 162, 132, 0.7); border: none; color: white; cursor: pointer; font-size: 20px; padding: 10px 15px; border-radius: 50%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
@@ -157,6 +158,7 @@
                                 </a>
                             </div>
                         </div>
+                        @endauth
                     </div>
                 </div>
 

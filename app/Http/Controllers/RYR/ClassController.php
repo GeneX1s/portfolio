@@ -183,6 +183,21 @@ class ClassController extends Controller
         $teachers = ryrTeachers::where('status', 'Active')->get();
 
         $calendars = ryrSchedules::get();
+        // dd($calendars);
+        if($calendars->isEmpty()) {
+            $events[] = [
+                'id' => '0',
+                'title' => '0',
+                'start' => '0',
+                'end' => '0',
+            ];
+            return view('ryr.class', [
+                'classes' => $classes,
+                'teachers' => $teachers,
+                'calendars' => $calendars,
+                'events' => $events,
+            ]);
+        }
 
         foreach ($calendars as $calendar) {
             $events[] = [
@@ -193,7 +208,7 @@ class ClassController extends Controller
             ];
         }
 
-        // dd($calendars);
+        dd($events);
         return view('ryr.class', [
 
             'classes' => $classes,

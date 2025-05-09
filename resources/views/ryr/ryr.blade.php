@@ -92,7 +92,7 @@
                         </div>
                         @else
                         <div class="header-contact text-end">
-                            <a class="banner-btn" data-text="dashboard" href="/dashboard"><span>{{ __('messages.welcome') }}</span></a>
+                            <a class="banner-btn" data-text="login" href="/dashboard"><span>dashboard</span></a>
                         </div>
 
                         @endif
@@ -119,10 +119,9 @@
                             <div class="col-lg-7">
                                 <div class="text-content-wrapper">
                                     <div class="text-content text-start">
-                                        <h5>Welcome to Roemah Yoga Rian</h5>
+                                        <h5>{{ __('messages.welcome_hero') }}</h5>
                                         <h1>Keep Your Body <span>Strengthened & Refreshed</span></h1>
-                                        <p>Discover the power of yoga to transform your mind, body, and spirit in a
-                                            welcoming and peaceful environment.</p>
+                                        <p>{{ __('messages.hero1_text') }}</p>
                                         <a class="banner-btn" href="/ryr/gallery" data-text="read more"><span>read
                                                 more</span></a>
                                     </div>
@@ -139,10 +138,9 @@
                             <div class="col-lg-7">
                                 <div class="text-content-wrapper">
                                     <div class="text-content text-start">
-                                        <h5>Welcome to Roemah Yoga Rian</h5>
+                                        <h5>{{ __('messages.welcome_hero') }}</h5>
                                         <h1><span>Revitalize</span> Your Body & Build <span>Resilience</span></h1>
-                                        <p>Uncover the benefits of yoga to nurture your body, calm your mind, and
-                                            rejuvenate your spirit in a supportive and serene space.</p>
+                                        <p>{{ __('messages.hero2_text') }}</p>
 
                                         <a class="banner-btn" href="/ryr/gallery" data-text="read more"><span>read
                                                 more</span></a>
@@ -162,22 +160,13 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="about-content">
-                        <h2>about Roemah Yoga Rian</h2>
-                        <p class="m-0">Welcome to Roemah Yoga Rian, your serene space to explore the transformative
-                            power of yoga. Our studio offers a variety of yoga styles designed to promote physical
-                            strength, mental clarity, and emotional balance. Whether you're a beginner or an advanced
-                            practitioner, our experienced instructors guide you through each session with personalized
-                            attention, ensuring you deepen your practice at your own pace.</p>
+                        <h2>{{ __('messages.about_title') }}</h2>
+                        <p class="m-0">{{ __('messages.about_paragraph1') }}</p>
                         <p>
-                            We believe that yoga is not just a workout, but a holistic approach to wellness that
-                            nurtures the mind, body, and spirit. Join us for our calming and invigorating classes,
-                            including Vinyasa, Hatha, Yin, and Restorative Yoga, all set in a peaceful and welcoming
-                            environment.
+                            {{ __('messages.about_paragraph2') }}
                         </p>
                         <p>
-                            At Roemah Yoga Rian, we aim to create a community where individuals can cultivate
-                            mindfulness, reduce stress, and enhance overall well-being. Take your first step towards a
-                            healthier lifestyle today!</p>
+                            {{ __('messages.about_paragraph3') }}</p>
                         <a class="banner-btn" href="ryr/about-us" data-text="read more"><span>read more</span></a>
                     </div>
                 </div>
@@ -205,12 +194,11 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="section-title text-center">
-                        <h2>our classes</h2>
+                        <h2>{{ __('messages.our_classes') }}</h2>
                         {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                             issss has been the
                             industry's standard dummy text ever since the 1500s, when an unknown lorem </p> --}}
-                        <p>Here are a list of our variety of classes in Roemah Yoga Rian. Feel free to try out all our
-                            classes!</p>
+                        <p>{{ __('messages.our_classes_description') }}</p>
                     </div>
                 </div>
             </div>
@@ -288,8 +276,7 @@
             </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <a class="banner-btn mt-55" href="/ryr/class" data-text="view all classes"><span>view all
-                            classes</span></a>
+                    <a class="banner-btn mt-55" href="/ryr/class" data-text="view all classes"><span>{{ __('messages.view_all_classes') }}</span></a>
                 </div>
             </div>
         </div>
@@ -301,9 +288,8 @@
             <div class="row">
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title">
-                        <h2>class schedule</h2>
-                        <p>Check out our weekly class schedule to find the perfect time for your yoga practice. We offer
-                            a variety of classes throughout the week to fit your busy lifestyle.</p>
+                        <h2>{{ __('messages.class_schedule') }}</h2>
+                        <p>{{ __('messages.class_schedule_description') }}</p>
                     </div>
                 </div>
             </div>
@@ -313,14 +299,14 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Time</th>
-                                    <th>saturday</th>
-                                    <th>sunday</th>
-                                    <th>monday</th>
-                                    <th>tuesday</th>
-                                    <th>wednesday</th>
-                                    <th>thursday</th>
-                                    <th>friday</th>
+                                    <th>{{ __('messages.schedule_time') }}</th>
+                                    <th>{{ __('messages.schedule_saturday') }}</th>
+                                    <th>{{ __('messages.schedule_sunday') }}</th>
+                                    <th>{{ __('messages.schedule_monday') }}</th>
+                                    <th>{{ __('messages.schedule_tuesday') }}</th>
+                                    <th>{{ __('messages.schedule_wednesday') }}</th>
+                                    <th>{{ __('messages.schedule_thursday') }}</th>
+                                    <th>{{ __('messages.schedule_friday') }}</th>
                                 </tr>
                             </thead>
                             @php
@@ -377,9 +363,7 @@
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
                         <h2>teachers</h2>
-                        <p>Our experienced and passionate yoga instructors are dedicated to guiding you on your journey
-                            toward physical and mental well-being. With diverse expertise in various yoga styles, they
-                            create a supportive environment where every student can thrive and grow in their practice.
+                        <p>{{ __('messages.teachers_description') }}
                         </p>
                     </div>
                 </div>
@@ -470,7 +454,7 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="test-content">
                         <div class="section-title text-center">
-                            <h2>our gallery</h2>
+                            <h2>gallery</h2>
                             {{-- <p>Explore our gallery to see the vibrant moments captured at Roemah Yoga Rian. From serene
                                 yoga sessions to community events, our gallery showcases the essence of our studio and
                                 the joy of our members.</p> --}}
@@ -645,9 +629,7 @@
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
                         <h2>awesome events</h2>
-                        <p>Join us for our exciting events that celebrate the spirit of yoga and community. From
-                            workshops to special classes, there's always something happening at Roemah Yoga Rian. Stay
-                            tuned for our upcoming events and be a part of our vibrant community.</p>
+                        <p>{{ __('messages.events_description') }}</p>
                     </div>
                     <div class="event-wrapper">
                         <div class="event-content text-center">
@@ -668,10 +650,8 @@
                 <div class="row">
                     <div class="col-lg-8 offset-xl-2 offset-lg-2">
                         <div class="section-title text-center">
-                            <h2>our blog</h2>
-                            <p>Stay updated with our latest blog posts and insights on yoga, wellness, and healthy living.
-                                Our blog is a great resource for tips, inspiration, and information to support your yoga
-                                journey.</p>
+                            <h2>blog</h2>
+                            <p>{{ __('messages.blog_description') }}</p>
                         </div>
                     </div>
                 </div>
@@ -691,7 +671,7 @@
                                 <h3><a href="/blog/{{ $blog->id }}">{{ $blog->title }}</a></h3>
                                 <h6>{{ $blog->updated_at }}</h6>
                                 <p>{{$blog->body}}</p>
-                                <a href="/blog/{{ $blog->id }}">read more</a>
+                                <a href="/blog/{{ $blog->id }}">{{ __('messages.read_more') }}</a>
                             </div>
                         </div>
                     </div>
@@ -814,10 +794,10 @@
             <div class="row">
                 <div class="col-lg-8 offset-xl-2 offset-lg-2">
                     <div class="section-title text-center">
-                        <h2>Our Client Say</h2>
-                        <p>They love the peaceful and welcoming environment at Roemah Yoga Rian. They appreciate the
+                        <h2>{{ __('messages.client_section_title') }}</h2>
+                        {{-- <p>They love the peaceful and welcoming environment at Roemah Yoga Rian. They appreciate the
                             personalized attention from our experienced instructors and the variety of classes that
-                            cater to all levels. Join our community and experience the transformative power of yoga.</p>
+                            cater to all levels. Join our community and experience the transformative power of yoga.</p> --}}
                     </div>
                 </div>
             </div>
@@ -828,9 +808,7 @@
                             <div class="col-12">
                                 <div class="single-testimonial">
                                     <i class="zmdi zmdi-quote"></i>
-                                    <p>Roemah Yoga Rian is a place where we believe in the power of yoga to transform
-                                        lives. Our dedicated instructors and welcoming community make it a special place
-                                        to practice and grow. Join us and experience the benefits of yoga for yourself.
+                                    <p>{{ __('messages.client_testimonial_1') }}
                                     </p>
                                     <h4 style="font-family: 'Great Vibes', cursive;">Rian</h4>
                                     {{-- <img src="portfolio2/img/icon/signature.webp" alt="signature"> --}}
@@ -879,7 +857,7 @@
                             <h2>subscribe now for latest update!</h2>
                             <div class="newsletter-form">
                                 <form action="#" id="mc-form" class="mc-form fix">
-                                    <input id="mc-email" type="email" name="email" placeholder="Enter Your E-mail ID">
+                                    <input id="mc-email" type="email" name="email" placeholder={{ __('messages.newsletter_placeholder') }}>
                                     <button id="mc-submit" type="submit" class="default-btn"
                                         data-text="submit"><span>submit</span></button>
                                 </form>
@@ -906,7 +884,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
                             <a href="/portfolio"><img src="portfolio2//img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
-                            <p>Contact us here, for further inquiries or questions.
+                            <p>{{ __('messages.footer_contact_title') }}
                             </p>
                             <ul>
                                 <li><i class="zmdi zmdi-email"></i> apriyanti_lesmana@gmail.com</li>
@@ -918,7 +896,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <h3>Our Social Media</h3>
+                            <h3>Social Media</h3>
                             <ul class="social-icons">
                                 <li><a
                                         href="https://www.facebook.com/people/Roemah-Yoga-Rian/pfbid021qFFWSgGsUgBWdks587Zr6U5yZqQmTXw4MzCW4j6HS8DsbpH4n6AzDA1qkx8S6tVl/"><i

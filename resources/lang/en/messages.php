@@ -54,7 +54,7 @@ return [
     'teachers_description' => 'Our experienced and passionate yoga instructors are dedicated to guiding you on your journey toward physical and mental well-being. With diverse expertise in various yoga styles, they create a supportive environment where every student can thrive and grow in their practice.',
 
     // Gallery Section
-    'gallery_title' => 'our gallery',
+    'gallery_title' => 'gallery',
     'gallery_add_new' => 'Add New Item',
     // Optional description if reused later:
     // 'gallery_description' => 'Explore our gallery to see the vibrant moments captured at Roemah Yoga Rian. From serene yoga sessions to community events, our gallery showcases the essence of our studio and the joy of our members.',
@@ -78,7 +78,7 @@ return [
     'event_time' => '06:00 AM - 07:30 AM',
 
     // Blog Section
-    'blog_title' => 'our blog',
+    'blog_title' => 'blog',
     'blog_description' => 'Stay updated with our latest blog posts and insights on yoga, wellness, and healthy living. Our blog is a great resource for tips, inspiration, and information to support your yoga journey.',
     'read_more' => 'read more',
 
@@ -88,7 +88,7 @@ return [
 return [
 
     // Client/Testimonial Section
-    'client_section_title' => 'Our Client Say',
+    'client_section_title' => 'A Word From the Founder',
     'client_section_description' => 'They love the peaceful and welcoming environment at Roemah Yoga Rian. They appreciate the personalized attention from our experienced instructors and the variety of classes that cater to all levels. Join our community and experience the transformative power of yoga.',
     'client_testimonial_1' => 'Roemah Yoga Rian is a place where we believe in the power of yoga to transform lives. Our dedicated instructors and welcoming community make it a special place to practice and grow. Join us and experience the benefits of yoga for yourself.',
     'client_name_1' => 'Rian',
@@ -105,7 +105,7 @@ return [
     'footer_phone' => '(+62 812 8090 0988)',
     'footer_address' => 'Jl. Krekot Bunder 3 No.47 | Sawah Besar | Ps.Baru | Jakarta Pusat',
 
-    'footer_social_title' => 'Our Social Media',
+    'footer_social_title' => 'Social Media',
     'footer_facebook' => 'Facebook',
     'footer_instagram' => 'Instagram',
 
