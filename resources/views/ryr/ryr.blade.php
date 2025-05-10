@@ -131,7 +131,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single-slide" style="background-image: url('portfolio2/img/slider/slider2.webp');">
+            <div class="single-slide" style="background-image: url('portfolio2/img/slider/slider2.png');">
                 <div class="slider-content">
                     <div class="container">
                         <div class="row">
