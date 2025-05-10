@@ -112,7 +112,7 @@
     <!-- Background Area Start -->
     <div class="slider-area">
         <div class="slider-wrapper">
-            <div class="single-slide" style="background-image: url('portfolio2/img/slider/slider1.webp');">
+            <div class="single-slide" style="background-image: url('portfolio2/img/slider/slider1.png');">
                 <div class="slider-content">
                     <div class="container">
                         <div class="row">
