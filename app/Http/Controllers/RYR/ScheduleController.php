@@ -247,7 +247,7 @@ class ScheduleController extends Controller
                     'id_schedule' => $id,
                 ];
 
-                $input['id'] = $input['id_member'] .'-'.$input['id_kelas'].'-'.now()->format('Y-m-d');
+                $input['id'] = $input['id_member'] . '-' . $input['id_kelas'] . '-' . now()->format('Y-m-d');
 
                 $input['grup'] = 'Schedule';
                 $input['payment_status'] = 'Pending';
@@ -258,47 +258,53 @@ class ScheduleController extends Controller
 
         // Loop through the participants array from the request
 
+
         if (!$request->participants == null)
             foreach ($request->participants as $participant) {
-
                 $member = ryrMembers::where('id', $participant['id_member'])->first();
-                $template = ryrParticipants::where('id', $participant['id_member'])->where('grup', 'Template')->first();
+                $checkexist = ryrParticipants::where('id_member', $participant['id_member'])->where('grup', 'Schedule')->where('id_kelas', $schedule->class_id)->first();
 
-                $participant['nama_member'] = $member->nama_member;
-                $participant['id_kelas'] = $member->id_kelas;
-                $participant['nama_kelas'] = $member->nama_kelas;
-                $participant['tipe'] = $member->tipe;
-                $participant['deskripsi'] = $member->deskripsi;
+                if (!$checkexist) {
+                    // return null;
 
-                // if ($member['tipe'] != 'Regular') {
+                    $template = ryrParticipants::where('id', $participant['id_member'])->where('grup', 'Template')->first();
 
-                //     $payType = 'Bulanan';
-                // }
-                if ($template) {
-                    $payType = $template->payment_type;
-                } else {
-                    $payType = 'Cash';
+                    $participant['nama_member'] = $member->nama_member;
+                    $participant['id_kelas'] = $member->id_kelas;
+                    $participant['nama_kelas'] = $member->nama_kelas;
+                    $participant['tipe'] = $member->tipe;
+                    $participant['deskripsi'] = $member->deskripsi;
+
+                    // if ($member['tipe'] != 'Regular') {
+
+                    //     $payType = 'Bulanan';
+                    // }
+                    if ($template) {
+                        $payType = $template->payment_type;
+                    } else {
+                        $payType = 'Cash';
+                    }
+
+
+                    $input = [
+                        'id_kelas' => $schedule->class_id,
+                        'id_member' => $participant['id_member'],
+                        'nama_member' => $member->nama_murid,
+                        'nama_kelas' => $schedule->class_name,
+                        'tipe' => $member->tipe,
+                        'grup' => 'Schedule',
+                        // 'harga' => $participant['harga'],
+                        'payment_type' => $payType,
+                        'id_schedule' => $id,
+                        'deskripsi' => $member->deskripsi,
+                    ];
+                    $input['id'] = $input['id_member'] . '-' . $input['id_kelas'] . '-' . now()->format('Y-m-d');
+                    $input['grup'] = 'Schedule';
+                    $input['payment_status'] = 'Pending';
+                    $input['deskripsi'] = 'Peserta reguler';
+                    // dd($input);
+                    ryrParticipants::create($input);
                 }
-
-
-                $input = [
-                    'id_kelas' => $schedule->class_id,
-                    'id_member' => $participant['id_member'],
-                    'nama_member' => $member->nama_murid,
-                    'nama_kelas' => $schedule->class_name,
-                    'tipe' => $member->tipe,
-                    'grup' => 'Schedule',
-                    // 'harga' => $participant['harga'],
-                    'payment_type' => $payType,
-                    'id_schedule' => $id,
-                    'deskripsi' => $member->deskripsi,
-                ];
-                $input['id'] = $input['id_member'] .'-'.$input['id_kelas'].'-'.now()->format('Y-m-d');
-                $input['grup'] = 'Schedule';
-                $input['payment_status'] = 'Pending';
-                $input['deskripsi'] = 'Peserta reguler';
-                // dd($input);
-                ryrParticipants::create($input);
             }
 
 
@@ -444,15 +450,16 @@ class ScheduleController extends Controller
         // return redirect()->back()->with('success', 'Value updated successfully.');
     }
 
-    public function pay($id){
+    public function pay($id)
+    {
 
         // $schedules = ryrSchedules::where('id', $id)->first();
         $participant = ryrParticipants::where('id', $id)->first();
         $input = [];
 
-        if($participant->payment_status == 'Done'){
+        if ($participant->payment_status == 'Done') {
             $input['payment_status'] = 'Pending';
-        }else{
+        } else {
             $input['payment_status'] = 'Done';
         }
 

@@ -127,16 +127,21 @@ class MemberController extends Controller
     public function editGroup(Request $request, $id)
     {
 
+        // dd($request->all());
+        // dd($id);
         foreach ($request->classes as $class) {
 
-
-            if (!ryrParticipants::where('id_kelas', $class)->exists()) {
-
-
+            // dd($class['id_class']);
             $member = ryrMembers::where('id', $id)->first();
 
-            $get_class = ryrClasses::where('id', $class)->first();
+            if (!ryrParticipants::where('id_kelas', $class['id_class'])->where('grup','Template')->where('id_member',$id)->exists()) {//anti duplikat
+
+            $get_class = ryrClasses::where('id', $class['id_class'])->first();
+
+            $id_input = $id . '-' . $get_class->id . '-' . now()->format('Y-m-d');
+            // dd($request);
             ryrParticipants::create([
+                'id' => $id_input,
                 'id_member' => $member->id,
                 'nama_member' => $member->nama_murid,
                 'id_kelas' => $get_class->id,
