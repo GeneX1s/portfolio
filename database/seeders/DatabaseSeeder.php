@@ -79,9 +79,9 @@ class DatabaseSeeder extends Seeder
             'salary' => '5000000',
             'join_date' => now(),
             'dob' => '1990-01-01',
-            'jenis_kelamin' => 'Male',
+            'jenis_kelamin' => 'Pria',
             'instagram' => 'oktapa',
-            'deskripsi' => 'A dedicated teacher with 10 years of experience.',
+            'deskripsi' => 'Ashtanga yoga teacher.',
             'status' => 'Active',
         ]);
 
@@ -90,10 +90,34 @@ class DatabaseSeeder extends Seeder
             'salary' => '0',
             'join_date' => now(),
             'dob' => '1976-04-22',
-            'jenis_kelamin' => 'Female',
+            'jenis_kelamin' => 'Wanita',
             'instagram' => 'rianyogini',
             // 'instagram' => 'https://www.instagram.com/rianyogini/',
-            'deskripsi' => 'A dedicated teacher with 10 years of experience.',
+            'deskripsi' => 'Hatha and wallrope teacher.',
+            'status' => 'Active',
+        ]);
+
+        ryrTeachers::create([
+            'nama' => 'Agung',
+            'salary' => '0',
+            'join_date' => now(),
+            'dob' => '',
+            'jenis_kelamin' => 'Pria',
+            'instagram' => 'a_putrawijaya',
+            // 'instagram' => 'https://www.instagram.com/rianyogini/',
+            'deskripsi' => 'Hatha yoga teacher.',
+            'status' => 'Active',
+        ]);
+
+        ryrTeachers::create([
+            'nama' => 'Yenkhe',
+            'salary' => '0',
+            'join_date' => now(),
+            'dob' => '',
+            'jenis_kelamin' => 'Wanita',
+            'instagram' => 'yenkhe_l',
+            // 'instagram' => 'https://www.instagram.com/rianyogini/',
+            'deskripsi' => 'Basic yoga teacher.',
             'status' => 'Active',
         ]);
 
@@ -122,32 +146,72 @@ class DatabaseSeeder extends Seeder
         ]);
 
         ryrMembers::create([
-            'nama_murid' => 'Jane Doe',
-            'tipe' => 'Regular',
+            'nama_murid' => 'Yanna',
+            'tipe' => 'Bulanan Special',
             'join_date' => now(),
             'total_attendance' => 0,
             'dob' => '1995-05-15',
-            'jenis_kelamin' => 'Female',
-            'deskripsi' => 'A dedicated member of the yoga class.',
+            'jenis_kelamin' => 'Wanita',
+            'deskripsi' => '',
         ]);
 
         ryrMembers::create([
-            'nama_murid' => 'Alice Smith',
-            'tipe' => 'Regular',
+            'nama_murid' => 'Lia',
+            'tipe' => 'Bulanan Special',
             'join_date' => now(),
             'total_attendance' => 0,
             'dob' => '1990-10-10',
-            'jenis_kelamin' => 'Female',
+            'jenis_kelamin' => 'Wanita',
+            'deskripsi' => '',
+        ]);
+
+        ryrMembers::create([
+            'nama_murid' => 'Kristin Hung',
+            'tipe' => 'Non-Member',
+            'join_date' => now(),
+            'total_attendance' => 0,
+            'dob' => '1992-12-25',
+            'jenis_kelamin' => 'Wanita',
+            'deskripsi' => '',
+        ]);
+
+        ryrMembers::create([
+            'nama_murid' => 'Thomas',
+            'tipe' => 'Bulanan 1',
+            'join_date' => now(),
+            'total_attendance' => 0,
+            'dob' => '1992-12-25',
+            'jenis_kelamin' => 'Pria',
             'deskripsi' => 'A dedicated member of the yoga class.',
         ]);
 
         ryrMembers::create([
-            'nama_murid' => 'Bob Johnson',
-            'tipe' => 'Regular',
+            'nama_murid' => 'Aicu',
+            'tipe' => 'Non-Member',
             'join_date' => now(),
             'total_attendance' => 0,
             'dob' => '1992-12-25',
-            'jenis_kelamin' => 'Male',
+            'jenis_kelamin' => 'Wanita',
+            'deskripsi' => 'A dedicated member of the yoga class.',
+        ]);
+
+        ryrMembers::create([
+            'nama_murid' => 'Patricia',
+            'tipe' => 'Non-Member',
+            'join_date' => now(),
+            'total_attendance' => 0,
+            'dob' => '1992-12-25',
+            'jenis_kelamin' => 'Wanita',
+            'deskripsi' => 'A dedicated member of the yoga class.',
+        ]);
+
+        ryrMembers::create([
+            'nama_murid' => 'Yenkhe',
+            'tipe' => 'Non-Member',
+            'join_date' => now(),
+            'total_attendance' => 0,
+            'dob' => '1992-12-25',
+            'jenis_kelamin' => 'Wanita',
             'deskripsi' => 'A dedicated member of the yoga class.',
         ]);
     }
