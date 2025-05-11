@@ -61,18 +61,13 @@ class ClassController extends Controller
     {
 
         $input = $request->all();
-        // dd($input['day']);
-        // foreach($input['day'] as $day) {
-        // }
 
-        // dd($day);
         $merge = implode(',', $input['day']);
         $input['day'] = $merge;
         // dd($input['day']);
         $code = Str::random(5);
         $input['id'] = $input['teacher'] . '-' . $code;
         $input['created_at'] = now();
-        $input['updated_at'] = now();
 
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
             $this->uploadFoto($request);
@@ -112,6 +107,9 @@ class ClassController extends Controller
         $input['updated_at'] = now();
         $input = $request->all();
         $class = ryrClasses::findOrFail($id);
+        $merge = implode(',', $input['day']);
+        $input['day'] = $merge;
+        
         // dd($input);
         $input['id'] = $class->id;
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
