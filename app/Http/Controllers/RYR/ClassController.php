@@ -59,18 +59,16 @@ class ClassController extends Controller
 
     public function store(Request $request)
     {
-        // $input = $request->validate([
-        //     'nama_kelas' => 'required',
-        //     'teacher' => 'required',
-        //     'day' => 'required',
-        //     'schedule' => 'required',
-        //     'biaya' => 'required',
-        //     'tipe' => 'required',
-        //     'description' => 'nullable',
-        //     'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
-        // ]);
+
         $input = $request->all();
-        // dd($input);
+        // dd($input['day']);
+        // foreach($input['day'] as $day) {
+        // }
+
+        // dd($day);
+        $merge = implode(',', $input['day']);
+        $input['day'] = $merge;
+        // dd($input['day']);
         $code = Str::random(5);
         $input['id'] = $input['teacher'] . '-' . $code;
         $input['created_at'] = now();

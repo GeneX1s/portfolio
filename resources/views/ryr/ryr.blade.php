@@ -329,7 +329,9 @@
                                     </td>
                                     @foreach ($days as $key => $day)
                                     @php
-                                    $class = $classes->firstWhere('start_time', $schedule)->where('day', $day)->first();
+                                    $class = $classes->where('start_time', $schedule)->filter(function ($item) use ($day) {
+                                        return stripos($item->day, $day) !== false;
+                                    })->first();
                                     @endphp
                                     @if($class && $class['start_time'] == $schedule)
                                     <td class="{{ $colors[$key] }}">

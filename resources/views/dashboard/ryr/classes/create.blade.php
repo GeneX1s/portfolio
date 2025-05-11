@@ -58,19 +58,54 @@
             </select>
         </div>
 
+        {{-- <div class="mb-3">
+            <label for="day" class="form-label">Day</label>
+            <select class="form-control" name="day[]" multiple>
+            <option value="Senin"> Senin</option>
+            <option value="Selasa"> Selasa</option>
+            <option value="Rabu"> Rabu</option>
+            <option value="Kamis"> Kamis</option>
+            <option value="Jumat"> Jumat</option>
+            <option value="Sabtu"> Sabtu</option>
+            <option value="Minggu"> Minggu</option>
+            </select>
+            <small class="text-muted">Hold down the Ctrl (Windows) or Command (Mac) button to select multiple options.</small>
+        </div> --}}
         <div class="mb-3">
             <label for="day" class="form-label">Day</label>
-            <select class="form-control" name="day">
-                <option value="Senin"> Senin</option>
-                <option value="Selasa"> Selasa</option>
-                <option value="Rabu"> Rabu</option>
-                <option value="Kamis"> Kamis</option>
-                <option value="Jumat"> Jumat</option>
-                <option value="Sabtu"> Sabtu</option>
-                <option value="Minggu"> Minggu</option>
-            </select>
+            <div>
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="day[]" id="monday" value="Senin">
+            <label class="form-check-label" for="monday">Senin</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="day[]" id="tuesday" value="Selasa">
+            <label class="form-check-label" for="tuesday">Selasa</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="day[]" id="wednesday" value="Rabu">
+            <label class="form-check-label" for="wednesday">Rabu</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="day[]" id="thursday" value="Kamis">
+            <label class="form-check-label" for="thursday">Kamis</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="day[]" id="friday" value="Jumat">
+            <label class="form-check-label" for="friday">Jumat</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="day[]" id="saturday" value="Sabtu">
+            <label class="form-check-label" for="saturday">Sabtu</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="day[]" id="sunday" value="Minggu">
+            <label class="form-check-label" for="sunday">Minggu</label>
+            </div>
+            </div>
+            <small class="text-muted">You can select multiple days.</small>
         </div>
-        
+
         {{-- <div class="mb-3">
             <label for="schedule" class="form-label">Schedule Jam</label>
             <select class="form-control" name="schedule">
