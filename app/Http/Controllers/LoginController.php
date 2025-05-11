@@ -136,13 +136,14 @@ class LoginController extends Controller
     public function update(Request $request, User $user)
     {
 
-        $id = Auth::id();
-        $user = User::where('id', $id)->first();
+        // $id = Auth::id();
+        $user = User::where('id', $user->id)->first();
 
         $request->validate([
             'password' => 'required',
         ]);
 
+        // dd($user->id);
         if ($user->role == 'finance') {
             // if ($user->wasChanged()) {
             if ($user->updated_at == '2001-01-01 00:00:00') {
@@ -167,7 +168,7 @@ class LoginController extends Controller
 
 
         // Redirect or respond as needed
-        return redirect('/dashboard/users/index')->with('success', 'Password updated.');
+        return redirect('/dashboard/users/index')->with('success', 'User updated.');
     }
 
     public function list(Request $request)
