@@ -38,7 +38,8 @@
                                     {{-- <li><a href="ryr/about-us">About us</a></li> --}}
                                     <li><a href="/ryr/class">classes</a></li>
                                     <li><a href="/ryr/gallery">gallery</a></li>
-                                    <li><a href="/ryr/blog">blog</a></li>
+                                    <li><a href="ryr/blog">blog</a></li>
+                                    <li><a href="ryr/teacher">teacher</a></li>
                                     {{-- <li><a href="ryr/contact">Contact</a></li> --}}
                                 </ul>
                             </nav>
@@ -56,31 +57,31 @@
         </div>
     </div>
 </header>
-    <!-- Header Area End -->
-    <!-- Banner Area Start -->
-    <section class="banner-area text-start">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="banner-content-wrapper">
-                        <div class="banner-content">
-                            <h2>blog</h2>
-                            <div class="banner-breadcrumb">
-                                <ul>
-                                    <li><a href="/">home </a> <i class="zmdi zmdi-chevron-right"></i></li>
-                                    <li>blog</li>
-                                </ul>
-                            </div>
+<!-- Header Area End -->
+<!-- Banner Area Start -->
+<section class="banner-area text-start">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="banner-content-wrapper">
+                    <div class="banner-content">
+                        <h2>blog</h2>
+                        <div class="banner-breadcrumb">
+                            <ul>
+                                <li><a href="/">home </a> <i class="zmdi zmdi-chevron-right"></i></li>
+                                <li>blog</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Banner Area End -->
-    @if (auth()->check())
-    {{-- <div class="text-center"> --}}
-        <div class="text-end" style="margin-right: 500px;">
+    </div>
+</section>
+<!-- Banner Area End -->
+@if (auth()->check())
+{{-- <div class="text-center"> --}}
+    <div class="text-end" style="margin-right: 500px;">
         <a href="{{ route('blog.create') }}" class="default-btn"
             style="background-color: #5fc7ae; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
             Add New Item
@@ -216,7 +217,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
+                            <a href="/portfolio"><img src="/../../portfolio2/img/logo/logo.webp"
+                                    alt="Roemah Yoga Rian"></a>
                             <p>Contact us here, for further inquiries or questions.
                             </p>
                             <ul>
@@ -307,7 +309,7 @@
     <script src="/../../portfolio2/js/jquery.magnific-popup.js" defer></script>
     <script src="/../../portfolio2/js/plugins.js" defer></script>
     <script src="/../../portfolio2/js/main.js" defer></script>
-</body>
+    </body>
 
 
 </html>

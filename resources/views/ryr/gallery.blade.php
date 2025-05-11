@@ -48,7 +48,8 @@
                                         {{-- <li><a href="/ryr/about-us">About us</a></li> --}}
                                         <li><a href="/ryr/class">classes</a></li>
                                         <li><a href="/ryr/gallery">gallery</a></li>
-                                        <li><a href="/ryr/blog">blog</a></li>
+                                        <li><a href="ryr/blog">blog</a></li>
+                                        <li><a href="ryr/teacher">teacher</a></li>
                                         {{-- <li><a href="/ryr/contact">Contact</a></li> --}}
                                     </ul>
                                 </nav>

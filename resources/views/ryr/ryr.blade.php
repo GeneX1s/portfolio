@@ -54,6 +54,7 @@
                                         <li><a href="ryr/class">classes</a></li>
                                         <li><a href="ryr/gallery">gallery</a></li>
                                         <li><a href="ryr/blog">blog</a></li>
+                                        <li><a href="ryr/teacher">teacher</a></li>
                                         @if (auth()->check())
 
                                         <li>

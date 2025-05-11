@@ -105,7 +105,7 @@ class TeacherController extends Controller
 
         $teacher = ryrTeachers::findOrFail($id);
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            if($teacher->foto){
+            if ($teacher->foto) {
                 $this->deleteFoto($teacher->foto);
             }
             $this->uploadFoto($request);
@@ -120,7 +120,7 @@ class TeacherController extends Controller
     public function destroy($id)
     {
         $teacher = ryrTeachers::findOrFail($id);
-        if($teacher->foto){
+        if ($teacher->foto) {
             $this->deleteFoto($teacher->foto);
         }
         $teacher->delete();
@@ -162,13 +162,21 @@ class TeacherController extends Controller
         return response()->json(['message' => 'File not found'], 404);
     }
 
-    public function teacherDetail($teacherId){
+    public function teacherDetail($teacherId)
+    {
 
         $teacher = ryrTeachers::where('id', $teacherId)->first();
 
         return view('ryr.teachers.detail', [
             'teacher' => $teacher,
         ]);
+    }
 
+    public function profile(Request $request)
+    {
+        $teachers = ryrTeachers::all();
+        return view('dashboard.ryr.teachers.index', [
+            'teachers' => $teachers,
+        ]);
     }
 }

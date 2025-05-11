@@ -23,7 +23,7 @@
 
 <script src='../portfolio2/js/calendar/index.global.js'></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -78,9 +78,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <ul>
                                         <li><a href="/">Home</a></li>
                                         {{-- <li><a href="/ryr/about-us">About us</a></li> --}}
-                                        <li><a href="/ryr/class">classes</a></li>
-                                        <li><a href="/ryr/gallery">gallery</a></li>
-                                        <li><a href="/ryr/blog">blog</a></li>
+                                        <li><a href="ryr/class">classes</a></li>
+                                        <li><a href="ryr/gallery">gallery</a></li>
+                                        <li><a href="ryr/blog">blog</a></li>
+                                        <li><a href="ryr/teacher">teacher</a></li>
                                         {{-- <li><a href="/ryr/contact">Contact</a></li> --}}
                                     </ul>
                                 </nav>
@@ -192,32 +193,32 @@ document.addEventListener('DOMContentLoaded', function() {
     </section>
 
     <!-- Create Event Modal -->
-<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="eventForm" class="modal-content" action="{{ url('/dashboard/ryr/schedules') }}" method="POST">
-            @csrf
-            <input type="hidden" name="start" id="event-start">
-            <input type="hidden" name="end" id="event-end">
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="eventForm" class="modal-content" action="{{ url('/dashboard/ryr/schedules') }}" method="POST">
+                @csrf
+                <input type="hidden" name="start" id="event-start">
+                <input type="hidden" name="end" id="event-end">
 
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="class_name" class="form-label">Class Name</label>
-                    <input type="text" class="form-control" id="class_name" name="class_name" required>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="class_name" class="form-label">Class Name</label>
+                        <input type="text" class="form-control" id="class_name" name="class_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="teacher_name" class="form-label">Teacher Name</label>
+                        <input type="text" class="form-control" id="teacher_name" name="teacher_name" required>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="teacher_name" class="form-label">Teacher Name</label>
-                    <input type="text" class="form-control" id="teacher_name" name="teacher_name" required>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Event</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save Event</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-
+            </form>
         </div>
+    </div>
+
+
+    </div>
     </div>
 
     <!-- Schedule Area End -->
