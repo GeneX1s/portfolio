@@ -136,14 +136,22 @@ class LoginController extends Controller
     public function update(Request $request, User $user)
     {
 
-        // $id = Auth::id();
-        $user = User::where('id', $user->id)->first();
 
-        $request->validate([
-            'password' => 'required',
-        ]);
+        $input = $request->all();
 
-        // dd($user->id);
+        $id = Auth::id();
+        // dd($user['id']);
+        if ($user['id'] != null) {
+            $user = User::where('id', $user['id'])->first();
+            $redirect = '/dashboard/users/index';
+        } else {
+            $user = User::where('id', $id)->first();
+            $input['username'] = $user->username;
+            $input['email'] = $user->email;
+            $input['role'] = $user->role;
+            $redirect = '/dashboard/users/manage';
+        }
+
         if ($user->role == 'finance') {
             // if ($user->wasChanged()) {
             if ($user->updated_at == '2001-01-01 00:00:00') {
@@ -152,23 +160,25 @@ class LoginController extends Controller
             }
         }
 
-        $input = $request->all();
-        if($user->role == 'finance') {
+        if ($user->role == 'finance') {
             $input['updated_at'] = '2001-01-01';
-        }else{
+        } else {
             $input['updated_at'] = now();
         }
         $password = bcrypt($input['password']);
         $user->update([
             // 'email' => $input['email'],
+            'username' => $input['username'],
+            'email' => $input['email'],
             'password' => $password,
+            'role' => $input['role'],
             'updated_at' => $input['updated_at'],
         ]);
 
 
 
         // Redirect or respond as needed
-        return redirect('/dashboard/users/index')->with('success', 'User updated.');
+        return redirect($redirect)->with('success', 'User updated.');
     }
 
     public function list(Request $request)

@@ -22,17 +22,6 @@
     @csrf
 
     <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="string" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
-        required readonly value="{{ $user->email }}">
-      @error('email')
-      <div class="invalid-feedback">
-        {{ $message }}
-      </div>
-      @enderror
-    </div>
-
-    <div class="mb-3">
       <label for="password" class="form-label">Password</label>
       <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password"
         required autofocus value="{{old('password')}}">
@@ -46,7 +35,7 @@
 
     <div class="col-12 col-md-6 col-lg-4">
       <div class="mb-1">
-    <button type="submit" class="btn btn-primary">Update User</button>
+    <button type="submit" class="btn btn-primary">Update Password</button>
         <a class="btn btn-danger btn-custom" href="/dashboard">Cancel</a>
       </div>
     </div>
