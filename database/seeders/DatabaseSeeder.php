@@ -135,13 +135,13 @@ class DatabaseSeeder extends Seeder
 
         ryrClasses::create([
             'id' => 'RIAN_048292',
-            'nama_kelas' => 'Wallrope Senin Pagi',
+            'nama_kelas' => 'Wallrope Pagi',
             'tipe' => 'public',
             'teacher' => 'Rian',
             'start_time' => '07:00:00',
             'end_time' => '08:30:00',
             'biaya' => 100000,
-            'day' => 'Senin',
+            'day' => 'Senin, Kamis, Jumat',
             'description' => 'Yoga class focusing on fixing postures using various props.',
         ]);
 

@@ -145,33 +145,51 @@
                 </div>
 
                 @foreach ($teachers as $index => $teacher)
-                @php
-                if($teacher->foto){
-                $foto = 'storage/' . $teacher->foto;
-                } else {
-                $foto = '/../../portfolio2/img/trainer/trainer4.png';
-                }
-                $div = "col-lg-4 col-md-6 mb-5";
-                if ($index > 3) {
-                $div = "col-lg-4 col-md-6 mt-5";
-                }
-                @endphp
+    @php
+        $foto = $teacher->foto ? 'storage/' . $teacher->foto : '/../../portfolio2/img/trainer/trainer4.png';
+        $div = $index > 3 ? "col-lg-4 col-md-6 mt-5" : "col-lg-4 col-md-6 mb-5";
+        $modalId = "exampleModalCenter" . $index;
+    @endphp
 
-
-                <div class= "{{ $div }}">
-                    <div class="single-trainer text-center">
-                        <img src="{{ $foto }}" alt="trainer" style="width: 370px; height: 345px;">
-                        <div class="trainer-hover" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                            <h3>{{ $teacher->nama }}</h3>
-                                <li style="display: flex; justify-content: center; align-items: center;">
-                                    <a href="https://www.instagram.com/{{ $teacher->instagram }}" style="background-color: white; border-radius: 50%; padding: 10px; display: flex; justify-content: center; align-items: center;">
-                                        <i class="fa fa-instagram" style="color: #E1306C; font-size: 20px;"></i>
-                                    </a>
-                                </li>
-                        </div>
-                    </div>
+    <div class="{{ $div }}">
+        <div class="single-trainer text-center">
+            <img src="{{ $foto }}" alt="trainer" style="width: 370px; height: 345px;">
+            <div class="trainer-hover" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">
+                <h3>{{ $teacher->nama }}</h3>
+                <li style="display: flex; justify-content: center; align-items: center;">
+                    <a href="https://www.instagram.com/{{ $teacher->instagram }}" style="background-color: white; border-radius: 50%; padding: 10px; display: flex; justify-content: center; align-items: center;">
+                        <i class="fa fa-instagram" style="color: #E1306C; font-size: 20px;"></i>
+                    </a>
+                </li>
             </div>
-            @endforeach
+        </div>
+    </div>
+
+    <!-- Modal (Unique per teacher) -->
+    <div class="modal fade" id="{{ $modalId }}" tabindex="-1" aria-labelledby="{{ $modalId }}Title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="{{ $modalId }}Title">{{ $teacher->nama }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <img src="{{ $foto }}" alt="trainer" style="width: 370px; height: 345px;">
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal-title">Biografi:</h4>
+                    <p>{{ $teacher->nama }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
+
         </div>
     </div>
     </div>
@@ -322,30 +340,5 @@
 </body>
 
 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">{{ $teacher->nama }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-                <img src="/../../portfolio2//img/trainer/trainer4.png" alt="trainer" style="width: 370px; height: 345px;">
-            </div>
-            <div class="modal-body">
-                <h4 class="modal-title">Biografi:</h4>
-                <p>Okta adalah guru ashtanga yoga yang sudah berpengalaman lebih dari 10 tahun. Beliau sudah mengajar di berbagai studio yoga di Jakarta dan juga di luar negeri. Okta memiliki sertifikasi dari Yoga Alliance dan juga merupakan anggota dari Ashtanga Yoga Research Institute.
-                    </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 </html>

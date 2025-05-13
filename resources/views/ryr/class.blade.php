@@ -161,7 +161,7 @@
                             <h3><a href="/ryr/classes/{{ $class->id }}">{{ $class->nama_kelas }}</a></h3>
                             <ul>
                                 <li><i class="zmdi zmdi-face"></i>{{ $class->teacher }}</li>
-                                <li><i class="zmdi zmdi-alarm"></i>{{ $class->schedule }}</li>
+                                <li><i class="zmdi zmdi-alarm"></i>{{ $class->start_time }}</li>
                                 <li><i class="zmdi zmdi-calendar"></i>{{ $class->day }}</li>
                             </ul>
                         </div>
