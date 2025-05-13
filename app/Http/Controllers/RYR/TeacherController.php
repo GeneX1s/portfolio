@@ -175,7 +175,7 @@ class TeacherController extends Controller
     public function profile(Request $request)
     {
         $teachers = ryrTeachers::all();
-        return view('dashboard.ryr.teachers.index', [
+        return view('ryr.teacher', [
             'teachers' => $teachers,
         ]);
     }

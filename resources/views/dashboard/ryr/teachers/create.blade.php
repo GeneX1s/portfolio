@@ -95,9 +95,10 @@
             </div>
 
             <div class="mb-3">
-                <label for="deskripsi" class="form-label">Deskripsi <small class="text-muted">(optional)</small></label>
-                <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
-                    name="deskripsi" autofocus value="{{old('deskripsi')}}">
+                <label for="deskripsi" class="form-label">Biografi/Deskripsi</label>
+                <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi"
+                    rows="5" maxlength="500" required autofocus>{{ old('deskripsi') }}</textarea>
+                <small class="text-muted">Maximum 500 characters.</small>
                 @error('deskripsi')
                 <div class="invalid-feedback">
                     {{ $message }}

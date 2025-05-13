@@ -109,7 +109,7 @@ class ClassController extends Controller
         $class = ryrClasses::findOrFail($id);
         $merge = implode(',', $input['day']);
         $input['day'] = $merge;
-        
+
         // dd($input);
         $input['id'] = $class->id;
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
@@ -205,7 +205,7 @@ class ClassController extends Controller
             ];
         }
 
-        dd($events);
+        // dd($events);
         return view('ryr.class', [
 
             'classes' => $classes,

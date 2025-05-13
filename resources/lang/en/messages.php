@@ -1,12 +1,6 @@
 <?php
 
-return [
-    'welcome' => 'Welcome to our website!',
-    'title' => 'Class Schedule',
-    'book_now' => 'Book Now',
-];
-
-return [
+return[
     // Language switcher
     'en' => 'EN',
     'id' => 'ID',
@@ -33,10 +27,10 @@ return [
     // Schedule section
     'class_schedule' => 'class schedule',
     'class_schedule_description' => 'Check out our weekly class schedule to find the perfect time for your yoga practice. We offer a variety of classes throughout the week to fit your busy lifestyle.',
-];
 
 
-return [
+
+
 
     // Schedule Table
     'schedule_time' => 'Time',
@@ -58,10 +52,10 @@ return [
     'gallery_add_new' => 'Add New Item',
     // Optional description if reused later:
     // 'gallery_description' => 'Explore our gallery to see the vibrant moments captured at Roemah Yoga Rian. From serene yoga sessions to community events, our gallery showcases the essence of our studio and the joy of our members.',
-];
 
 
-return [
+
+
 
     // Gallery Options Menu
     'edit' => 'Edit',
@@ -82,10 +76,10 @@ return [
     'blog_description' => 'Stay updated with our latest blog posts and insights on yoga, wellness, and healthy living. Our blog is a great resource for tips, inspiration, and information to support your yoga journey.',
     'read_more' => 'read more',
 
-];
 
 
-return [
+
+
 
     // Client/Testimonial Section
     'client_section_title' => 'A Word From the Founder',

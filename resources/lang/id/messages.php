@@ -45,7 +45,7 @@ return [
 
     // Teacher Section
     'teachers_title' => 'instruktur',
-    'teachers_description' => 'Instruktur yoga kami yang berpengalaman dan penuh semangat berdedikasi untuk membimbing Anda dalam perjalanan menuju kesejahteraan fisik dan mental. Dengan keahlian yang beragam dalam berbagai gaya yoga, mereka menciptakan lingkungan yang mendukung di mana setiap siswa dapat berkembang dan tumbuh dalam latihan mereka.',
+    'teachers_description' => 'Instruktur yoga kami yang berpengalaman dan penuh semangat berdedikasi untuk membimbing Anda dalam perjalanan menuju kesejahteraan fisik dan mental. Dengan keahlian yang beragam dalam berbagai gaya yoga, mereka menciptakan lingkungan yang mendukung di mana setiap murid dapat berkembang dan tumbuh dalam latihan mereka.',
 
     // Gallery Section
     'gallery_title' => 'galeri',

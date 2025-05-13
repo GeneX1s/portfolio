@@ -15,17 +15,17 @@
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
-    <link rel="stylesheet" href="portfolio2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="portfolio2/css/font-awesome.min.css">
-    <link rel="stylesheet" href="portfolio2/css/shortcode/shortcodes.css">
-    <link rel="stylesheet" href="portfolio2/css/slick.css">
-    <link rel="stylesheet" href="portfolio2/style.css">
-    <link rel="stylesheet" href="portfolio2/css/responsive.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/slick.css">
+    <link rel="stylesheet" href="/../../portfolio2/style.css">
+    <link rel="stylesheet" href="/../../portfolio2/css/responsive.css">
 
 
 
 
-    <script src="portfolio2/js/vendor/modernizr-3.11.2.min.js" defer></script>
+    <script src="/../../portfolio2/js/vendor/modernizr-3.11.2.min.js" defer></script>
 
 
 </head>
@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="/"><img src="portfolio2//img/logo/logo.webp" alt="COFFEE" /></a>
+                            <a href="/"><img src="/../../portfolio2//img/logo/logo.webp" alt="COFFEE" /></a>
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -51,10 +51,10 @@
                                     <ul>
                                         <li><a href="/">Home</a></li>
                                         {{-- <li><a href="ryr/about-us">About us</a></li> --}}
-                                        <li><a href="ryr/class">classes</a></li>
-                                        <li><a href="ryr/gallery">gallery</a></li>
-                                        <li><a href="ryr/blog">blog</a></li>
-                                        <li><a href="ryr/teacher">teacher</a></li>
+                                        <li><a href="/ryr/class">classes</a></li>
+                                        <li><a href="/ryr/gallery">gallery</a></li>
+                                        <li><a href="/ryr/blog">blog</a></li>
+                                        <li><a href="/ryr/teacher">teacher</a></li>
                                         @if (auth()->check())
 
                                         <li>
@@ -110,6 +110,28 @@
         </div>
     </header>
     <!-- Header Area End -->
+        <!-- Banner Area Start -->
+    <section class="banner-area text-start">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>teachers</h2>
+                            <div class="banner-breadcrumb">
+                                <ul>
+                                    <li><a href="/">home </a> <i class="zmdi zmdi-chevron-right"></i></li>
+                                    <li>teachers</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Area End -->
+
     <!-- Trainer Area Start -->
     <div class="trainer-area pt-90 pb-100 bg-gray">
         <div class="container">
@@ -127,67 +149,29 @@
                 if($teacher->foto){
                 $foto = 'storage/' . $teacher->foto;
                 } else {
-                $foto = 'portfolio2/img/trainer/trainer4.png';
+                $foto = '/../../portfolio2/img/trainer/trainer4.png';
+                }
+                $div = "col-lg-4 col-md-6 mb-5";
+                if ($index > 3) {
+                $div = "col-lg-4 col-md-6 mt-5";
                 }
                 @endphp
-                @if ($index < 3) <div class="col-lg-4 col-md-6">
+
+
+                <div class= "{{ $div }}">
                     <div class="single-trainer text-center">
                         <img src="{{ $foto }}" alt="trainer" style="width: 370px; height: 345px;">
-                        <div class="trainer-hover">
+                        <div class="trainer-hover" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                             <h3>{{ $teacher->nama }}</h3>
-                            <ul>
-                                {{-- <li><a href="{{ $teacher->fb }}"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="{{ $teacher->twitter }}"><i class="fa fa-twitter"></i></a></li> --}}
-                                <li><a href="https://www.instagram.com/{{ $teacher->instagram }}"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
+                                <li style="display: flex; justify-content: center; align-items: center;">
+                                    <a href="https://www.instagram.com/{{ $teacher->instagram }}" style="background-color: white; border-radius: 50%; padding: 10px; display: flex; justify-content: center; align-items: center;">
+                                        <i class="fa fa-instagram" style="color: #E1306C; font-size: 20px;"></i>
+                                    </a>
+                                </li>
                         </div>
                     </div>
             </div>
-            @endif
             @endforeach
-
-            {{-- <div class="col-lg-4 col-md-6">
-                <div class="single-trainer text-center">
-                    <img src="portfolio2/img/trainer/trainer1.webp" alt="trainer">
-                    <div class="trainer-hover">
-                        <h3>Okta</h3>
-                        <ul>
-                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-trainer text-center">
-                    <img src="portfolio2/img/trainer/trainer2.webp" alt="trainer">
-                    <div class="trainer-hover">
-                        <h3>Agung</h3>
-                        <ul>
-                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-                <div class="single-trainer text-center">
-                    <img src="portfolio2/img/trainer/trainer3.webp" alt="trainer">
-                    <div class="trainer-hover">
-                        <h3>Rian</h3>
-                        <ul>
-                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
     </div>
@@ -217,7 +201,8 @@
                             <h2>subscribe now for latest update!</h2>
                             <div class="newsletter-form">
                                 <form action="#" id="mc-form" class="mc-form fix">
-                                    <input id="mc-email" type="email" name="email" placeholder={{ __('messages.newsletter_placeholder') }}>
+                                    <input id="mc-email" type="email" name="email" placeholder={{
+                                        __('messages.newsletter_placeholder') }}>
                                     <button id="mc-submit" type="submit" class="default-btn"
                                         data-text="submit"><span>submit</span></button>
                                 </form>
@@ -243,7 +228,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-widget">
-                            <a href="/portfolio"><img src="portfolio2//img/logo/logo.webp" alt="Roemah Yoga Rian"></a>
+                            <a href="/portfolio"><img src="/../../portfolio2//img/logo/logo.webp"
+                                    alt="Roemah Yoga Rian"></a>
                             <p>{{ __('messages.footer_contact_title') }}
                             </p>
                             <ul>
@@ -320,20 +306,46 @@
     </footer>
 
     <!-- Footer Area End -->
-    <script src="portfolio2/js/vendor/jquery-3.6.0.min.js" defer></script>
-    <script src="portfolio2/js/vendor/jquery-migrate-3.3.2.min.js" defer></script>
-    <script src="portfolio2/js/bootstrap.bundle.min.js" defer></script>
-    <script src="portfolio2/js/owl.carousel.min.js" defer></script>
-    <script src="portfolio2/js/jquery.meanmenu.js" defer></script>
-    <script src="portfolio2/js/ajax-mail.js" defer></script>
-    <script src="portfolio2/js/jquery.ajaxchimp.min.js" defer></script>
-    <script src="portfolio2/js/slick.min.js" defer></script>
-    <script src="portfolio2/js/imagesloaded.pkgd.min.js" defer></script>
-    <script src="portfolio2/js/isotope.pkgd.min.js" defer></script>
-    <script src="portfolio2/js/jquery.magnific-popup.js" defer></script>
-    <script src="portfolio2/js/plugins.js" defer></script>
-    <script src="portfolio2/js/main.js" defer></script>
+    <script src="/../../portfolio2/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/../../portfolio2/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="/../../portfolio2/js/bootstrap.bundle.min.js"></script>
+    <script src="/../../portfolio2/js/owl.carousel.min.js" defer></script>
+    <script src="/../../portfolio2/js/jquery.meanmenu.js" defer></script>
+    <script src="/../../portfolio2/js/ajax-mail.js" defer></script>
+    <script src="/../../portfolio2/js/jquery.ajaxchimp.min.js" defer></script>
+    <script src="/../../portfolio2/js/slick.min.js" defer></script>
+    <script src="/../../portfolio2/js/imagesloaded.pkgd.min.js" defer></script>
+    <script src="/../../portfolio2/js/isotope.pkgd.min.js" defer></script>
+    <script src="/../../portfolio2/js/jquery.magnific-popup.js" defer></script>
+    <script src="/../../portfolio2/js/plugins.js" defer></script>
+    <script src="/../../portfolio2/js/main.js" defer></script>
 </body>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{ $teacher->nama }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <img src="/../../portfolio2//img/trainer/trainer4.png" alt="trainer" style="width: 370px; height: 345px;">
+            </div>
+            <div class="modal-body">
+                <h4 class="modal-title">Biografi:</h4>
+                <p>Okta adalah guru ashtanga yoga yang sudah berpengalaman lebih dari 10 tahun. Beliau sudah mengajar di berbagai studio yoga di Jakarta dan juga di luar negeri. Okta memiliki sertifikasi dari Yoga Alliance dan juga merupakan anggota dari Ashtanga Yoga Research Institute.
+                    </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </html>

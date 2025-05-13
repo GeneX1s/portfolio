@@ -78,10 +78,10 @@
                                     <ul>
                                         <li><a href="/">Home</a></li>
                                         {{-- <li><a href="/ryr/about-us">About us</a></li> --}}
-                                        <li><a href="ryr/class">classes</a></li>
-                                        <li><a href="ryr/gallery">gallery</a></li>
-                                        <li><a href="ryr/blog">blog</a></li>
-                                        <li><a href="ryr/teacher">teacher</a></li>
+                                        <li><a href="/ryr/class">classes</a></li>
+                                        <li><a href="/ryr/gallery">gallery</a></li>
+                                        <li><a href="/ryr/blog">blog</a></li>
+                                        <li><a href="/ryr/teacher">teacher</a></li>
                                         {{-- <li><a href="/ryr/contact">Contact</a></li> --}}
                                     </ul>
                                 </nav>
@@ -107,11 +107,11 @@
                 <div class="col-12">
                     <div class="banner-content-wrapper">
                         <div class="banner-content">
-                            <h2>gallery</h2>
+                            <h2>classes</h2>
                             <div class="banner-breadcrumb">
                                 <ul>
                                     <li><a href="/">home </a> <i class="zmdi zmdi-chevron-right"></i></li>
-                                    <li>gallery</li>
+                                    <li>classes</li>
                                 </ul>
                             </div>
                         </div>
