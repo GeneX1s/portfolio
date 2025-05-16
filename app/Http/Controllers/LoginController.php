@@ -16,10 +16,10 @@ class LoginController extends Controller
         // Count the number of failed attempts for the client's IP address
         $fails = UserLog::where('user_ip', $clientIP)
             ->where('status', 'Failed')
-            ->where('created_at','>' ,now()->subMinutes(5))
+            ->where('created_at', '>', now()->subMinutes(5))
             ->get();
-            
-            $failcount = $fails->count();
+
+        $failcount = $fails->count();
         // dd($failcount);
         // If there are more than 2 failed attempts, deny access
         if ($failcount > 3) {
