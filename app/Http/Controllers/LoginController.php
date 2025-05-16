@@ -14,13 +14,23 @@ class LoginController extends Controller
         $clientIP = request()->ip();
 
         // Count the number of failed attempts for the client's IP address
-        $failcount = UserLog::where('user_ip', $clientIP)
+        $fails = UserLog::where('user_ip', $clientIP)
             ->where('status', 'Failed')
-            ->count();
-
+            ->where('created_at','>' ,now()->subMinutes(5))
+            ->get();
+            
+            $failcount = $fails->count();
+        // dd($failcount);
         // If there are more than 2 failed attempts, deny access
         if ($failcount > 3) {
             return response()->json(['message' => 'Access Denied'], 403); // HTTP 403 Forbidden
+        }
+
+
+        foreach ($fails as $fail) {
+            if ($fail->created_at < now()->subMinutes(5)) {
+                $fail->delete();
+            }
         }
         // Otherwise, show the login view
         return view('/login', [
