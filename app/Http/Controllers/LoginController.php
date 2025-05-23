@@ -64,7 +64,8 @@ class LoginController extends Controller
             ]);
 
             // Redirect to intended page or dashboard
-            return redirect()->intended('/dashboard');
+            // return redirect()->intended('/dashboard');
+            return redirect('/dashboard');
         }
 
         // Record failed login attempt
