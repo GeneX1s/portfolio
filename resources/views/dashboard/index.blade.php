@@ -271,13 +271,13 @@
                                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Audit Log
                                     </a>
-                                    @endcan
 
                                     <a class="dropdown-item" href="#">
                                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Settings
                                     </a>
                                     <div class="dropdown-divider"></div>
+                                    @endcan
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
@@ -591,7 +591,7 @@
                                     </div>
                                     <!-- Card Body -->
                                     <div class="card-body">
-                                        @if (auth()->user()->role == 'super-admin')
+                                        @if (auth()->user()->role == 'super-admin' || auth()->user()->role == 'admin')
                                         <p>Earning: Rp.{{
                                             number_format($pendapatan_tahunan,
                                             '2',

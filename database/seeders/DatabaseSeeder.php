@@ -74,6 +74,12 @@ class DatabaseSeeder extends Seeder
             'tipe' => 'Lainnya',
         ]);
 
+        Balance::create([
+            'nama' => 'PawonBule',
+            'saldo' => 0,
+            'tipe' => 'Lainnya',
+        ]);
+
         ryrTeachers::create([
             'nama' => 'Okta',
             'salary' => '5000000',

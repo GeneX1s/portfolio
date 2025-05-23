@@ -88,7 +88,6 @@ class DashboardController extends Controller
             ->pluck('saldo')->all();
         // dd($yearFilter);
         // dd($investments);
-        $pengeluaran = 0;
         $pengeluaran_tahunan = 0;
         $pendapatan_tahunan = 0;
         $investment_tahunan = 0;
@@ -209,6 +208,10 @@ class DashboardController extends Controller
         }
         // dd($messages);
         $target = $fix_outcome;
+
+        if($userRole != 'super-admin'){
+            $investment_tahunan = 0;
+        }
         return view('/dashboard.index', [
             'spendable' => $spendable,
             'messages' => $messages,

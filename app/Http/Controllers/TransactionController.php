@@ -37,14 +37,8 @@ class TransactionController extends Controller
             $end_date = Carbon::now()->lastOfMonth()->format('Y-m-d H:i:s');
         }
 
-        if ($userRole == 'super-admin') {
-            $profile_filter = 'super-admin';
-        } else if ($userRole == 'admin') {
-
-            $profile_filter = 'ryr';
-        } else if ($userRole == 'finance') {
-            $profile_filter = 'ryr';
-        } else if ($userRole == 'ryr') {
+        $profile_filter = $userRole;
+        if ($userRole == 'finance') {
             $profile_filter = 'ryr';
         }
         // dd($profile_filter);
@@ -365,7 +359,7 @@ class TransactionController extends Controller
                 'outcome' => $input['outcome'],
 
             ]);
-            
+
             return redirect()->back()->with('success', 'Value updated successfully.');
 
         }

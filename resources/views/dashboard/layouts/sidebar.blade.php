@@ -67,6 +67,16 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+
+
+    @if (auth()->user()->role == 'ryr' || auth()->user()->role == 'admin' || auth()->user()->role == 'super-admin')
+    <li class="nav-item">
+        <a class="nav-link" href="/dashboard/transactions">
+            <i class="fas fa-fw fa-exchange-alt"></i>
+            <span>Transactions</span></a>
+        </li>
+
+        @endif
     @can('super-admin')
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -121,13 +131,6 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="/dashboard/transactions">
-            <i class="fas fa-fw fa-exchange-alt"></i>
-            <span>Transactions</span></a>
-    </li>
-
-
-    <li class="nav-item">
         <a class="nav-link" href="/dashboard/report/index">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Reports</span></a>
@@ -162,11 +165,6 @@
 
     @if (auth()->user()->role == 'ryr')
 
-    <li class="nav-item">
-        <a class="nav-link" href="/dashboard/transactions">
-            <i class="fas fa-fw fa-exchange-alt"></i>
-            <span>Transactions</span></a>
-        </li>
 
         <li class="nav-item">
             <a class="nav-link" href="/dashboard/ryr/teachers">

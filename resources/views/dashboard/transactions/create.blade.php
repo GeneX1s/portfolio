@@ -116,6 +116,9 @@
           @foreach ($balances as $balance)
           <option value="{{$balance->nama}}"> {{$balance->nama}}</option>
           @endforeach
+          @elseif (auth()->user()->role == 'admin')
+
+          <option value="PawonBule"> PawonBule</option>
           @else
           <option value="RYR"> RYR</option>
 
