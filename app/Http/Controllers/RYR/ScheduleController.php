@@ -311,12 +311,19 @@ class ScheduleController extends Controller
         return redirect('/dashboard/ryr/schedules/' . $id . '/detail')->with('success', 'Participants have been updated');
     }
 
-    public function detailGroup($id)
+    public function detailGroup(Request $request, $id)
     {
         $schedule = ryrSchedules::where('id', $id)->first();
         $participant = ryrParticipants::where('id_kelas', $schedule->class_id)->get();
 
-        $members = ryrMembers::get();
+        $search = $request->nama;
+
+
+        $members = ryrMembers::query()
+            ->when($search, function ($query) use ($search) {
+                return $query->where('nama_murid', 'like', '%' . $search . '%');
+            })
+            ->get();
         // dd($members);
         $class = ryrClasses::where('id', $schedule->class_id)->first();
         $class_name = 0;
@@ -333,6 +340,7 @@ class ScheduleController extends Controller
 
         // dd($preselectedParticipants);
         return view('dashboard.ryr.schedules.editgroup', [
+            'participant' => $participant,
             'schedule' => $schedule,
             'members' => $members,
             'id_kelas' => $id,

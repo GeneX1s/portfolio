@@ -203,7 +203,7 @@ Route::resource('/dashboard/ryr/attendances', AttendanceController::class)->midd
 Route::get('/dashboard/ryr/schedules/index', [ScheduleController::class, 'index'])->middleware('auth')->name('dashboard.schedules.index');
 Route::get('/dashboard/ryr/schedules/create', [ScheduleController::class, 'create'])->middleware('auth')->name('dashboard.schedules.create');
 Route::get('/dashboard/ryr/schedules/{id}/detail', [ScheduleController::class, 'indexGroup'])->middleware('auth')->name('dashboard.schedules.detail');
-Route::get('/dashboard/ryr/schedules/{id}', [ScheduleController::class, 'detailGroup'])->middleware('auth');
+Route::get('/dashboard/ryr/schedules/{id}', [ScheduleController::class, 'detailGroup'])->middleware('auth')->name('schedule.detailGroup');
 Route::get('/dashboard/ryr/schedules/{id}/editparticipant', [ScheduleController::class, 'editParticipant'])->middleware('auth')->name('dashboard.ryr.edit');
 Route::put('/dashboard/ryr/schedules/{id}/update', [ScheduleController::class, 'update'])->middleware('auth');
 Route::put('/dashboard/ryr/schedules/{id}/updateParticipant', [ScheduleController::class, 'updateParticipant'])->middleware('auth');
