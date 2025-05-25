@@ -7,37 +7,31 @@
 
 <div class="col-lg-8">
     <h1 class="h2">Edit {{ $schedule->class_name }}, {{ $schedule->tanggal }}</h1>
+
+    <hr class="solid">
+
+    <h2>
+        Tambah dari List:
+    </h2>
+    <form action="{{ route('schedule.detailGroup', ['id' => $schedule->id]) }}" method="GET">
+        @csrf
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Murid</label>
+                    <input type="string" class="form-control" id="nama" name="nama" value="{{ request('nama') }}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4">
+                <button type="submit" class="btn btn-primary btn-custom mb-3">Search</button>
+            </div>
+        </div>
+    </form>
     <form method="post" action="/dashboard/ryr/schedules/{{$schedule->id}}/participant" class="mb-5"
         enctype="multipart/form-data">
         @csrf
-
-        <div id="participants-container-1">
-            <!-- Participant fields for first section will be added here -->
-        </div>
-
-        <button type="button" id="add-participant-btn-1" class="btn btn-primary mb-3">+</button>
-
-        <hr class="solid">
-
-        <h2>
-            Tambah dari List:
-        </h2>
-        <form action="{{ route('schedule.detailGroup', ['id' => $schedule->id]) }}" method="GET">
-            @csrf
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="mb-3">
-                        <label for="nama" class="form-label">Nama Murid</label>
-                        <input type="string" class="form-control" id="nama" name="nama">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <button type="submit" class="btn btn-primary btn-custom mb-3">Search</button>
-                </div>
-            </div>
-        </form>
         <div id="participants-container-2">
             <table class="table table-striped table-sm">
                 <thead class="thead">
@@ -76,15 +70,32 @@
 
                         <td>
                             <input type="checkbox" name="participants[]" value="{{ $member->id }}" {{
-                                in_array($member->id,
-                            ($preselectedParticipants ?? collect())->toArray()) ? 'checked' : '' }}>
-
+                                in_array($member->id, old('participants', $checkedParticipants ?? [])) ? 'checked' : ''
+                            }}>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+        <button type="submit" class="btn btn-success mt-3">Save</button>
+    </form>
+
+    <hr class="solid">
+
+    <h2>
+        Murid Baru:
+    </h2>
+
+    <form method="post" action="/dashboard/ryr/schedules/{{$schedule->id}}/participant" class="mb-5"
+        enctype="multipart/form-data">
+        @csrf
+
+        <div id="participants-container-1">
+            <!-- Participant fields for first section will be added here -->
+        </div>
+
+        <button type="button" id="add-participant-btn-1" class="btn btn-primary mb-3">+</button>
 
         <div class="row">
             <button type="submit" class="btn btn-success mt-3">Save</button>
@@ -122,80 +133,15 @@
     participantCount2++;
 
     const newParticipantField2 = `
-      <table class="table table-striped table-sm">
-        <thead class="thead">
-            <tr>
-                <th scope="col">No.</th>
-                <th scope="col">Nama Murid</th>
-                <th scope="col">Tipe</th>
-                <th scope="col">Join Date</th>
-                <th scope="col">Total Attendance</th>
-                <th scope="col">Tanggal Lahir</th>
-                {{-- <th scope="col">Gender</th> --}}
-                <th scope="col">Peserta Dari</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($members as $member)
-            <tr>
-                <td>{{$loop->iteration}}</td>
-
-                <td>{{$member->nama_murid}}</td>
-                <td>{{$member->tipe}}</td>
-                <td>{{$member->join_date}}</td>
-
-                @php
-                $total_attendance = $participant->where('id_member', $member->id)->where('grup','Schedule')->count();
-
-                $groups = $participant->where('id_member', $member->id)
-                ->where('grup', 'Template');
-                @endphp
-
-                <td>{{$total_attendance}}</td>
-                <td>{{$member->dob}}</td>
-                {{-- <td>{{$member->jenis_kelamin}}</td> --}}
-
-                <td>
-                    @foreach ($groups as $group)
-                    {{$group->nama_kelas}}{{ !$loop->last ? ',' : '' }}
-                    @endforeach
-                </td>
-                <td>
-                    <form action="/dashboard/ryr/members/{{$member->id}}" method="post" class="d-inline">
-                        @method('delete')
-                        @csrf
-
-                        <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
-                            <i class="fas fa-regular fa-trash"></i>
-                        </button>
-                    </form>
-
-                    <form action="/dashboard/ryr/members/{{ $member->id }}/edit" class="d-inline">
-                        @csrf
-                        @method('POST')
-                        <!-- Not strictly necessary with `POST` method -->
-                        <button class="badge bg-warning border-0" type="submit">
-                            <i class="fas fa-regular fa-pen-nib"></i>
-                        </button>
-                    </form>
-
-                    <form action="/dashboard/ryr/members/{{ $member->id }}" class="d-inline">
-                        @csrf
-                        @method('POST')
-                        <!-- Not strictly necessary with `POST` method -->
-                        <button class="badge bg-primary border-0" type="submit">
-                            <i class="fas fa-regular fa-list"></i>
-                        </button>
-                    </form>
-
-                </td>
-
-            </tr>
-            @endforeach
-
-        </tbody>
-    </table>
+      <div class="mb-3" id="participant-${participantCount2}">
+        <label for="id_member_${participantCount2}" class="form-label">Murid ${participantCount2}</label>
+        <select class="form-control" id="id_member_${participantCount2}" name="participants[${participantCount2}][id_member]" required>
+        @foreach ($members as $member)
+          <option value="{{$member->id}}">{{$member->nama_murid}}</option>
+        @endforeach
+        </select>
+        <button type="button" class="btn btn-danger mt-2" onclick="removeParticipant('participant-${participantCount2}')">-</button>
+      </div>
       `;
 
     container2.insertAdjacentHTML('beforeend', newParticipantField2);

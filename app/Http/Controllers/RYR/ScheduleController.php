@@ -325,7 +325,7 @@ class ScheduleController extends Controller
             })
             ->get();
         // dd($members);
-        $class = ryrClasses::where('id', $schedule->class_id)->first();
+        // $class = ryrClasses::where('id', $schedule->class_id)->first();
         $class_name = 0;
 
         // dd($participant);
@@ -336,7 +336,10 @@ class ScheduleController extends Controller
 
 
         $preselectedParticipants = ryrParticipants::where('id_kelas', $schedule->class_id)->where('grup', 'Template')->get();
-        // dd($id);
+
+        // dd($request->all());
+        $selectedParticipants = $request->input('participants', []); // ⬅️ get selected checkboxes from form
+
 
         // dd($preselectedParticipants);
         return view('dashboard.ryr.schedules.editgroup', [
@@ -345,7 +348,8 @@ class ScheduleController extends Controller
             'members' => $members,
             'id_kelas' => $id,
             'class_name' => $class_name,
-            'preselectedParticipants' => $preselectedParticipants,
+            'preselectedParticipants' => $selectedParticipants,
+            // 'checkedParticipants' => $checkedParticipants,
 
         ]);
     }
