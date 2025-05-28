@@ -149,7 +149,7 @@
     <h2 class="h4">Participants</h2>
 
 
-    <table class="table table-striped table-sm">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead class="thead">
             <tr>
                 <th scope="col">No.</th>

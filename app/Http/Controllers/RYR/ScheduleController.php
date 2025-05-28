@@ -267,8 +267,6 @@ class ScheduleController extends Controller
                 $checkexist = ryrParticipants::where('id_member', $participant)->where('grup', 'Schedule')->where('id_kelas', $schedule->class_id)->first();
 
                 if (!$checkexist) {
-                    // return null;
-
                     $template = ryrParticipants::where('id', $participant)->where('grup', 'Template')->first();
                     // if ($member['tipe'] != 'Regular') {
 

@@ -109,7 +109,7 @@
 
 </form> --}}
 
-  <table class="table table-striped table-sm">
+  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead class="thead">
       <tr>
         <th scope="col">No.</th>
