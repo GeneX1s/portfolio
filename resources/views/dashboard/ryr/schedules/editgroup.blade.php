@@ -14,29 +14,13 @@
     <h2>
         Tambah dari List:
     </h2>
-    <form action="{{ route('schedule.detailGroup', ['id' => $schedule->id]) }}" method="GET">
-        @csrf
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="mb-3">
-                    <label for="nama" class="form-label">Nama Murid</label>
-                    <input type="string" class="form-control" id="nama" name="nama" value="{{ request('nama') }}">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-4">
-                <button type="submit" class="btn btn-primary btn-custom mb-3">Search</button>
-            </div>
-        </div>
-    </form>
     <form method="post" action="/dashboard/ryr/schedules/{{$schedule->id}}/participant" class="mb-5"
         enctype="multipart/form-data">
         @csrf
-        <!-- DataTales Example -->
+
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Murid RYR</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -88,8 +72,6 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success mt-3">Save</button>
-    </form>
 
     <hr class="solid">
 

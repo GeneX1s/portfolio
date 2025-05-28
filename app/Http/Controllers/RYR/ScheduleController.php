@@ -228,6 +228,7 @@ class ScheduleController extends Controller
             // 'participants.*.nama_member' => 'required|string|max:255',
         ]);
 
+        // dd($request->all());
         $schedule = ryrSchedules::where('id', $id)->first();
         if (!$request->guests == null)
             foreach ($request->guests as $guest) {
@@ -261,20 +262,14 @@ class ScheduleController extends Controller
 
         if (!$request->participants == null)
             foreach ($request->participants as $participant) {
-                $member = ryrMembers::where('id', $participant['id_member'])->first();
-                $checkexist = ryrParticipants::where('id_member', $participant['id_member'])->where('grup', 'Schedule')->where('id_kelas', $schedule->class_id)->first();
+        // dd($participant);
+                $member = ryrMembers::where('id', $participant)->first();
+                $checkexist = ryrParticipants::where('id_member', $participant)->where('grup', 'Schedule')->where('id_kelas', $schedule->class_id)->first();
 
                 if (!$checkexist) {
                     // return null;
 
-                    $template = ryrParticipants::where('id', $participant['id_member'])->where('grup', 'Template')->first();
-
-                    $participant['nama_member'] = $member->nama_member;
-                    $participant['id_kelas'] = $member->id_kelas;
-                    $participant['nama_kelas'] = $member->nama_kelas;
-                    $participant['tipe'] = $member->tipe;
-                    $participant['deskripsi'] = $member->deskripsi;
-
+                    $template = ryrParticipants::where('id', $participant)->where('grup', 'Template')->first();
                     // if ($member['tipe'] != 'Regular') {
 
                     //     $payType = 'Bulanan';
@@ -288,7 +283,7 @@ class ScheduleController extends Controller
 
                     $input = [
                         'id_kelas' => $schedule->class_id,
-                        'id_member' => $participant['id_member'],
+                        'id_member' => $participant,
                         'nama_member' => $member->nama_murid,
                         'nama_kelas' => $schedule->class_name,
                         'tipe' => $member->tipe,
@@ -325,7 +320,7 @@ class ScheduleController extends Controller
             })
             ->get();
         // dd($members);
-        // $class = ryrClasses::where('id', $schedule->class_id)->first();
+
         $class_name = 0;
 
         // dd($participant);
