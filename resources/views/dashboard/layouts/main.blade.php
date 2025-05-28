@@ -21,7 +21,8 @@
 
     <!-- Custom styles for this template-->
     <link href="../../../../dasbor/css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.css" />
+
+    <link href="../../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
     <style>
@@ -192,7 +193,9 @@
 <!-- Page level custom scripts -->
 <script src="/dasbor/js/demo/chart-area-demo.js"></script>
 <script src="/dasbor/js/demo/chart-pie-demo.js"></script>
-
+<script src="/dasbor/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/dasbor/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/dasbor/js/demo/datatables-demo.js"></script>
 <script>
     // Get the sidebar element
 const sidebar = document.querySelector('.sidebar');
@@ -210,4 +213,3 @@ const handleScroll = () => {
 window.addEventListener('scroll', handleScroll);
 </script>
 
-<script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>

@@ -4,6 +4,7 @@
 
 
 @use('App\Models\RYR\ryrParticipants')
+@stack('scripts')
 
 <div class="col-lg-8">
     <h1 class="h2">Edit {{ $schedule->class_name }}, {{ $schedule->tanggal }}</h1>
@@ -32,51 +33,60 @@
     <form method="post" action="/dashboard/ryr/schedules/{{$schedule->id}}/participant" class="mb-5"
         enctype="multipart/form-data">
         @csrf
-        <div id="participants-container-2">
-            <table class="table table-striped table-sm">
-                <thead class="thead">
-                    <tr>
-                        <th scope="col">No.</th>
-                        <th scope="col">Nama Murid</th>
-                        <th scope="col">Tipe</th>
-                        <th scope="col">Peserta Dari</th>
-                        <th scope="col">Ikut Kelas?</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($members as $member)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-
-                        <td>{{$member->nama_murid}}</td>
-                        <td>{{$member->tipe}}</td>
-
-                        @php
-
-                        $total_attendance = ryrParticipants::where('id_member',
-                        $member->id)->where('grup','Schedule')->count();
-
-                        $groups = ryrParticipants::where('id_member', $member->id)
-                        ->where('grup', 'Template')
-                        ->get();
-                        @endphp
-
-                        <td>
-                            @foreach ($groups as $group)
-                            {{$group->nama_kelas}}{{ !$loop->last ? ',' : '' }}
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Murid</th>
+                                <th>Tipe</th>
+                                <th>Peserta Dari</th>
+                                <th>Ikut Kelas?</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Murid</th>
+                                <th>Tipe</th>
+                                <th>Peserta Dari</th>
+                                <th>Ikut Kelas?</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach ($members as $member)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $member->nama_murid }}</td>
+                                <td>{{ $member->tipe }}</td>
+                                @php
+                                $groups = ryrParticipants::where('id_member', $member->id)
+                                ->where('grup', 'Template')
+                                ->get();
+                                @endphp
+                                <td>
+                                    @foreach ($groups as $group)
+                                    {{ $group->nama_kelas }}{{ !$loop->last ? ',' : '' }}
+                                    @endforeach
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="participants[]" value="{{ $member->id }}" {{
+                                        in_array($member->id, old('participants', $checkedParticipants ?? [])) ?
+                                    'checked' :
+                                    '' }}>
+                                </td>
+                            </tr>
                             @endforeach
-                        </td>
-
-                        <td>
-                            <input type="checkbox" name="participants[]" value="{{ $member->id }}" {{
-                                in_array($member->id, old('participants', $checkedParticipants ?? [])) ? 'checked' : ''
-                            }}>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <button type="submit" class="btn btn-success mt-3">Save</button>
     </form>
