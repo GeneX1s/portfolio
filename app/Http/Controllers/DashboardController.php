@@ -145,11 +145,13 @@ class DashboardController extends Controller
 
             $area_chart[$i] = $monthplus - $monthmin;
             $totalmin[$i] = $monthmin;
+            $totalplus[$i] = $monthplus;
         }
         // dd($totalmin);
 
         //menghitung pengeluaran yang berlebih pada bulan tertentu dan mendistribusikannya ke sisa bulan dalam setahun
         $key = 1;
+        $underspent = 0;
         $overspent = 0;
         $thismonth = $date->format('m');
         while ($key < $thismonth - 1) {
@@ -157,11 +159,16 @@ class DashboardController extends Controller
             if ($get_overspent > 0) {
                 $overspent = $overspent + $get_overspent;
             }
+            $get_underspent = $salary / 2 - $totalplus[$key];
+            if ($get_underspent > 0) {
+                $underspent = $underspent + $get_underspent;
+            }
+
             $key+=1;
         }
 // dd($overspent);
 
-        $quota = $salary / 2 - $pengeluaran_bulanan - $overspent / (12 - $thismonth + 1); //jatah bulan ini
+        $quota = $salary / 2 - $pengeluaran_bulanan - ($overspent / (12 - $thismonth + 1))+$underspent / (12 - $thismonth + 1); //jatah bulan ini
 
         $piedata = [
             'labels' => ['Earning', 'Spending', 'Investment'],
