@@ -39,8 +39,8 @@
         <label for="status" class="form-label">Status</label>
         <select class="form-control" name="status">
           <option value="Ongoing" selected> Ongoing</option>
-          <option value="Pending">Pending</option>
-          <option value="Pending">Done</option>
+          <option value="Suspend">Suspend</option>
+          <option value="Done">Done</option>
         </select>
       </div>
 
